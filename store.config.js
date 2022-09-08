@@ -1,9 +1,9 @@
 module.exports = {
   seo: {
-    title: 'NextJSStore',
-    description: 'Fast Demo Store',
+    title: 'Retailhub',
+    description: 'Retailhub FastStore',
     titleTemplate: '%s | FastStore',
-    author: 'Store Framework',
+    author: 'Retailhub Framework',
   },
 
   // Theming
@@ -14,7 +14,7 @@ module.exports = {
 
   // Platform specific configs for API
   api: {
-    storeId: 'storeframework',
+    storeId: 'retailhub',
     workspace: 'master',
     environment: 'vtexcommercestable',
     hideUnavailableItems: true,
@@ -34,11 +34,11 @@ module.exports = {
   },
 
   // Production URLs
-  storeUrl: 'https://vtexfaststore.com',
-  secureSubdomain: 'https://secure.vtexfaststore.com',
-  checkoutUrl: 'https://secure.vtexfaststore.com/checkout',
-  loginUrl: 'https://secure.vtexfaststore.com/api/io/login',
-  accountUrl: 'https://secure.vtexfaststore.com/api/io/account',
+  storeUrl: 'https://loja.retailhub.digital',
+  secureSubdomain: 'https://secure.loja.retailhub.digital',
+  checkoutUrl: 'https://secure.loja.retailhub.digital/checkout',
+  loginUrl: 'https://secure.loja.retailhub.digital/api/io/login',
+  accountUrl: 'https://secure.loja.retailhub.digital/api/io/account',
 
   // Lighthouse CI
   lighthouse: {
