@@ -1,0 +1,3 @@
+[submodule "src/store-ui"]
+	path = src/store-ui
+	url = git@github.com:retailhubcode/store-ui.git

@@ -17,5 +17,7 @@
   "ignorePatterns": [
     "public/~partytown/*",
     "next-env.d.ts"
-  ]
+  ],
+  "exclude": ["node_modules", "test", "dist", "dist/**/*spec.ts"],
+  "include": ["src/**/*", ".eslintrc.js"]
 }

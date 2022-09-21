@@ -1,18 +1,20 @@
-import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
-import type { ContentData } from '@vtex/client-cms'
+import { NextSeo } from 'next-seo'
+import type { GetStaticProps } from 'next'
+import { RenderComponents } from '../store-ui/src'
+import renderPlatformComponents from '../utils/render-platform-components'
 
-import RenderPageSections from 'src/components/cms/RenderPageSections'
+// import RenderPageSections from 'src/components/cms/RenderPageSections'
 import { mark } from 'src/sdk/tests/mark'
-import { getCMSPageDataByContentType } from 'src/cms/client'
 
 import storeConfig from '../../store.config'
+import Variables from '../../config/variables.json'
+import getWpData from 'src/utils/get-wp-data'
 
-export type Props = { cmsHome: ContentData }
+export type Props = { data: any }
 
-function Page({ cmsHome }: Props) {
+function Page({ data }: Props) {
   return (
     <>
-      {/* SEO */}
       <NextSeo
         title={storeConfig.seo.title}
         description={storeConfig.seo.description}
@@ -25,7 +27,8 @@ function Page({ cmsHome }: Props) {
           description: storeConfig.seo.description,
         }}
       />
-      <SiteLinksSearchBoxJsonLd
+
+      {/* <SiteLinksSearchBoxJsonLd
         url={storeConfig.storeUrl}
         potentialActions={[
           {
@@ -33,6 +36,16 @@ function Page({ cmsHome }: Props) {
             queryInput: 'required name=search_term_string',
           },
         ]}
+      /> */}
+
+      {/* <Components.NotFound content="content" /> */}
+
+      <RenderComponents
+        apiBaseUrl={Variables.apiBaseUrl}
+        baseImageUrl={Variables.baseImageUrl}
+        renderPlatformComponents={renderPlatformComponents}
+        websiteUrls={Variables.websiteUrls}
+        {...data.page}
       />
 
       {/*
@@ -46,16 +59,17 @@ function Page({ cmsHome }: Props) {
         If needed, wrap your component in a <Section /> component
         (not the HTML tag) before rendering it here.
       */}
-      <RenderPageSections sections={cmsHome.sections} />
+      {/* <RenderPageSections sections={cmsHome.sections} /> */}
     </>
   )
 }
 
-export async function getStaticProps() {
-  const cmsHome = await getCMSPageDataByContentType('home')
+export const getStaticProps:GetStaticProps = async () => {
+  const slugPath = 'page-home'
+  const data = await getWpData(slugPath)
 
   return {
-    props: { cmsHome },
+    props: { data },
   }
 }
 

@@ -1,0 +1,25 @@
+{
+  "apiBaseUrl": "https://dev.retailhub.digital/wp-json",
+  "cdn": "https://retailhub.vteximg.com.br/arquivos",
+  "baseImageUrl": "/arquivos",
+  "websiteUrls": {
+    "account": "/_secure/account",
+    "addresses": "/_secure/account#/addresses",
+    "cards": "/_secure/account#/cards",
+    "cart": "/checkout/#/cart",
+    "login": "/_secure/account",
+    "logout": "/no-cache/user/logout",
+    "orders": "/_secure/account#/orders",
+    "wishlist": "/wishlist"
+  },
+  "foodConfig": {
+    "container": ".foodApp-container",
+    "fieldName": "Opcionais Food",
+    "cta": ".seller-buy a",
+    "app": {
+      "id": "food",
+      "name": "skus"
+    },
+    "categoryId": "425"
+  }
+}

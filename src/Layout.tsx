@@ -1,37 +1,41 @@
-import { lazy, Suspense } from 'react'
-import type { PropsWithChildren } from 'react'
+import { lazy, ReactNode, Suspense } from 'react'
 
-import Alert from 'src/components/common/Alert'
-import Footer from 'src/components/common/Footer'
-import Navbar from 'src/components/common/Navbar'
-import Toast from 'src/components/common/Toast'
+// import Alert from 'src/components/common/Alert'
+// import Footer from 'src/components/common/Footer'
+// import Navbar from 'src/components/common/Navbar'
+// import Toast from 'src/components/common/Toast'
 import RegionalizationBar from 'src/components/regionalization/RegionalizationBar'
 import { useUI } from 'src/sdk/ui/Provider'
+import ThemeConfigs from './utils/theme-configs'
+import { Components } from './store-ui/src'
+import Variables from '../config/variables.json'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
   () => import('src/components/regionalization/RegionalizationModal')
 )
 
-function Layout({ children }: PropsWithChildren) {
+interface LayoutProps {
+  pageProps: any
+  children: ReactNode
+}
+
+function Layout({ children, pageProps }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
   return (
-    <>
-      <Alert icon="Bell" link={{ text: 'Buy now', to: '/office' }} dismissible>
-        Get 10% off today:&nbsp;<span>NEW10</span>
-      </Alert>
-
-      <Navbar />
-
-      <Toast />
-
+    <ThemeConfigs data={pageProps?.themeConfigs}>
+      {pageProps?.header ? <Components.Header
+        baseImageUrl={Variables.baseImageUrl}
+        data={pageProps?.header}
+        websiteUrls={Variables.websiteUrls}
+      /> : null}
       <main>
         <RegionalizationBar classes="display-mobile" />
         {children}
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
 
       {displayCart && (
         <Suspense fallback={null}>
@@ -44,7 +48,7 @@ function Layout({ children }: PropsWithChildren) {
           <RegionModal />
         </Suspense>
       )}
-    </>
+    </ThemeConfigs>
   )
 }
 
