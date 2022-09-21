@@ -25,17 +25,24 @@ function Layout({ children, pageProps }: LayoutProps) {
 
   return (
     <ThemeConfigs data={pageProps?.themeConfigs}>
-      {pageProps?.header ? <Components.Header
-        baseImageUrl={Variables.baseImageUrl}
-        data={pageProps?.header}
-        websiteUrls={Variables.websiteUrls}
-      /> : null}
+      {pageProps?.header &&
+        <Components.Header
+          baseImageUrl={Variables.baseImageUrl}
+          data={pageProps.header}
+          websiteUrls={Variables.websiteUrls}
+        />}
+
       <main>
         <RegionalizationBar classes="display-mobile" />
         {children}
       </main>
 
-      {/* <Footer /> */}
+      {pageProps?.footer &&
+        <Components.Footer
+          baseImageUrl={Variables.baseImageUrl}
+          data={pageProps.footer}
+          configsData={pageProps.themeConfigs}
+        />}
 
       {displayCart && (
         <Suspense fallback={null}>
