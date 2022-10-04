@@ -24,7 +24,6 @@ const RenderDynamicPages: React.FC<any> = ({
     searchPage: () => {
       const applySearchState = useApplySearchState()
       const searchParams = useSearchParams(props)
-      console.log(pageProps)
       return (
         <SearchProvider
         onChange={applySearchState}
