@@ -10,6 +10,10 @@ const nextConfig = {
     defaultLocale: 'en-US',
   },
   experimental: { esmExternals: 'loose' },
+  images: {
+    domains: ['dev.retailhub.digital', 'content.retailhub.digital', 'retailhub.vtexassets.com', 'retailhub.vteximg.com.br'],
+    formats: ['image/avif', 'image/webp'],
+  },
   webpack: (config, { isServer, dev }) => {
     // https://github.com/vercel/next.js/discussions/11267#discussioncomment-2479112
     // camel-case style names from css modules

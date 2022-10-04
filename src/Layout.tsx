@@ -1,14 +1,10 @@
 import { lazy, ReactNode, Suspense } from 'react'
 
-// import Alert from 'src/components/common/Alert'
-// import Footer from 'src/components/common/Footer'
-// import Navbar from 'src/components/common/Navbar'
-// import Toast from 'src/components/common/Toast'
-import RegionalizationBar from 'src/components/regionalization/RegionalizationBar'
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from './utils/theme-configs'
 import { Components } from './store-ui/src'
 import Variables from '../config/variables.json'
+import renderPlatformComponents from './helpers/render-platform-components'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
@@ -30,10 +26,10 @@ function Layout({ children, pageProps }: LayoutProps) {
           baseImageUrl={Variables.baseImageUrl}
           data={pageProps.header}
           websiteUrls={Variables.websiteUrls}
+          renderPlatformComponents={renderPlatformComponents}
         />}
 
       <main>
-        <RegionalizationBar classes="display-mobile" />
         {children}
       </main>
 
@@ -41,7 +37,8 @@ function Layout({ children, pageProps }: LayoutProps) {
         <Components.Footer
           baseImageUrl={Variables.baseImageUrl}
           data={pageProps.footer}
-          configsData={pageProps.themeConfigs}
+          themeConfigs={pageProps.themeConfigs}
+          renderPlatformComponents={renderPlatformComponents}
         />}
 
       {displayCart && (

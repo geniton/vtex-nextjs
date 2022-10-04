@@ -157,11 +157,6 @@
       border: 0;
       box-shadow: none;
       svg { color: var(--fs-color-neutral-5); }
-
-      &:hover {
-        color: var(--fs-button-disabled-text-color);
-        background-color: var(--fs-button-disabled-bkg-color);
-      }
     }
   }
 
@@ -184,10 +179,10 @@
       box-shadow: var(--fs-button-primary-shadow-hover);
     }
 
-    &:focus, &:focus-visible {
-      color: var(--fs-button-primary-text-color-hover);
-      background-color: var(--fs-button-primary-bkg-color-hover);
-    }
+    // &:focus, &:focus-visible {
+    //   color: var(--fs-button-primary-text-color-hover);
+    //   background-color: var(--fs-button-primary-bkg-color-hover);
+    // }
 
     &:active {
       color: var(--fs-button-primary-text-color-active);
@@ -207,10 +202,10 @@
         box-shadow: var(--fs-button-primary-inverse-shadow-hover);
       }
 
-      &:focus, &:focus-visible {
-        color: var(--fs-button-primary-inverse-text-color-hover);
-        background-color: var(--fs-button-primary-inverse-bkg-color-hover);
-      }
+      // &:focus, &:focus-visible {
+      //   color: var(--fs-button-primary-inverse-text-color-hover);
+      //   background-color: var(--fs-button-primary-inverse-bkg-color-hover);
+      // }
 
       &:active {
         color: var(--fs-button-primary-inverse-text-color-active);
@@ -232,10 +227,10 @@
       box-shadow: var(--fs-button-secondary-shadow-hover);
     }
 
-    &:focus, &:focus-visible {
-      color: var(--fs-button-secondary-text-color-hover);
-      background-color: var(--fs-button-secondary-bkg-color-hover);
-    }
+    // &:focus, &:focus-visible {
+    //   color: var(--fs-button-secondary-text-color-hover);
+    //   background-color: var(--fs-button-secondary-bkg-color-hover);
+    // }
 
     &:active {
       color: var(--fs-button-secondary-text-color-active);
@@ -255,10 +250,10 @@
         box-shadow: var(--fs-button-secondary-inverse-shadow-hover);
       }
 
-      &:focus, &:focus-visible {
-        color: var(--fs-button-secondary-inverse-text-color-hover);
-        background-color: var(--fs-button-secondary-inverse-bkg-color-hover);
-      }
+      // &:focus, &:focus-visible {
+      //   color: var(--fs-button-secondary-inverse-text-color-hover);
+      //   background-color: var(--fs-button-secondary-inverse-bkg-color-hover);
+      // }
 
       &:active {
         color: var(--fs-button-secondary-inverse-text-color-active);
@@ -274,16 +269,16 @@
     border: var(--fs-button-border-width) solid var(--fs-button-tertiary-border-color);
 
     &:hover {
-      color: var(--fs-button-tertiary-text-color-hover);
-      background-color: var(--fs-button-tertiary-bkg-color-hover);
+      // color: var(--fs-button-tertiary-text-color-hover);
+      // background-color: var(--fs-button-tertiary-bkg-color-hover);
       border-color: var(--fs-button-tertiary-border-color-hover);
       box-shadow: var(--fs-button-tertiary-shadow-hover);
     }
 
-    &:focus, &:focus-visible {
-      color: var(--fs-button-tertiary-text-color-hover);
-      background-color: var(--fs-button-tertiary-bkg-color-hover);
-    }
+    // &:focus, &:focus-visible {
+    //   color: var(--fs-button-tertiary-text-color-hover);
+    //   background-color: var(--fs-button-tertiary-bkg-color-hover);
+    // }
 
     &:active {
       color: var(--fs-button-tertiary-text-color-active);
@@ -303,10 +298,10 @@
         box-shadow: var(--fs-button-tertiary-inverse-shadow-hover);
       }
 
-      &:focus, &:focus-visible {
-        color: var(--fs-button-tertiary-inverse-text-color-hover);
-        background-color: var(--fs-button-tertiary-inverse-bkg-color-hover);
-      }
+      // &:focus, &:focus-visible {
+      //   color: var(--fs-button-tertiary-inverse-text-color-hover);
+      //   background-color: var(--fs-button-tertiary-inverse-bkg-color-hover);
+      // }
 
       &:active {
         color: var(--fs-button-tertiary-inverse-text-color-active);
@@ -328,10 +323,10 @@
       box-shadow: var(--fs-button-buy-shadow-hover);
     }
 
-    &:focus, &:focus-visible {
-      color: var(--fs-button-buy-text-color-hover);
-      background-color: var(--fs-button-buy-bkg-color-hover);
-    }
+    // &:focus, &:focus-visible {
+    //   color: var(--fs-button-buy-text-color-hover);
+    //   background-color: var(--fs-button-buy-bkg-color-hover);
+    // }
 
     &:active {
       color: var(--fs-button-buy-text-color-hover);

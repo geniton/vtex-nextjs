@@ -1,8 +1,12 @@
 import Button from 'src/components/ui/Button'
-import Icon from 'src/components/ui/Icon'
+import SVG from 'react-inlinesvg'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 
-function CartToggle() {
+interface CartToggleProps {
+  iconUrl: string
+}
+
+function CartToggle({ iconUrl }: CartToggleProps) {
   const btnProps = useCartToggleButton()
 
   return (
@@ -11,7 +15,7 @@ function CartToggle() {
       data-fs-button-icon
       data-fs-button-cart
       aria-label={`Cart with ${btnProps['data-items']} items`}
-      icon={<Icon name="ShoppingCart" width={32} height={32} />}
+      icon={<SVG src={iconUrl} />}
       {...btnProps}
     />
   )

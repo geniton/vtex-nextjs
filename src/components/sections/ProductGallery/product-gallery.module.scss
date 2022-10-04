@@ -38,8 +38,6 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-right: 0;
-    padding-left: 0;
 
     @include media(">=notebook") {
       display: grid;
@@ -47,8 +45,6 @@
       grid-template-columns: repeat(12, 1fr);
       row-gap: var(--fs-spacing-0);
       column-gap: var(--fs-spacing-4);
-      padding-right: var(--fs-grid-padding);
-      padding-left: var(--fs-grid-padding);
     }
   }
 

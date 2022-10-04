@@ -13,13 +13,6 @@ body {
   background: var(--fs-body-bkg);
 }
 
-main,
-.layout__main {
-  display: flex;
-  flex-wrap: wrap;
-  background: var(--fs-body-bkg);
-}
-
 .layout__section {
   padding-bottom: var(--fs-spacing-4);
   margin-top: var(--fs-spacing-4);
@@ -42,13 +35,7 @@ main,
 }
 
 .layout__content {
-  box-sizing: border-box;
   width: 100%;
-  max-width: var(--fs-grid-breakpoint-notebook);
-  padding-right: var(--fs-grid-padding);
-  padding-left: var(--fs-grid-padding);
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .no-scroll {

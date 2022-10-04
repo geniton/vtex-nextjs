@@ -1,11 +1,6 @@
 import { isNotFoundError } from '@faststore/api'
 import { gql } from '@faststore/graphql-utils'
-import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
 import type { GetStaticPaths, GetStaticProps } from 'next'
-
-import ProductDetails from 'src/components/sections/ProductDetails'
-import ProductShelf from 'src/components/sections/ProductShelf'
-import { ITEMS_PER_SECTION } from 'src/constants'
 import { useSession } from 'src/sdk/session'
 import { mark } from 'src/sdk/tests/mark'
 import { execute } from 'src/server'
@@ -15,10 +10,16 @@ import type {
 } from '@generated/graphql'
 
 import storeConfig from '../../../store.config'
+import getWpData from 'src/utils/get-wp-data'
+import RenderDynamicPages from 'src/helpers/render-dynamic-pages'
 
-type Props = ServerProductPageQueryQuery
+interface Props extends ServerProductPageQueryQuery {
+  product: any
+  page: any
+  pageName: string
+}
 
-function Page({ product }: Props) {
+function Page({ product, page: { themeConfigs, pageData }, pageName }: Props) {
   const { currency } = useSession()
   const { seo } = product
   const title = seo.title || storeConfig.seo.title
@@ -26,23 +27,24 @@ function Page({ product }: Props) {
   const canonical = `${storeConfig.storeUrl}${seo.canonical}`
 
   return (
-    <>
-      {/* SEO */}
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={canonical}
-        openGraph={{
+    <RenderDynamicPages
+      {...pageData}
+      pageName={pageName}
+      seo={{
+        title,
+        description,
+        canonical,
+        openGraph: {
           type: 'og:product',
           url: canonical,
           title,
           description,
-          images: product.image.map((img) => ({
+          images: product.image.map((img: any) => ({
             url: img.url,
             alt: img.alternateName,
           })),
-        }}
-        additionalMetaTags={[
+        },
+        additionalMetaTags: [
           {
             property: 'product:price:amount',
             content: product.offers.lowPrice?.toString() ?? undefined,
@@ -51,58 +53,11 @@ function Page({ product }: Props) {
             property: 'product:price:currency',
             content: currency.code,
           },
-        ]}
-      />
-      <BreadcrumbJsonLd
-        itemListElements={product.breadcrumbList.itemListElement}
-      />
-      <ProductJsonLd
-        productName={product.name}
-        description={product.description}
-        brand={product.brand.name}
-        sku={product.sku}
-        gtin={product.gtin}
-        releaseDate={product.releaseDate}
-        images={product.image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
-        offersType="AggregateOffer"
-        offers={{
-          ...product.offers,
-          ...product.offers.offers[0],
-          url: canonical,
-        }}
-      />
-
-      {/*
-        WARNING: Do not import or render components from any
-        other folder than '../components/sections' in here.
-
-        This is necessary to keep the integration with the CMS
-        easy and consistent, enabling the change and reorder
-        of elements on this page.
-
-        If needed, wrap your component in a <Section /> component
-        (not the HTML tag) before rendering it here.
-      */}
-
-      <ProductDetails product={product} />
-
-      <ProductShelf
-        first={ITEMS_PER_SECTION}
-        selectedFacets={[
-          { key: 'buy', value: product.isVariantOf.productGroupID },
-        ]}
-        title="People also bought"
-        withDivisor
-      />
-
-      <ProductShelf
-        first={ITEMS_PER_SECTION}
-        selectedFacets={[
-          { key: 'view', value: product.isVariantOf.productGroupID },
-        ]}
-        title="People also view"
-      />
-    </>
+        ],
+      }}
+      themeConfigs={themeConfigs}
+      product={product}
+    />
   )
 }
 
@@ -165,10 +120,17 @@ const query = gql`
   }
 `
 
+interface PageProps {
+  product: any
+  page: any
+  pageName: string
+}
+
 export const getStaticProps: GetStaticProps<
-  ServerProductPageQueryQuery,
+PageProps,
   { slug: string }
 > = async ({ params }) => {
+  const slug: any = params?.slug
   const { data, errors = [] } = await execute<
     ServerProductPageQueryQueryVariables,
     ServerProductPageQueryQuery
@@ -178,6 +140,14 @@ export const getStaticProps: GetStaticProps<
   })
 
   const notFound = errors.find(isNotFoundError)
+
+  const pageName = 'default'
+
+  if (slug?.length && slug.length > 1 && slug[0] === 'blog') {
+    slug.shift()
+  }
+
+  const response = await getWpData('page/page-product')
 
   if (notFound) {
     return {
@@ -190,7 +160,7 @@ export const getStaticProps: GetStaticProps<
   }
 
   return {
-    props: data,
+    props: { product: data.product, page: response, pageName},
   }
 }
 

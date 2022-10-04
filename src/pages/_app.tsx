@@ -1,3 +1,9 @@
+import '../styles/global/tokens.scss'
+import '../styles/global/resets.scss'
+import '../styles/global/typography.scss'
+import '../styles/global/layout.scss'
+import '../styles/global/components.scss'
+
 import '../store-ui/src/styles/app.css'
 
 import NextNProgress from 'nextjs-progressbar'
@@ -20,7 +26,7 @@ function App({ Component, pageProps }: AppProps) {
       <AnalyticsHandler />
 
       <UIProvider>
-        <Layout pageProps={pageProps.data}>
+        <Layout pageProps={pageProps.page}>
           <Component {...pageProps} />
         </Layout>
       </UIProvider>
