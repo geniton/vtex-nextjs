@@ -2,7 +2,7 @@ import { lazy, ReactNode, Suspense } from 'react'
 
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from './utils/theme-configs'
-import { Components } from './store-ui/src'
+import { Components } from '@retailhub/store-ui/src'
 import Variables from '../config/variables.json'
 import renderPlatformComponents from './helpers/render-platform-components'
 

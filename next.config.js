@@ -1,3 +1,4 @@
+// const withTM = require('next-transpile-modules')(['@retailhub/store-ui']);
 // @ts-check
 
 /**
@@ -9,7 +10,7 @@ const nextConfig = {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
-  experimental: { esmExternals: 'loose' },
+  experimental: { forceSwcTransforms: true },
   images: {
     domains: ['dev.retailhub.digital', 'content.retailhub.digital', 'retailhub.vtexassets.com', 'retailhub.vteximg.com.br'],
     formats: ['image/avif', 'image/webp'],
@@ -38,3 +39,5 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+// module.exports = withTM(nextConfig)
