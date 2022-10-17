@@ -5,9 +5,18 @@ import Head from 'next/head';
 import PublicDataJSON from 'src/public/data.json'
 // import formatScripts from 'src/store-ui/src/utils/format-scripts'
 
+interface PublicData {
+  fonts: {
+    [key: string]: {
+      fontFamily: string
+    }
+  }
+}
+
 const ThemeConfigs: React.FC<any> = ({ children, data }) => {
   function getVariables() {
     const variables = []
+    const publicData: PublicData = PublicDataJSON
 
     if (!data) return
 
@@ -23,8 +32,8 @@ const ThemeConfigs: React.FC<any> = ({ children, data }) => {
       })
     }
 
-    if (data.fontName && PublicDataJSON.fonts[data.fontName]?.fontFamily) {
-      variables.push(`--font-primary: ${PublicDataJSON.fonts[data.fontName].fontFamily};`)
+    if (data.fontName && publicData.fonts[data.fontName]?.fontFamily) {
+      variables.push(`--font-primary: ${publicData.fonts[data.fontName].fontFamily};`)
     }
 
     return `:root {${variables.join('')}}`
