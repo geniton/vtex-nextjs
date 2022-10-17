@@ -2,11 +2,11 @@ import Button from 'src/components/ui/Button'
 import SVG from 'react-inlinesvg'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 
-interface CartToggleProps {
-  iconUrl: string
-}
+// interface CartToggleProps {
+//   iconUrl: string
+// }
 
-function CartToggle({ iconUrl }: CartToggleProps) {
+function CartToggle() {
   const btnProps = useCartToggleButton()
 
   return (
@@ -15,7 +15,7 @@ function CartToggle({ iconUrl }: CartToggleProps) {
       data-fs-button-icon
       data-fs-button-cart
       aria-label={`Cart with ${btnProps['data-items']} items`}
-      icon={<SVG src={iconUrl} />}
+      icon={<SVG src="https://content.retailhub.digital/wp-content/uploads/2022/03/rhub-cart-three.svg" />}
       {...btnProps}
     />
   )
