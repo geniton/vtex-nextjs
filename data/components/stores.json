@@ -1,0 +1,70 @@
+{
+  "apiUrl": "http://dev.retailhub.digital/wp-json/posts/store?page=1&per_page=999999",
+  "content": {
+    "link": {
+      "url": "/nossas-lojas",
+      "title": "Ver todas as Lojas",
+      "target": ""
+    },
+    "sidebarText": "",
+    "title": "<h2>Explore Nossas <strong>Lojas</strong></h2>"
+  },
+  "controls": {
+    "general": {
+      "applyMobileCarouselControls": false,
+      "carouselControls": {
+        "arrows": true,
+        "autoplay": true,
+        "autoplaySpeed": 6,
+        "dots": true,
+        "infinite": false,
+        "slidesToShow": 2,
+        "slidesToScroll": 2,
+        "pauseOnHover": true
+      },
+      "deskVariations": {
+        "hide": false,
+        "rounded": true,
+        "full": false
+      },
+      "mobileCarouselControls": {
+        "autoplay": true,
+        "autoplaySpeed": 6,
+        "arrows": true,
+        "dots": true,
+        "infinite": true,
+        "slidesToShow": 2,
+        "slidesToScroll": 2,
+        "pauseOnHover": true
+      },
+      "mobileVariations": {
+        "full": false,
+        "hide": false,
+        "rounded": true
+      },
+      "effects": {
+        "hoverOpacity": true,
+        "hoverZoom": true,
+        "hoverArrows": false
+      }
+    },
+    "style": {
+      "backgroundColor": "",
+      "color": "",
+      "customClass": "",
+      "spacings": {
+        "pt": 4,
+        "pb": 4,
+        "pl": 0,
+        "pr": 0,
+        "addSpacingsOnMobile": false,
+        "spacingsMobile": {
+          "pt": 2,
+          "pb": 2,
+          "pl": 0,
+          "pr": 0
+        }
+      }
+    }
+  }
+}

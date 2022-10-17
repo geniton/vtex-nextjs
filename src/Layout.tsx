@@ -2,9 +2,11 @@ import { lazy, ReactNode, Suspense } from 'react'
 
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from './utils/theme-configs'
-import { Components } from '@retailhub/store-ui/src'
-import Variables from '../config/variables.json'
-import renderPlatformComponents from './helpers/render-platform-components'
+
+import { Components } from '@retailhub/audacity-ui'
+import header from 'data/components/header.json'
+import footer from 'data/components/footer.json'
+import themeConfigs from 'data/components/theme-configs.json'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
@@ -12,33 +14,27 @@ const RegionModal = lazy(
 )
 
 interface LayoutProps {
-  pageProps: any
+  // pageProps: any
   children: ReactNode
 }
 
-function Layout({ children, pageProps }: LayoutProps) {
+function Layout({ children }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
   return (
-    <ThemeConfigs data={pageProps?.themeConfigs}>
-      {pageProps?.header &&
+    <ThemeConfigs data={themeConfigs}>
+      {header &&
         <Components.Header
-          baseImageUrl={Variables.baseImageUrl}
-          data={pageProps.header}
-          websiteUrls={Variables.websiteUrls}
-          renderPlatformComponents={renderPlatformComponents}
+          data={header}
         />}
 
       <main>
         {children}
       </main>
 
-      {pageProps?.footer &&
+      {footer &&
         <Components.Footer
-          baseImageUrl={Variables.baseImageUrl}
-          data={pageProps.footer}
-          themeConfigs={pageProps.themeConfigs}
-          renderPlatformComponents={renderPlatformComponents}
+          {...footer}
         />}
 
       {displayCart && (

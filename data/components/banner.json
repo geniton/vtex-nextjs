@@ -1,0 +1,151 @@
+{
+  "content": {
+    "items": [
+      {
+        "isVideo": false,
+        "mobileImage": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {
+            "full": "https://picsum.photos/1200/630",
+            "crop-600-200": "https://picsum.photos/600/200",
+            "crop-300-300": "https://picsum.photos/300/300",
+            "crop-200-400": "https://picsum.photos/200/400",
+            "crop-1920-1040": "https://picsum.photos/1920/1040"
+          }
+        },
+        "mobileVideo": {
+          "url": ""
+        },
+        "deskImage": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {
+            "full": "https://picsum.photos/1200/630",
+            "crop-600-200": "https://picsum.photos/600/200",
+            "crop-300-300": "https://picsum.photos/300/300",
+            "crop-200-400": "https://picsum.photos/200/400",
+            "crop-1920-1040": "https://picsum.photos/1920/1040"
+          }
+        },
+        "deskVideo": {
+          "url": ""
+        },
+        "link": {
+          "url": "",
+          "target": "_self",
+          "title": ""
+        },
+        "id": "",
+        "showDesc": false,
+        "desc": ""
+      },
+      {
+        "isVideo": false,
+        "mobileImage": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {
+            "full": "https://picsum.photos/1200/630",
+            "crop-600-200": "https://picsum.photos/600/200",
+            "crop-300-300": "https://picsum.photos/300/300",
+            "crop-200-400": "https://picsum.photos/200/400",
+            "crop-1920-1040": "https://picsum.photos/1920/1040"
+          }
+        },
+        "mobileVideo": {
+          "url": ""
+        },
+        "deskVideo": {
+          "url": ""
+        },
+        "deskImage": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {
+            "full": "https://picsum.photos/1200/630",
+            "crop-600-200": "https://picsum.photos/600/200",
+            "crop-300-300": "https://picsum.photos/300/300",
+            "crop-200-400": "https://picsum.photos/200/400",
+            "crop-1920-1040": "https://picsum.photos/1920/1040"
+          }
+        },
+        "link": {
+          "url": "",
+          "target": "_self",
+          "title": ""
+        },
+        "id": "",
+        "showDesc": false,
+        "desc": ""
+      }
+    ]
+  },
+  "controls": {
+    "general": {
+      "applyMobileCarouselControls": false,
+      "mobileVariations": {
+        "hide": false,
+        "full": false
+      },
+      "deskVariations": {
+        "hide": false,
+        "full": false
+      },
+      "carouselControls": {
+        "arrows": true,
+        "infinite": true,
+        "autoplay": true,
+        "autoplaySpeed": "6",
+        "pauseOnHover": true,
+        "dots": true,
+        "addBulletInside": false
+      },
+      "mobileControls": {
+        "arrows": true,
+        "dots": true,
+        "infinite": true,
+        "autoplay": true,
+        "autoplaySpeed": "6"
+      },
+      "mobileCarouselControls": {
+        "arrows": true,
+        "infinite": false,
+        "autoplay": true,
+        "autoplaySpeed": "6",
+        "slidesToShow": 2,
+        "slidesToScroll": 2
+      },
+      "effects": {
+        "hoverOpacity": false,
+        "hoverArrows": false
+      }
+    },
+    "style": {
+      "customClass": "",
+      "backgroundColor": "",
+      "color": "",
+      "spacings": {
+        "pt": 4,
+        "pb": 4,
+        "pl": 0,
+        "pr": 0,
+        "addSpacingsOnMobile": false,
+        "spacingsMobile": {
+          "pt": 2,
+          "pb": 2,
+          "pl": 0,
+          "pr": 0
+        }
+      }
+    }
+  }
+}

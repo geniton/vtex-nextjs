@@ -4,8 +4,6 @@ import '../styles/global/typography.scss'
 import '../styles/global/layout.scss'
 import '../styles/global/components.scss'
 
-import '../store-ui/src/styles/app.css'
-
 import NextNProgress from 'nextjs-progressbar'
 import type { AppProps } from 'next/app'
 
@@ -26,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
       <AnalyticsHandler />
 
       <UIProvider>
-        <Layout pageProps={pageProps.page}>
+        <Layout>
           <Component {...pageProps} />
         </Layout>
       </UIProvider>

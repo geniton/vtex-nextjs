@@ -1,0 +1,27 @@
+{
+  "content": {
+    "dateTime": 1668000000000,
+    "title": "Black Friday"
+  },
+  "controls": {
+    "style": {
+      "backgroundColor": "",
+      "color": "",
+      "customClass": "",
+      "styleCustom": "",
+      "spacings": {
+        "pt": 10,
+        "pb": 10,
+        "pl": 40,
+        "pr": 40,
+        "addSpacingsOnMobile": true,
+        "spacingsMobile": {
+          "pt": 20,
+          "pb": 20,
+          "pl": 0,
+          "pr": 0
+        }
+      }
+    }
+  }
+}

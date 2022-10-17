@@ -1,0 +1,128 @@
+{
+  "content": {
+    "imageLocation": "Top",
+    "items": [
+      {
+        "title": "<h2>Teste</h2>\n",
+        "image": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {}
+        },
+        "link": {
+          "title": "Teste",
+          "url": "/",
+          "target": ""
+        },
+        "id": "teste"
+      },
+      {
+        "title": "<h2>Teste</h2>\n",
+        "image": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {}
+        },
+        "link": {
+          "title": "Teste",
+          "url": "/",
+          "target": ""
+        },
+        "id": "teste"
+      },
+      {
+        "title": "<h2>Teste</h2>\n",
+        "image": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {}
+        },
+        "link": {
+          "title": "Teste",
+          "url": "/",
+          "target": ""
+        },
+        "id": "teste"
+      },
+      {
+        "title": "<h2>Teste 2</h2>\n",
+        "image": {
+          "url": "https://picsum.photos/1200/630",
+          "width": 1200,
+          "height": 630,
+          "alt": "Lorem ipsum",
+          "sizes": {}
+        },
+        "link": {
+          "title": "Teste",
+          "url": "/",
+          "target": ""
+        },
+        "id": ""
+      }
+    ],
+    "title": "<p>Faça aqui seu cadastro para receber novidades exclusivas.</p>"
+  },
+  "controls": {
+    "general": {
+      "applyMobileCarouselControls": false,
+      "carouselControls": {
+        "showCarousel": true,
+        "infinite": false,
+        "autoplay": true,
+        "autoplaySpeed": 6,
+        "pauseOnHover": true,
+        "dots": true,
+        "arrows": true,
+        "slidesToShow": 2,
+        "slidesToScroll": 1
+      },
+      "deskVariations": {
+        "full": false,
+        "hide": false
+      },
+      "effects": {
+        "hoverOpacity": false,
+        "hoverZoom": false,
+        "hoverArrows": false
+      },
+      "mobileCarouselControls": {
+        "showCarousel": true,
+        "infinite": false,
+        "autoplay": true,
+        "autoplaySpeed": 6,
+        "arrows": true,
+        "slidesToShow": 3,
+        "slidesToScroll": 2
+      },
+      "mobileVariations": {
+        "full": false,
+        "hide": false
+      },
+      "showImageInCard": true
+    },
+    "style": {
+      "backgroundColor": "",
+      "color": "",
+      "spacings": {
+        "pt": 4,
+        "pb": 4,
+        "pl": 0,
+        "pr": 0,
+        "addSpacingsOnMobile": false,
+        "spacingsMobile": {
+          "pt": 2,
+          "pb": 2,
+          "pl": 0,
+          "pr": 0
+        }
+      }
+    }
+  }
+}

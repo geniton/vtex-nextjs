@@ -3,7 +3,7 @@ import React from 'react'
 import Head from 'next/head';
 
 import PublicDataJSON from 'src/public/data.json'
-import formatScripts from 'src/store-ui/src/utils/format-scripts'
+// import formatScripts from 'src/store-ui/src/utils/format-scripts'
 
 const ThemeConfigs: React.FC<any> = ({ children, data }) => {
   function getVariables() {
@@ -30,7 +30,7 @@ const ThemeConfigs: React.FC<any> = ({ children, data }) => {
     return `:root {${variables.join('')}}`
   }
 
-  const scripts = formatScripts(data?.scripts) || []
+  // const scripts = formatScripts(data?.scripts) || []
 
   return (
     <>
@@ -40,11 +40,11 @@ const ThemeConfigs: React.FC<any> = ({ children, data }) => {
           ${data?.styleCustom}`}
         </style>}
 
-        {scripts?.length
+        {/* {scripts?.length
           ? scripts.map(({ attrs, script }: any, index: number) => (
             <script key={index} {...attrs}>{`${script}`}</script>
           ))
-          : null}
+          : null} */}
       </Head>
       {children || null}
     </>

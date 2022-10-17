@@ -1,13 +1,12 @@
-import type { GetStaticProps } from 'next'
 import { mark } from 'src/sdk/tests/mark'
-import getWpData from 'src/utils/get-wp-data'
-import RenderDynamicPages from 'src/helpers/render-dynamic-pages'
 import { SiteLinksSearchBoxJsonLd } from 'next-seo'
 import storeConfig from 'store.config'
+import getPageComponents from 'src/utils/get-page-components'
+import RenderPageComponents from 'src/helpers/render-page-components'
 
-export type Props = { page: any; pageName: string }
+function Page() {
+  const page = getPageComponents()
 
-function Page({ page, pageName }: Props) {
   return (
     <>
      <SiteLinksSearchBoxJsonLd
@@ -19,21 +18,9 @@ function Page({ page, pageName }: Props) {
           },
         ]}
       />
-      <RenderDynamicPages
-        pageName={pageName}
-        {...page.pageData}
-      />
+      <RenderPageComponents page={page} />
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const slugPath = 'page/page-home'
-  const page = await getWpData(slugPath)
-
-  return {
-    props: { page, pageName: 'template' },
-  }
 }
 
 Page.displayName = 'Page'

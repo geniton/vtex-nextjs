@@ -1,0 +1,27 @@
+{
+  "content": {
+    "items": [
+      {
+        "name": "Masculino",
+        "href": "/masculino"
+      },
+      {
+        "name": "Feminino",
+        "href": "/feminino"
+      },
+      {
+        "name": "Infantil",
+        "href": "/infantil"
+      },
+      {
+        "name": "Casa",
+        "href": "/casa"
+      }
+    ]
+  },
+  "controls": {
+    "general": {
+      "categoryPage": false
+    }
+  }
+}

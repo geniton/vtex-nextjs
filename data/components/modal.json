@@ -1,0 +1,52 @@
+{
+  "id": 3821,
+  "title": "Campanhas",
+  "type": "image",
+  "mobileImage": {
+    "url": "https://picsum.photos/1200/630",
+    "width": 1200,
+    "height": 630,
+    "alt": "Lorem ipsum",
+    "sizes": {
+      "full": "https://picsum.photos/1200/630",
+      "crop-600-200": "https://picsum.photos/600/200",
+      "crop-300-300": "https://picsum.photos/300/300",
+      "crop-200-400": "https://picsum.photos/200/400",
+      "crop-1920-1040": "https://picsum.photos/1920/1040"
+    }
+  },
+  "deskImage": {
+    "url": "https://picsum.photos/1200/630",
+    "width": 1200,
+    "height": 630,
+    "alt": "Lorem ipsum",
+    "sizes": {
+      "full": "https://picsum.photos/1200/630",
+      "crop-600-200": "https://picsum.photos/600/200",
+      "crop-300-300": "https://picsum.photos/300/300",
+      "crop-200-400": "https://picsum.photos/200/400",
+      "crop-1920-1040": "https://picsum.photos/1920/1040"
+    }
+  },
+  "link": {
+    "title": "",
+    "url": "/nossas-lojas",
+    "target": ""
+  },
+  "event": "enter",
+  "intervalDays": "1",
+  "showAllPages": false,
+  "screenTime": "always",
+  "pages": [],
+  "bannerId": "",
+  "removeCloseBtn": false,
+  "style": {
+    "backgroundImage": false,
+    "backgroundColor": "",
+    "color": "",
+    "fontFamily": "gothampro",
+    "padding": "20px",
+    "minWidth": "auto",
+    "maxWidth": "1620px"
+  }
+}

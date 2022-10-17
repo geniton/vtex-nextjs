@@ -1,0 +1,62 @@
+{
+  "mainColors": {
+    "primary": "#1c446e",
+    "secondary": "#7a0efb",
+    "dark": "#5b5b5b",
+    "normal": "#bbbbbb",
+    "light": "#efefef"
+  },
+  "themeColors": [
+    {
+      "name": "Azul",
+      "color": "#1e73be"
+    },
+    {
+      "name": "Vermelho",
+      "color": "#dd3333"
+    },
+    {
+      "name": "Verde",
+      "color": "#81d742"
+    },
+    {
+      "name": "Preto",
+      "color": "#000000"
+    },
+    {
+      "name": "Cinza",
+      "color": "#606060"
+    }
+  ],
+  "fontName": "nunito",
+  "styleCustom": "",
+  "scripts": false,
+  "lojas": null,
+  "filterType": "state",
+  "groupFilter": true,
+  "regionalizacao": null,
+  "showRegion": true,
+  "region": {
+    "title": "Entregar em:",
+    "backgroundColor": "",
+    "color": "",
+    "modal": {
+      "iconColor": "",
+      "title": "Informe seu CEP e confira ofertas especiais, preços e a disponibilidade para a sua região!",
+      "backgroundColor": "",
+      "color": "",
+      "zipcodeBorderColor": "",
+      "zipcodeTextColor": "",
+      "zipcodeIconColor": "",
+      "showCloseBtn": true,
+      "bgCloseBtn": ""
+    }
+  },
+  "stateCategories": [
+    "AC",
+    "GO",
+    "PE",
+    "RS",
+    "SP"
+  ]
+}

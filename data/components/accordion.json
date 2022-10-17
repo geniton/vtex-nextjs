@@ -1,0 +1,23 @@
+{
+  "content": {
+    "items": [
+      {
+        "title": "Lorem ipsum",
+        "content": "<p>Lorem ipsum</p>\n"
+      },
+      {
+        "title": "Lorem ipsum",
+        "content": "<p>Lorem ipsum</p>\n"
+      }
+    ]
+  },
+  "controls": {
+    "general": {
+      "showIcon": true
+    },
+    "style": {
+      "customIconClass": "",
+      "customClass": ""
+    }
+  }
+}
