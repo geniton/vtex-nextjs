@@ -68,6 +68,11 @@
       border-bottom: 1px solid var(--fs-dropdown-item-border-bottom-color);
     }
 
+    &:focus, &:hover {
+        background-color: var(--primary);
+        outline: none;
+    }
+
     @include media(">=notebook") {
       &:focus, &:hover {
         text-decoration: underline;
@@ -92,6 +97,14 @@
       min-height: var(--fs-dropdown-item-small-min-height);
       padding: var(--fs-dropdown-item-small-padding);
       font-size: var(--fs-dropdown-item-small-text-size);
+    }
+  }
+
+  [data-fs-breadcrumb-dropdown-item] {
+    &:hover,
+    &:focus {
+      color: white;
+      border-color: var(--primary);
     }
   }
 

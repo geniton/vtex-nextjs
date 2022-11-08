@@ -30,7 +30,7 @@
 
   // Dropdown Button
   --fs-breadcrumb-dropdown-button-margin-left         : var(--fs-breadcrumb-margin-left);
-  --fs-breadcrumb-dropdown-button-color               : var(--fs-color-link);
+  --fs-breadcrumb-dropdown-button-color               : var(--dark);
   --fs-breadcrumb-dropdown-button-border-radius       : var(--fs-spacing-0);
   --fs-breadcrumb-dropdown-button-transition-property : var(--fs-transition-property);
   --fs-breadcrumb-dropdown-button-transition-timing   : var(--fs-transition-timing);
@@ -74,9 +74,9 @@
       padding: var(--fs-breadcrumb-link-home-padding);
       border-radius: var(--fs-breadcrumb-link-home-border-radius);
 
-      &:hover, &:focus {
-        background-color: var(--fs-breadcrumb-link-home-hover-bkg-color);
-      }
+      // &:hover, &:focus {
+      //   background-color: var(--fs-breadcrumb-link-home-hover-bkg-color);
+      // }
 
       svg {
         color: var(--fs-breadcrumb-link-home-color);
@@ -108,19 +108,28 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    opacity: 0.6;
+    font-size: 12px;
+
+    &[data-breadcrumb-item="current"] {
+      opacity: 1;
+    }
   }
 
   [data-breadcrumb-divider] {
-    height: var(--fs-breadcrumb-divider-height);
     margin: var(--fs-breadcrumb-divider-margin);
-    border-left: var(--fs-breadcrumb-divider-border-left-width) solid var(--fs-breadcrumb-divider-border-left-color);
+    font-size: 12px;
+    opacity: 0.6;
   }
 
   [data-fs-breadcrumb-link] {
     padding: 0;
+    transition: 300ms all ease-in-out;
+    color: var(--dark);
 
-    &:visited {
-      color: var(--fs-breadcrumb-link-color-visited);
+    &:hover {
+      text-decoration: none;
+      opacity: 0.5;
     }
   }
 
@@ -134,6 +143,8 @@
     border-width: 0;
     border-radius: var(--fs-breadcrumb-dropdown-button-border-radius);
     transition: var(--fs-breadcrumb-dropdown-button-transition-property) var(--fs-breadcrumb-dropdown-button-transition-timing) var(--fs-breadcrumb-dropdown-button-transition-function);
+    opacity: 0.5;
+    outline: none;
 
     &:focus, &:focus-visible {
       @include focus-ring;

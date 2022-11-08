@@ -1,0 +1,35 @@
+{
+    "content": {},
+    "controls": {
+      "general": {
+        "galleryMode": "carousel",
+        "showProductName": true,
+        "showSkuName": true,
+        "showProductReference": true,
+        "showEan": true,
+        "showSoldBy": true,
+        "buyNowBtn": true,
+        "buyNowBtnText": "Comprar agora"
+      },
+      "style": {
+        "backgroundColor": "",
+        "color": "",
+        "customClass": "",
+        "styleCustom": "",
+        "spacings": {
+          "pt": 4,
+          "pb": 4,
+          "pl": 0,
+          "pr": 0,
+          "addSpacingsOnMobile": false,
+          "spacingsMobile": {
+            "pt": 2,
+            "pb": 2,
+            "pl": 0,
+            "pr": 0
+          }
+        }
+      }
+    }
+  }
+  

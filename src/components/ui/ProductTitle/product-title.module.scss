@@ -25,6 +25,9 @@
     display: flex;
     column-gap: var(--fs-spacing-2);
     justify-content: space-between;
+    h1 {
+      font-weight: 600;
+    }
 
     // Title prop
     &:first-child {
@@ -33,7 +36,7 @@
       line-height: var(--fs-product-title-line-height);
     }
 
-    [data-store-badge] { white-space: nowrap; }
+    [data-store-badge] { white-space: nowrap;}
 
     @include media(">=tablet", "<notebook") {
       flex-direction: column;

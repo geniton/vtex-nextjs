@@ -19,14 +19,29 @@ import { useSession } from 'src/sdk/session'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import Selectors from 'src/components/ui/SkuSelector'
+import styles from './product-details.module.scss'
 
 import Section from '../Section'
+import ProductDetailsContent from '../ProductDetailsContent'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
+  controls: {
+    general: {
+      showProductName: boolean
+      showSkuName: boolean
+      showProductReference: boolean
+    }
+  }
 }
 
-function ProductDetails({ product: staleProduct }: Props) {
+function ProductDetails({
+  product: staleProduct,
+  controls: {
+    general: { showProductName, showSkuName, showProductReference },
+  },
+  ...otherProps
+}: Props) {
   const { currency } = useSession()
   const [addQuantity, setAddQuantity] = useState(1)
 
@@ -48,8 +63,8 @@ function ProductDetails({ product: staleProduct }: Props) {
       name: variantName,
       brand,
       isVariantOf,
-      isVariantOf: { name, productGroupID: productId, skuVariants },
-      image: productImages,
+      isVariantOf: { name: productName, skuVariants },
+      image,
       offers: {
         offers: [{ availability, price, listPrice, seller }],
         lowPrice,
@@ -71,12 +86,34 @@ function ProductDetails({ product: staleProduct }: Props) {
       sku,
       name: variantName,
       gtin,
-      image: productImages,
+      image,
       brand,
       isVariantOf,
       additionalProperty,
     },
   })
+
+  function productTitle() {
+    const title: string[] = []
+
+    if (showProductName) {
+      title.push(productName)
+    }
+
+    if (showSkuName) {
+      title.push(showProductName ? ` - ${variantName}` : variantName)
+    }
+
+    return (
+      <ProductTitle
+        title={
+          <h1> {title.length ? title.join('') : productName || variantName}</h1>
+        }
+        label={<DiscountBadge listPrice={listPrice} spotPrice={lowPrice} big />}
+        refNumber={showProductReference ? gtin : ''}
+      />
+    )
+  }
 
   useEffect(() => {
     sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
@@ -112,87 +149,84 @@ function ProductDetails({ product: staleProduct }: Props) {
   ])
 
   return (
-    <Section className="product-details layout__content layout__section">
-      <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
+    <Section className={`${styles.fsProductDetails} layout__content layout__section`}>
+      <div className="container">
+        <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
-      <section className="product-details__body">
-        <header className="product-details__title">
-          <ProductTitle
-            title={<h1>{name}</h1>}
-            label={
-              <DiscountBadge listPrice={listPrice} spotPrice={lowPrice} big />
-            }
-            refNumber={productId}
-          />
-        </header>
+        <section data-fs-product-details-body>
+          <header data-fs-product-details-title data-fs-product-details-section>{productTitle()}</header>
 
-        <ImageGallery images={productImages} />
+          <ImageGallery data-fs-product-details-gallery images={image} />
 
-        <section className="product-details__settings">
-          {skuVariants && (
-            <Selectors
-              slugsMap={skuVariants.slugsMap}
-              availableVariations={skuVariants.availableVariations}
-              activeVariations={skuVariants.activeVariations}
-            />
-          )}
-
-          <section className="product-details__values">
-            <div className="product-details__prices">
-              <Price
-                value={listPrice}
-                formatter={useFormattedPrice}
-                testId="list-price"
-                data-value={listPrice}
-                variant="listing"
-                classes="text__legend"
-                SRText="Original price:"
+          <section data-fs-product-details-info>
+          <section
+            data-fs-product-details-settings
+            data-fs-product-details-section
+          >
+            <section data-fs-product-details-values>
+              <div data-fs-product-details-prices>
+                <Price
+                  value={listPrice}
+                  formatter={useFormattedPrice}
+                  testId="list-price"
+                  data-value={listPrice}
+                  variant="listing"
+                  classes="text__legend"
+                  SRText="Original price:"
+                />
+                <Price
+                  value={lowPrice}
+                  formatter={useFormattedPrice}
+                  testId="price"
+                  data-value={lowPrice}
+                  variant="spot"
+                  classes="text__lead"
+                  SRText="Sale Price:"
+                />
+              </div>
+              {/* <div className="prices">
+                <p className="price__old text__legend">{formattedListPrice}</p>
+                <p className="price__new">{isValidating ? '' : formattedPrice}</p>
+              </div> */}
+              <QuantitySelector min={1} max={10} onChange={setAddQuantity} />
+            </section>
+            {skuVariants && (
+              <Selectors
+                slugsMap={skuVariants.slugsMap}
+                availableVariations={skuVariants.availableVariations}
+                activeVariations={skuVariants.activeVariations}
+                data-fs-product-details-selectors
               />
-              <Price
-                value={lowPrice}
-                formatter={useFormattedPrice}
-                testId="price"
-                data-value={lowPrice}
-                variant="spot"
-                classes="text__lead"
-                SRText="Sale Price:"
+            )}
+            {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
+                non-composited animation violation due to the button transitioning its
+                background color when changing from its initial disabled to active state.
+                See full explanation on commit https://git.io/JyXV5. */}
+            {isValidating ? (
+              <AddToCartLoadingSkeleton />
+            ) : (
+              <ButtonBuy disabled={buyDisabled} {...buyProps}>
+                Add to Cart
+              </ButtonBuy>
+            )}
+            {!availability && (
+              <OutOfStock
+                onSubmit={(email) => {
+                  console.info(email)
+                }}
               />
-            </div>
-            {/* <div className="prices">
-              <p className="price__old text__legend">{formattedListPrice}</p>
-              <p className="price__new">{isValidating ? '' : formattedPrice}</p>
-            </div> */}
-            <QuantitySelector min={1} max={10} onChange={setAddQuantity} />
+            )}
           </section>
-          {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
-              non-composited animation violation due to the button transitioning its
-              background color when changing from its initial disabled to active state.
-              See full explanation on commit https://git.io/JyXV5. */}
-          {isValidating ? (
-            <AddToCartLoadingSkeleton />
-          ) : (
-            <ButtonBuy disabled={buyDisabled} {...buyProps}>
-              Add to Cart
-            </ButtonBuy>
-          )}
-          {!availability && (
-            <OutOfStock
-              onSubmit={(email) => {
-                console.info(email)
-              }}
-            />
-          )}
+
+          <ShippingSimulation
+            data-fs-product-details-section
+            data-fs-product-details-shipping
+          />
         </section>
 
-        <ShippingSimulation />
-
-        <section className="product-details__content">
-          <article className="product-details__description">
-            <h2 className="text__title-subsection">Description</h2>
-            <p className="text__body">{description}</p>
-          </article>
+        <ProductDetailsContent />
         </section>
-      </section>
+      </div>
     </Section>
   )
 }

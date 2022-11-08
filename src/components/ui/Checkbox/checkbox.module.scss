@@ -70,10 +70,6 @@
     transform: rotate(45deg);
   }
 
-  &:hover:not(:disabled) {
-    background-color: var(--fs-checkbox-bkg-color-hover);
-  }
-
   &:hover:not(:disabled):not(:focus-visible):not(:focus) {
     border-color: var(--fs-checkbox-border-color-hover);
     box-shadow: var(--fs-checkbox-shadow-hover);

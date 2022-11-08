@@ -13,11 +13,11 @@ body {
   // PALETTE
   // Tone values must range from lightest to darkest.
   // `0` is more suitable for backgrounds, and `4` for texts.
-  --fs-color-main-0                    : #f1f2f3;
-  --fs-color-main-1                    : #dbdbdb;
-  --fs-color-main-2                    : #00419e;
-  --fs-color-main-3                    : #002c71;
-  --fs-color-main-4                    : #002155;
+  --fs-color-main-0                    : var(--dark);
+  --fs-color-main-1                    : var(--dark);
+  --fs-color-main-2                    : var(--dark);
+  --fs-color-main-3                    : var(--dark);
+  --fs-color-main-4                    : var(--dark);
 
   --fs-color-accent-0                  : #e3e6e8;
   --fs-color-accent-1                  : #e3e6e8;
@@ -36,23 +36,23 @@ body {
 
   // HIERARCHY
   --fs-color-primary-text              : var(--fs-color-text-inverse);
-  --fs-color-primary-bkg               : var(--fs-color-main-2);
-  --fs-color-primary-bkg-hover         : var(--fs-color-main-3);
-  --fs-color-primary-bkg-active        : var(--fs-color-main-4);
-  --fs-color-primary-bkg-light         : var(--fs-color-main-0);
-  --fs-color-primary-bkg-light-active  : var(--fs-color-main-1);
+  --fs-color-primary-bkg               : var(--primary);
+  --fs-color-primary-bkg-hover         : var(--primary);
+  --fs-color-primary-bkg-active        : var(--primary);
+  --fs-color-primary-bkg-light         : var(--primary);
+  --fs-color-primary-bkg-light-active  : var(--primary);
 
   --fs-color-secondary-text            : var(--fs-color-primary-bkg);
   --fs-color-secondary-bkg             : transparent;
   --fs-color-secondary-bkg-hover       : var(--fs-color-primary-bkg);
-  --fs-color-secondary-bkg-active      : var(--fs-color-main-3);
-  --fs-color-secondary-bkg-light       : var(--fs-color-main-0);
+  --fs-color-secondary-bkg-active      : var(--primary);
+  --fs-color-secondary-bkg-light       : var(--primary);
   --fs-color-secondary-bkg-light-active: var(--fs-color-secondary-bkg-light);
 
   --fs-color-tertiary-text             : var(--fs-color-link);
   --fs-color-tertiary-bkg              : transparent;
-  --fs-color-tertiary-bkg-hover        : var(--fs-color-main-0);
-  --fs-color-tertiary-bkg-active       : var(--fs-color-main-1);
+  --fs-color-tertiary-bkg-hover        : var(--primary);
+  --fs-color-tertiary-bkg-active       : var(--primary);
   --fs-color-tertiary-bkg-light        : var(--fs-color-neutral-0);
   --fs-color-tertiary-bkg-light-active : var(--fs-color-tertiary-bkg-light);
 
@@ -66,19 +66,19 @@ body {
   --fs-color-action-bkg-light          : var(--fs-color-neutral-0);
   --fs-color-action-bkg-light-active   : var(--fs-color-tertiary-bkg-light);
 
-  --fs-color-link                      : var(--fs-color-main-2);
-  --fs-color-link-hover                : var(--fs-color-main-2);
-  --fs-color-link-active               : var(--fs-color-main-4);
+  --fs-color-link                      : var(--primary);
+  --fs-color-link-hover                : var(--primary);
+  --fs-color-link-active               : var(--primary);
   --fs-color-link-visited              : #6058ba;
   --fs-color-link-inverse              : var(--fs-color-neutral-0);
 
-  --fs-color-text                      : var(--fs-color-neutral-7);
-  --fs-color-text-light                : var(--fs-color-neutral-6);
+  --fs-color-text                      : var(--dark);
+  --fs-color-text-light                : var(--dark);
   --fs-color-text-inverse              : var(--fs-color-neutral-0);
   --fs-color-text-display              : var(--fs-color-neutral-7);
 
-  --fs-color-focus-ring                : #8db6fa;
-  --fs-color-focus-ring-outline        : #8db6fa80;
+  --fs-color-focus-ring                : var(--primary);
+  --fs-color-focus-ring-outline        : var(--primary);
   --fs-color-focus-ring-danger         : #e1adad;
 
   // SITUATIONS
@@ -95,7 +95,7 @@ body {
   --fs-color-danger-border             : var(--fs-color-danger-text);
 
   --fs-color-info-text                 : var(--fs-color-text);
-  --fs-color-info-bkg                  : var(--fs-color-main-1);
+  --fs-color-info-bkg                  : var(--primary);
 
   --fs-color-highlighted-text          : var(--fs-color-text-display);
   --fs-color-highlighted-bkg           : var(--fs-color-accent-0);
@@ -103,7 +103,7 @@ body {
   --fs-color-neutral-text              : var(--fs-color-text);
   --fs-color-neutral-bkg               : var(--fs-color-neutral-1);
 
-  --fs-color-disabled-text             : var(--fs-color-neutral-6);
+  --fs-color-disabled-text             : var(--fs-color-neutral-2);
   --fs-color-disabled-bkg              : var(--fs-color-neutral-2);
 
   // --------------------------------------------------------
@@ -174,7 +174,7 @@ body {
   --fs-spacing-3                       : 1rem;   // 16px (--fs-text-size-base)
   --fs-spacing-4                       : 1.5rem; // 24px
   --fs-spacing-5                       : 2rem;   // 32px
-  --fs-spacing-6                       : 2.5rem; // 40px
+  --fs-spacing-6                       : 2.375rem; // 40px
   --fs-spacing-7                       : 3rem;   // 48px
   --fs-spacing-8                       : 3.5rem; // 56px
   --fs-spacing-9                       : 4rem;   // 64px
@@ -260,17 +260,17 @@ body {
   --fs-border-width-thickest           : 3px;
 
   --fs-border-color                    : var(--fs-color-neutral-4);
-  --fs-border-color-hover              : var(--fs-color-main-3);
-  --fs-border-color-active             : var(--fs-color-main-2);
+  --fs-border-color-hover              : var(--primary);
+  --fs-border-color-active             : var(--primary);
   --fs-border-color-disabled           : var(--fs-color-neutral-6);
 
   --fs-border-color-light              : var(--fs-color-neutral-2);
   --fs-border-color-light-hover        : var(--fs-color-neutral-3);
   --fs-border-color-light-active       : var(--fs-color-neutral-3);
-  --fs-border-color-light-disabled     : var(--fs-color-neutral-5);
+  --fs-border-color-light-disabled     : var(--fs-color-neutral-2);
 
   // SHADOW
   --fs-shadow                          : none;
   --fs-shadow-darker                   : 0 0 10px rgb(0 0 0 / 20%);
-  --fs-shadow-hover                    : 0 0 0 1px var(--fs-color-main-4);
+  --fs-shadow-hover                    : 0 0 0 1px var(--primary);
 }

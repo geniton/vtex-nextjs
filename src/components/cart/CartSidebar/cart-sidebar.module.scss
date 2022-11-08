@@ -65,5 +65,12 @@
 
   [data-fs-cart-sidebar-checkout-button] {
     width: 100%;
+    background-color: var(--primary);
+
+    &:hover {
+      background-color: var(--primary);
+      opacity: 0.9;
+    }
   }
+
 }

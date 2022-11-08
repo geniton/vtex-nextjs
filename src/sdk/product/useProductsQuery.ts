@@ -89,7 +89,7 @@ export const useProductsQuery = (
       ...options,
     }
   )
-
+  
   return data?.search?.products
 }
 

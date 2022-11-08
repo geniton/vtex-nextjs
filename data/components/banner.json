@@ -98,29 +98,22 @@
       },
       "deskVariations": {
         "hide": false,
-        "full": false
+        "full": true
       },
       "carouselControls": {
         "arrows": true,
         "infinite": true,
         "autoplay": true,
-        "autoplaySpeed": "6",
+        "autoplaySpeed": 6,
         "pauseOnHover": true,
         "dots": true,
         "addBulletInside": false
-      },
-      "mobileControls": {
-        "arrows": true,
-        "dots": true,
-        "infinite": true,
-        "autoplay": true,
-        "autoplaySpeed": "6"
       },
       "mobileCarouselControls": {
         "arrows": true,
         "infinite": false,
         "autoplay": true,
-        "autoplaySpeed": "6",
+        "autoplaySpeed": 6,
         "slidesToShow": 2,
         "slidesToScroll": 2
       },

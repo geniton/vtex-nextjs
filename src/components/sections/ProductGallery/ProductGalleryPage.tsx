@@ -13,7 +13,7 @@ interface Props {
   showSponsoredProducts?: boolean
 }
 
-function GalleryPage({ page, title, showSponsoredProducts = true }: Props) {
+function GalleryPage({ page, title, showSponsoredProducts = true, ...props }: Props) {
   const products = useProducts(page) ?? []
   const { itemsPerPage } = useSearch()
 
@@ -40,6 +40,7 @@ function GalleryPage({ page, title, showSponsoredProducts = true }: Props) {
             products={products.slice(0, middleItemIndex)}
             page={page}
             pageSize={middleItemIndex}
+            {...props}
           />
           <div data-fs-product-listing-sponsored>
             <h3>Sponsored</h3>
@@ -58,10 +59,11 @@ function GalleryPage({ page, title, showSponsoredProducts = true }: Props) {
             products={products.slice(middleItemIndex, itemsPerPage)}
             page={page}
             pageSize={middleItemIndex}
+            {...props}
           />
         </>
       ) : (
-        <ProductGrid products={products} page={page} pageSize={itemsPerPage} />
+        <ProductGrid products={products} page={page} pageSize={itemsPerPage} {...props} />
       )}
     </>
   )

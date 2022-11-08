@@ -1,0 +1,3 @@
+[submodule "src/audacity-ui"]
+	path = src/audacity-ui
+	url = git@github.com:retailhubcode/audacity-ui.git

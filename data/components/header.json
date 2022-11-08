@@ -812,7 +812,7 @@
       "effects": {
         "hoverBorderColor": "black",
         "hoverOpacity": false,
-        "hoverBold": true
+        "hoverBold": false
       }
     },
     "style": {

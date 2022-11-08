@@ -45,7 +45,7 @@ function BaseBreadcrumb({
 
   return (
     <UIBreadcrumb
-      divider=""
+      divider="/"
       className={`${styles.fsBreadcrumb} ${
         isDesktop ? 'hidden-mobile' : 'display-mobile'
       }`}
@@ -56,7 +56,7 @@ function BaseBreadcrumb({
         aria-label="Go to homepage"
         href="/"
       >
-        <Icon name="House" width={18} height={18} weight="bold" />
+        Home
       </Link>
 
       {!collapseBreadcrumb &&

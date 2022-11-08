@@ -7,11 +7,13 @@ import ProductCardSkeleton from '../ProductCardSkeleton'
 
 interface Props {
   loading?: boolean
+  displayButton?: boolean
 }
 
 function ProductShelfSkeleton({
   children,
   loading = true,
+  ...otherProps
 }: PropsWithChildren<Props>) {
   return loading ? (
     <ul
@@ -20,7 +22,7 @@ function ProductShelfSkeleton({
     >
       {Array.from({ length: ITEMS_PER_SECTION }, (_, index) => (
         <li key={String(index)}>
-          <ProductCardSkeleton sectioned />
+          <ProductCardSkeleton sectioned {...otherProps}/>
         </li>
       ))}
     </ul>

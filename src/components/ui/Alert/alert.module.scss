@@ -40,6 +40,12 @@
     margin: 0;
   }
 
+  * {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
   [data-fs-alert-content] {
     overflow: hidden;
     text-overflow: ellipsis;

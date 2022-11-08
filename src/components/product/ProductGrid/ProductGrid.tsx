@@ -3,6 +3,7 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductGrid/product-grid.module.scss'
 
 import ProductCard from '../ProductCard'
+import { Types } from '../../../../../audacity-ui/src'
 
 interface Props {
   /**
@@ -14,15 +15,17 @@ interface Props {
    * Quantity of products listed.
    */
   pageSize: number
+  controls: Types.Controls
 }
 
-function ProductGrid({ products, page, pageSize }: Props) {
+function ProductGrid({ products, page, pageSize, controls }: Props) {
   return (
     <ProductGridSkeleton loading={products.length === 0}>
       <ul data-fs-product-grid className={styles.fsProductGrid}>
         {products.map(({ node: product }, idx) => (
           <li key={`${product.id}`}>
             <ProductCard
+              controls={controls}
               product={product}
               index={pageSize * page + idx + 1}
               bordered

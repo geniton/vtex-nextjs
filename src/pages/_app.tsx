@@ -12,7 +12,7 @@ import AnalyticsHandler from 'src/sdk/analytics'
 import ErrorBoundary from 'src/sdk/error/ErrorBoundary'
 import UIProvider from 'src/sdk/ui/Provider'
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps}: AppProps) {
   return (
     <ErrorBoundary>
       <NextNProgress
@@ -24,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
       <AnalyticsHandler />
 
       <UIProvider>
-        <Layout>
+        <Layout {...pageProps}>
           <Component {...pageProps} />
         </Layout>
       </UIProvider>

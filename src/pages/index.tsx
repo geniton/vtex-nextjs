@@ -1,12 +1,11 @@
 import { mark } from 'src/sdk/tests/mark'
 import { SiteLinksSearchBoxJsonLd } from 'next-seo'
 import storeConfig from 'store.config'
-import getPageComponents from 'src/utils/get-page-components'
-import RenderPageComponents from 'src/helpers/render-page-components'
+import getPageComponents from 'src/utils/components/get-page-components'
+import { GetStaticProps } from 'next'
+import RenderDynamicPages from 'src/utils/components/render-dynamic-pages'
 
-function Page() {
-  const page = getPageComponents()
-
+function Page({ page: { pageData } }: any) {
   return (
     <>
      <SiteLinksSearchBoxJsonLd
@@ -18,9 +17,17 @@ function Page() {
           },
         ]}
       />
-      <RenderPageComponents page={page} />
+      <RenderDynamicPages pageData={pageData} />
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const page = getPageComponents()
+
+  return {
+    props: { page, pageName: 'template' },
+  }
 }
 
 Page.displayName = 'Page'

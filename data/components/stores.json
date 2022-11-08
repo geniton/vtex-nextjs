@@ -1,5 +1,5 @@
 {
-  "apiUrl": "http://dev.retailhub.digital/wp-json/posts/store?page=1&per_page=999999",
+  "apiUrl": "http://content.retailhub.digital/wp-json/posts/store?page=1&per_page=999999",
   "content": {
     "link": {
       "url": "/nossas-lojas",

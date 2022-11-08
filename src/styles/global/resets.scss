@@ -46,3 +46,11 @@ ul {
   margin: 0;
   list-style: none;
 }
+
+// Change loading color
+
+#nprogress {
+  .bar {
+    background-color: var(--primary) !important;
+  }
+}

@@ -151,12 +151,10 @@
     @include focus-ring-visible;
 
     &:disabled, &[data-button-disabled="true"] {
-      color: var(--fs-button-disabled-text-color);
       cursor: not-allowed;
-      background-color: var(--fs-button-disabled-bkg-color);
       border: 0;
       box-shadow: none;
-      svg { color: var(--fs-color-neutral-5); }
+      opacity: 0.6;
     }
   }
 

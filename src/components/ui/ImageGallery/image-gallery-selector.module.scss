@@ -17,7 +17,7 @@
   --fs-image-gallery-selector-thumbnail-width-mobile            : var(--fs-spacing-8);
   --fs-image-gallery-selector-thumbnail-width-notebook          : var(--fs-spacing-10);
   --fs-image-gallery-selector-thumbnail-border-radius           : var(--fs-border-radius);
-  --fs-image-gallery-selector-thumbnail-selected-border-color   : var(--fs-border-color-active);
+  --fs-image-gallery-selector-thumbnail-selected-border-color   : var(--primary);
 
   // --------------------------------------------------------
   // Structural Styles
@@ -68,7 +68,6 @@
 
     &[data-fs-image-gallery-selector-thumbnail="selected"] {
       border-color: var(--fs-image-gallery-selector-thumbnail-selected-border-color);
-      box-shadow: 0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring-outline);
     }
 
     [data-fs-image] {

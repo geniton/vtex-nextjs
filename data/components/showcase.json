@@ -73,10 +73,11 @@
         "dots": false,
         "infinite": false,
         "autoplay": false,
-        "autoplaySpeed": "6",
+        "autoplaySpeed": 6,
         "pauseOnHover": true,
         "slidesToShow": 4,
-        "slidesToScroll": 1
+        "slidesToScroll": 1,
+        "live": true
       },
       "deskVariations": {
         "hide": false,
@@ -93,7 +94,7 @@
         "arrows": true,
         "infinite": false,
         "autoplay": true,
-        "autoplaySpeed": "6",
+        "autoplaySpeed": 6,
         "slidesToShow": 2,
         "slidesToScroll": 2
       },

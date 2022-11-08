@@ -45,12 +45,13 @@
     box-shadow: 0;
     transition: var(--fs-select-transition-property) var(--fs-select-transition-timing) var(--fs-select-transition-function);
     appearance: none;
+    cursor: pointer;
 
     @include focus-ring-visible;
 
-    &:focus { background-color: var(--fs-select-bkg-color-focus); }
+    // &:focus { background-color: var(--fs-select-bkg-color-focus); }
 
-    &:hover:not(:disabled) { background-color: var(--fs-select-bkg-color-hover); }
+    // &:hover:not(:disabled) { background-color: var(--fs-select-bkg-color-hover); }
 
     &:disabled {
       color: var(--fs-select-disabled-text-color);

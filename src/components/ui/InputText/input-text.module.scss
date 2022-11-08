@@ -68,8 +68,7 @@
     border: var(--fs-input-border-width) solid var(--fs-input-border-color);
     border-radius: var(--fs-input-border-radius);
     box-shadow: var(--fs-input-box-shadow);
-
-    @include input-focus-ring;
+    outline: none;
 
     &:placeholder-shown + label {
       top: calc(1.5 * (var(--fs-input-text-size) / 2));
@@ -92,8 +91,13 @@
     }
 
     &:hover:not(:disabled):not(:focus-visible):not(:focus) {
-      border-color: var(--fs-input-border-color-hover);
+      border-color: var(--primary);
       box-shadow: var(--fs-input-box-shadow-hover);
+    }
+
+    &:focus {
+      border-color: var(--primary);
+      border-width: 2px;
     }
 
     &:disabled {

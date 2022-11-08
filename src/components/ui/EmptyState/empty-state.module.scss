@@ -11,7 +11,7 @@
 
   // Title
   --fs-empty-state-title-margin-bottom  : var(--fs-spacing-2);
-  --fs-empty-state-title-color          : var(--fs-color-disabled-text);
+  --fs-empty-state-title-color          : var(--dark);
   --fs-empty-state-title-size           : var(--fs-text-size-lead);
 
   // Link
@@ -51,6 +51,20 @@
 
   [data-fs-empty-state-link] {
     min-width: var(--fs-empty-state-link-min-width);
+  }
+
+  // Button
+
+  [data-fs-button="true"] {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    &:hover {
+      background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    opacity: 0.9;
+    }
   }
 
   // --------------------------------------------------------
