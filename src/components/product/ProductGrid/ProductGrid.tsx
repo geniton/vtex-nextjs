@@ -3,7 +3,6 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductGrid/product-grid.module.scss'
 
 import ProductCard from '../ProductCard'
-import { Types } from '../../../../../audacity-ui/src'
 
 interface Props {
   /**
@@ -15,7 +14,7 @@ interface Props {
    * Quantity of products listed.
    */
   pageSize: number
-  controls: Types.Controls
+  controls: any
 }
 
 function ProductGrid({ products, page, pageSize, controls }: Props) {

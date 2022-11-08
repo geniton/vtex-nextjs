@@ -1,9 +1,9 @@
 import React from 'react'
 import { Components } from '@retailhub/audacity-ui'
-import ProductDetails from '../../audacity-ui/product-details'
-import ProductGallery from '../../audacity-ui/product-gallery'
-import ProductShelf from '../../audacity-ui/product-shelf'
-import CrossSellingShelf from '../../audacity-ui/cross-selling-shelf'
+import ProductDetails from 'src/audacity-ui/product-details'
+import ProductGallery from 'src/audacity-ui/product-gallery'
+import ProductShelf from 'src/audacity-ui/product-shelf'
+import CrossSellingShelf from 'src/audacity-ui/cross-selling-shelf'
 
 const RenderComponents: React.FC<any> = ({ pageData, ...rest }) => {
   return pageData.map(({ componentName, componentProps, id }: any) => {

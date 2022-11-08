@@ -15,9 +15,9 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductCard/product-card.module.scss'
-import Carousel from '../../../audacity-ui/carousel'
+import Carousel from 'src/audacity-ui/carousel'
 
-import { Types } from '../../../../../audacity-ui/src'
+import { CardControlsProps,CarouselControlsProps, VariationsProps, EffectsProps, StyleProps  } from 'src/audacity-ui/types'
 
 type Variant = 'wide' | 'default'
 
@@ -31,14 +31,14 @@ export interface ProductCardProps {
   controls: {
     general: {
       applyMobileCarouselControls: boolean
-      cardControls: Types.CardControlsProps
-      carouselControls: Types.CarouselControlsProps
-      deskVariations: Types.VariationsProps
-      effects: Types.EffectsProps
-      mobileCarouselControls: Types.CarouselControlsProps
-      mobileVariations: Types.VariationsProps
+      cardControls: CardControlsProps
+      carouselControls: CarouselControlsProps
+      deskVariations: VariationsProps
+      effects: EffectsProps
+      mobileCarouselControls: CarouselControlsProps
+      mobileVariations: VariationsProps
     }
-    style: Types.StyleProps
+    style: StyleProps
   }
 }
 

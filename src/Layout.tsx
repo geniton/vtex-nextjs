@@ -1,12 +1,12 @@
 import { lazy, ReactNode, Suspense } from 'react'
 
 import { useUI } from 'src/sdk/ui/Provider'
-import ThemeConfigs from './utils/components/theme-configs'
+import ThemeConfigs from 'src/utils/components/theme-configs'
 
 import { Components } from '@retailhub/audacity-ui'
 
-import Header from './audacity-ui/header'
-import renderPlatformComponent from './utils/components/render-platform-component'
+import Header from 'src/audacity-ui/header'
+import renderPlatformComponent from 'src/utils/components/render-platform-component'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
