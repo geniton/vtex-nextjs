@@ -1,13 +1,14 @@
+/* eslint-disable no-console */
+import { Components } from '@retailhub/audacity-ui'
+
 import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
 // import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import type { ProductsQueryQueryVariables } from '@generated/graphql'
-import { Headerbar } from '@retailhub/audacity-ui'
+import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 
 import ProductCard from '../../product/ProductCard'
 import Section from '../Section'
 import styles from './product-shelf.module.scss'
-import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
-import Carousel from 'src/audacity-ui/carousel'
 
 interface ProductShelfProps extends Partial<ProductsQueryQueryVariables> {
   withDivisor?: boolean
@@ -51,21 +52,21 @@ function ProductShelf({
             loading={products === undefined}
             displayButton={cardControls?.showBuyButton}
           >
-            <Carousel
+            <Components.Carousel
               {...carouselControls}
               mobileCarouselControls={mobileCarouselControls}
               applyMobileCarouselControls={applyMobileCarouselControls}
             >
-              {products?.edges.map((product: any, idx: any) => (
-                <li key={`${product.node.id}`}>
+              {products?.edges.map((product: any, idx: number) => (
+                <article key={`${product.node.id}`}>
                   <ProductCard
                     product={product.node}
                     controls={controls}
                     index={idx + 1}
                   />
-                </li>
+                </article>
               ))}
-            </Carousel>
+            </Components.Carousel>
           </ProductShelfSkeleton>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import { isNotFoundError } from '@faststore/api'
 import { gql } from '@faststore/graphql-utils'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
+
 import { useSession } from 'src/sdk/session'
 import { mark } from 'src/sdk/tests/mark'
 import { execute } from 'src/server'
@@ -8,10 +10,9 @@ import type {
   ServerProductPageQueryQuery,
   ServerProductPageQueryQueryVariables,
 } from '@generated/graphql'
-
-import storeConfig from '../../../store.config'
+import storeConfig from 'store.config'
 import getPageComponents from 'src/utils/components/get-page-components'
-import RenderDynamicPages from 'src/utils/components/render-dynamic-pages'
+import RenderComponents from 'src/utils/components/render-components'
 
 type PageProps = {
   pageData: any
@@ -29,24 +30,22 @@ function Page({ product, page: { pageData } }: Props) {
   const canonical = `${storeConfig.storeUrl}${seo.canonical}`
 
   return (
-    <RenderDynamicPages
-      pageData={pageData}
-      pageName="product"
-      seo={{
-        title,
-        description,
-        canonical,
-        openGraph: {
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={canonical}
+        openGraph={{
           type: 'og:product',
           url: canonical,
           title,
           description,
-          images: product.image.map((img: any) => ({
+          images: product.image.map((img) => ({
             url: img.url,
             alt: img.alternateName,
           })),
-        },
-        additionalMetaTags: [
+        }}
+        additionalMetaTags={[
           {
             property: 'product:price:amount',
             content: product.offers.lowPrice?.toString() ?? undefined,
@@ -55,10 +54,31 @@ function Page({ product, page: { pageData } }: Props) {
             property: 'product:price:currency',
             content: currency.code,
           },
-        ],
-      }}
-      product={product}
-    />
+        ]}
+      />
+
+      <BreadcrumbJsonLd
+        itemListElements={product.breadcrumbList.itemListElement}
+      />
+
+      <ProductJsonLd
+        productName={product.name}
+        description={product.description}
+        brand={product.brand.name}
+        sku={product.sku}
+        gtin={product.gtin}
+        releaseDate={product.releaseDate}
+        images={product.image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
+        offersType="AggregateOffer"
+        offers={{
+          ...product.offers,
+          ...product.offers.offers[0],
+          url: canonical,
+        }}
+      />
+
+      <RenderComponents product={product} pageData={pageData} />
+    </>
   )
 }
 
@@ -133,7 +153,7 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
 
   const notFound = errors.find(isNotFoundError)
 
-  const page = getPageComponents('product')
+  const page = getPageComponents('pdp')
 
   if (notFound) {
     return {

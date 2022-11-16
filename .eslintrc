@@ -8,7 +8,7 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "declaration-no-important": true
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "react": {
@@ -18,7 +18,5 @@
   "ignorePatterns": [
     "public/~partytown/*",
     "next-env.d.ts"
-  ],
-  "exclude": ["node_modules", "test", "dist", "dist/**/*spec.ts"],
-  "include": ["src/**/*", ".eslintrc.js"]
+  ]
 }

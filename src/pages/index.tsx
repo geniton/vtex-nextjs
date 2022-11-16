@@ -1,32 +1,45 @@
+import type { GetStaticProps } from 'next'
+import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
+
 import { mark } from 'src/sdk/tests/mark'
-import { SiteLinksSearchBoxJsonLd } from 'next-seo'
 import storeConfig from 'store.config'
 import getPageComponents from 'src/utils/components/get-page-components'
-import { GetStaticProps } from 'next'
-import RenderDynamicPages from 'src/utils/components/render-dynamic-pages'
+import RenderComponents from 'src/utils/components/render-components'
 
 function Page({ page: { pageData } }: any) {
   return (
     <>
-     <SiteLinksSearchBoxJsonLd
+      <NextSeo
+        title={storeConfig.seo.title}
+        description={storeConfig.seo.description}
+        titleTemplate={storeConfig.seo.titleTemplate}
+        canonical={storeConfig.storeUrl}
+        openGraph={{
+          type: 'website',
+          url: storeConfig.storeUrl,
+          title: storeConfig.seo.title,
+          description: storeConfig.seo.description,
+        }}
+      />
+      <SiteLinksSearchBoxJsonLd
         url={storeConfig.storeUrl}
         potentialActions={[
           {
-            target: `${storeConfig.storeUrl}/s/?q={search_term_string}`,
-            queryInput: 'required name=search_term_string',
+            target: `${storeConfig.storeUrl}/s/?q`,
+            queryInput: 'search_term_string',
           },
         ]}
       />
-      <RenderDynamicPages pageData={pageData} />
+      <RenderComponents pageData={pageData} />
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = getPageComponents()
+  const page = getPageComponents('home')
 
   return {
-    props: { page, pageName: 'template' },
+    props: { page, pageName: 'home' },
   }
 }
 

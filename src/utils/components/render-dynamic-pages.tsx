@@ -1,13 +1,14 @@
 import React from 'react'
 import { SearchProvider } from '@faststore/sdk'
-import renderPlatformComponent from './render-platform-component'
+import { BreadcrumbJsonLd, NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
+
 import storeConfig from 'store.config'
 import { ITEMS_PER_PAGE } from 'src/constants'
-import { useApplySearchState } from 'src/sdk/search/state'
-import useSearchParams from './use-search-params'
-import VARIABLES from '../../../config/variables.json'
-import SROnly from 'src/components/ui/SROnly'
-import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
+import { useApplySearchState as UseApplySearchState } from 'src/sdk/search/state'
+import VARIABLES from 'config/variables.json'
+
+import UseSearchParams from './use-search-params'
+import renderPlatformComponent from './render-platform-component'
 import Components from './render-components'
 
 type Props = {
@@ -21,12 +22,12 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageName, ...props }) => {
     renderPlatformComponent,
     ...VARIABLES,
   }
-  
+
   const { storeUrl, seo } = storeConfig
 
-  const RenderComponents = ({...otherProps}) => <Components {...pageProps} {...otherProps} />
+  const RenderComponents = () => <Components {...pageProps} />
 
-  const Seo = ({...otherProps}) => (
+  const Seo = () => (
     <NextSeo
       title={seo.title}
       description={seo.description}
@@ -38,15 +39,13 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageName, ...props }) => {
         description: seo.description,
       }}
       {...props.seo}
-      {...otherProps}
     />
   )
 
-
-  const components: any = {
+  const pages: any = {
     category: () => {
-      const applySearchState = useApplySearchState()
-      const searchParams = useSearchParams(props)
+      const applySearchState = UseApplySearchState()
+      const searchParams = UseSearchParams(props)
       const { collection } = props
 
       return (
@@ -63,42 +62,27 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageName, ...props }) => {
         </SearchProvider>
       )
     },
-    product: () => {
-      const { product } = props
-      const { seo } = product
-      const canonical = `${storeUrl}${seo.canonical}`
-      return (
-        <>
-          <Seo />
-          <BreadcrumbJsonLd
-            itemListElements={product?.breadcrumbList?.itemListElement}
-          />
-          <ProductJsonLd
-            productName={product.name}
-            description={product.description}
-            brand={product.brand.name}
-            sku={product.sku}
-            gtin={product.gtin}
-            releaseDate={product.releaseDate}
-            images={product.image.map((img: any) => img.url)}
-            offersType="AggregateOffer"
-            offers={{
-              ...product.offers,
-              ...product.offers.offers[0],
-              url: canonical,
-            }}
-          />
-          <RenderComponents />
-        </>
-      )
-    },
-    default: () => <RenderComponents />,
+    default: () => (
+      <>
+        <Seo />
+        <SiteLinksSearchBoxJsonLd
+          url={storeConfig.storeUrl}
+          potentialActions={[
+            {
+              target: `${storeConfig.storeUrl}/s/?q`,
+              queryInput: 'search_term_string',
+            },
+          ]}
+        />
+        <RenderComponents />
+      </>
+    ),
   }
 
   return (
     <>
       <Seo />
-      {components[pageName] ? components[pageName]() : components.default()}
+      {pages[pageName] ? pages[pageName]() : pages.default()}
     </>
   )
 }

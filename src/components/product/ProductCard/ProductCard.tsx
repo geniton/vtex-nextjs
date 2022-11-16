@@ -6,6 +6,14 @@ import {
 import { gql } from '@faststore/graphql-utils'
 import { memo } from 'react'
 import type { ReactNode } from 'react'
+import type {
+  CardControlsProps,
+  CarouselControlsProps,
+  VariationsProps,
+  EffectsProps,
+  StyleProps,
+} from '@retailhub/audacity-ui/src/types'
+import { Components } from '@retailhub/audacity-ui'
 
 import Link from 'src/components/ui/Link'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
@@ -15,9 +23,6 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductCard/product-card.module.scss'
-import Carousel from 'src/audacity-ui/carousel'
-
-import { CardControlsProps,CarouselControlsProps, VariationsProps, EffectsProps, StyleProps  } from 'src/audacity-ui/types'
 
 type Variant = 'wide' | 'default'
 
@@ -67,7 +72,7 @@ function ProductCard({
         // showRating,
         // hoverWishlist,
         // showDesc,
-        imageFitIn
+        imageFitIn,
       },
     },
   },
@@ -114,15 +119,16 @@ function ProductCard({
       }
     >
       {showCarousel && images.length > 1 ? (
-        <Carousel
+        <Components.Carousel
           slidesToShow={1}
           slidesToScroll={1}
           arrows={arrows}
           dots={dots}
           infinite
         >
-          {carouselImages.map((image: any) => (
+          {carouselImages.map((image: any, imageIndex: number) => (
             <Image
+              key={imageIndex}
               src={image.url}
               alt={image.alternateName}
               width={360}
@@ -130,11 +136,11 @@ function ProductCard({
               sizes="(max-width: 768px) 25vw, 30vw"
               loading="lazy"
               options={{
-                fitIn: imageFitIn
+                fitIn: imageFitIn,
               }}
             />
           ))}
-        </Carousel>
+        </Components.Carousel>
       ) : (
         <Image
           src={images[0].url}
@@ -143,7 +149,7 @@ function ProductCard({
           height={360 / aspectRatio}
           loading="lazy"
           options={{
-            fitIn: imageFitIn
+            fitIn: imageFitIn,
           }}
         />
       )}

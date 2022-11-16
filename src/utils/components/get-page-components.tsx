@@ -10,71 +10,64 @@ import MockProductDetailsJSON from 'data/components/product-details.json'
 import MockProductGalleryJSON from 'data/components/product-gallery.json'
 import MockBannergridJSON from 'data/components/bannergrid.json'
 import MockFirstProductShelfJSON from 'data/components/first-product-shelf.json'
-import MockSecondProductShelfJSON from 'data/components/second-product-shelf.json'
 import MockCrossSellingViewShelfJSON from 'data/components/cross-selling-shelf-view.json'
 import MockCrossSellingBuyShelfJSON from 'data/components/cross-selling-shelf-buy.json'
 import MockSearchResultProductGalleryJSON from 'data/components/search-result-product-gallery.json'
 
-export default function getPageComponents(pageName = '') {
+export default function getPageComponents(pageName?: string) {
   const data: any = {
     themeConfigs,
     header,
     footer,
-    pageData: [
+    pageData: [],
+  }
+
+  if (pageName === 'home') {
+    data.pageData = [
       {
         id: 101,
         componentName: 'Banner',
-        componentProps: {...MockBannerJSON},
+        componentProps: { ...MockBannerJSON },
       },
       {
         id: 102,
         componentName: 'ProductShelf',
-        componentProps: {...MockFirstProductShelfJSON, ...Variables},
+        componentProps: { ...MockFirstProductShelfJSON, ...Variables },
       },
       {
         id: 103,
         componentName: 'Tipbar',
-        componentProps: {...MockTipbarJSON},
-      },
-      {
-        id: 104,
-        componentName: 'ProductShelf',
-        componentProps: {...MockSecondProductShelfJSON, ...Variables},
+        componentProps: { ...MockTipbarJSON },
       },
       {
         id: 105,
         componentName: 'Stores',
-        componentProps: {...MockStoresJSON, ...Variables},
+        componentProps: { ...MockStoresJSON, ...Variables },
       },
       {
         id: 107,
         componentName: 'Newsletter',
-        componentProps: {...MockNewsletterJSON},
-      },
-      {
-        id: 107,
-        componentName: 'Bannergrid',
-        componentProps: {...MockBannergridJSON},
+        componentProps: { ...MockNewsletterJSON },
       },
     ]
   }
 
-  if (pageName === 'product') {
+  if (pageName === 'pdp') {
     data.pageData = [
       {
         id: 109,
         componentName: 'ProductDetails',
-        componentProps: {...MockProductDetailsJSON},
+        componentProps: { ...MockProductDetailsJSON },
       },
       {
         id: 109,
         componentName: 'CrossSellingShelf',
-        componentProps: {...MockCrossSellingViewShelfJSON},
+        componentProps: { ...MockCrossSellingViewShelfJSON },
       },
       {
         id: 109,
         componentName: 'CrossSellingShelf',
-        componentProps: {...MockCrossSellingBuyShelfJSON},
+        componentProps: { ...MockCrossSellingBuyShelfJSON },
       },
     ]
   }
@@ -84,17 +77,17 @@ export default function getPageComponents(pageName = '') {
       {
         id: 107,
         componentName: 'Bannergrid',
-        componentProps: {...MockBannergridJSON},
+        componentProps: { ...MockBannergridJSON },
       },
       {
         id: 110,
         componentName: 'ProductGallery',
-        componentProps: {...MockProductGalleryJSON},
+        componentProps: { ...MockProductGalleryJSON },
       },
       {
         id: 111,
         componentName: 'Banner',
-        componentProps: {...MockBannerJSON},
+        componentProps: { ...MockBannerJSON },
       },
     ]
   }
@@ -104,10 +97,10 @@ export default function getPageComponents(pageName = '') {
       {
         id: 112,
         componentName: 'ProductGallery',
-        componentProps: {...MockSearchResultProductGalleryJSON},
-      }
+        componentProps: { ...MockSearchResultProductGalleryJSON },
+      },
     ]
   }
-  
-return data
+
+  return data
 }

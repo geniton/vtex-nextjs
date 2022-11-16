@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @import 'src/styles/scaffold';
 
 .fs-product-card {
@@ -115,8 +116,7 @@
       outline: none;
     }
 
-    [data-store-badge],
-    [data-fs-product-card-actions] {
+    [data-store-badge] {
       margin-top: var(--fs-spacing-2);
     }
   }
@@ -128,6 +128,7 @@
     color: white;
     padding: 5px;
     cursor: pointer;
+    margin-top: var(--fs-spacing-4);
   }
 
   [data-fs-product-card-title] {

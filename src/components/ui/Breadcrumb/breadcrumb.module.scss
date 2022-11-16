@@ -58,6 +58,10 @@
     align-items: center;
     padding: var(--fs-breadcrumb-list-item-padding);
 
+    &:first-child {
+      padding-left: 0;
+    }
+
     &:not(:first-child) {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -106,10 +110,10 @@
     display: block;
     width: 100%;
     overflow: hidden;
+    font-size: 12px;
     text-overflow: ellipsis;
     white-space: nowrap;
     opacity: 0.6;
-    font-size: 12px;
 
     &[data-breadcrumb-item="current"] {
       opacity: 1;
@@ -124,8 +128,8 @@
 
   [data-fs-breadcrumb-link] {
     padding: 0;
-    transition: 300ms all ease-in-out;
     color: var(--dark);
+    transition: 300ms all ease-in-out;
 
     &:hover {
       text-decoration: none;
@@ -142,9 +146,9 @@
     background-color: transparent;
     border-width: 0;
     border-radius: var(--fs-breadcrumb-dropdown-button-border-radius);
-    transition: var(--fs-breadcrumb-dropdown-button-transition-property) var(--fs-breadcrumb-dropdown-button-transition-timing) var(--fs-breadcrumb-dropdown-button-transition-function);
-    opacity: 0.5;
     outline: none;
+    opacity: 0.5;
+    transition: var(--fs-breadcrumb-dropdown-button-transition-property) var(--fs-breadcrumb-dropdown-button-transition-timing) var(--fs-breadcrumb-dropdown-button-transition-function);
 
     &:focus, &:focus-visible {
       @include focus-ring;

@@ -46,8 +46,9 @@
     }
 
     @include media(">=notebook") {
-      flex-direction: column;
+      display: block;
       row-gap: var(--fs-image-gallery-selector-elements-gap-notebook);
+      padding: 0;
       overflow-y: hidden;
     }
   }
@@ -61,6 +62,10 @@
     border: var(--fs-border-width-thick) solid transparent;
     border-radius: var(--fs-image-gallery-selector-thumbnail-border-radius);
     transition: all var(--fs-transition-timing) var(--fs-transition-function);
+
+    @include media(">=notebook") {
+      width: 100%;
+    }
 
     &:hover:not([data-fs-image-gallery-selector-thumbnail="selected"]) {
       border-color: var(--fs-image-gallery-selector-thumbnail-selected-border-color);
@@ -76,10 +81,6 @@
     }
 
     @include focus-ring-visible;
-
-    @include media(">=notebook") {
-      width: var(--fs-image-gallery-selector-thumbnail-width-notebook);
-    }
   }
 
   [data-fs-image-gallery-selector-control-button] {

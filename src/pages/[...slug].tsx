@@ -1,15 +1,17 @@
 import { gql } from '@faststore/graphql-utils'
+import type { GetStaticPaths, GetStaticProps } from 'next/types'
+
 import { mark } from 'src/sdk/tests/mark'
 import { execute } from 'src/server'
 import type {
   ServerCollectionPageQueryQuery,
   ServerCollectionPageQueryQueryVariables,
 } from '@generated/graphql'
-import RenderDynamicPages from '../utils/components/render-dynamic-pages'
 import storeConfig from 'store.config'
-import { GetStaticPaths, GetStaticProps } from 'next/types'
 import getPageName from 'src/utils/components/get-page-name'
 import getPageComponents from 'src/utils/components/get-page-components'
+
+import RenderDynamicPages from '../utils/components/render-dynamic-pages'
 
 interface Props extends ServerCollectionPageQueryQuery {
   pageName: string
@@ -76,7 +78,7 @@ export const getStaticProps: GetStaticProps<
 
   const pageName = getPageName(slug)
 
-  const page = getPageComponents('category')
+  const page = getPageComponents(pageName)
 
   return {
     props: { collection: data?.collection ?? null, page, pageName },
