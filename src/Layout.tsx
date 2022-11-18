@@ -17,24 +17,21 @@ interface LayoutProps {
   [key: string]: any
 }
 
-function Layout({
-  children,
-  page: { header, footer, themeConfigs },
-}: LayoutProps) {
+function Layout({ children, page }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
   return (
-    <ThemeConfigs data={themeConfigs}>
-      {header && (
+    <ThemeConfigs data={page?.themeConfigs}>
+      {page?.header && (
         <Components.Header
-          data={header}
+          data={page.header}
           renderPlatformComponent={renderPlatformComponent}
         />
       )}
 
       <main>{children}</main>
 
-      {footer && <Components.Footer {...footer} />}
+      {page?.footer && <Components.Footer {...page.footer} />}
 
       {displayCart && (
         <Suspense fallback={null}>
