@@ -19,8 +19,8 @@ import { useSession } from 'src/sdk/session'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import Selectors from 'src/components/ui/SkuSelector'
-import styles from './product-details.module.scss'
 
+import styles from './product-details.module.scss'
 import Section from '../Section'
 import ProductDetailsContent from '../ProductDetailsContent'
 
@@ -40,7 +40,6 @@ function ProductDetails({
   controls: {
     general: { showProductName, showSkuName, showProductReference },
   },
-  ...otherProps
 }: Props) {
   const { currency } = useSession()
   const [addQuantity, setAddQuantity] = useState(1)
@@ -59,7 +58,7 @@ function ProductDetails({
       id,
       sku,
       gtin,
-      description,
+      // description,
       name: variantName,
       brand,
       isVariantOf,
@@ -149,82 +148,91 @@ function ProductDetails({
   ])
 
   return (
-    <Section className={`${styles.fsProductDetails} layout__content layout__section`}>
+    <Section
+      className={`${styles.fsProductDetails} layout__content layout__section`}
+    >
       <div className="container">
         <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
         <section data-fs-product-details-body>
-          <header data-fs-product-details-title data-fs-product-details-section>{productTitle()}</header>
+          <header data-fs-product-details-title data-fs-product-details-section>
+            {productTitle()}
+          </header>
 
           <ImageGallery data-fs-product-details-gallery images={image} />
 
           <section data-fs-product-details-info>
-          <section
-            data-fs-product-details-settings
-            data-fs-product-details-section
-          >
-            <section data-fs-product-details-values>
-              <div data-fs-product-details-prices>
-                <Price
-                  value={listPrice}
-                  formatter={useFormattedPrice}
-                  testId="list-price"
-                  data-value={listPrice}
-                  variant="listing"
-                  classes="text__legend"
-                  SRText="Original price:"
-                />
-                <Price
-                  value={lowPrice}
-                  formatter={useFormattedPrice}
-                  testId="price"
-                  data-value={lowPrice}
-                  variant="spot"
-                  classes="text__lead"
-                  SRText="Sale Price:"
-                />
-              </div>
-              {/* <div className="prices">
+            <section
+              data-fs-product-details-settings
+              data-fs-product-details-section
+            >
+              <section data-fs-product-details-values>
+                <div data-fs-product-details-prices>
+                  <Price
+                    value={listPrice}
+                    formatter={useFormattedPrice}
+                    testId="list-price"
+                    data-value={listPrice}
+                    variant="listing"
+                    classes="text__legend"
+                    SRText="Original price:"
+                  />
+                  <Price
+                    value={lowPrice}
+                    formatter={useFormattedPrice}
+                    testId="price"
+                    data-value={lowPrice}
+                    variant="spot"
+                    classes="text__lead"
+                    SRText="Sale Price:"
+                  />
+                </div>
+                {/* <div className="prices">
                 <p className="price__old text__legend">{formattedListPrice}</p>
                 <p className="price__new">{isValidating ? '' : formattedPrice}</p>
               </div> */}
-              <QuantitySelector min={1} max={10} onChange={setAddQuantity} />
-            </section>
-            {skuVariants && (
-              <Selectors
-                slugsMap={skuVariants.slugsMap}
-                availableVariations={skuVariants.availableVariations}
-                activeVariations={skuVariants.activeVariations}
-                data-fs-product-details-selectors
-              />
-            )}
-            {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
+                <QuantitySelector min={1} max={10} onChange={setAddQuantity} />
+              </section>
+              {skuVariants && (
+                <Selectors
+                  slugsMap={skuVariants.slugsMap}
+                  availableVariations={skuVariants.availableVariations}
+                  activeVariations={skuVariants.activeVariations}
+                  data-fs-product-details-selectors
+                />
+              )}
+              {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
                 non-composited animation violation due to the button transitioning its
                 background color when changing from its initial disabled to active state.
                 See full explanation on commit https://git.io/JyXV5. */}
-            {isValidating ? (
-              <AddToCartLoadingSkeleton />
-            ) : (
-              <ButtonBuy disabled={buyDisabled} {...buyProps}>
-                Add to Cart
-              </ButtonBuy>
-            )}
-            {!availability && (
-              <OutOfStock
-                onSubmit={(email) => {
-                  console.info(email)
-                }}
-              />
-            )}
+              {isValidating ? (
+                <AddToCartLoadingSkeleton />
+              ) : (
+                <ButtonBuy disabled={buyDisabled} {...buyProps}>
+                  Add to Cart
+                </ButtonBuy>
+              )}
+              {!availability && (
+                <OutOfStock
+                  onSubmit={(email) => {
+                    console.info(email)
+                  }}
+                />
+              )}
+            </section>
+
+            <ShippingSimulation
+              data-fs-product-details-section
+              data-fs-product-details-shipping
+              shippingItem={{
+                id,
+                quantity: addQuantity,
+                seller: seller.identifier,
+              }}
+            />
           </section>
 
-          <ShippingSimulation
-            data-fs-product-details-section
-            data-fs-product-details-shipping
-          />
-        </section>
-
-        <ProductDetailsContent />
+          <ProductDetailsContent />
         </section>
       </div>
     </Section>
