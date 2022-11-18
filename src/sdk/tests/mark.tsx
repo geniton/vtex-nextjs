@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 
-export const mark = <P,>(Component: ComponentType<P>): ComponentType<P> =>
+export const mark = <P,>(Component: ComponentType<P> & any): ComponentType<P> =>
   function marked(props: P) {
     if (typeof window !== 'undefined') {
       performance.mark(Component.displayName ?? Component.name ?? 'unknown')
