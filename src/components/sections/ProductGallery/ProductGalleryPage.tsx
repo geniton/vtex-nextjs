@@ -59,6 +59,7 @@ function GalleryPage({
               We should remove/refactor this section from here
             */}
             <ProductTiles
+              controls={controls}
               selectedFacets={[{ key: 'productClusterIds', value: '141' }]}
               title=""
             />

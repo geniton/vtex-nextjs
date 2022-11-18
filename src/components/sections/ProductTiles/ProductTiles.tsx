@@ -8,6 +8,7 @@ import Section from '../Section'
 
 interface ProductTilesProps extends Partial<ProductsQueryQueryVariables> {
   title: string | JSX.Element
+  controls: any
 }
 
 const NUMBER_ITEMS_TO_EXPAND_FIRST = 3
@@ -27,7 +28,7 @@ const getRatio = (products: number, idx: number) => {
   return 3 / 4
 }
 
-const ProductTiles = ({ title, ...variables }: ProductTilesProps) => {
+const ProductTiles = ({ controls, title, ...variables }: ProductTilesProps) => {
   const products = useProductsQuery(variables)
 
   if (products?.edges.length === 0) {
@@ -40,9 +41,10 @@ const ProductTiles = ({ title, ...variables }: ProductTilesProps) => {
       <div>
         <ProductTilesSkeleton variant="wide" loading={!products}>
           <Tiles>
-            {products?.edges.map((product, idx) => (
+            {products?.edges.map((product, idx: number) => (
               <Tile key={product.node.id}>
                 <ProductCard
+                  controls={controls}
                   data-testid="tile-card"
                   product={product.node}
                   index={idx + 1}
