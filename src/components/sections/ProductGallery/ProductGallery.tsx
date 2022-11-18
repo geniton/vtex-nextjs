@@ -27,9 +27,10 @@ const GalleryPageSkeleton = <ProductGridSkeleton loading />
 interface Props {
   title: string
   searchTerm?: string
+  controls: any
 }
 
-function ProductGallery({ title, searchTerm, ...props }: Props) {
+function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
   const { openFilter } = useUI()
   const { pages, addNextPage, addPrevPage } = useSearch()
 
@@ -63,7 +64,10 @@ function ProductGallery({ title, searchTerm, ...props }: Props) {
     >
       <div className="container">
         {searchTerm && (
-          <header data-fs-product-listing-search-term className="layout__content">
+          <header
+            data-fs-product-listing-search-term
+            className="layout__content"
+          >
             <h1>
               Showing results for: <span>{searchTerm}</span>
             </h1>
@@ -134,7 +138,12 @@ function ProductGallery({ title, searchTerm, ...props }: Props) {
                   variant="secondary"
                   iconPosition="left"
                   icon={
-                    <Icon name="ArrowLeft" width={16} height={16} weight="bold" />
+                    <Icon
+                      name="ArrowLeft"
+                      width={16}
+                      height={16}
+                      weight="bold"
+                    />
                   }
                 >
                   Previous Page
@@ -147,6 +156,7 @@ function ProductGallery({ title, searchTerm, ...props }: Props) {
               <Suspense fallback={GalleryPageSkeleton}>
                 {pages.map((page) => (
                   <GalleryPage
+                    controls={controls}
                     key={`gallery-page-${page}`}
                     showSponsoredProducts={false}
                     page={page}

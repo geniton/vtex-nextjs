@@ -11,9 +11,16 @@ interface Props {
   page: number
   title: string
   showSponsoredProducts?: boolean
+  controls: any
 }
 
-function GalleryPage({ page, title, showSponsoredProducts = true, ...props }: Props) {
+function GalleryPage({
+  controls,
+  page,
+  title,
+  showSponsoredProducts = true,
+  ...props
+}: Props) {
   const products = useProducts(page) ?? []
   const { itemsPerPage } = useSearch()
 
@@ -37,6 +44,7 @@ function GalleryPage({ page, title, showSponsoredProducts = true, ...props }: Pr
       {shouldDisplaySponsoredProducts ? (
         <>
           <ProductGrid
+            controls={controls}
             products={products.slice(0, middleItemIndex)}
             page={page}
             pageSize={middleItemIndex}
@@ -56,6 +64,7 @@ function GalleryPage({ page, title, showSponsoredProducts = true, ...props }: Pr
             />
           </div>
           <ProductGrid
+            controls={controls}
             products={products.slice(middleItemIndex, itemsPerPage)}
             page={page}
             pageSize={middleItemIndex}
@@ -63,7 +72,13 @@ function GalleryPage({ page, title, showSponsoredProducts = true, ...props }: Pr
           />
         </>
       ) : (
-        <ProductGrid products={products} page={page} pageSize={itemsPerPage} {...props} />
+        <ProductGrid
+          controls={controls}
+          products={products}
+          page={page}
+          pageSize={itemsPerPage}
+          {...props}
+        />
       )}
     </>
   )
