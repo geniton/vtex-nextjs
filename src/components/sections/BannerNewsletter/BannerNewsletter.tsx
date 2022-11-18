@@ -1,5 +1,5 @@
 import BannerText from '../BannerText'
-import Newsletter from '../Newsletter'
+// import Newsletter from '../Newsletter'
 import Section from '../Section'
 import styles from './banner-newsletter.module.scss'
 
@@ -15,11 +15,11 @@ function BannerNewsletter() {
           variant="secondary"
           colorVariant="light"
         />
-        <Newsletter
+        {/* <Newsletter
           title="Get News and Special Offers!"
           description="Receive our news and promotions in advance. Enjoy and get 10% off your first purchase. For more information click here."
           card
-        />
+        /> */}
       </div>
     </Section>
   )
