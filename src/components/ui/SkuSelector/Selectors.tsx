@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
-import type { ChangeEvent } from 'react'
+import type { ChangeEvent, HTMLAttributes } from 'react'
 
 import SkuSelector from './SkuSelector'
 import { navigateToSku } from './skuVariants'
 import type { SkuVariantsByName } from './skuVariants'
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   /**
    * Maps property value combinations to their respective SKU's slug
    */
@@ -18,6 +18,7 @@ interface Props {
    * SKU property values for the current SKU.
    */
   activeVariations: Record<string, string>
+  skuDisabled: boolean
 }
 
 /**
@@ -28,14 +29,20 @@ interface Props {
  * Ex: If `Red` is the current value for the 'Color' variation, we'll only
  * render possible values for 'Size' that are available in `Red`.
  */
-const DOMINANT_SKU_SELECTOR_PROPERTY = 'Color'
+const DOMINANT_SKU_SELECTOR_PROPERTY = 'Cor'
 
-function Selectors({ slugsMap, availableVariations, activeVariations }: Props) {
+function Selectors({
+  slugsMap,
+  availableVariations,
+  activeVariations,
+  skuDisabled,
+  ...otherProps
+}: Props) {
   const router = useRouter()
 
   // 'Color' variants are singled-out here because they will always be rendered
   // as 'image' variants. And they're also the 'dominant' variants in our store.
-  const { Color: colorOptions, ...otherSkuVariants } = availableVariations
+  const { Cor: colorOptions, ...otherSkuVariants } = availableVariations
 
   function handleOnChange(
     e: ChangeEvent<HTMLInputElement>,
@@ -53,15 +60,23 @@ function Selectors({ slugsMap, availableVariations, activeVariations }: Props) {
     })
   }
 
+  if (
+    (!otherSkuVariants || !Object.keys(otherSkuVariants).length) &&
+    !colorOptions
+  ) {
+    return null
+  }
+
   return (
-    <section>
+    <section {...otherProps}>
       {colorOptions && (
         <SkuSelector
-          label="Color"
+          label="Cor"
           variant="image"
           options={colorOptions}
-          activeValue={activeVariations.Color}
-          onChange={(e) => handleOnChange(e, 'Color')}
+          activeValue={activeVariations.Cor}
+          onChange={(e) => handleOnChange(e, 'Cor')}
+          skuDisabled={skuDisabled}
         />
       )}
       {otherSkuVariants &&
@@ -73,6 +88,7 @@ function Selectors({ slugsMap, availableVariations, activeVariations }: Props) {
             options={otherSkuVariants[skuVariant]}
             activeValue={activeVariations[skuVariant]}
             onChange={(e) => handleOnChange(e, skuVariant)}
+            skuDisabled={skuDisabled}
           />
         ))}
     </section>

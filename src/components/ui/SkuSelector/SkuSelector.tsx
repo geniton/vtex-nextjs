@@ -8,8 +8,12 @@ import { Image } from 'src/components/ui/Image'
 
 import styles from './sku-selector.module.scss'
 
-function SkuSelector({ ...props }: SkuSelectorProps) {
-  const { options, activeValue, variant } = props
+type Props = {
+  skuDisabled: boolean
+}
+
+function SkuSelector({ ...props }: SkuSelectorProps & Props) {
+  const { options, activeValue, variant, skuDisabled } = props
 
   return (
     <UISkuSelector className={styles.fsSkuSelector} {...props}>
@@ -20,7 +24,9 @@ function SkuSelector({ ...props }: SkuSelectorProps) {
             key={String(index)}
             label={option.label}
             value={option.value}
-            disabled={option.disabled}
+            disabled={
+              option.disabled || (option.value === activeValue && skuDisabled)
+            }
             checked={option.value === activeValue}
           >
             {variant === 'label' && <span>{option.value}</span>}

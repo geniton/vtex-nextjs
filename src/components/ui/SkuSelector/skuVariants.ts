@@ -1,5 +1,7 @@
 import type { NextRouter } from 'next/router'
 
+import { arrayMove } from 'src/utils/global'
+
 export type SkuVariantsByName = Record<
   string,
   Array<{ alt: string; src: string; label: string; value: string }>
@@ -10,6 +12,25 @@ export function getSkuSlug(
   selectedVariations: Record<string, string>,
   dominantVariation: string
 ) {
+  // change dominant variation to the first position in selectedVariations
+  const variantsName = Object.keys(selectedVariations)
+  const variantColorIndex: number = variantsName.findIndex(
+    (variant: string) => variant === dominantVariation
+  )
+
+  if (variantColorIndex !== -1 && variantsName.length > 1) {
+    const variations = arrayMove(variantsName, variantColorIndex, 0)
+    const newSelectedVariations: any = {}
+
+    for (let index = 0; index < variations.length; index++) {
+      const keyName = variations[index]
+
+      newSelectedVariations[keyName] = selectedVariations[keyName]
+    }
+
+    selectedVariations = newSelectedVariations
+  }
+
   const slugsMapKey = Object.entries(selectedVariations).flat().join('-')
 
   if (slugsMapKey in slugsMap) {
