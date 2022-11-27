@@ -5,7 +5,7 @@ import { Components } from '@retailhub/audacity-ui'
 
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from 'src/utils/components/theme-configs'
-import renderPlatformComponent from 'src/utils/components/render-platform-component'
+import { Components as PlatformComponents } from 'src/utils/components/platform'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
@@ -25,7 +25,7 @@ function Layout({ children, page }: LayoutProps) {
       {page?.header && (
         <Components.Header
           data={page.header}
-          renderPlatformComponent={renderPlatformComponent}
+          PlatformComponents={PlatformComponents}
         />
       )}
 

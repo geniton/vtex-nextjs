@@ -1,3 +1,4 @@
+// components
 import { Link } from '@faststore/ui'
 import Image from 'next/image'
 
@@ -7,32 +8,32 @@ import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import CartToggle from 'src/components/cart/CartToggle'
 import SearchInput from 'src/components/search/SearchInput'
-import { useSession } from 'src/sdk/session'
 import CrossSellingShelf from 'src/components/sections/CrossSellingShelf'
+import ProductCard from 'src/components/product/ProductCard'
+import Wishlist from 'src/components/sections/Wishlist'
+// hooks
+import { useSession } from 'src/sdk/session'
+import {
+  useProductsQuery,
+  useProductsQueryPrefetch,
+} from 'src/sdk/product/useProductsQuery'
 
-const Components: any = {
-  Link,
-  Breadcrumb,
-  ProductGallery,
-  ProductDetails,
-  Image,
-  CartToggle,
-  ProductShelf,
-  SearchInput,
+export const Hooks = {
   useSession,
-  CrossSellingShelf,
+  useProductsQuery,
+  useProductsQueryPrefetch,
 }
 
-export default (componentName: string, props?: any, children?: any) => {
-  const renderPlatformComponent = () => {
-    const Component = Components[componentName]
-
-    return children ? (
-      <Component {...props}>{children}</Component>
-    ) : (
-      <Component {...props} />
-    )
-  }
-
-  return Components[componentName] ? renderPlatformComponent() : null
+export const Components = {
+  Breadcrumb,
+  CartToggle,
+  CrossSellingShelf,
+  Image,
+  Link,
+  ProductGallery,
+  ProductDetails,
+  ProductShelf,
+  ProductCard,
+  SearchInput,
+  Wishlist,
 }

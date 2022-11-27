@@ -1,22 +1,18 @@
 import { useCallback, useMemo } from 'react'
 
-import { useSession } from '../session'
-
 interface PriceFormatterOptions {
   decimals?: boolean
 }
 
 export const usePriceFormatter = ({ decimals }: PriceFormatterOptions = {}) => {
-  const { currency, locale } = useSession()
-
   return useCallback(
     (price: number) =>
-      Intl.NumberFormat(locale, {
+      Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency: currency.code,
+        currency: 'BRL',
         minimumFractionDigits: decimals ? 2 : 0,
       }).format(price),
-    [currency.code, locale, decimals]
+    ['BRL', 'pt-BR', decimals]
   )
 }
 

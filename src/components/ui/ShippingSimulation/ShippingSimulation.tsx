@@ -53,7 +53,7 @@ function ShippingSimulation({
       {...otherProps}
     >
       <h2 className="text__title-subsection" data-fs-shipping-simulation-title>
-        Shipping
+        Calcular frete
       </h2>
 
       <InputText

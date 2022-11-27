@@ -3,13 +3,17 @@ import { Components } from '@retailhub/audacity-ui'
 
 import variables from 'config/variables.json'
 import storeConfig from 'store.config'
-import renderPlatformComponent from 'src/utils/components/render-platform-component'
+import {
+  Components as PlatformComponents,
+  Hooks as PlatformHooks,
+} from 'src/utils/components/platform'
 
 const RenderComponents: React.FC<any> = ({ pageData, ...otherProps }) => {
   const props = {
     storeConfig,
     variables,
-    renderPlatformComponent,
+    PlatformComponents,
+    PlatformHooks,
     ...otherProps,
   }
 

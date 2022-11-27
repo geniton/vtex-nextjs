@@ -16,7 +16,7 @@ export const useBuyButton = (item: CartItem | null) => {
   } = useSession()
 
   const onClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: React.MouseEvent<HTMLButtonElement>, goToCheckout: boolean) => {
       e.preventDefault()
 
       if (!item) {
@@ -48,7 +48,11 @@ export const useBuyButton = (item: CartItem | null) => {
       })
 
       cartStore.addItem(item)
-      openCart()
+      if (goToCheckout) {
+        console.log('go to checkout')
+      } else {
+        openCart()
+      }
     },
     [code, item, openCart]
   )

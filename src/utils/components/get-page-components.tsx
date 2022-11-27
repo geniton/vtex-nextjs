@@ -13,6 +13,7 @@ import MockFirstProductShelfJSON from 'data/components/first-product-shelf.json'
 import MockCrossSellingViewShelfJSON from 'data/components/cross-selling-shelf-view.json'
 import MockCrossSellingBuyShelfJSON from 'data/components/cross-selling-shelf-buy.json'
 import MockSearchResultProductGalleryJSON from 'data/components/search-result-product-gallery.json'
+import MockWishlistJSON from 'data/components/wishlist.json'
 
 export default function getPageComponents(pageName?: string) {
   const data: any = {
@@ -55,7 +56,7 @@ export default function getPageComponents(pageName?: string) {
   if (pageName === 'pdp') {
     data.pageData = [
       {
-        id: 109,
+        id: 108,
         componentName: 'ProductDetails',
         componentProps: { ...MockProductDetailsJSON },
       },
@@ -65,7 +66,7 @@ export default function getPageComponents(pageName?: string) {
         componentProps: { ...MockCrossSellingViewShelfJSON },
       },
       {
-        id: 109,
+        id: 110,
         componentName: 'CrossSellingShelf',
         componentProps: { ...MockCrossSellingBuyShelfJSON },
       },
@@ -75,17 +76,17 @@ export default function getPageComponents(pageName?: string) {
   if (pageName === 'category') {
     data.pageData = [
       {
-        id: 107,
+        id: 111,
         componentName: 'Bannergrid',
         componentProps: { ...MockBannergridJSON },
       },
       {
-        id: 110,
+        id: 112,
         componentName: 'ProductGallery',
         componentProps: { ...MockProductGalleryJSON },
       },
       {
-        id: 111,
+        id: 113,
         componentName: 'Banner',
         componentProps: { ...MockBannerJSON },
       },
@@ -95,9 +96,19 @@ export default function getPageComponents(pageName?: string) {
   if (pageName === 'search') {
     data.pageData = [
       {
-        id: 112,
+        id: 114,
         componentName: 'ProductGallery',
         componentProps: { ...MockSearchResultProductGalleryJSON },
+      },
+    ]
+  }
+
+  if (pageName === 'wishlist') {
+    data.pageData = [
+      {
+        id: 115,
+        componentName: 'Wishlist',
+        componentProps: { ...MockWishlistJSON },
       },
     ]
   }

@@ -4,7 +4,7 @@ import {
   ProductCardContent as UIProductCardContent,
 } from '@faststore/ui'
 import { gql } from '@faststore/graphql-utils'
-import { memo } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import type {
   CardControlsProps,
@@ -15,6 +15,7 @@ import type {
 } from '@retailhub/audacity-ui/src/types'
 import { Components } from '@retailhub/audacity-ui'
 
+import { getData, saveData } from 'src/utils/local-storage'
 import Link from 'src/components/ui/Link'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
@@ -23,10 +24,13 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductCard/product-card.module.scss'
+import ButtonLink from 'src/components/ui/Button/ButtonLink'
+import * as API from 'src/utils/api'
 
 type Variant = 'wide' | 'default'
 
 export interface ProductCardProps {
+  onChangeLike?: (like: boolean) => void
   product: ProductSummary_ProductFragment
   index: number
   bordered?: boolean
@@ -48,6 +52,7 @@ export interface ProductCardProps {
 }
 
 function ProductCard({
+  onChangeLike,
   product,
   controls: {
     general: {
@@ -60,7 +65,7 @@ function ProductCard({
         showPriceOf,
         // showInstallments,
         // showSkuVariations,
-        // showWishlist,
+        showWishlist,
         showBuyButton,
         titleBuyButton,
         // buttonUnavailableTitle,
@@ -82,6 +87,113 @@ function ProductCard({
   aspectRatio = 1,
   ...otherProps
 }: ProductCardProps) {
+  const [isLiked, setIsLiked] = useState(false)
+  // const { person } = useSession()
+  const person = {
+    id: '3d6381e7-ac3f-4972-bbb9-35bcf8da7677',
+  }
+
+  function getWishlistData() {
+    return getData('wishlist')
+  }
+
+  function setWishlistData(value: number[]) {
+    saveData('wishlist', value)
+  }
+
+  const checkProductOnWishlist = useCallback(() => {
+    const wishlistData = getWishlistData() || []
+
+    return wishlistData.filter((itemId: number) => +itemId === +product.id)
+      .length
+  }, [])
+
+  function likeToggle() {
+    const isProductOnWishlist = checkProductOnWishlist()
+
+    const wishlistData: any = getWishlistData() || []
+    let like = false
+
+    if (isProductOnWishlist) {
+      wishlistData.splice(wishlistData.indexOf(product.sku), 1)
+    } else {
+      like = true
+      wishlistData.push(product.sku)
+    }
+
+    setIsLiked(like)
+    setWishlistData(wishlistData)
+
+    const payload = {
+      acronym: 'WL',
+      products: JSON.stringify(wishlistData),
+      userId: '3d6381e7-ac3f-4972-bbb9-35bcf8da7677',
+    }
+
+    API.saveMasterData(payload)
+
+    onChangeLike?.(like)
+  }
+
+  function wishlist() {
+    if (!showWishlist) return null
+
+    if (person?.id) {
+      return (
+        <button
+          type="button"
+          data-fs-product-card-like
+          data-fs-product-card-like-active={isLiked}
+          onClick={() => likeToggle()}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26.059"
+            height="23.821"
+            viewBox="0 0 26.059 23.821"
+          >
+            <path
+              d="M1221.828,73.057a.745.745,0,0,0,1.229.01,6.481,6.481,0,0,1,5.386-2.923c3.615,0,6.219,3.093,6.547,6.78a6.725,6.725,0,0,1-.212,2.562,11.336,11.336,0,0,1-3.453,5.759l-8.374,7.472a.761.761,0,0,1-1.016,0l-8.228-7.469a11.328,11.328,0,0,1-3.453-5.758,6.738,6.738,0,0,1-.213-2.563c.328-3.686,2.932-6.78,6.547-6.78A6.193,6.193,0,0,1,1221.828,73.057Z"
+              transform="translate(-1209.486 -69.643)"
+              stroke="currentColor"
+              strokeMiterlimit="10"
+              strokeWidth="1"
+            />
+          </svg>
+        </button>
+      )
+    }
+
+    return (
+      <ButtonLink
+        href="/login"
+        data-fs-product-card-like
+        data-fs-product-card-like-active={isLiked}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26.059"
+          height="23.821"
+          viewBox="0 0 26.059 23.821"
+        >
+          <path
+            d="M1221.828,73.057a.745.745,0,0,0,1.229.01,6.481,6.481,0,0,1,5.386-2.923c3.615,0,6.219,3.093,6.547,6.78a6.725,6.725,0,0,1-.212,2.562,11.336,11.336,0,0,1-3.453,5.759l-8.374,7.472a.761.761,0,0,1-1.016,0l-8.228-7.469a11.328,11.328,0,0,1-3.453-5.758,6.738,6.738,0,0,1-.213-2.563c.328-3.686,2.932-6.78,6.547-6.78A6.193,6.193,0,0,1,1221.828,73.057Z"
+            transform="translate(-1209.486 -69.643)"
+            stroke="currentColor"
+            strokeMiterlimit="10"
+            strokeWidth="1"
+          />
+        </svg>
+      </ButtonLink>
+    )
+  }
+
+  useEffect(() => {
+    if (checkProductOnWishlist() && person.id) {
+      setIsLiked(true)
+    }
+  }, [])
+
   const {
     brand: { brandName },
     sku,
@@ -118,6 +230,7 @@ function ProductCard({
           : {}
       }
     >
+      {wishlist()}
       {showCarousel && images.length > 1 ? (
         <Components.Carousel
           slidesToShow={1}
@@ -215,6 +328,7 @@ export const fragment = gql`
     }
     name
     gtin
+    productID
 
     isVariantOf {
       productGroupID

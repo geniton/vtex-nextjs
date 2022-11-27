@@ -13,7 +13,8 @@
   --fs-out-of-stock-title-color           : var(--fs-color-success-text);
 
   // Message
-  --fs-out-of-stock-message-column-gap    : var(--fs-spacing-0);
+  --fs-out-of-stock-message-column-row    : var(--fs-spacing-2);
+  --fs-out-of-stock-message-column-gap    : var(--fs-spacing-1);
   --fs-out-of-stock-message-margin-bottom : var(--fs-spacing-3);
   --fs-out-of-stock-message-line-height   : 1.15;
   --fs-out-of-stock-message-size          : var(--fs-text-size-body);
@@ -30,9 +31,10 @@
 
   display: flex;
   flex-direction: column;
+  grid-row-gap: var(--fs-out-of-stock-message-column-row);
+  text-align: center;
 
   [data-fs-out-of-stock-title] {
-    margin-bottom: var(--fs-out-of-stock-title-margin-bottom);
     font-size: var(--fs-out-of-stock-title-size);
     font-weight: var(--fs-out-of-stock-title-weight);
     line-height: var(--fs-out-of-stock-title-line-height);
@@ -42,12 +44,16 @@
   [data-fs-out-of-stock-message] {
     display: flex;
     column-gap: var(--fs-out-of-stock-message-column-gap);
-    align-items: center;
-    margin-bottom: var(--fs-out-of-stock-message-margin-bottom);
+    justify-content: center;
     font-size: var(--fs-out-of-stock-message-font-size);
     font-weight: var(--fs-out-of-stock-message-weight);
     line-height: var(--fs-out-of-stock-message-line-height);
     color: var(--fs-out-of-stock-message-color);
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   [data-store-button] {

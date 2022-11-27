@@ -31,6 +31,7 @@ interface Props {
       showProductName: boolean
       showSkuName: boolean
       showProductReference: boolean
+      galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
     }
   }
 }
@@ -38,11 +39,17 @@ interface Props {
 function ProductDetails({
   product: staleProduct,
   controls: {
-    general: { showProductName, showSkuName, showProductReference },
+    general: {
+      showProductName,
+      showSkuName,
+      showProductReference,
+      galleryMode,
+    },
   },
 }: Props) {
   const { currency } = useSession()
   const [addQuantity, setAddQuantity] = useState(1)
+  const [sellers, setSellers] = useState<any>(staleProduct.sellers)
 
   // Stale while revalidate the product for fetching the new price etc
   const { data, isValidating } = useProduct(staleProduct.id, {
@@ -55,31 +62,31 @@ function ProductDetails({
 
   const {
     product: {
+      description,
       id,
       sku,
       gtin,
-      // description,
       name: variantName,
       brand,
       isVariantOf,
       isVariantOf: { name: productName, skuVariants },
       image,
-      offers: {
-        offers: [{ availability, price, listPrice, seller }],
-        lowPrice,
-      },
       breadcrumbList: breadcrumbs,
       additionalProperty,
     },
   } = data
 
-  const buyDisabled = availability !== 'https://schema.org/InStock'
+  const sellerActive = sellers?.filter((seller: any) =>
+    sellers.length === 1 ? (seller.sellerDefault = true) : seller?.sellerDefault
+  )[0]
+
+  const buyDisabled = !sellerActive.AvailableQuantity
 
   const buyProps = useBuyButton({
     id,
-    price,
-    listPrice,
-    seller,
+    price: sellerActive.Price,
+    listPrice: sellerActive.ListPrice,
+    seller: { identifier: sellerActive.identifier },
     quantity: addQuantity,
     itemOffered: {
       sku,
@@ -108,7 +115,13 @@ function ProductDetails({
         title={
           <h1> {title.length ? title.join('') : productName || variantName}</h1>
         }
-        label={<DiscountBadge listPrice={listPrice} spotPrice={lowPrice} big />}
+        label={
+          <DiscountBadge
+            listPrice={sellerActive.ListPrice}
+            spotPrice={sellerActive.Price}
+            big
+          />
+        }
         refNumber={showProductReference ? gtin : ''}
       />
     )
@@ -119,15 +132,15 @@ function ProductDetails({
       name: 'view_item',
       params: {
         currency: currency.code as CurrencyCode,
-        value: price,
+        value: sellerActive.Price,
         items: [
           {
             item_id: isVariantOf.productGroupID,
             item_name: isVariantOf.name,
             item_brand: brand.name,
             item_variant: sku,
-            price,
-            discount: listPrice - price,
+            price: sellerActive.Price,
+            discount: sellerActive.ListPrice - sellerActive.Price,
             currency: currency.code as CurrencyCode,
             item_variant_name: variantName,
             product_reference_id: gtin,
@@ -140,12 +153,15 @@ function ProductDetails({
     isVariantOf.name,
     brand.name,
     sku,
-    price,
-    listPrice,
+    sellerActive,
     currency.code,
     variantName,
     gtin,
   ])
+
+  useEffect(() => {
+    setSellers(data?.product.sellers)
+  }, [data])
 
   return (
     <Section
@@ -155,64 +171,125 @@ function ProductDetails({
         <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
         <section data-fs-product-details-body>
-          <header data-fs-product-details-title data-fs-product-details-section>
-            {productTitle()}
-          </header>
-
-          <ImageGallery data-fs-product-details-gallery images={image} />
+          <ImageGallery
+            data-fs-product-details-gallery
+            galleryMode={galleryMode}
+            images={image}
+          />
 
           <section data-fs-product-details-info>
+            <header data-fs-product-details-title>{productTitle()}</header>
+            {sellers.length >= 2 ? (
+              <ul data-fs-product-details-seller-items>
+                {sellers.map((seller: any) => (
+                  <li data-fs-product-details-seller-item key={seller.sellerId}>
+                    <button
+                      data-fs-product-details-seller-btn
+                      data-fs-product-details-seller-btn-active={
+                        seller.sellerDefault
+                      }
+                      onClick={() => {
+                        setSellers(
+                          sellers.map((staleSeller: any) => ({
+                            ...staleSeller,
+                            sellerDefault:
+                              seller.sellerId === staleSeller.sellerId,
+                          }))
+                        )
+                      }}
+                    >
+                      {seller.sellerName}
+                      <Price
+                        value={seller.Price}
+                        formatter={useFormattedPrice}
+                        data-value={seller.Price}
+                        SRText="Original price:"
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             <section
               data-fs-product-details-settings
               data-fs-product-details-section
+              data-fs-product-details-section-full={sellers.length <= 1}
             >
               <section data-fs-product-details-values>
                 <div data-fs-product-details-prices>
                   <Price
-                    value={listPrice}
+                    value={sellerActive.ListPrice}
                     formatter={useFormattedPrice}
                     testId="list-price"
-                    data-value={listPrice}
+                    data-value={sellerActive.ListPrice}
                     variant="listing"
                     classes="text__legend"
                     SRText="Original price:"
                   />
                   <Price
-                    value={lowPrice}
+                    value={sellerActive.Price}
                     formatter={useFormattedPrice}
                     testId="price"
-                    data-value={lowPrice}
+                    data-value={sellerActive.Price}
                     variant="spot"
                     classes="text__lead"
                     SRText="Sale Price:"
                   />
                 </div>
                 {/* <div className="prices">
-                <p className="price__old text__legend">{formattedListPrice}</p>
-                <p className="price__new">{isValidating ? '' : formattedPrice}</p>
-              </div> */}
-                <QuantitySelector min={1} max={10} onChange={setAddQuantity} />
+                  <p className="price__old text__legend">{formattedListPrice}</p>
+                  <p className="price__new">{isValidating ? '' : formattedPrice}</p>
+                </div> */}
               </section>
               {skuVariants && (
                 <Selectors
                   slugsMap={skuVariants.slugsMap}
                   availableVariations={skuVariants.availableVariations}
                   activeVariations={skuVariants.activeVariations}
+                  skuDisabled={buyDisabled}
                   data-fs-product-details-selectors
                 />
               )}
-              {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
-                non-composited animation violation due to the button transitioning its
-                background color when changing from its initial disabled to active state.
-                See full explanation on commit https://git.io/JyXV5. */}
-              {isValidating ? (
-                <AddToCartLoadingSkeleton />
+              {sellerActive.AvailableQuantity ? (
+                <>
+                  {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
+                  non-composited animation violation due to the button transitioning its
+                  background color when changing from its initial disabled to active state.
+                  See full explanation on commit https://git.io/JyXV5. */}
+                  <div data-fs-product-details-wrapper>
+                    <QuantitySelector
+                      min={1}
+                      max={10}
+                      onChange={setAddQuantity}
+                    />
+                    {isValidating ? (
+                      <AddToCartLoadingSkeleton />
+                    ) : (
+                      <>
+                        <ButtonBuy disabled={buyDisabled} {...buyProps}>
+                          Adicionar
+                        </ButtonBuy>
+                        <ButtonBuy
+                          disabled={buyDisabled}
+                          icon={false}
+                          goToCheckout
+                          {...buyProps}
+                        >
+                          Comprar agora
+                        </ButtonBuy>
+                      </>
+                    )}
+                  </div>
+                  <ShippingSimulation
+                    data-fs-product-details-shipping
+                    shippingItem={{
+                      id,
+                      quantity: addQuantity,
+                      seller: sellerActive.identifier,
+                    }}
+                  />
+                </>
               ) : (
-                <ButtonBuy disabled={buyDisabled} {...buyProps}>
-                  Add to Cart
-                </ButtonBuy>
-              )}
-              {!availability && (
                 <OutOfStock
                   onSubmit={(email) => {
                     console.info(email)
@@ -220,20 +297,12 @@ function ProductDetails({
                 />
               )}
             </section>
-
-            <ShippingSimulation
-              data-fs-product-details-section
-              data-fs-product-details-shipping
-              shippingItem={{
-                id,
-                quantity: addQuantity,
-                seller: seller.identifier,
-              }}
-            />
           </section>
-
-          <ProductDetailsContent />
         </section>
+        <ProductDetailsContent
+          description={description}
+          specifications={isVariantOf.additionalProperty}
+        />
       </div>
     </Section>
   )
@@ -308,10 +377,25 @@ export const fragment = gql`
     isVariantOf {
       name
       productGroupID
+      additionalProperty {
+        name
+        value
+      }
       skuVariants {
         activeVariations
-        slugsMap(dominantVariantName: "Color")
-        availableVariations(dominantVariantName: "Color")
+        slugsMap(dominantVariantName: "Cor")
+        availableVariations(dominantVariantName: "Cor")
+      }
+      hasVariant {
+        offers {
+          offers {
+            availability
+            quantity
+            seller {
+              identifier
+            }
+          }
+        }
       }
     }
 
@@ -333,6 +417,28 @@ export const fragment = gql`
         seller {
           identifier
         }
+      }
+    }
+
+    sellers {
+      sellerId
+      sellerName
+      addToCartLink
+      sellerDefault
+      AvailableQuantity
+      Installments {
+        Value
+        InterestRate
+        TotalValuePlusInterestRate
+        NumberOfInstallments
+        PaymentSystemName
+        PaymentSystemGroupName
+        Name
+      }
+      Price
+      ListPrice
+      discountHighlights {
+        name
       }
     }
 

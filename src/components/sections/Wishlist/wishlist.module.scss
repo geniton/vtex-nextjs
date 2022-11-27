@@ -1,0 +1,19 @@
+@import "src/styles/scaffold";
+
+.wishlist {
+  padding: 40px 0;
+
+  [data-fs-wishlist-products],
+  [data-fs-product-shelf-items] {
+    display: grid;
+    grid-gap: 17px;
+
+    @include media(">=tablet") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media(">=notebook") {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}

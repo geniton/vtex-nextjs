@@ -9,9 +9,16 @@ import {
 import { useGraphQlJit } from '@envelop/graphql-jit'
 import { useParserCache } from '@envelop/parser-cache'
 import { useValidationCache } from '@envelop/validation-cache'
-import { getContextFactory, getSchema, isFastStoreError } from '@faststore/api'
+import {
+  getTypeDefs,
+  getContextFactory,
+  getSchema,
+  isFastStoreError,
+} from '@faststore/api'
 import { GraphQLError } from 'graphql'
 import type { Maybe, Options as APIOptions, CacheControl } from '@faststore/api'
+import { makeExecutableSchema, mergeSchemas } from '@graphql-tools/schema'
+import { mergeTypeDefs } from '@graphql-tools/merge'
 
 import persisted from '../../@generated/graphql/persisted.json'
 import storeConfig from '../../store.config'
@@ -36,9 +43,67 @@ const apiOptions: APIOptions = {
   },
 }
 
-export const apiSchema = getSchema(apiOptions)
+// Creating type definitions
+const typeDefs = `
+ extend type StoreProduct {
+    sellers: [Seller]
+  }
+
+  type Installment {
+    Value: Int
+    InterestRate: Int
+    TotalValuePlusInterestRate: Int
+    NumberOfInstallments: Int
+    PaymentSystemName: String
+    PaymentSystemGroupName: String
+    Name: String
+  }
+
+  type DiscountHighlight {
+    name: String!
+  }
+
+  type Seller {
+    sellerId: String
+    sellerName: String
+    addToCartLink: String
+    sellerDefault: Boolean!
+    Installments: [Installment!]
+    Price: Float
+    ListPrice: Float
+    discountHighlights: [DiscountHighlight!]
+    AvailableQuantity: Int
+  }
+`
+
+// Creating resolvers
+const resolvers = {
+  StoreProduct: {
+    sellers: (root: any) => {
+      return root.sellers.map(({ commertialOffer, ...otherProps }: any) => ({
+        ...commertialOffer,
+        ...otherProps,
+      }))
+    },
+  },
+}
+
+export const nativeApiSchema = getSchema(apiOptions)
+
+const mergedTypeDefs = mergeTypeDefs([getTypeDefs(), typeDefs])
 
 const apiContextFactory = getContextFactory(apiOptions)
+
+const getMergedSchemas = async () =>
+  mergeSchemas({
+    schemas: [
+      await nativeApiSchema,
+      makeExecutableSchema({
+        resolvers,
+        typeDefs: mergedTypeDefs,
+      }),
+    ],
+  })
 
 const formatError: FormatErrorHandler = (err) => {
   if (err instanceof GraphQLError && isFastStoreError(err.originalError)) {
@@ -53,7 +118,7 @@ const formatError: FormatErrorHandler = (err) => {
 const getEnvelop = async () =>
   envelop({
     plugins: [
-      useAsyncSchema(apiSchema),
+      useAsyncSchema(getMergedSchemas()),
       useExtendContext(apiContextFactory),
       useMaskedErrors({ formatError }),
       useGraphQlJit(),

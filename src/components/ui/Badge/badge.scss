@@ -65,7 +65,7 @@
 
   // Big
   --fs-badge-big-text-size              : var(--fs-text-size-legend);
-  --fs-badge-big-padding                : var(--fs-spacing-1) var(--fs-spacing-2);
+  --fs-badge-big-padding                : 7px var(--fs-spacing-2);
 
   // --------------------------------------------------------
   // Template Styles
@@ -222,9 +222,9 @@
 
 [data-fs-discount-badge-variant="high"] {
   [data-fs-badge-wrapper] {
+    color: white;
     background-color: var(--fs-badge-discount-high-bkg-color);
     border-color: var(--fs-badge-discount-high-border-color);
-    color: white;
     &::after { background-color: var(--fs-badge-discount-high-bkg-color); }
   }
 }

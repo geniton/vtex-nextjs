@@ -65,6 +65,10 @@
 
     @include media(">=notebook") {
       width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
     }
 
     &:hover:not([data-fs-image-gallery-selector-thumbnail="selected"]) {

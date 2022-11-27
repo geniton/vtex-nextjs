@@ -132,6 +132,28 @@ const query = gql`
         }
       }
 
+      sellers {
+        sellerId
+        sellerName
+        addToCartLink
+        sellerDefault
+        AvailableQuantity
+        Installments {
+          Value
+          InterestRate
+          TotalValuePlusInterestRate
+          NumberOfInstallments
+          PaymentSystemName
+          PaymentSystemGroupName
+          Name
+        }
+        Price
+        ListPrice
+        discountHighlights {
+          name
+        }
+      }
+
       isVariantOf {
         productGroupID
       }
@@ -151,9 +173,8 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
     operationName: query,
   })
 
-  const notFound = errors.find(isNotFoundError)
-
   const page = getPageComponents('pdp')
+  const notFound = errors.find(isNotFoundError)
 
   if (notFound) {
     return {

@@ -23,18 +23,18 @@ module.exports = {
   // Default session
   session: {
     currency: {
-      code: 'USD',
-      symbol: '$',
+      code: 'BRL',
+      symbol: 'R$',
     },
-    locale: 'en-US',
+    locale: 'pt-BR',
     channel: '{"salesChannel":"1","regionId":""}',
-    country: 'USA',
+    country: 'BRA',
     postalCode: null,
     person: null,
   },
 
   // Production URLs
-  storeUrl: 'https://retailhub.myvtex.com',
+  storeUrl: ' http://localhost:6006',
   secureSubdomain: 'https://secure.retailhub.myvtex.com',
   checkoutUrl: 'https://secure.retailhub.myvtex.com/checkout',
   loginUrl: 'https://secure.retailhub.myvtex.com/api/io/login',

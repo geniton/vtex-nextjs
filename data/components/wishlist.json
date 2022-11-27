@@ -1,8 +1,4 @@
 {
-  "content": {
-    "title": "Quem comprou, comprou também",
-    "kind": "buy"
-  },
   "controls": {
     "general": {
       "applyMobileCarouselControls": false,
@@ -26,39 +22,19 @@
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showProductUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível"
-      },
-      "carouselControls": {
-        "arrows": true,
-        "dots": false,
-        "infinite": false,
-        "autoplay": false,
-        "autoplaySpeed": 6,
-        "pauseOnHover": true,
-        "slidesToShow": 4,
-        "slidesToScroll": 1
+        "unavailableMessage": "Produto Indisponível",
+        "imageFitIn": false
       },
       "deskVariations": {
-        "hide": false,
         "full": false
       },
       "effects": {
         "hoverZoom": false,
         "exchangeImage": false,
         "hoverOutlineColor": "",
-        "hoverShadow": true,
-        "hoverArrows": false
-      },
-      "mobileCarouselControls": {
-        "arrows": true,
-        "infinite": false,
-        "autoplay": true,
-        "autoplaySpeed": 6,
-        "slidesToShow": 2,
-        "slidesToScroll": 2
+        "hoverShadow": true
       },
       "mobileVariations": {
-        "hide": false,
         "full": false
       }
     },

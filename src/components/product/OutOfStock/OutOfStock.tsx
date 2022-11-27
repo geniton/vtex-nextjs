@@ -49,7 +49,7 @@ export interface OutOfStockProps {
 function OutOfStock(props: OutOfStockProps) {
   const { postalCode } = useSession()
 
-  const defaultButtonText = 'Notify me'
+  const defaultButtonText = 'Avise-me'
   const defaultIconName = 'BellRinging'
 
   const [btnText, setBtnText] = useState(defaultButtonText)
@@ -59,13 +59,10 @@ function OutOfStock(props: OutOfStockProps) {
   const [error, setError] = useState('')
 
   const {
-    title = postalCode ? 'Unavailable in Your Location' : 'Out of Stock',
-    notificationMsg = 'Notify me when available',
+    title = postalCode ? 'Indisponível em seu local' : 'Avise-me',
+    notificationMsg = 'Cadastre seu email e saiba quando o produto estiver disponível',
     buttonText = btnText,
     buttonIcon = <Icon name={buttonIconName} width={16} height={16} />,
-    notificationMsgIcon = (
-      <Icon name={defaultIconName} width={16} height={16} />
-    ),
     onSubmit,
   } = props
 
@@ -104,7 +101,7 @@ function OutOfStock(props: OutOfStockProps) {
     >
       <UIOutOfStockTitle data-fs-out-of-stock-title>{title}</UIOutOfStockTitle>
       <UIOutOfStockMessage data-fs-out-of-stock-message>
-        {notificationMsgIcon} {notificationMsg}
+        {notificationMsg}
       </UIOutOfStockMessage>
       <InputText
         id="out-of-stock-email"

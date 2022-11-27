@@ -3,14 +3,19 @@
 /**
  * @type {import('next').NextConfig}
  * */
- const nextConfig = {
+const nextConfig = {
   /* config options here */
   i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US',
+    locales: ['pt-BR'],
+    defaultLocale: 'pt-BR',
   },
   images: {
-    domains: ['dev.retailhub.digital', 'content.retailhub.digital', 'retailhub.vtexassets.com', 'retailhub.vteximg.com.br'],
+    domains: [
+      'dev.retailhub.digital',
+      'content.retailhub.digital',
+      'retailhub.vtexassets.com',
+      'retailhub.vteximg.com.br',
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   webpack: (config, { isServer, dev }) => {

@@ -6,9 +6,9 @@ import storeConfig from 'store.config'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useApplySearchState as UseApplySearchState } from 'src/sdk/search/state'
 import VARIABLES from 'config/variables.json'
+import { Components as PlatformComponents } from 'src/utils/components/platform'
 
 import UseSearchParams from './use-search-params'
-import renderPlatformComponent from './render-platform-component'
 import Components from './render-components'
 
 type Props = {
@@ -19,7 +19,7 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageName, ...props }) => {
   const pageProps = {
     ...props,
     storeConfig,
-    renderPlatformComponent,
+    PlatformComponents,
     ...VARIABLES,
   }
 

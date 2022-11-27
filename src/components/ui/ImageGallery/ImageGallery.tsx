@@ -12,36 +12,59 @@ export interface ImageElementData {
 
 interface ImageGalleryProps {
   images: ImageElementData[]
+  galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
 }
 
-function ImageGallery({ images }: ImageGalleryProps) {
+function ImageGallery({ images, galleryMode }: ImageGalleryProps) {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
   const currentImage = images[selectedImageIdx]
-  const hasSelector = images.length > 1
 
   return (
     <section
-      data-fs-image-gallery={!hasSelector ? 'without-selector' : ''}
+      data-fs-image-gallery={galleryMode}
       className={styles.fsImageGallery}
     >
-      <ImageZoom>
-        <Image
-          src={currentImage.url}
-          alt={currentImage.alternateName}
-          sizes="(max-width: 804px) 25vw, 30vw"
-          width={804}
-          height={804 * (3 / 4)}
-          loading="eager"
-          fetchPriority="high"
-        />
-      </ImageZoom>
-      {hasSelector && (
-        <ImageGallerySelector
-          images={images}
-          currentImageIdx={selectedImageIdx}
-          onSelect={setSelectedImageIdx}
-        />
+      {galleryMode === 'with-thumbnails' && images.length > 1 && (
+        <>
+          <ImageZoom>
+            <Image
+              src={currentImage.url}
+              alt={currentImage.alternateName}
+              sizes="(max-width: 804px) 25vw, 30vw"
+              width={804}
+              height={804 * (3 / 4)}
+              loading="eager"
+              fetchPriority="high"
+              options={{
+                fitIn: true,
+              }}
+            />
+          </ImageZoom>
+          <ImageGallerySelector
+            images={images}
+            currentImageIdx={selectedImageIdx}
+            onSelect={setSelectedImageIdx}
+          />
+        </>
       )}
+      {galleryMode === 'list' || galleryMode === 'list-with-spaces'
+        ? images.map((image, key) => (
+            <ImageZoom key={key}>
+              <Image
+                src={image.url}
+                alt={image.alternateName}
+                sizes="(max-width: 804px) 25vw, 30vw"
+                width={804}
+                height={804 * (3 / 4)}
+                loading="eager"
+                fetchPriority="high"
+                options={{
+                  fitIn: true,
+                }}
+              />
+            </ImageZoom>
+          ))
+        : null}
     </section>
   )
 }

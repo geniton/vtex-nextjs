@@ -60,6 +60,10 @@ export type DeliveryIds = {
   warehouseId: Maybe<Scalars['String']>
 }
 
+export type DiscountHighlight = {
+  name: Scalars['String']
+}
+
 /** Person data input to the newsletter. */
 export type IPersonNewsletter = {
   /** Person's email. */
@@ -184,6 +188,16 @@ export type IStoreSession = {
   person: InputMaybe<IStorePerson>
   /** Session input postal code. */
   postalCode: InputMaybe<Scalars['String']>
+}
+
+export type Installment = {
+  InterestRate: Maybe<Scalars['Int']>
+  Name: Maybe<Scalars['String']>
+  NumberOfInstallments: Maybe<Scalars['Int']>
+  PaymentSystemGroupName: Maybe<Scalars['String']>
+  PaymentSystemName: Maybe<Scalars['String']>
+  TotalValuePlusInterestRate: Maybe<Scalars['Int']>
+  Value: Maybe<Scalars['Int']>
 }
 
 export type LogisticsInfo = {
@@ -362,6 +376,18 @@ export type QueryShippingArgs = {
   country: Scalars['String']
   items: Array<IShippingItem>
   postalCode: Scalars['String']
+}
+
+export type Seller = {
+  AvailableQuantity: Maybe<Scalars['Int']>
+  Installments: Maybe<Array<Installment>>
+  ListPrice: Maybe<Scalars['Float']>
+  Price: Maybe<Scalars['Float']>
+  addToCartLink: Maybe<Scalars['String']>
+  discountHighlights: Maybe<Array<DiscountHighlight>>
+  sellerDefault: Scalars['Boolean']
+  sellerId: Maybe<Scalars['String']>
+  sellerName: Maybe<Scalars['String']>
 }
 
 /** Shipping Simulation information. */
@@ -724,6 +750,7 @@ export type StoreProduct = {
   releaseDate: Scalars['String']
   /** Array with review information. */
   review: Array<StoreReview>
+  sellers: Maybe<Array<Maybe<Seller>>>
   /** Meta tag data. */
   seo: StoreSeo
   /** Stock Keeping Unit. Merchant-specific ID for the product. */
@@ -875,6 +902,7 @@ export type ProductSummary_ProductFragment = {
   sku: string
   name: string
   gtin: string
+  productID: string
   id: string
   brand: { name: string; brandName: string }
   isVariantOf: { productGroupID: string; name: string }
@@ -924,11 +952,21 @@ export type ProductDetailsFragment_ProductFragment = {
   isVariantOf: {
     name: string
     productGroupID: string
+    additionalProperty: Array<{ name: string; value: any }>
     skuVariants: {
       activeVariations: any | null
       slugsMap: any | null
       availableVariations: any | null
     } | null
+    hasVariant: Array<{
+      offers: {
+        offers: Array<{
+          availability: string
+          quantity: number
+          seller: { identifier: string }
+        }>
+      }
+    }>
   }
   image: Array<{ url: string; alternateName: string }>
   brand: { name: string }
@@ -941,6 +979,25 @@ export type ProductDetailsFragment_ProductFragment = {
       seller: { identifier: string }
     }>
   }
+  sellers: Array<{
+    sellerId: string | null
+    sellerName: string | null
+    addToCartLink: string | null
+    sellerDefault: boolean
+    AvailableQuantity: number | null
+    Price: number | null
+    ListPrice: number | null
+    Installments: Array<{
+      Value: number | null
+      InterestRate: number | null
+      TotalValuePlusInterestRate: number | null
+      NumberOfInstallments: number | null
+      PaymentSystemName: string | null
+      PaymentSystemGroupName: string | null
+      Name: string | null
+    }> | null
+    discountHighlights: Array<{ name: string }> | null
+  } | null> | null
   breadcrumbList: {
     itemListElement: Array<{ item: string; name: string; position: number }>
   }
@@ -1032,14 +1089,43 @@ export type ServerProductPageQueryQuery = {
         seller: { identifier: string }
       }>
     }
+    sellers: Array<{
+      sellerId: string | null
+      sellerName: string | null
+      addToCartLink: string | null
+      sellerDefault: boolean
+      AvailableQuantity: number | null
+      Price: number | null
+      ListPrice: number | null
+      Installments: Array<{
+        Value: number | null
+        InterestRate: number | null
+        TotalValuePlusInterestRate: number | null
+        NumberOfInstallments: number | null
+        PaymentSystemName: string | null
+        PaymentSystemGroupName: string | null
+        Name: string | null
+      }> | null
+      discountHighlights: Array<{ name: string }> | null
+    } | null> | null
     isVariantOf: {
       productGroupID: string
       name: string
+      additionalProperty: Array<{ name: string; value: any }>
       skuVariants: {
         activeVariations: any | null
         slugsMap: any | null
         availableVariations: any | null
       } | null
+      hasVariant: Array<{
+        offers: {
+          offers: Array<{
+            availability: string
+            quantity: number
+            seller: { identifier: string }
+          }>
+        }
+      }>
     }
     additionalProperty: Array<{
       propertyID: string
@@ -1144,11 +1230,21 @@ export type BrowserProductQueryQuery = {
     isVariantOf: {
       name: string
       productGroupID: string
+      additionalProperty: Array<{ name: string; value: any }>
       skuVariants: {
         activeVariations: any | null
         slugsMap: any | null
         availableVariations: any | null
       } | null
+      hasVariant: Array<{
+        offers: {
+          offers: Array<{
+            availability: string
+            quantity: number
+            seller: { identifier: string }
+          }>
+        }
+      }>
     }
     image: Array<{ url: string; alternateName: string }>
     brand: { name: string }
@@ -1161,6 +1257,25 @@ export type BrowserProductQueryQuery = {
         seller: { identifier: string }
       }>
     }
+    sellers: Array<{
+      sellerId: string | null
+      sellerName: string | null
+      addToCartLink: string | null
+      sellerDefault: boolean
+      AvailableQuantity: number | null
+      Price: number | null
+      ListPrice: number | null
+      Installments: Array<{
+        Value: number | null
+        InterestRate: number | null
+        TotalValuePlusInterestRate: number | null
+        NumberOfInstallments: number | null
+        PaymentSystemName: string | null
+        PaymentSystemGroupName: string | null
+        Name: string | null
+      }> | null
+      discountHighlights: Array<{ name: string }> | null
+    } | null> | null
     breadcrumbList: {
       itemListElement: Array<{ item: string; name: string; position: number }>
     }
@@ -1191,6 +1306,7 @@ export type ProductsQueryQuery = {
           sku: string
           name: string
           gtin: string
+          productID: string
           id: string
           brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
@@ -1225,6 +1341,7 @@ export type SearchSuggestionsQueryQuery = {
         sku: string
         name: string
         gtin: string
+        productID: string
         id: string
         brand: { name: string; brandName: string }
         isVariantOf: { productGroupID: string; name: string }

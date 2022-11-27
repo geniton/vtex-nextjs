@@ -38,6 +38,9 @@ export interface ButtonProps
    * Specifies that this button should be disabled
    */
   disabled?: boolean
+  withIcon?: boolean
+  goToCheckout?: boolean
+  onClick?: any
 }
 
 function Button({

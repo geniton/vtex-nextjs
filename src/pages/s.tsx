@@ -3,19 +3,19 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import type { SearchState } from '@faststore/sdk'
+import type { GetStaticProps } from 'next/types'
 
 import Breadcrumb from 'src/components/sections/Breadcrumb'
-import VARIABLES from '../../config/variables.json'
 import SROnly from 'src/components/ui/SROnly'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useApplySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
+import getPageComponents from 'src/utils/components/get-page-components'
+import { Components as PlatformComponents } from 'src/utils/components/platform'
 
 import storeConfig from '../../store.config'
-import { GetStaticProps } from 'next/types'
-import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from '../utils/components/render-components'
-import renderPlatformComponent from 'src/utils/components/render-platform-component'
+import VARIABLES from '../../config/variables.json'
 
 const useSearchParams = () => {
   const [params, setParams] = useState<SearchState | null>(null)
@@ -47,7 +47,7 @@ function Page({ page: { pageData }, ...props }: Props) {
   const pageProps = {
     ...props,
     storeConfig,
-    renderPlatformComponent,
+    PlatformComponents,
     ...VARIABLES,
   }
 
@@ -86,9 +86,8 @@ function Page({ page: { pageData }, ...props }: Props) {
       <div className="container">
         <Breadcrumb name={searchParams?.term || ''} />
       </div>
-      
+
       <RenderComponents pageData={pageData} {...pageProps} />
-      
     </SearchProvider>
   )
 }
@@ -100,7 +99,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { page },
   }
 }
-
 
 Page.displayName = 'Page'
 
