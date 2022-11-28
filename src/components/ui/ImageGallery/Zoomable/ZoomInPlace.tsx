@@ -169,8 +169,11 @@ const ZoomInPlace: FC<Props> = ({ children, zoomContent, type, factor }) => {
       ref={containerRef}
       onMouseOver={type === 'hover' ? handleMouseOver : undefined}
       onClick={type === 'click' ? handleClick : undefined}
-      className="relative overflow-hidden cursor-zoom-in"
+      className="relative overflow-hidden"
       aria-hidden="true"
+      style={{
+        cursor: isZoomedIn ? 'zoom-out' : 'zoom-in',
+      }}
     >
       <div
         ref={contentRef}

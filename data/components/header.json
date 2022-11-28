@@ -788,20 +788,7 @@
       "unLoggedContent": "Bem-vindo! </br>Acesse sua conta"
     },
     "wishlist": {
-      "active": true,
-      "icon": {
-        "url": "https://picsum.photos/1200/630",
-        "width": 1200,
-        "height": 630,
-        "alt": "Lorem ipsum",
-        "sizes": {
-          "full": "https://picsum.photos/1200/630",
-          "crop-600-200": "https://picsum.photos/600/200",
-          "crop-300-300": "https://picsum.photos/300/300",
-          "crop-200-400": "https://picsum.photos/200/400",
-          "crop-1920-1040": "https://picsum.photos/1920/1040"
-        }
-      }
+      "active": true
     },
     "cart": {
       "active": true,
@@ -825,12 +812,12 @@
       "searchText": "Buscar"
     },
     "logo": {
-      "url": "https://picsum.photos/1200/630",
+      "url": "https://content.retailhub.digital/wp-content/uploads/2021/11/LOGO-.png",
       "width": 1200,
       "height": 630,
       "alt": "Lorem ipsum",
       "sizes": {
-        "full": "https://picsum.photos/1200/630",
+        "full": "https://content.retailhub.digital/wp-content/uploads/2021/11/LOGO-.png",
         "crop-600-200": "https://picsum.photos/600/200",
         "crop-300-300": "https://picsum.photos/300/300",
         "crop-200-400": "https://picsum.photos/200/400",
