@@ -40,7 +40,12 @@ export async function getWishlist(userId: string) {
 export async function saveMasterData(data: any) {
   const { acronym, ...payload } = data
 
-  return fetchData(`/api/dataentities/${acronym}/documents`, payload, 'PUT')
+  return fetchData(
+    `api/dataentities/${acronym}/documents`,
+    payload,
+    null,
+    'PUT'
+  )
 }
 
 export default {
