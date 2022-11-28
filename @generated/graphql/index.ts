@@ -338,6 +338,7 @@ export type Query = {
   allProducts: StoreProductConnection
   /** Returns the details of a collection based on the collection slug. */
   collection: StoreCollection
+  getCMSpage: Maybe<Scalars['String']>
   /** Returns the details of a product based on the specified locator. */
   product: StoreProduct
   /** Returns the result of a product, facet, or suggestion search. */
@@ -358,6 +359,10 @@ export type QueryAllProductsArgs = {
 
 export type QueryCollectionArgs = {
   slug: Scalars['String']
+}
+
+export type QueryGetCmSpageArgs = {
+  page: Scalars['String']
 }
 
 export type QueryProductArgs = {
@@ -1135,6 +1140,12 @@ export type ServerProductPageQueryQuery = {
     }>
   }
 }
+
+export type GetCmSpageQueryVariables = Exact<{
+  page: Scalars['String']
+}>
+
+export type GetCmSpageQuery = { getCMSpage: string | null }
 
 export type ValidateCartMutationMutationVariables = Exact<{
   cart: IStoreCart

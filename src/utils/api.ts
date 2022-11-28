@@ -48,8 +48,15 @@ export async function saveMasterData(data: any) {
   )
 }
 
+export async function getCMSpage(page: string) {
+  return fetchData(
+    `https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/page/${page}`
+  )
+}
+
 export default {
   fetchData,
   getWishlist,
   saveMasterData,
+  getCMSpage,
 }

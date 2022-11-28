@@ -5,8 +5,11 @@ import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
 import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from 'src/utils/components/render-components'
+import api from 'src/utils/api'
 
-function Page({ page: { pageData } }: any) {
+function Page({ page: { pageData }, dataCMS }: any) {
+  console.log('dataCMS', dataCMS)
+
   return (
     <>
       <NextSeo
@@ -37,9 +40,10 @@ function Page({ page: { pageData } }: any) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const page = getPageComponents('home')
+  const { data } = await api.getCMSpage('home')
 
   return {
-    props: { page, pageName: 'home' },
+    props: { page, pageName: 'home', dataCMS: data || null },
   }
 }
 
