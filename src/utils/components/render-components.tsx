@@ -17,11 +17,11 @@ const RenderComponents: React.FC<any> = ({ pageData, ...otherProps }) => {
     ...otherProps,
   }
 
-  return pageData.map(({ componentName, componentProps, id }: any) => {
-    const Component: any = Components[componentName as keyof typeof Components]
+  return pageData.map(({ component, componentData, id }: any) => {
+    const Component: any = Components[component as keyof typeof Components]
 
     return Component ? (
-      <Component key={id} {...componentProps} {...props} />
+      <Component key={id} {...componentData} {...props} />
     ) : null
   })
 }

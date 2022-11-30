@@ -7,9 +7,7 @@ import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from 'src/utils/components/render-components'
 import api from 'src/utils/api'
 
-function Page({ page: { pageData }, dataCMS }: any) {
-  console.log('dataCMS', dataCMS)
-
+function Page({ page: { pageData } }: any) {
   return (
     <>
       <NextSeo
@@ -40,10 +38,17 @@ function Page({ page: { pageData }, dataCMS }: any) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = getPageComponents('home')
-  const { data } = await api.getCMSpage('home')
+
+  try {
+    const { data } = await api.getCMSpage('pagina-inicial')
+
+    page.pageData = data['pt-BR']
+  } catch ({ message }: any) {
+    console.log(message)
+  }
 
   return {
-    props: { page, pageName: 'home', dataCMS: data || null },
+    props: { page, pageName: 'home' },
   }
 }
 

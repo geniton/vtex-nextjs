@@ -27,28 +27,28 @@ export default function getPageComponents(pageName?: string) {
     data.pageData = [
       {
         id: 101,
-        componentName: 'Banner',
-        componentProps: { ...MockBannerJSON },
+        component: 'Banner',
+        componentData: { ...MockBannerJSON },
       },
       {
         id: 102,
-        componentName: 'ProductShelf',
-        componentProps: { ...MockFirstProductShelfJSON, ...Variables },
+        component: 'ProductShelf',
+        componentData: { ...MockFirstProductShelfJSON, ...Variables },
       },
       {
         id: 103,
-        componentName: 'Tipbar',
-        componentProps: { ...MockTipbarJSON },
+        component: 'Tipbar',
+        componentData: { ...MockTipbarJSON },
       },
       {
         id: 105,
-        componentName: 'Stores',
-        componentProps: { ...MockStoresJSON, ...Variables },
+        component: 'Stores',
+        componentData: { ...MockStoresJSON, ...Variables },
       },
       {
         id: 107,
-        componentName: 'Newsletter',
-        componentProps: { ...MockNewsletterJSON },
+        component: 'Newsletter',
+        componentData: { ...MockNewsletterJSON },
       },
     ]
   }
@@ -57,18 +57,18 @@ export default function getPageComponents(pageName?: string) {
     data.pageData = [
       {
         id: 108,
-        componentName: 'ProductDetails',
-        componentProps: { ...MockProductDetailsJSON },
+        component: 'ProductDetails',
+        componentData: { ...MockProductDetailsJSON },
       },
       {
         id: 109,
-        componentName: 'CrossSellingShelf',
-        componentProps: { ...MockCrossSellingViewShelfJSON },
+        component: 'CrossSellingShelf',
+        componentData: { ...MockCrossSellingViewShelfJSON },
       },
       {
         id: 110,
-        componentName: 'CrossSellingShelf',
-        componentProps: { ...MockCrossSellingBuyShelfJSON },
+        component: 'CrossSellingShelf',
+        componentData: { ...MockCrossSellingBuyShelfJSON },
       },
     ]
   }
@@ -77,18 +77,18 @@ export default function getPageComponents(pageName?: string) {
     data.pageData = [
       {
         id: 111,
-        componentName: 'Bannergrid',
-        componentProps: { ...MockBannergridJSON },
+        component: 'Bannergrid',
+        componentData: { ...MockBannergridJSON },
       },
       {
         id: 112,
-        componentName: 'ProductGallery',
-        componentProps: { ...MockProductGalleryJSON },
+        component: 'ProductGallery',
+        componentData: { ...MockProductGalleryJSON },
       },
       {
         id: 113,
-        componentName: 'Banner',
-        componentProps: { ...MockBannerJSON },
+        component: 'Banner',
+        componentData: { ...MockBannerJSON },
       },
     ]
   }
@@ -97,8 +97,8 @@ export default function getPageComponents(pageName?: string) {
     data.pageData = [
       {
         id: 114,
-        componentName: 'ProductGallery',
-        componentProps: { ...MockSearchResultProductGalleryJSON },
+        component: 'ProductGallery',
+        componentData: { ...MockSearchResultProductGalleryJSON },
       },
     ]
   }
@@ -107,8 +107,8 @@ export default function getPageComponents(pageName?: string) {
     data.pageData = [
       {
         id: 115,
-        componentName: 'Wishlist',
-        componentProps: { ...MockWishlistJSON },
+        component: 'Wishlist',
+        componentData: { ...MockWishlistJSON },
       },
     ]
   }
