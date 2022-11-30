@@ -1,12 +1,7 @@
 {
   "content": {
     "title": "ÚLTIMOS LANÇAMENTOS",
-    "productIds": [
-      "549",
-      "548",
-      "547",
-      "546"
-    ]
+    "productIds": ["549", "548"]
   },
   "controls": {
     "general": {
