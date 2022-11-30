@@ -5,6 +5,7 @@
  * */
 const nextConfig = {
   /* config options here */
+  reactStrictMode: false,
   i18n: {
     locales: ['pt-BR'],
     defaultLocale: 'pt-BR',

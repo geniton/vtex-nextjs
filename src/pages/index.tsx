@@ -43,8 +43,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await api.getCMSpage('pagina-inicial')
 
     page.pageData = data['pt-BR'].components
+
+    if (data?.message === 'Resource not found') {
+      return {
+        notFound: true,
+      }
+    }
   } catch ({ message }: any) {
     console.log(message)
+
+    return {
+      notFound: true,
+    }
   }
 
   return {
