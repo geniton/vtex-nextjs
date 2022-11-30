@@ -1,5 +1,6 @@
 import type { GetServerSideProps } from 'next'
 import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
+import { useEffect } from 'react'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
@@ -8,6 +9,16 @@ import RenderComponents from 'src/utils/components/render-components'
 import api from 'src/utils/api'
 
 function Page({ page: { pageData } }: any) {
+  useEffect(() => {
+    async function getData() {
+      const data = await api.getCMSpage('pagina-inicial')
+
+      console.log('CMSdata', data)
+    }
+
+    getData()
+  }, [])
+
   return (
     <>
       <NextSeo
