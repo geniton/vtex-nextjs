@@ -1,4 +1,4 @@
-import type { GetStaticProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 
 import { mark } from 'src/sdk/tests/mark'
@@ -38,7 +38,7 @@ function Page({ page: { pageData }, dataCMS }: any) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const page = getPageComponents('home')
   const { data } = await api.getCMSpage('home')
 

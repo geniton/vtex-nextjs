@@ -120,13 +120,15 @@ const Wishlist: React.FC<any> = ({
               ))}
             </div>
           ) : (
-            <div className="wishlist__content">
+            <div data-fs-wishlist-content>
               <h3>Sua wishlist está sem produtos :(</h3>
               <p>
                 para adicionar um navegue em nosso site e clique no coração dos
                 produtos que gostar !
               </p>
-              <ButtonLink href="/">escolher produtos</ButtonLink>
+              <ButtonLink data-fs-wishlist-button href="/">
+                escolher produtos
+              </ButtonLink>
             </div>
           )}
         </ProductShelfSkeleton>

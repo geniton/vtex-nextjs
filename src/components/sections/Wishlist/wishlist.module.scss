@@ -16,4 +16,15 @@
       grid-template-columns: repeat(5, 1fr);
     }
   }
+
+  [data-fs-wishlist-content] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    [data-fs-wishlist-button] {
+      margin-top: 20px;
+    }
+  }
 }
