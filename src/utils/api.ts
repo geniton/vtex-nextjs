@@ -49,9 +49,9 @@ export async function saveMasterData(data: any) {
 }
 
 export async function getCMSpage(page: string) {
-  return fetchData(
+  return fetch(
     `https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/page/${page}`
-  )
+  ).then((res) => res.json())
 }
 
 export default {

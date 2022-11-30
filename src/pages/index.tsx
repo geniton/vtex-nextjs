@@ -9,16 +9,6 @@ import RenderComponents from 'src/utils/components/render-components'
 import api from 'src/utils/api'
 
 function Page({ page: { pageData } }: any) {
-  useEffect(() => {
-    async function getData() {
-      const data = await api.getCMSpage('pagina-inicial')
-
-      console.log('CMSdata', data)
-    }
-
-    getData()
-  }, [])
-
   return (
     <>
       <NextSeo
