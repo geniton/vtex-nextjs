@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const { data } = await api.getCMSpage('pagina-inicial')
 
-    page.pageData = data['pt-BR']
+    page.pageData = data['pt-BR'].components
   } catch ({ message }: any) {
     console.log(message)
   }
