@@ -1,6 +1,5 @@
 import type { GetServerSideProps } from 'next'
 import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
-import { useEffect } from 'react'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
