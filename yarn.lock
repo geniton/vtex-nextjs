@@ -13515,7 +13515,7 @@ postcss-sorting@^7.0.1:
   resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-7.0.1.tgz#923b5268451cf2d93ebf8835e17a6537757049a5"
   integrity sha512-iLBFYz6VRYyLJEJsBJ8M3TCqNcckVzz4wFounSc5Oez35ogE/X+aoC5fFu103Ot7NyvjU3/xqIXn93Gp3kJk4g==
 
-postcss-value-parser@^4.0.0, postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
+postcss-value-parser@4.2.0, postcss-value-parser@^4.0.0, postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
@@ -13537,7 +13537,7 @@ postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.36, postcss@^7.0
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.2.15, postcss@^8.3.11, postcss@^8.4.18, postcss@^8.4.19:
+postcss@^8.2.15, postcss@^8.3.11, postcss@^8.4.14, postcss@^8.4.18, postcss@^8.4.19:
   version "8.4.19"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.19.tgz#61178e2add236b17351897c8bcc0b4c8ecab56fc"
   integrity sha512-h+pbPsyhlYj6N2ozBmHhHrs9DzGmbaarbLvWipMRO7RLS+v4onj26MPFXA5OBYFxyqYhUJK456SwDcY9H2/zsA==
@@ -15636,6 +15636,15 @@ stylelint-config-recess-order@^3.0.0:
   dependencies:
     stylelint-order "5.x"
 
+stylelint-config-recommended-less@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/stylelint-config-recommended-less/-/stylelint-config-recommended-less-1.0.4.tgz#b5f72a51df0817507728429918137a11dcffadea"
+  integrity sha512-8tzP0h2hGjfWhDPSMmgxAeWQUK8/+BWA1Qc4nsvxbJnQkOiexPXpZwdjnYjeoT1uIh77XHfz5gnh0rYbHu/Tgg==
+  dependencies:
+    stylelint "^14.0"
+    stylelint-config-recommended "6.0.0"
+    stylelint-less "^1.0.3"
+
 stylelint-config-recommended-scss@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended-scss/-/stylelint-config-recommended-scss-5.0.2.tgz#193f483861c76a36ece24c52eb6baca4838f4a48"
@@ -15645,7 +15654,7 @@ stylelint-config-recommended-scss@^5.0.2:
     stylelint-config-recommended "^6.0.0"
     stylelint-scss "^4.0.0"
 
-stylelint-config-recommended@^6.0.0:
+stylelint-config-recommended@6.0.0, stylelint-config-recommended@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-6.0.0.tgz#fd2523a322836005ad9bf473d3e5534719c09f9d"
   integrity sha512-ZorSSdyMcxWpROYUvLEMm0vSZud2uB7tX1hzBZwvVY9SV/uly4AvvJPPhCcymZL3fcQhEQG5AELmrxWqtmzacw==
@@ -15664,6 +15673,14 @@ stylelint-config-standard@^24.0.0:
   integrity sha512-+RtU7fbNT+VlNbdXJvnjc3USNPZRiRVp/d2DxOF/vBDDTi0kH5RX2Ny6errdtZJH3boO+bmqIYEllEmok4jiuw==
   dependencies:
     stylelint-config-recommended "^6.0.0"
+
+stylelint-less@^1.0.3, stylelint-less@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/stylelint-less/-/stylelint-less-1.0.6.tgz#8397d9320cb89638233ca7f67268f2948b3f0964"
+  integrity sha512-lL+4HFP8V6WkXuNGXRAirnW83KQYEE6LpBsOCibka0bFHUh2mIcJXwcc4uQu1c9UUopHr8vjIH2YElW61lQBXg==
+  dependencies:
+    postcss "^8.4.14"
+    postcss-value-parser "4.2.0"
 
 stylelint-order@5.x, stylelint-order@^5.0.0:
   version "5.0.0"
@@ -15684,7 +15701,7 @@ stylelint-scss@^4.0.0, stylelint-scss@^4.0.1:
     postcss-selector-parser "^6.0.6"
     postcss-value-parser "^4.1.0"
 
-stylelint@^14.6.0:
+stylelint@^14.0, stylelint@^14.15.0:
   version "14.15.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-14.15.0.tgz#4df55078e734869f81f6b85bbec2d56a4b478ece"
   integrity sha512-JOgDAo5QRsqiOZPZO+B9rKJvBm64S0xasbuRPAbPs6/vQDgDCnZLIiw6XcAS6GQKk9k1sBWR6rmH3Mfj8OknKg==

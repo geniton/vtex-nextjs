@@ -20,7 +20,8 @@
     "partytown": "partytown copylib ./public/~partytown",
     "storybook": "start-storybook --docs -p 6006",
     "build-storybook": "build-storybook",
-    "release": "release-it --ci"
+    "release": "release-it --ci",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --custom-syntax postcss-less"
   },
   "engines": {
     "node": ">=14"
@@ -96,6 +97,7 @@
     "msw": "^0.43.1",
     "msw-storybook-addon": "^1.6.3",
     "postcss": "^8.4.19",
+    "postcss-less": "^6.0.0",
     "prettier": "^2.2.0",
     "release-it": "^15.2.0",
     "sass-loader": "^12.6.0",
@@ -108,7 +110,6 @@
     "stylelint-less": "^1.0.6",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.1",
-    "tailwindcss": "^3.2.4",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.7.3"
   },

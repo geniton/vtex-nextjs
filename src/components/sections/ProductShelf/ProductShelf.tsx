@@ -48,9 +48,9 @@ function ProductShelf({
         let wishlistProducts: number[] = []
 
         if (masterDataWishlist?.length) {
-          wishlistProducts = JSON.parse(masterDataWishlist[0].products).filter(
-            (item: string) => /^[0-9\b]+$/.test(item)
-          )
+          wishlistProducts = JSON.parse(
+            masterDataWishlist[0].products
+          ).filter((item: string) => /^[0-9\b]+$/.test(item))
         }
 
         wishlistProducts = [...localWishlist, ...wishlistProducts]
@@ -78,7 +78,7 @@ function ProductShelf({
     <Section
       className={`layout__section ${withDivisor ? 'section__divisor' : ''}`}
     >
-      <div className="container">
+      <Components.Container>
         <h2 className="text__title-section layout__content">{title}</h2>
         <div className={styles.fsProductShelf} data-fs-product-shelf>
           <ProductShelfSkeleton
@@ -102,7 +102,7 @@ function ProductShelf({
             </Components.Carousel>
           </ProductShelfSkeleton>
         </div>
-      </div>
+      </Components.Container>
     </Section>
   )
 }
