@@ -3,12 +3,7 @@
     "acronym": "NT",
     "btnTitle": "Cadastrar",
     "title": "<p>Faça aqui seu cadastro para receber novidades exclusivas.</p>\n",
-    "terms": "<p>Eu li e concordo com os termos de uso</p>\n",
-    "fields": [
-      "name",
-      "email",
-      "terms"
-    ]
+    "terms": "<p>Eu li e concordo com os termos de uso</p>\n"
   },
   "controls": {
     "general": {
@@ -20,24 +15,26 @@
       }
     },
     "style": {
-      "backgroundColor": "",
+      "bgColor": "",
       "btnBgColor": "",
-      "btnColor": "",
-      "color": "",
-      "customClass": "",
-      "spacings": {
-        "pt": 35,
-        "pb": 45,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": true,
-        "spacingsMobile": {
-          "pt": 40,
-          "pb": 40,
-          "pl": 0,
-          "pr": 0
-        }
+      "btnTextColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 32,
+        "bottom": 44,
+        "left": 0,
+        "right": 0
+      },
+      "paddings": {
+        "top": 32,
+        "bottom": 44,
+        "left": 0,
+        "right": 0
       }
+    },
+    "css": {
+      "customClass": "",
+      "customCSS": ""
     }
   }
 }

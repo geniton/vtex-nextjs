@@ -1,27 +1,27 @@
 {
   "content": {
-    "dateTime": 1668000000000,
-    "title": "Black Friday"
+    "dateTime": 1964000000000,
+    "title": "título"
   },
   "controls": {
     "style": {
-      "backgroundColor": "",
-      "color": "",
-      "customClass": "",
-      "styleCustom": "",
-      "spacings": {
-        "pt": 10,
-        "pb": 10,
-        "pl": 40,
-        "pr": 40,
-        "addSpacingsOnMobile": true,
-        "spacingsMobile": {
-          "pt": 20,
-          "pb": 20,
-          "pl": 0,
-          "pr": 0
-        }
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 10,
+        "right": 0,
+        "bottom": 10,
+        "left": 0
+      },
+      "paddings": {
+        "top": 10,
+        "right": 0,
+        "bottom": 10,
+        "left": 0
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

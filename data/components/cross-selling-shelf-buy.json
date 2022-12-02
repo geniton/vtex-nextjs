@@ -63,7 +63,20 @@
       }
     },
     "style": {
-      "backgroundColor": "",
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
       "cardStyle": {
         "addShadow": false,
         "borderColor": "",
@@ -71,9 +84,9 @@
         "borderRadius": 0,
         "background": "",
         "brandColor": "",
-        "buyButtonBg": "",
-        "buyButtonColor": "",
-        "color": "",
+        "buyBtnBgColor": "",
+        "buyBtnColor": "",
+        "textColor": "",
         "carouselColor": "",
         "installmentsColor": "",
         "installmentsFont": 12,
@@ -85,24 +98,11 @@
         "pricePerFont": 12,
         "sellerNameColor": "",
         "unavailableColor": "",
-        "wishlistColor": "red"
-      },
-      "color": "",
-      "customClass": "",
-      "styleCustom": "",
-      "spacings": {
-        "pt": 4,
-        "pb": 4,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": false,
-        "spacingsMobile": {
-          "pt": 2,
-          "pb": 2,
-          "pl": 0,
-          "pr": 0
-        }
+        "wishlistColor": ""
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

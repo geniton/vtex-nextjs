@@ -7,8 +7,8 @@
     "general": {
       "applyMobileCarouselControls": false,
       "cardControls": {
-        "applyLink": true,
-        "showCarousel": false,
+        "applyLink": false,
+        "showCarousel": true,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,
@@ -27,7 +27,7 @@
         "buttonUnavailableTitle": "Avise-me",
         "showProductUnabailableMessage": true,
         "unavailableMessage": "Produto Indisponível",
-        "imageFitIn": true
+        "imageFitIn": false
       },
       "carouselControls": {
         "arrows": true,
@@ -35,7 +35,7 @@
         "autoplay": false,
         "infinite": true,
         "pauseOnHover": true,
-        "slidesToShow": 4,
+        "slidesToShow": 5,
         "slidesToScroll": 3,
         "autoplaySpeed": 6,
         "speed": 0.5
@@ -66,7 +66,20 @@
       }
     },
     "style": {
-      "backgroundColor": "",
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
       "cardStyle": {
         "addShadow": false,
         "borderColor": "",
@@ -89,23 +102,10 @@
         "sellerNameColor": "",
         "unavailableColor": "",
         "wishlistColor": "red"
-      },
-      "color": "",
-      "customClass": "",
-      "styleCustom": "",
-      "spacings": {
-        "pt": 4,
-        "pb": 4,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": false,
-        "spacingsMobile": {
-          "pt": 2,
-          "pb": 2,
-          "pl": 0,
-          "pr": 0
-        }
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

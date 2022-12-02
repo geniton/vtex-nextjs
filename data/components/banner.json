@@ -4,10 +4,12 @@
       {
         "isVideo": false,
         "mobileImage": {
-          "url": "https://picsum.photos/1200/630",
-          "width": 1200,
-          "height": 630,
+          "url": "https://picsum.photos/640/760",
+          "width": "640",
+          "height": "760",
           "alt": "Lorem ipsum",
+          "filename": "640-760.jpg",
+          "extension": "image/jpeg",
           "sizes": {
             "full": "https://picsum.photos/1200/630",
             "crop-600-200": "https://picsum.photos/600/200",
@@ -16,14 +18,14 @@
             "crop-1920-1040": "https://picsum.photos/1920/1040"
           }
         },
-        "mobileVideo": {
-          "url": ""
-        },
+        "mobileVideo": "",
         "deskImage": {
           "url": "https://picsum.photos/1200/630",
-          "width": 1200,
-          "height": 630,
+          "width": "1200",
+          "height": "630",
           "alt": "Lorem ipsum",
+          "filename": "1200-630.jpg",
+          "extension": "image/jpeg",
           "sizes": {
             "full": "https://picsum.photos/1200/630",
             "crop-600-200": "https://picsum.photos/600/200",
@@ -32,9 +34,7 @@
             "crop-1920-1040": "https://picsum.photos/1920/1040"
           }
         },
-        "deskVideo": {
-          "url": ""
-        },
+        "deskVideo": "",
         "link": {
           "url": "",
           "target": "_self",
@@ -42,15 +42,17 @@
         },
         "id": "",
         "showDesc": false,
-        "desc": ""
+        "desc": "xD"
       },
       {
         "isVideo": false,
         "mobileImage": {
-          "url": "https://picsum.photos/1200/630",
-          "width": 1200,
-          "height": 630,
+          "url": "https://picsum.photos/640/760",
+          "width": "640",
+          "height": "760",
           "alt": "Lorem ipsum",
+          "filename": "640-760.jpg",
+          "extension": "image/jpeg",
           "sizes": {
             "full": "https://picsum.photos/1200/630",
             "crop-600-200": "https://picsum.photos/600/200",
@@ -59,17 +61,15 @@
             "crop-1920-1040": "https://picsum.photos/1920/1040"
           }
         },
-        "mobileVideo": {
-          "url": ""
-        },
-        "deskVideo": {
-          "url": ""
-        },
+        "mobileVideo": "",
+        "deskVideo": "",
         "deskImage": {
           "url": "https://picsum.photos/1200/630",
-          "width": 1200,
-          "height": 630,
+          "width": "1200",
+          "height": "630",
           "alt": "Lorem ipsum",
+          "filename": "1200-630.jpg",
+          "extension": "image/jpeg",
           "sizes": {
             "full": "https://picsum.photos/1200/630",
             "crop-600-200": "https://picsum.photos/600/200",
@@ -85,7 +85,7 @@
         },
         "id": "",
         "showDesc": false,
-        "desc": ""
+        "desc": "xD"
       }
     ]
   },
@@ -98,13 +98,13 @@
       },
       "deskVariations": {
         "hide": false,
-        "full": true
+        "full": false
       },
       "carouselControls": {
         "arrows": true,
         "infinite": true,
         "autoplay": true,
-        "autoplaySpeed": 6,
+        "autoplaySpeed": "6",
         "pauseOnHover": true,
         "dots": true,
         "addBulletInside": false
@@ -113,7 +113,7 @@
         "arrows": true,
         "infinite": false,
         "autoplay": true,
-        "autoplaySpeed": 6,
+        "autoplaySpeed": "6",
         "slidesToShow": 2,
         "slidesToScroll": 2
       },
@@ -123,22 +123,23 @@
       }
     },
     "style": {
-      "customClass": "",
-      "backgroundColor": "",
-      "color": "",
-      "spacings": {
-        "pt": 4,
-        "pb": 4,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": false,
-        "spacingsMobile": {
-          "pt": 2,
-          "pb": 2,
-          "pl": 0,
-          "pr": 0
-        }
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

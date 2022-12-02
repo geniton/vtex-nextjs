@@ -4,8 +4,8 @@
       "main": [
         {
           "link": {
-            "title": "Masculino",
-            "url": "/masculino",
+            "title": "Título",
+            "url": "/",
             "target": "_self"
           },
           "hasChildren": true,
@@ -13,7 +13,44 @@
           "children": [
             {
               "link": {
-                "title": "Link",
+                "title": "Título",
+                "url": " /",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Título",
+                    "url": "/",
+                    "target": ""
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Calçados",
                 "url": " /feminino/calcados",
                 "target": ""
               },
@@ -49,586 +86,66 @@
                 {
                   "link": {
                     "title": "tets",
-                    "url": "/",
+                    "url": "http://teste",
                     "target": ""
                   }
                 },
                 {
                   "link": {
-                    "title": "Link",
-                    "url": "/",
+                    "title": "teste",
+                    "url": "http://teste",
                     "target": ""
                   }
                 },
                 {
                   "link": {
-                    "title": "Link",
-                    "url": "/",
+                    "title": "teste",
+                    "url": "http://teste",
                     "target": ""
                   }
                 }
               ]
+            },
+            {
+              "link": {
+                "title": "Calçados",
+                "url": " /feminino/calcados",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": false
             }
           ]
         },
         {
           "link": {
-            "title": "Feminino",
-            "url": "/feminino",
-            "target": "_self"
-          },
-          "hasChildren": true,
-          "type": "thirdLevelGrid",
-          "children": [
-            {
-              "link": {
-                "title": "Link",
-                "url": "/feminino/calcados",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/feminino/acessorios",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": false
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/feminino/joias-relogios-e-bijuterias",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": false
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/teste",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/teste",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/teste",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                }
-              },
-              "children": false
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/Teste",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/teste",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/teste",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/Teste",
-                    "target": ""
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "link": {
-            "title": "Saúde e Beleza",
-            "url": "/saude-beleza",
+            "title": "Link",
+            "url": "/",
             "target": "_self"
           },
           "hasChildren": true,
           "type": "thirdLevel",
           "children": [
-            {
-              "link": {
-                "title": "Link",
-                "url": "/feminino/calcados",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/feminino/calcados/botas",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/teste",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": ""
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/teste",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/Teste",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": ""
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/teste",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/teste",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/Teste",
-                    "target": ""
-                  }
-                }
-              ]
-            },
             {
               "link": {
                 "title": "Link",
@@ -650,7 +167,11 @@
                     "crop-1920-1040": "https://picsum.photos/1920/1040"
                   }
                 },
-                "link": ""
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
               },
               "children": [
                 {
@@ -666,44 +187,68 @@
         },
         {
           "link": {
-            "title": "Infantil",
-            "url": "/infantil",
+            "title": "Link",
+            "url": "/",
             "target": "_self"
           },
-          "hasChildren": false
+          "hasChildren": true,
+          "type": "thirdLevelGrid",
+          "children": [
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": ""
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "link": {
-            "title": "Lojas",
-            "url": "/lojas",
-            "target": "_self"
-          },
-          "hasChildren": false
-        },
-        {
-          "link": {
-            "title": "Cinema",
-            "url": "/cinema",
-            "target": "_self"
-          },
-          "hasChildren": false
-        },
-        {
-          "link": {
-            "title": "O Shopping",
-            "url": "/o-shopping",
-            "target": "_self"
-          },
-          "hasChildren": false
+            "title": "Título",
+            "url": "/",
+            "target": "_self",
+            "type": "firstLevel"
+          }
         }
       ],
       "vertical": {
-        "title": "Departamentos",
-        "buttonText": "Busque por departamentos",
+        "title": "Título",
+        "buttonText": "Botão Título",
         "menu": [
           {
             "link": {
-              "title": "Casamento",
+              "title": "Link",
               "url": "/",
               "target": ""
             },
@@ -724,40 +269,14 @@
             "children": [
               {
                 "link": {
-                  "title": "Lista de casamento",
+                  "title": "Link",
                   "url": "/",
                   "target": ""
                 },
                 "children": [
                   {
                     "link": {
-                      "title": "Oferta Exclusiva noivos",
-                      "url": "/",
-                      "target": ""
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "link": {
-              "title": "Eletrodomésticos",
-              "url": "/",
-              "target": ""
-            },
-            "hasChildren": true,
-            "children": [
-              {
-                "link": {
-                  "title": "Para sua cozinha",
-                  "url": "/",
-                  "target": ""
-                },
-                "children": [
-                  {
-                    "link": {
-                      "title": "Acessórios para sua cozinha",
+                      "title": "Link",
                       "url": "/",
                       "target": ""
                     }
@@ -770,7 +289,6 @@
       }
     },
     "profile": {
-      "active": true,
       "icon": {
         "url": "https://picsum.photos/1200/630",
         "width": 1200,
@@ -784,14 +302,25 @@
           "crop-1920-1040": "https://picsum.photos/1920/1040"
         }
       },
-      "loggedContent": "Olá, #{username}",
+      "loggedContent": "Olá",
       "unLoggedContent": "Bem-vindo! </br>Acesse sua conta"
     },
     "wishlist": {
-      "active": true
+      "icon": {
+        "url": "https://picsum.photos/1200/630",
+        "width": 1200,
+        "height": 630,
+        "alt": "Lorem ipsum",
+        "sizes": {
+          "full": "https://picsum.photos/1200/630",
+          "crop-600-200": "https://picsum.photos/600/200",
+          "crop-300-300": "https://picsum.photos/300/300",
+          "crop-200-400": "https://picsum.photos/200/400",
+          "crop-1920-1040": "https://picsum.photos/1920/1040"
+        }
+      }
     },
     "cart": {
-      "active": true,
       "icon": {
         "url": "https://picsum.photos/1200/630",
         "width": 1200,
@@ -812,12 +341,12 @@
       "searchText": "Buscar"
     },
     "logo": {
-      "url": "https://content.retailhub.digital/wp-content/uploads/2021/11/LOGO-.png",
+      "url": "https://picsum.photos/1200/630",
       "width": 1200,
       "height": 630,
       "alt": "Lorem ipsum",
       "sizes": {
-        "full": "https://content.retailhub.digital/wp-content/uploads/2021/11/LOGO-.png",
+        "full": "https://picsum.photos/1200/630",
         "crop-600-200": "https://picsum.photos/600/200",
         "crop-300-300": "https://picsum.photos/300/300",
         "crop-200-400": "https://picsum.photos/200/400",
@@ -828,6 +357,102 @@
       "title": "",
       "url": "/",
       "target": "_self"
+    },
+    "headerbar": {
+      "active": true,
+      "type": "text",
+      "items": [
+        {
+          "mobileImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "deskImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "link": {},
+          "content": "💲 Utilize o cupom 5OFF para 5% de desconto na sua primeira compra!"
+        },
+        {
+          "mobileImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "deskImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "link": {},
+          "content": "💳 Parcele em até 10x sem juros!"
+        },
+        {
+          "mobileImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "deskImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "link": {},
+          "content": "🎁 Brinde exclusivo em compras acima de R$ 300,00"
+        }
+      ]
     }
   },
   "controls": {
@@ -847,22 +472,24 @@
         "addStickyHeaderOnDesk": true
       },
       "effects": {
-        "hoverBorderColor": "black",
+        "hoverBorderColor": "",
         "hoverOpacity": false,
         "hoverBold": false
       }
     },
     "style": {
-      "backgroundColor": "",
+      "bgColor": "",
       "menuBurgerColor": "",
       "userColor": "",
       "userTextColor": "",
       "wishlistColor": "",
       "minicartBgColor": "",
-      "minicartQuantityColor": "",
-      "navBgColor": "rgb(28,68,110)",
-      "navItemsColor": "rgb(255,255,255)",
-      "navSubItemsColor": ""
+      "minicartQuantityTextColor": "",
+      "navBgColor": "",
+      "navItemsTextColor": "",
+      "navSubItemsTextColor": "",
+      "headerbarBgColor": "black",
+      "headerbarTextColor": "white"
     }
   }
 }

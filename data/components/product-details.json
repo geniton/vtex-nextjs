@@ -12,23 +12,21 @@
       "galleryMode": "list-with-spaces"
     },
     "style": {
-      "backgroundColor": "",
-      "color": "",
-      "customClass": "",
-      "styleCustom": "",
-      "spacings": {
-        "pt": 4,
-        "pb": 4,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": false,
-        "spacingsMobile": {
-          "pt": 2,
-          "pb": 2,
-          "pl": 0,
-          "pr": 0
-        }
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

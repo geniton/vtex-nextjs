@@ -52,7 +52,6 @@
       "showBreadcrumb": true
     },
     "style": {
-      "backgroundColor": "",
       "cardStyle": {
         "addShadow": false,
         "borderColor": "",
@@ -75,22 +74,6 @@
         "sellerNameColor": "",
         "unavailableColor": "",
         "wishlistColor": "red"
-      },
-      "color": "",
-      "customClass": "",
-      "styleCustom": "",
-      "spacings": {
-        "pt": 4,
-        "pb": 4,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": false,
-        "spacingsMobile": {
-          "pt": 2,
-          "pb": 2,
-          "pl": 0,
-          "pr": 0
-        }
       }
     }
   }

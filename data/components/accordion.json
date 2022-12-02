@@ -13,10 +13,34 @@
   },
   "controls": {
     "general": {
-      "showIcon": true
+      "showIcon": true,
+      "mobileVariations": {
+        "hide": false,
+        "full": true
+      },
+      "deskVariations": {
+        "hide": false,
+        "full": true
+      }
     },
     "style": {
-      "customIconClass": "",
+      "bgColor": "",
+      "textColor": "",
+      "iconColor": "",
+      "margins": {
+        "top": 10,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 10,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    "css": {
       "customClass": ""
     }
   }
