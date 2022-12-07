@@ -90,7 +90,7 @@ function ProductCard({
         pricePerColor,
         pricePerFont,
         installmentsColor,
-        installmentsFont,
+        installmentsFont = 18,
         unavailableTextColor,
         buyBtnTextColor,
         buyBtnBgColor,
@@ -119,6 +119,7 @@ function ProductCard({
   const cardRef = useRef<any>(null)
 
   const sellerActive = getSellerLowPrice(sellers)
+
   const productInstallments: any = getProductInstallments(sellerActive)
   const linkProps = useProductLink({ product, selectedOffer: 0, index })
   const outOfStock = sellerActive?.AvailableQuantity < 1
@@ -329,6 +330,9 @@ function ProductCard({
                     classes="text__legend"
                     SRText="Maximum installment Price:"
                     data-fs-price-from
+                    style={{
+                      fontSize: installmentsFont,
+                    }}
                   />
                 </strong>
               </span>

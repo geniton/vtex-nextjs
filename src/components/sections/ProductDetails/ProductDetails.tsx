@@ -234,6 +234,7 @@ function ProductDetails({
                     variant="listing"
                     classes="text__legend"
                     SRText="Original price:"
+                    data-fs-price-from
                   />
                   <Price
                     value={sellerActive.Price}

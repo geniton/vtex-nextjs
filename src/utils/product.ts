@@ -187,8 +187,6 @@ export function getProductInstallments(sellerActive: any) {
   if (sellerActive.Installments[installmentIndex].NumberOfInstallments > 1) {
     const installments = sellerActive.Installments[installmentIndex]
 
-    console.log('installments', installments)
-
     productInstallments = installments
   }
 

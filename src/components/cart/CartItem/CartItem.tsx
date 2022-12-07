@@ -111,6 +111,7 @@ function CartItem({ item, gift = false }: Props) {
                 variant="listing"
                 classes="text__legend"
                 SRText="Original price:"
+                data-fs-price-from
               />
               <Price
                 value={item.price}

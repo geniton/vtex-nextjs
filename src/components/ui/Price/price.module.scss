@@ -8,7 +8,7 @@
   --fs-price-listing-text-decoration : line-through;
 
   // Spot
-  --fs-price-spot-margin-left        : var(--fs-spacing-1);
+  --fs-price-spot-margin-right        : var(--fs-spacing-1);
   --fs-price-spot-font-weight        : var(--fs-text-weight-bold);
 
   // --------------------------------------------------------
@@ -20,8 +20,11 @@
     text-decoration: var(--fs-price-listing-text-decoration);
   }
 
+  &[data-fs-price-from] {
+    margin-right: var(--fs-price-spot-margin-right);
+  }
+
   &[data-variant="spot"] {
-    margin-left: var(--fs-price-spot-margin-left);
     font-weight: var(--fs-price-spot-font-weight);
   }
 }

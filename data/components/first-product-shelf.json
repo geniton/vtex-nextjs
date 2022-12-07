@@ -8,7 +8,7 @@
       "applyMobileCarouselControls": false,
       "cardControls": {
         "applyLink": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,
@@ -27,7 +27,7 @@
         "buttonUnavailableTitle": "Avise-me",
         "showProductUnabailableMessage": true,
         "unavailableMessage": "Produto Indisponível",
-        "imageFitIn": false
+        "imageFitIn": true
       },
       "carouselControls": {
         "arrows": true,

@@ -74,8 +74,6 @@ export function navigateToSku({
     dominantSku
   )}/p`
 
-  console.log('whereTo', whereTo)
-
   if (whereTo === window.location.pathname) {
     return
   }

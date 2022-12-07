@@ -28,7 +28,9 @@ export const Components = {
   Breadcrumb,
   CartToggle,
   CrossSellingShelf,
-  Image: ({ ...otherProps }: any) => <Image {...otherProps} />,
+  Image: ({ ...otherProps }: any) => (
+    <Image {...otherProps} withoutThumborOptions />
+  ),
   Link,
   ProductGallery,
   ProductDetails,
