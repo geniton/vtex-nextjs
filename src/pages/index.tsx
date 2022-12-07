@@ -5,7 +5,7 @@ import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
 import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from 'src/utils/components/render-components'
-import api from 'src/utils/api'
+// import api from 'src/utils/api'
 
 function Page({ page: { pageData } }: any) {
   return (
