@@ -28,9 +28,11 @@ export const Components = {
   Breadcrumb,
   CartToggle,
   CrossSellingShelf,
-  Image: ({ ...otherProps }: any) => (
-    <Image {...otherProps} withoutThumborOptions />
-  ),
+  Image: ({ preload, fetchPriority, ...otherProps }: any) => {
+    console.log(otherProps)
+
+    return <Image {...otherProps} withoutThumborOptions />
+  },
   Link,
   ProductGallery,
   ProductDetails,
