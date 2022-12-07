@@ -4,7 +4,7 @@
     "general": {
       "applyMobileCarouselControls": true,
       "cardControls": {
-        "applyLink": false,
+        "applyLinkOnImage": false,
         "showCarousel": true,
         "arrows": true,
         "dots": true,
@@ -14,15 +14,13 @@
         "showBrandName": true,
         "showPriceOf": true,
         "showInstallments": true,
-        "showSkuVariations": true,
         "showWishlist": true,
-        "hoverWishlist": true,
         "showRating": true,
         "showDesc": false,
         "showBuyButton": true,
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
-        "showProductUnabailableMessage": true,
+        "showUnabailableMessage": true,
         "unavailableMessage": "Produto Indisponível"
       },
       "carouselControls": {
@@ -39,7 +37,8 @@
         "exchangeImage": true,
         "hoverShadow": true,
         "hoverOutlineColor": true,
-        "hoverZoom": true
+        "hoverZoom": true,
+        "hoverWishlist": true
       },
       "mobileCarouselControls": {
         "arrows": true,

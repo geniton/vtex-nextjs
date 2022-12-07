@@ -45,7 +45,7 @@
   },
   "controls": {
     "general": {
-      "applyMobileCarouselControls": false,
+      "applyMobileCarouselControls": true,
       "cardControls": {
         "applyLinkOnImage": false,
         "showCarousel": true,
@@ -64,61 +64,36 @@
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível",
-        "imageFitIn": false
+        "unavailableMessage": "Produto Indisponível"
       },
       "carouselControls": {
         "arrows": true,
-        "dots": true,
+        "dots": false,
+        "infinite": false,
         "autoplay": false,
-        "infinite": true,
-        "pauseOnHover": true,
-        "slidesToShow": 5,
-        "slidesToScroll": 3,
         "autoplaySpeed": 6,
-        "speed": 0.5
-      },
-      "deskVariations": {
-        "hide": false,
-        "full": false
+        "pauseOnHover": true,
+        "slidesToShow": 4,
+        "slidesToScroll": 1
       },
       "effects": {
-        "hoverZoom": false,
-        "exchangeImage": false,
-        "hoverOutlineColor": "",
+        "exchangeImage": true,
         "hoverShadow": true,
-        "hoverArrows": false,
+        "hoverOutlineColor": true,
+        "hoverZoom": true,
         "hoverWishlist": true
       },
       "mobileCarouselControls": {
         "arrows": true,
-        "pagination": false,
         "infinite": false,
         "autoplay": true,
         "autoplaySpeed": 6,
         "slidesToShow": 2,
         "slidesToScroll": 2
       },
-      "mobileVariations": {
-        "hide": false,
-        "full": false
-      }
+      "showBreadcrumb": true
     },
     "style": {
-      "bgColor": "",
-      "textColor": "",
-      "margins": {
-        "top": 0,
-        "right": 0,
-        "bottom": 0,
-        "left": 0
-      },
-      "paddings": {
-        "top": 0,
-        "right": 0,
-        "bottom": 0,
-        "left": 0
-      },
       "cardStyle": {
         "bgColor": "",
         "textColor": "",
@@ -141,9 +116,6 @@
         "unavailableTextColor": "",
         "wishlistColor": ""
       }
-    },
-    "css": {
-      "customClass": ""
     }
   }
 }

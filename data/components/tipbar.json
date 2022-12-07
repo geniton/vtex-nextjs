@@ -84,7 +84,8 @@
       },
       "deskVariations": {
         "full": false,
-        "hide": false
+        "hide": false,
+        "rounded": false
       },
       "effects": {
         "hoverOpacity": false,
@@ -102,26 +103,29 @@
       },
       "mobileVariations": {
         "full": false,
-        "hide": false
+        "hide": false,
+        "rounded": false
       },
       "showImageInCard": true
     },
     "style": {
-      "backgroundColor": "",
-      "color": "",
-      "spacings": {
-        "pt": 4,
-        "pb": 4,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": false,
-        "spacingsMobile": {
-          "pt": 2,
-          "pb": 2,
-          "pl": 0,
-          "pr": 0
-        }
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

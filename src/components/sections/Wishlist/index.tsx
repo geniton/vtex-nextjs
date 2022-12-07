@@ -24,7 +24,7 @@ const Wishlist: React.FC<any> = ({
 
   const updateWishlist = useCallback(async () => {
     const localWishlist = LocalStorage.getData('wishlist') || []
-  
+
     const variables: any = {
       first: 10,
       sort: 'score_desc',
@@ -94,6 +94,8 @@ const Wishlist: React.FC<any> = ({
   }, [fetchProducts])
 
   const products = data?.search?.products?.edges
+
+  console.log(products)
 
   return (
     <section className={styles.wishlist}>

@@ -75,7 +75,13 @@ function ProductCard({
         showDesc,
         imageFitIn,
       },
-      effects: { exchangeImage, hoverZoom, hoverOutlineColor, hoverWishlist },
+      effects: {
+        exchangeImage,
+        hoverZoom,
+        hoverOutlineColor,
+        hoverWishlist,
+        hoverBuyButton,
+      },
     },
     style: {
       cardStyle: {
@@ -98,6 +104,7 @@ function ProductCard({
         outlineWidth,
         borderRadius,
         addShadow,
+        textAlign,
       },
     },
   },
@@ -207,7 +214,7 @@ function ProductCard({
   }
 
   const productDesc = () => {
-    if (!showDesc && !description) return null
+    if (!showDesc || !description) return null
 
     const formatedDesc = description.replaceAll(/(<([^>]+)>)/gi, '')
 
@@ -226,6 +233,7 @@ function ProductCard({
       data-fs-product-card-actionable={showBuyButton}
       data-fs-product-card-sku={sku}
       data-fs-product-card-hover-wishlist={hoverWishlist}
+      data-fs-product-card-hover-buy-button={hoverBuyButton}
       className={styles.fsProductCard}
       onMouseEnter={() =>
         (cardRef.current.style.outlineColor = hoverOutlineColor || outlineColor)
@@ -243,6 +251,7 @@ function ProductCard({
         outlineWidth: outlineWidth ? `${outlineWidth}px` : '',
         borderRadius: borderRadius ? `${borderRadius}px` : '',
         boxShadow: addShadow ? '0 5px 10px 0 rgba(0,0,0,0.2)' : '',
+        textAlign,
       }}
       ref={cardRef}
       {...otherProps}
@@ -251,8 +260,8 @@ function ProductCard({
         <Like
           skuId={sku}
           onChangeLike={onChangeLike}
-          width="15"
-          height="15"
+          width="17"
+          height="17"
           color={wishlistColor}
         />
       )}
@@ -261,8 +270,12 @@ function ProductCard({
 
       <UIProductCardContent data-fs-product-card-content>
         <div data-fs-product-card-heading>
-          <h3 data-fs-product-card-title style={{ color: productNameColor }}>
-            <Link {...linkProps} title={name}>
+          <h3 data-fs-product-card-title>
+            <Link
+              {...linkProps}
+              title={name}
+              style={{ color: productNameColor }}
+            >
               {name}
             </Link>
           </h3>
@@ -272,7 +285,10 @@ function ProductCard({
             </span>
           )}
           {showSellerName && (
-            <span data-fs-product-card-seller-name>
+            <span
+              data-fs-product-card-seller-name
+              style={{ color: sellerNameTextColor }}
+            >
               Vendido por:{' '}
               <strong style={{ color: sellerNameTextColor }}>
                 {sellerActive?.sellerName}
@@ -303,7 +319,7 @@ function ProductCard({
                 variant="spot"
                 classes="text__body"
                 SRText="Sale Price:"
-                style={{ color: pricePerColor, fontSize: pricePerFont }}
+                style={{ color: pricePerColor, fontSize: `${pricePerFont}px` }}
               />
             </Link>
           </div>
@@ -331,7 +347,7 @@ function ProductCard({
                     SRText="Maximum installment Price:"
                     data-fs-price-from
                     style={{
-                      fontSize: installmentsFont,
+                      fontSize: `${installmentsFont}px`,
                     }}
                   />
                 </strong>

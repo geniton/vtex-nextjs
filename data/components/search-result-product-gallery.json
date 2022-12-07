@@ -3,7 +3,7 @@
     "general": {
       "applyMobileCarouselControls": true,
       "cardControls": {
-        "applyLink": false,
+        "applyLinkOnImage": false,
         "showCarousel": true,
         "arrows": true,
         "dots": true,

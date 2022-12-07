@@ -1,13 +1,13 @@
 {
   "content": {
     "title": "ÚLTIMOS LANÇAMENTOS",
-    "productIds": ["549", "548"]
+    "productIds": ["549", "548", "549", "547", "546"]
   },
   "controls": {
     "general": {
       "applyMobileCarouselControls": false,
       "cardControls": {
-        "applyLink": false,
+        "applyLinkOnImage": true,
         "showCarousel": false,
         "arrows": true,
         "dots": true,
@@ -17,43 +17,41 @@
         "showBrandName": true,
         "showPriceOf": true,
         "showInstallments": true,
-        "showSkuVariations": true,
         "showWishlist": true,
-        "hoverWishlist": true,
         "showRating": true,
         "showDesc": false,
-        "showBuyButton": true,
+        "showBuyButton": false,
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
-        "showProductUnabailableMessage": true,
+        "showUnabailableMessage": true,
         "unavailableMessage": "Produto Indisponível",
         "imageFitIn": true
       },
       "carouselControls": {
         "arrows": true,
-        "dots": true,
+        "dots": false,
+        "infinite": false,
         "autoplay": false,
-        "infinite": true,
-        "pauseOnHover": true,
-        "slidesToShow": 5,
-        "slidesToScroll": 3,
         "autoplaySpeed": 6,
-        "speed": 0.5
+        "pauseOnHover": true,
+        "slidesToShow": 4,
+        "slidesToScroll": 1
       },
       "deskVariations": {
         "hide": false,
         "full": false
       },
       "effects": {
-        "hoverZoom": false,
-        "exchangeImage": false,
+        "hoverZoom": true,
+        "exchangeImage": true,
         "hoverOutlineColor": "",
         "hoverShadow": true,
-        "hoverArrows": false
+        "hoverArrows": false,
+        "hoverWishlist": true,
+        "hoverBuyButton": false
       },
       "mobileCarouselControls": {
         "arrows": true,
-        "pagination": false,
         "infinite": false,
         "autoplay": true,
         "autoplaySpeed": 6,
@@ -84,23 +82,25 @@
         "bgColor": "",
         "textColor": "",
         "addShadow": false,
-        "borderColor": "",
-        "borderWidth": 0,
+        "outlineColor": "",
+        "outlineWidth": 0,
         "borderRadius": 0,
-        "brandTextColor": "",
-        "buyBtnBgColor": "",
+        "brandTextColor": "#424242",
+        "buyBtnBgColor": "#424242",
         "buyBtnTextColor": "",
         "installmentsColor": "",
-        "installmentsFont": 12,
+        "installmentsFont": 16,
         "maxImageHeight": 500,
-        "productNameColor": "",
+        "productNameColor": "#424242",
         "priceFromColor": "",
-        "priceFromFont": 13,
-        "pricePerColor": "",
-        "pricePerFont": 12,
-        "sellerNameTextColor": "",
-        "unavailableTextColor": "",
-        "wishlistColor": ""
+        "priceFromFont": 16,
+        "pricePerColor": "var(--primary)",
+        "pricePerFont": 20,
+        "sellerNameTextColor": "#424242",
+        "unavailableTextColor": "#424242",
+        "wishlistColor": "var(--primary)",
+        "textAlign": "center",
+        "descTextColor": ""
       }
     },
     "css": {

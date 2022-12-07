@@ -19,7 +19,12 @@ interface ImageGalleryProps {
   productUrl: string
 }
 
-function ImageGallery({ images, galleryMode, skuId, productUrl }: ImageGalleryProps) {
+function ImageGallery({
+  images,
+  galleryMode,
+  skuId,
+  productUrl,
+}: ImageGalleryProps) {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
   const currentImage = images[selectedImageIdx]
 
@@ -28,7 +33,7 @@ function ImageGallery({ images, galleryMode, skuId, productUrl }: ImageGalleryPr
       data-fs-image-gallery={galleryMode}
       className={styles.fsImageGallery}
     >
-      <div data-ds-image-gallery-share>
+      <div data-fs-image-gallery-share>
         <Like skuId={skuId} />
         <Share productUrl={productUrl} />
       </div>

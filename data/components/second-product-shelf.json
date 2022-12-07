@@ -1,35 +1,14 @@
 {
   "content": {
     "title": "QUERIDINHOS",
-    "productIds": [
-      "2",
-      "1",
-      "28",
-      "23",
-      "6",
-      "5",
-      "4",
-      "3",
-      "1",
-      "2",
-      "7",
-      "9",
-      "10",
-      "8",
-      "30",
-      "29",
-      "27",
-      "24",
-      "25",
-      "26"
-    ]
+    "productIds": ["549", "548", "549", "547", "546"]
   },
   "controls": {
     "general": {
       "applyMobileCarouselControls": false,
       "cardControls": {
         "applyLinkOnImage": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,
@@ -46,26 +25,25 @@
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
         "unavailableMessage": "Produto Indisponível",
-        "imageFitIn": false
+        "imageFitIn": true
       },
       "carouselControls": {
         "arrows": true,
-        "dots": true,
+        "dots": false,
+        "infinite": false,
         "autoplay": false,
-        "infinite": true,
-        "pauseOnHover": true,
-        "slidesToShow": 5,
-        "slidesToScroll": 3,
         "autoplaySpeed": 6,
-        "speed": 0.5
+        "pauseOnHover": true,
+        "slidesToShow": 4,
+        "slidesToScroll": 1
       },
       "deskVariations": {
         "hide": false,
         "full": false
       },
       "effects": {
-        "hoverZoom": false,
-        "exchangeImage": false,
+        "hoverZoom": true,
+        "exchangeImage": true,
         "hoverOutlineColor": "",
         "hoverShadow": true,
         "hoverArrows": false,
@@ -73,7 +51,6 @@
       },
       "mobileCarouselControls": {
         "arrows": true,
-        "pagination": false,
         "infinite": false,
         "autoplay": true,
         "autoplaySpeed": 6,
@@ -104,20 +81,20 @@
         "bgColor": "",
         "textColor": "",
         "addShadow": false,
-        "borderColor": "",
-        "borderWidth": 0,
+        "outlineColor": "",
+        "outlineWidth": 0,
         "borderRadius": 0,
         "brandTextColor": "",
         "buyBtnBgColor": "",
         "buyBtnTextColor": "",
         "installmentsColor": "",
-        "installmentsFont": 12,
+        "installmentsFont": 16,
         "maxImageHeight": 500,
         "productNameColor": "",
         "priceFromColor": "",
-        "priceFromFont": 13,
+        "priceFromFont": 16,
         "pricePerColor": "",
-        "pricePerFont": 12,
+        "pricePerFont": 18,
         "sellerNameTextColor": "",
         "unavailableTextColor": "",
         "wishlistColor": ""
