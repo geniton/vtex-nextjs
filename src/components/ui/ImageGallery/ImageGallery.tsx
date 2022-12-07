@@ -4,6 +4,8 @@ import { Image } from 'src/components/ui/Image'
 import styles from 'src/components/ui/ImageGallery/image-gallery.module.scss'
 
 import { ImageGallerySelector, ImageZoom } from '.'
+import Like from '../Like'
+import Share from '../Share'
 
 export interface ImageElementData {
   url: string
@@ -13,9 +15,11 @@ export interface ImageElementData {
 interface ImageGalleryProps {
   images: ImageElementData[]
   galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
+  skuId: string
+  productUrl: string
 }
 
-function ImageGallery({ images, galleryMode }: ImageGalleryProps) {
+function ImageGallery({ images, galleryMode, skuId, productUrl }: ImageGalleryProps) {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
   const currentImage = images[selectedImageIdx]
 
@@ -24,6 +28,10 @@ function ImageGallery({ images, galleryMode }: ImageGalleryProps) {
       data-fs-image-gallery={galleryMode}
       className={styles.fsImageGallery}
     >
+      <div data-ds-image-gallery-share>
+        <Like skuId={skuId} />
+        <Share productUrl={productUrl} />
+      </div>
       {galleryMode === 'with-thumbnails' && images.length > 1 && (
         <>
           <ImageZoom>

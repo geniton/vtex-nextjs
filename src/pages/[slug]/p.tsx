@@ -102,6 +102,7 @@ const query = gql`
       name
       description
       releaseDate
+      link
 
       breadcrumbList {
         itemListElement {

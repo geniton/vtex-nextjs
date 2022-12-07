@@ -65,3 +65,9 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+// Product shelf
+
+[data-fs-product-shelf] [class*='slick-slide'] >  div > article {
+  height: 100%;
+}

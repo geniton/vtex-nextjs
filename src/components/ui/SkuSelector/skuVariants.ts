@@ -29,6 +29,8 @@ export function getSkuSlug(
     }
 
     selectedVariations = newSelectedVariations
+  } else {
+    dominantVariation = Object.keys(selectedVariations)[0]
   }
 
   const slugsMapKey = Object.entries(selectedVariations).flat().join('-')
@@ -71,6 +73,8 @@ export function navigateToSku({
     },
     dominantSku
   )}/p`
+
+  console.log('whereTo', whereTo)
 
   if (whereTo === window.location.pathname) {
     return

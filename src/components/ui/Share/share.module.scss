@@ -1,0 +1,25 @@
+.share {
+    position: relative;
+}
+
+.shareIcon {
+    width: 25px;
+    height: 18px;
+    cursor: pointer;
+    fill: var(--primary);
+}
+
+.shareList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .4s ease;
+    position: absolute;
+}
+
+.shareListOpened {
+    max-height: 100px;
+}

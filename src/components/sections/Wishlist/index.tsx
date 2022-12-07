@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Components } from '@retailhub/audacity-ui'
 import cn from 'classnames'
 
@@ -22,9 +22,9 @@ const Wishlist: React.FC<any> = ({
   const [loading, setLoading] = useState(true)
   const [fetchProducts, { data }]: any = useLazyQuery(query, {})
 
-  async function updateWishlist() {
+  const updateWishlist = useCallback(async () => {
     const localWishlist = LocalStorage.getData('wishlist') || []
-
+  
     const variables: any = {
       first: 10,
       sort: 'score_desc',
@@ -33,7 +33,7 @@ const Wishlist: React.FC<any> = ({
     }
 
     await fetchProducts(variables)
-  }
+  }, [fetchProducts])
 
   // function saveLocalStorage(products: number[]) {
   //   StorageUtils.saveData('wishlist', products)
@@ -91,7 +91,7 @@ const Wishlist: React.FC<any> = ({
     }
 
     fetchData()
-  }, [])
+  }, [fetchProducts])
 
   const products = data?.search?.products?.edges
 

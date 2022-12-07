@@ -26,7 +26,8 @@
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showProductUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível"
+        "unavailableMessage": "Produto Indisponível",
+        "imageFitIn": false
       },
       "carouselControls": {
         "arrows": true,

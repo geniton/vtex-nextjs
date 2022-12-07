@@ -52,6 +52,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^8.32.5",
+    "react-share": "^4.4.1",
     "react-slick": "^0.29.0",
     "sass": "^1.44.0",
     "superjson": "^1.10.0",

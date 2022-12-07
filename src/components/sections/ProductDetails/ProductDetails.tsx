@@ -23,6 +23,7 @@ import Selectors from 'src/components/ui/SkuSelector'
 import styles from './product-details.module.scss'
 import Section from '../Section'
 import ProductDetailsContent from '../ProductDetailsContent'
+import storeConfig from 'store.config'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -73,6 +74,7 @@ function ProductDetails({
       image,
       breadcrumbList: breadcrumbs,
       additionalProperty,
+      link,
     },
   } = data
 
@@ -166,6 +168,7 @@ function ProductDetails({
   return (
     <Section
       className={`${styles.fsProductDetails} layout__content layout__section`}
+      sku-id={sku}
     >
       <div className="container">
         <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
@@ -175,6 +178,8 @@ function ProductDetails({
             data-fs-product-details-gallery
             galleryMode={galleryMode}
             images={image}
+            skuId={sku}
+            productUrl={`${storeConfig.storeUrl}${link}`}
           />
 
           <section data-fs-product-details-info>
@@ -373,6 +378,7 @@ export const fragment = gql`
     name
     gtin
     description
+    link
 
     isVariantOf {
       name

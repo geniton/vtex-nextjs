@@ -47,6 +47,7 @@ const apiOptions: APIOptions = {
 const typeDefs = `
  extend type StoreProduct {
     sellers: [Seller]
+    link: String
   }
 
   type Installment {
@@ -85,6 +86,7 @@ const resolvers = {
         ...otherProps,
       }))
     },
+    link: (root: any) => root.isVariantOf.link
   },
 }
 
