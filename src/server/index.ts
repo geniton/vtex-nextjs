@@ -20,6 +20,8 @@ import type { Maybe, Options as APIOptions, CacheControl } from '@faststore/api'
 import { makeExecutableSchema, mergeSchemas } from '@graphql-tools/schema'
 import { mergeTypeDefs } from '@graphql-tools/merge'
 
+import resolvers from './resolvers'
+import typeDefs from './typeDefs'
 import persisted from '../../@generated/graphql/persisted.json'
 import storeConfig from '../../store.config'
 
@@ -40,53 +42,6 @@ const apiOptions: APIOptions = {
   locale: storeConfig.session.locale,
   flags: {
     enableOrderFormSync: true,
-  },
-}
-
-// Creating type definitions
-const typeDefs = `
- extend type StoreProduct {
-    sellers: [Seller]
-    link: String
-  }
-
-  type Installment {
-    Value: Int
-    InterestRate: Int
-    TotalValuePlusInterestRate: Int
-    NumberOfInstallments: Int
-    PaymentSystemName: String
-    PaymentSystemGroupName: String
-    Name: String
-  }
-
-  type DiscountHighlight {
-    name: String!
-  }
-
-  type Seller {
-    sellerId: String
-    sellerName: String
-    addToCartLink: String
-    sellerDefault: Boolean!
-    Installments: [Installment!]
-    Price: Float
-    ListPrice: Float
-    discountHighlights: [DiscountHighlight!]
-    AvailableQuantity: Int
-  }
-`
-
-// Creating resolvers
-const resolvers = {
-  StoreProduct: {
-    sellers: (root: any) => {
-      return root.sellers.map(({ commertialOffer, ...otherProps }: any) => ({
-        ...commertialOffer,
-        ...otherProps,
-      }))
-    },
-    link: (root: any) => root.isVariantOf.link
   },
 }
 

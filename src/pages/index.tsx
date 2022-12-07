@@ -39,23 +39,23 @@ function Page({ page: { pageData } }: any) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = getPageComponents('home')
 
-  try {
-    const data = await api.getCMSpage('pagina-inicial')
+  // try {
+  //   const data = await api.getCMSpage('pagina-inicial')
 
-    page.pageData = data['pt-BR'].components
+  //   page.pageData = data['pt-BR'].components
 
-    if (data?.message === 'Resource not found') {
-      return {
-        notFound: true,
-      }
-    }
-  } catch ({ message }: any) {
-    console.log(message)
+  //   if (data?.message === 'Resource not found') {
+  //     return {
+  //       notFound: true,
+  //     }
+  //   }
+  // } catch ({ message }: any) {
+  //   console.log(message)
 
-    return {
-      notFound: true,
-    }
-  }
+  //   return {
+  //     notFound: true,
+  //   }
+  // }
 
   return {
     props: { page, pageName: 'home' },

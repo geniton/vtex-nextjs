@@ -113,15 +113,15 @@ function ProductCard({
     sku,
     isVariantOf: { name },
     image: images,
-    sellers
-  }:
-  any = product
+    sellers,
+  }: any = product
+
   const cardRef = useRef<any>(null)
 
   const sellerActive = getSellerLowPrice(sellers)
   const productInstallments: any = getProductInstallments(sellerActive)
   const linkProps = useProductLink({ product, selectedOffer: 0, index })
-  const outOfStock = sellerActive.AvailableQuantity < 1
+  const outOfStock = sellerActive?.AvailableQuantity < 1
   const productImages = [...images]
   const carouselImages = addImagesLimit
     ? productImages.splice(0, imagesQuantity)
@@ -227,7 +227,7 @@ function ProductCard({
       data-fs-product-card-hover-wishlist={hoverWishlist}
       className={styles.fsProductCard}
       onMouseEnter={() =>
-        (cardRef.current.style.outlineColor = hoverOutlineColor)
+        (cardRef.current.style.outlineColor = hoverOutlineColor || outlineColor)
       }
       onMouseLeave={() =>
         (cardRef.current.style.outlineColor = outlineColor || 'transparent')
@@ -274,19 +274,19 @@ function ProductCard({
             <span data-fs-product-card-seller-name>
               Vendido por:{' '}
               <strong style={{ color: sellerNameTextColor }}>
-                {sellerActive.sellerName}
+                {sellerActive?.sellerName}
               </strong>
             </span>
           )}
           {productDesc()}
           <div data-fs-product-card-prices>
             <Link {...linkProps} title={name}>
-              {showPriceOf && sellerActive.ListPrice > sellerActive.Price && (
+              {showPriceOf && sellerActive?.ListPrice > sellerActive?.Price && (
                 <Price
-                  value={sellerActive.ListPrice}
+                  value={sellerActive?.ListPrice}
                   formatter={useFormattedPrice}
                   testId="list-price"
-                  data-value={sellerActive.ListPrice}
+                  data-value={sellerActive?.ListPrice}
                   variant="listing"
                   classes="text__legend"
                   SRText="Original price:"
@@ -295,10 +295,10 @@ function ProductCard({
                 />
               )}
               <Price
-                value={sellerActive.Price}
+                value={sellerActive?.Price}
                 formatter={useFormattedPrice}
                 testId="price"
-                data-value={sellerActive.Price}
+                data-value={sellerActive?.Price}
                 variant="spot"
                 classes="text__body"
                 SRText="Sale Price:"
@@ -341,8 +341,8 @@ function ProductCard({
             )
           ) : (
             <DiscountBadge
-              listPrice={sellerActive.ListPrice}
-              spotPrice={sellerActive.Price}
+              listPrice={sellerActive?.ListPrice}
+              spotPrice={sellerActive?.Price}
             />
           )}
         </div>

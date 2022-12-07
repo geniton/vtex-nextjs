@@ -16,6 +16,7 @@ const nextConfig = {
       'content.retailhub.digital',
       'retailhub.vtexassets.com',
       'retailhub.vteximg.com.br',
+      'picsum.photos',
     ],
     formats: ['image/avif', 'image/webp'],
   },

@@ -1,133 +1,130 @@
 {
-    "content": {
-      "title": "QUERIDINHOS",
-      "productIds": [
-        "2",
-        "1",
-        "28",
-        "23",
-        "6",
-        "5",
-        "4",
-        "3",
-        "1",
-        "2",
-        "7",
-        "9",
-        "10",
-        "8",
-        "30",
-        "29",
-        "27",
-        "24",
-        "25",
-        "26"
-      ]
-    },
-    "controls": {
-      "general": {
-        "applyMobileCarouselControls": false,
-        "cardControls": {
-          "applyLink": false,
-          "showCarousel": true,
-          "arrows": true,
-          "dots": true,
-          "addImagesLimit": true,
-          "imagesQuantity": 3,
-          "showSellerName": true,
-          "showBrandName": true,
-          "showPriceOf": true,
-          "showInstallments": true,
-          "showSkuVariations": true,
-          "showWishlist": true,
-          "hoverWishlist": true,
-          "showRating": true,
-          "showDesc": false,
-          "showBuyButton": true,
-          "titleBuyButton": "Ver Produto",
-          "buttonUnavailableTitle": "Avise-me",
-          "showProductUnabailableMessage": true,
-          "unavailableMessage": "Produto Indisponível",
-          "imageFitIn": false
-        },
-        "carouselControls": {
-          "arrows": true,
-          "dots": true,
-          "autoplay": false,
-          "infinite": true,
-          "pauseOnHover": true,
-          "slidesToShow": 5,
-          "slidesToScroll": 3,
-          "autoplaySpeed": 6,
-          "speed": 0.5
-        },
-        "deskVariations": {
-          "hide": false,
-          "full": false
-        },
-        "effects": {
-          "hoverZoom": false,
-          "exchangeImage": false,
-          "hoverOutlineColor": "",
-          "hoverShadow": true,
-          "hoverArrows": false
-        },
-        "mobileCarouselControls": {
-          "arrows": true,
-          "pagination": false,
-          "infinite": false,
-          "autoplay": true,
-          "autoplaySpeed": 6,
-          "slidesToShow": 2,
-          "slidesToScroll": 2
-        },
-        "mobileVariations": {
-          "hide": false,
-          "full": false
-        }
+  "content": {
+    "title": "QUERIDINHOS",
+    "productIds": [
+      "2",
+      "1",
+      "28",
+      "23",
+      "6",
+      "5",
+      "4",
+      "3",
+      "1",
+      "2",
+      "7",
+      "9",
+      "10",
+      "8",
+      "30",
+      "29",
+      "27",
+      "24",
+      "25",
+      "26"
+    ]
+  },
+  "controls": {
+    "general": {
+      "applyMobileCarouselControls": false,
+      "cardControls": {
+        "applyLinkOnImage": false,
+        "showCarousel": true,
+        "arrows": true,
+        "dots": true,
+        "addImagesLimit": true,
+        "imagesQuantity": 3,
+        "showSellerName": true,
+        "showBrandName": true,
+        "showPriceOf": true,
+        "showInstallments": true,
+        "showWishlist": true,
+        "showRating": true,
+        "showDesc": false,
+        "showBuyButton": true,
+        "titleBuyButton": "Ver Produto",
+        "buttonUnavailableTitle": "Avise-me",
+        "showUnabailableMessage": true,
+        "unavailableMessage": "Produto Indisponível",
+        "imageFitIn": false
       },
-      "style": {
-        "backgroundColor": "",
-        "cardStyle": {
-          "addShadow": false,
-          "borderColor": "",
-          "borderWidth": 0,
-          "borderRadius": 0,
-          "background": "",
-          "brandColor": "",
-          "buyButtonBg": "",
-          "buyButtonColor": "",
-          "color": "",
-          "carouselColor": "",
-          "installmentsColor": "",
-          "installmentsFont": 12,
-          "maxImageHeight": 500,
-          "productNameColor": "",
-          "priceFromColor": "",
-          "priceFromFont": 13,
-          "pricePerColor": "",
-          "pricePerFont": 12,
-          "sellerNameColor": "",
-          "unavailableColor": "",
-          "wishlistColor": "red"
-        },
-        "color": "",
-        "customClass": "",
-        "styleCustom": "",
-        "spacings": {
-          "pt": 4,
-          "pb": 4,
-          "pl": 0,
-          "pr": 0,
-          "addSpacingsOnMobile": false,
-          "spacingsMobile": {
-            "pt": 2,
-            "pb": 2,
-            "pl": 0,
-            "pr": 0
-          }
-        }
+      "carouselControls": {
+        "arrows": true,
+        "dots": true,
+        "autoplay": false,
+        "infinite": true,
+        "pauseOnHover": true,
+        "slidesToShow": 5,
+        "slidesToScroll": 3,
+        "autoplaySpeed": 6,
+        "speed": 0.5
+      },
+      "deskVariations": {
+        "hide": false,
+        "full": false
+      },
+      "effects": {
+        "hoverZoom": false,
+        "exchangeImage": false,
+        "hoverOutlineColor": "",
+        "hoverShadow": true,
+        "hoverArrows": false,
+        "hoverWishlist": true
+      },
+      "mobileCarouselControls": {
+        "arrows": true,
+        "pagination": false,
+        "infinite": false,
+        "autoplay": true,
+        "autoplaySpeed": 6,
+        "slidesToShow": 2,
+        "slidesToScroll": 2
+      },
+      "mobileVariations": {
+        "hide": false,
+        "full": false
       }
+    },
+    "style": {
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "cardStyle": {
+        "bgColor": "",
+        "textColor": "",
+        "addShadow": false,
+        "borderColor": "",
+        "borderWidth": 0,
+        "borderRadius": 0,
+        "brandTextColor": "",
+        "buyBtnBgColor": "",
+        "buyBtnTextColor": "",
+        "installmentsColor": "",
+        "installmentsFont": 12,
+        "maxImageHeight": 500,
+        "productNameColor": "",
+        "priceFromColor": "",
+        "priceFromFont": 13,
+        "pricePerColor": "",
+        "pricePerFont": 12,
+        "sellerNameTextColor": "",
+        "unavailableTextColor": "",
+        "wishlistColor": ""
+      }
+    },
+    "css": {
+      "customClass": ""
     }
   }
-  
+}

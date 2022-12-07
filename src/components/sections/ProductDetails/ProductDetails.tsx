@@ -19,11 +19,12 @@ import { useSession } from 'src/sdk/session'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import Selectors from 'src/components/ui/SkuSelector'
+import storeConfig from 'store.config'
+import { getSellerLowPrice } from 'src/utils/product'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
 import ProductDetailsContent from '../ProductDetailsContent'
-import storeConfig from 'store.config'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -68,6 +69,7 @@ function ProductDetails({
       sku,
       gtin,
       name: variantName,
+      variations,
       brand,
       isVariantOf,
       isVariantOf: { name: productName, skuVariants },
@@ -78,9 +80,11 @@ function ProductDetails({
     },
   } = data
 
-  const sellerActive = sellers?.filter((seller: any) =>
-    sellers.length === 1 ? (seller.sellerDefault = true) : seller?.sellerDefault
-  )[0]
+  if (skuVariants && variations) {
+    skuVariants.availableVariations = JSON.parse(variations)
+  }
+
+  const sellerActive = getSellerLowPrice(sellers)
 
   const buyDisabled = !sellerActive.AvailableQuantity
 
@@ -251,7 +255,6 @@ function ProductDetails({
                   slugsMap={skuVariants.slugsMap}
                   availableVariations={skuVariants.availableVariations}
                   activeVariations={skuVariants.activeVariations}
-                  skuDisabled={buyDisabled}
                   data-fs-product-details-selectors
                 />
               )}
@@ -379,6 +382,7 @@ export const fragment = gql`
     gtin
     description
     link
+    variations
 
     isVariantOf {
       name

@@ -50,9 +50,17 @@ function filtersURIComponent(filters: Record<string, FilterValue>) {
   return elements.join(':')
 }
 
-export const urlBuilder = (baseUrl: string, options: ThumborOptions) => {
+export const urlBuilder = (
+  baseUrl: string,
+  options: ThumborOptions,
+  withoutThumborOptions = false
+): any => {
   const preSizeComponents = [THUMBOR_SERVER, 'unsafe']
   const postSizeComponents: string[] = []
+
+  if (withoutThumborOptions) {
+    return () => [baseUrl]
+  }
 
   // Add the trim parameter after unsafe if appliable
   options.trim && preSizeComponents.push('trim')

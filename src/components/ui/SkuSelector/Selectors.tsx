@@ -18,7 +18,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
    * SKU property values for the current SKU.
    */
   activeVariations: Record<string, string>
-  skuDisabled: boolean
 }
 
 /**
@@ -35,7 +34,6 @@ function Selectors({
   slugsMap,
   availableVariations,
   activeVariations,
-  skuDisabled,
   ...otherProps
 }: Props) {
   const router = useRouter()
@@ -76,7 +74,6 @@ function Selectors({
           options={colorOptions}
           activeValue={activeVariations.Cor}
           onChange={(e) => handleOnChange(e, 'Cor')}
-          skuDisabled={skuDisabled}
         />
       )}
       {otherSkuVariants &&
@@ -88,7 +85,6 @@ function Selectors({
             options={otherSkuVariants[skuVariant]}
             activeValue={activeVariations[skuVariant]}
             onChange={(e) => handleOnChange(e, skuVariant)}
-            skuDisabled={skuDisabled}
           />
         ))}
     </section>

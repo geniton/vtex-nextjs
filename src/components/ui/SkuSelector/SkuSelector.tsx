@@ -8,12 +8,8 @@ import { Image } from 'src/components/ui/Image'
 
 import styles from './sku-selector.module.scss'
 
-type Props = {
-  skuDisabled: boolean
-}
-
-function SkuSelector({ ...props }: SkuSelectorProps & Props) {
-  const { options, activeValue, variant, skuDisabled } = props
+function SkuSelector({ ...props }: SkuSelectorProps) {
+  const { options, activeValue, variant } = props
 
   return (
     <UISkuSelector className={styles.fsSkuSelector} {...props}>
@@ -21,12 +17,10 @@ function SkuSelector({ ...props }: SkuSelectorProps & Props) {
         return (
           <UIRadioOption
             data-fs-sku-selector-option
+            data-fs-sku-selector-option-disabled={option.disabled}
             key={String(index)}
             label={option.label}
             value={option.value}
-            disabled={
-              option.disabled || (option.value === activeValue && skuDisabled)
-            }
             checked={option.value === activeValue}
           >
             {variant === 'label' && <span>{option.value}</span>}

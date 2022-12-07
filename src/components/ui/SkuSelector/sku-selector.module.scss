@@ -113,25 +113,19 @@
         padding: 0 3px;
       }
 
-      &:hover:not(:disabled):not(:checked) + span {
-        border-color: var(--fs-sku-selector-option-border-color-hover);
-        box-shadow: var(--fs-sku-selector-option-checked-box-shadow);
-      }
-
       &:checked + span {
         border-color: var(--fs-sku-selector-option-checked-border-color);
         box-shadow: var(--fs-sku-selector-option-checked-box-shadow);
       }
 
-      &:disabled {
-        cursor: not-allowed;
+      &[data-fs-sku-selector-option-disabled="true"] {
 
         + span {
           overflow: hidden;
           color: var(--fs-sku-selector-option-disabled-color);
           border-color: var(--fs-sku-selector-option-disabled-border-color);
           box-shadow: var(--fs-sku-selector-option-disabled-box-shadow);
-
+  
           &::after {
             position: absolute;
             width: var(--fs-sku-selector-option-disabled-width);
@@ -142,7 +136,35 @@
             transform-origin: center;
           }
         }
+
+        &:checked + span {
+          border-color: var(--fs-sku-selector-option-checked-border-color);
+          box-shadow: var(--fs-sku-selector-option-checked-box-shadow);
+
+          &:after {
+            background-color: var(--primary);
+          }
+        }
       }
+
+      // &:disabled {
+      //   + span {
+      //     overflow: hidden;
+      //     color: var(--fs-sku-selector-option-disabled-color);
+      //     border-color: var(--fs-sku-selector-option-disabled-border-color);
+      //     box-shadow: var(--fs-sku-selector-option-disabled-box-shadow);
+
+      //     &::after {
+      //       position: absolute;
+      //       width: var(--fs-sku-selector-option-disabled-width);
+      //       height: 160%;
+      //       content: "";
+      //       background-color: var(--fs-sku-selector-option-disabled-bkg-color);
+      //       transform: rotate(45deg);
+      //       transform-origin: center;
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -160,12 +182,12 @@
     }
 
     [data-fs-sku-selector-option] {
-      &:hover:not(:disabled):not(:checked) + span [data-fs-sku-selector-option-image] {
-        transform: scale(.95);
-      }
-
       &:checked + span [data-fs-sku-selector-option-image] {
         transform: scale(.85);
+      }
+      
+      &:hover:not(:disabled):not(:checked) + span [data-fs-sku-selector-option-image] {
+        transform: scale(.95);
       }
     }
   }

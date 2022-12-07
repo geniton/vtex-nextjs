@@ -79,16 +79,15 @@
         "left": 0
       },
       "cardStyle": {
+        "bgColor": "",
+        "textColor": "",
         "addShadow": false,
         "borderColor": "",
         "borderWidth": 0,
         "borderRadius": 0,
-        "background": "",
-        "brandColor": "",
-        "buyButtonBg": "",
-        "buyButtonColor": "",
-        "color": "",
-        "carouselColor": "",
+        "brandTextColor": "",
+        "buyBtnBgColor": "",
+        "buyBtnTextColor": "",
         "installmentsColor": "",
         "installmentsFont": 12,
         "maxImageHeight": 500,
@@ -97,9 +96,9 @@
         "priceFromFont": 13,
         "pricePerColor": "",
         "pricePerFont": 12,
-        "sellerNameColor": "",
-        "unavailableColor": "",
-        "wishlistColor": "red"
+        "sellerNameTextColor": "",
+        "unavailableTextColor": "",
+        "wishlistColor": ""
       }
     },
     "css": {

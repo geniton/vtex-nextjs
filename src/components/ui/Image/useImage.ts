@@ -9,6 +9,7 @@ export interface ImageOptions extends ImgHTMLAttributes<HTMLImageElement> {
   width: number
   height: number
   options?: ThumborOptions
+  withoutThumborOptions: boolean
 }
 
 const FACTORS = [1, 2, 3]
@@ -19,10 +20,11 @@ export const useImage = ({
   width,
   height,
   options = {},
+  withoutThumborOptions,
   ...rest
 }: ImageOptions): ImgHTMLAttributes<HTMLImageElement> => {
   const { srcSet, src } = useMemo(() => {
-    const builder = urlBuilder(baseUrl, options)
+    const builder = urlBuilder(baseUrl, options, withoutThumborOptions)
 
     const srcs = FACTORS.map((factor) => {
       const rescaledWidth = width * factor
