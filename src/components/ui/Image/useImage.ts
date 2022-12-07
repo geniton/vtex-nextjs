@@ -9,7 +9,7 @@ export interface ImageOptions extends ImgHTMLAttributes<HTMLImageElement> {
   width: number
   height: number
   options?: ThumborOptions
-  withoutThumborOptions: boolean
+  withoutThumborOptions?: boolean
 }
 
 const FACTORS = [1, 2, 3]
