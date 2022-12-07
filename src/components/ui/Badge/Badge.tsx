@@ -22,7 +22,7 @@ type Props = {
   children: ReactNode
   onClose?: () => void
   actionable?: boolean
-  style: any
+  style?: any
 } & ActionableBadge
 
 const Badge = ({
