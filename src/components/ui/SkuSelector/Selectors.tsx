@@ -29,7 +29,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
  * Ex: If `Red` is the current value for the 'Color' variation, we'll only
  * render possible values for 'Size' that are available in `Red`.
  */
-const DOMINANT_SKU_SELECTOR_PROPERTY = 'Cor'
+export const DOMINANT_SKU_SELECTOR_PROPERTY = 'Cor'
 
 function Selectors({
   slugsMap,
