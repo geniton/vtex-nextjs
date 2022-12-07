@@ -35,10 +35,10 @@ module.exports = {
 
   // Production URLs
   storeUrl: 'https://retailhub.myvtex.com',
-  secureSubdomain: 'https://secure.loja.retailhub.digital',
-  checkoutUrl: 'https://secure.loja.retailhub.digital/checkout',
-  loginUrl: 'https://secure.loja.retailhub.digital/api/io/login',
-  accountUrl: 'https://secure.loja.retailhub.digital/api/io/account',
+  secureSubdomain: 'https://secure.retailhub.digital',
+  checkoutUrl: 'https://secure.retailhub.digital/checkout',
+  loginUrl: 'https://secure.retailhub.digital/api/io/login',
+  accountUrl: 'https://secure.retailhub.digital/api/io/account',
 
   // Lighthouse CI
   lighthouse: {
