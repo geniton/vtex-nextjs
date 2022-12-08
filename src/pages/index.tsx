@@ -5,7 +5,7 @@ import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
 import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from 'src/utils/components/render-components'
-// import api from 'src/utils/api'
+import api from 'src/utils/api'
 
 function Page({ page: { pageData } }: any) {
   return (
@@ -39,23 +39,25 @@ function Page({ page: { pageData } }: any) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = getPageComponents('home')
 
-  // try {
-  //   const data = await api.getCMSpage('pagina-inicial')
+  try {
+    const data = await api.getCMSpage('pagina-inicial')
 
-  //   page.pageData = data['pt-BR'].components
+    console.log('data', data)
 
-  //   if (data?.message === 'Resource not found') {
-  //     return {
-  //       notFound: true,
-  //     }
-  //   }
-  // } catch ({ message }: any) {
-  //   console.log(message)
+    page.pageData = data['pt-BR'].components
 
-  //   return {
-  //     notFound: true,
-  //   }
-  // }
+    if (data?.message === 'Resource not found') {
+      return {
+        notFound: true,
+      }
+    }
+  } catch ({ message }: any) {
+    console.log(message)
+
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: { page, pageName: 'home' },
