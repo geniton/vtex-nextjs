@@ -17,11 +17,13 @@ import {
   useProductsQuery,
   useProductsQueryPrefetch,
 } from 'src/sdk/product/useProductsQuery'
+import { useProductLink } from 'src/sdk/product/useProductLink'
 
 export const Hooks = {
   useSession,
   useProductsQuery,
   useProductsQueryPrefetch,
+  useProductLink
 }
 
 export const Components = {

@@ -5,7 +5,8 @@ import { Components } from '@retailhub/audacity-ui'
 
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from 'src/utils/components/theme-configs'
-import { Components as PlatformComponents } from 'src/utils/components/platform'
+import { Components as PlatformComponents, Hooks as PlatformHooks } from 'src/utils/components/platform'
+import Footer from './components/Footer'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
@@ -17,21 +18,23 @@ interface LayoutProps {
   [key: string]: any
 }
 
-function Layout({ children, page }: LayoutProps) {
+function Layout({ children, page, pageName }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
-
+  
   return (
     <ThemeConfigs data={page?.themeConfigs}>
       {page?.header && (
         <Components.Header
           data={page.header}
+          pageName={pageName}
           PlatformComponents={PlatformComponents}
+          PlatformHooks={PlatformHooks}
         />
       )}
 
       <main>{children}</main>
 
-      {page?.footer && <Components.Footer {...page.footer} />}
+      <Footer />
 
       {displayCart && (
         <Suspense fallback={null}>

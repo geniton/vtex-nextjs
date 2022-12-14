@@ -20,8 +20,10 @@
 
   [data-fs-search-product-card-image] {
     display: flex;
-    width: var(--fs-search-product-card-image-size);
-    height: var(--fs-search-product-card-image-size);
+    min-width: var(--fs-search-product-card-image-size);
+    min-height: var(--fs-search-product-card-image-size);
+    max-width: var(--fs-search-product-card-image-size);
+    max-height: var(--fs-search-product-card-image-size);
     margin-right: var(--fs-search-product-card-image-margin-right);
     overflow: hidden;
     border-radius: var(--fs-search-product-card-image-border-radius);

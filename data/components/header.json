@@ -288,76 +288,8 @@
         ]
       }
     },
-    "profile": {
-      "icon": {
-        "url": "https://picsum.photos/1200/630",
-        "width": 1200,
-        "height": 630,
-        "alt": "Lorem ipsum",
-        "sizes": {
-          "full": "https://picsum.photos/600/200",
-          "crop-600-200": "https://picsum.photos/600/200",
-          "crop-300-300": "https://picsum.photos/300/300",
-          "crop-200-400": "https://picsum.photos/200/400",
-          "crop-1920-1040": "https://picsum.photos/1920/1040"
-        }
-      },
-      "loggedContent": "Olá",
-      "unLoggedContent": "Bem-vindo! </br>Acesse sua conta"
-    },
-    "wishlist": {
-      "icon": {
-        "url": "https://picsum.photos/1200/630",
-        "width": 1200,
-        "height": 630,
-        "alt": "Lorem ipsum",
-        "sizes": {
-          "full": "https://picsum.photos/1200/630",
-          "crop-600-200": "https://picsum.photos/600/200",
-          "crop-300-300": "https://picsum.photos/300/300",
-          "crop-200-400": "https://picsum.photos/200/400",
-          "crop-1920-1040": "https://picsum.photos/1920/1040"
-        }
-      }
-    },
-    "cart": {
-      "icon": {
-        "url": "https://picsum.photos/1200/630",
-        "width": 1200,
-        "height": 630,
-        "alt": "Lorem ipsum",
-        "sizes": {
-          "full": "https://picsum.photos/1200/630",
-          "crop-600-200": "https://picsum.photos/600/200",
-          "crop-300-300": "https://picsum.photos/300/300",
-          "crop-200-400": "https://picsum.photos/200/400",
-          "crop-1920-1040": "https://picsum.photos/1920/1040"
-        }
-      }
-    },
-    "searchBar": {
-      "placeholder": "O que você procura?"
-    },
-    "logo": {
-      "url": "https://picsum.photos/1200/630",
-      "width": 1200,
-      "height": 630,
-      "alt": "Lorem ipsum",
-      "sizes": {
-        "full": "https://picsum.photos/1200/630",
-        "crop-600-200": "https://picsum.photos/600/200",
-        "crop-300-300": "https://picsum.photos/300/300",
-        "crop-200-400": "https://picsum.photos/200/400",
-        "crop-1920-1040": "https://picsum.photos/1920/1040"
-      }
-    },
-    "logoLink": {
-      "title": "",
-      "url": "/",
-      "target": "_self"
-    },
     "headerbar": {
-      "active": true,
+      "active": false,
       "type": "text",
       "items": [
         {
@@ -451,14 +383,134 @@
           "content": "🎁 Brinde exclusivo em compras acima de R$ 300,00"
         }
       ]
-    }
+    },
+    "blocks": [
+      {
+        "mobileWidth": "33",
+        "deskWidth": "33",
+        "horizontalAlign": "flex-start",
+        "components": [
+          {
+            "componentName": "burger",
+            "hiddenMobile": false,
+            "hiddenDesk": false
+          },
+          {
+            "componentName": "searchBar",
+            "placeholder": "O que você procura?",
+            "hiddenMobile": true,
+            "hiddenDesk": false,
+            "maxWidth": "300"
+          },
+          {
+            "componentName": "searchIcon",
+            "hiddenMobile": false,
+            "hiddenDesk": true,
+            "icon": {
+              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/search-icon.svg"
+            }
+          }
+        ]
+      },
+      {
+        "mobileWidth": "33",
+        "deskWidth": "33",
+        "horizontalAlign": "center",
+        "components": [
+          {
+            "componentName": "logo",
+            "hiddenMobile": false,
+            "hiddenDesk": false,
+            "logo": {
+              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/vix-logo-1.svg",
+              "width": 1200,
+              "height": 630,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/vix-logo-1.svg",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            },
+            "logoLink": {
+              "title": "",
+              "url": "/",
+              "target": "_self"
+            }
+          }
+        ]
+      },
+      {
+        "mobileWidth": "33",
+        "deskWidth": "33",
+        "horizontalAlign": "flex-end",
+        "components": [
+          {
+            "componentName": "profile",
+            "hiddenMobile": true,
+            "hiddenDesk": false,
+            "icon": {
+              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/profile.svg",
+              "width": 1200,
+              "height": 630,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/profile.svg",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            }
+          },
+          {
+            "componentName": "wishlist",
+            "hiddenMobile": true,
+            "hiddenDesk": false,
+            "icon": {
+              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/wishlist.svg",
+              "width": 1200,
+              "height": 630,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/wishlist.svg",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            }
+          },
+          {
+            "componentName": "cartToggle",
+            "hiddenMobile": false,
+            "hiddenDesk": false,
+            "icon": {
+              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/cart.svg",
+              "width": 1200,
+              "height": 630,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/cart.svg",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   "controls": {
     "general": {
       "showVerticalNav": false,
       "cartAmountCenter": false,
       "variations": {
-        "addStickyHeaderOnMobile": false,
+        "addStickyHeaderOnMobile": true,
         "addStickyHeaderOnDesk": true,
         "addFloatingHeaderOnMobile": false,
         "addFloatingHeaderOnDesk": false
@@ -472,7 +524,7 @@
       "menuBurgerColor": "",
       "userColor": "",
       "userTextColor": "",
-      "wishlistColor": "",
+      "wishlistColor": "red",
       "minicartBgColor": "",
       "minicartQuantityTextColor": "",
       "navBgColor": "",

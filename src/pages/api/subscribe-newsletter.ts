@@ -15,10 +15,10 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
       },
       method: 'POST',
     })
-
+    
     try {
-      const { acronym, ...payload } = JSON.parse(request.body)
-
+      const { acronym, ...payload } = request.body
+      
       if (!acronym) {
         return response.status(400).json({
           message: 'acronym field empty',

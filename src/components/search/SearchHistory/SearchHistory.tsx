@@ -9,7 +9,7 @@ import useSearchInput from 'src/sdk/search/useSearchInput'
 import styles from '../search.module.scss'
 
 const SearchHistory = () => {
-  const { onSearchInputSelection } = useSearchInput()
+  const { onSearchInputSelection, onToggleNav } = useSearchInput()
   const { searchHistory, clearSearchHistory } = useSearchHistory()
 
   if (!searchHistory.length) {
@@ -31,7 +31,10 @@ const SearchHistory = () => {
               data-fs-search-item-link
               variant="display"
               href={item.path}
-              onClick={() => onSearchInputSelection?.(item.term, item.path)}
+              onClick={() => {
+                onSearchInputSelection?.(item.term, item.path)
+                window.innerWidth <= 1280 && onToggleNav()
+              }}
             >
               <Icon
                 name="Clock"

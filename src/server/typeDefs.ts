@@ -3,6 +3,7 @@ const typeDefs = `
     sellers: [Seller]
     link: String
     variations: String
+    data: String
   }
 
   type Installment {

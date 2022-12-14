@@ -79,7 +79,7 @@ function SearchSuggestions({
   products = [],
   ...otherProps
 }: SearchSuggestionsProps) {
-  const { onSearchInputSelection } = useSearchInput()
+  const { onSearchInputSelection, onToggleNav } = useSearchInput()
 
   return (
     <section
@@ -96,6 +96,7 @@ function SearchSuggestions({
                 data-fs-search-item-link
                 href={formatSearchPath(suggestion)}
                 onClick={() => {
+                  window.innerWidth <= 1280 && onToggleNav()
                   onSearchInputSelection?.(
                     suggestion,
                     formatSearchPath(suggestion)

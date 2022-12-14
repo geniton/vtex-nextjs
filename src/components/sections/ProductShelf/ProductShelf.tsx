@@ -20,15 +20,18 @@ function ProductShelf({
   controls,
   selectedFacets,
 }: ProductShelfProps | any) {
+  return null
   const products = useProductsQuery({
     first: 10,
     after: '',
     selectedFacets: selectedFacets ?? [],
     term: productIds ? `product:${productIds.join(';')}` : '',
   })
+
   if (products?.edges?.length === 0) {
     return null
   }
+  
 
   const {
     general: {

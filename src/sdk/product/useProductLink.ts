@@ -9,16 +9,15 @@ import type { AnalyticsItem, SearchSelectItemEvent } from '../analytics/types'
 
 export type ProductLinkOptions = {
   index: number
-  product: ProductSummary_ProductFragment
+  product: ProductSummary_ProductFragment | any
   selectedOffer: number
 }
-
 export const useProductLink = ({
   index,
   product,
   selectedOffer,
 }: ProductLinkOptions) => {
-  const { slug } = product
+  const slug = product.slug || `${product.isVariantOf.linkText}-${product.isVariantOf.bestSku.itemId}`
   const {
     currency: { code },
   } = useSession()
@@ -29,18 +28,18 @@ export const useProductLink = ({
       params: {
         items: [
           {
-            item_id: product.isVariantOf.productGroupID,
+            item_id: product.isVariantOf.productId,
             item_name: product.isVariantOf.name,
-            item_brand: product.brand.name,
-            item_variant: product.sku,
+            item_brand: product.isVariantOf.brand,
+            item_variant: product.isVariantOf.bestSku.itemId,
             index,
-            price: product.offers.offers[selectedOffer].price,
+            price: product.isVariantOf.bestSku.bestSeller.Price,
             discount:
-              product.offers.offers[selectedOffer].listPrice -
-              product.offers.offers[selectedOffer].price,
+            product.isVariantOf.bestSku.bestSeller.ListPrice -
+            product.isVariantOf.bestSku.bestSeller.Price,
             currency: code as CurrencyCode,
-            item_variant_name: product.name,
-            product_reference_id: product.gtin,
+            item_variant_name: product.isVariantOf.bestSku.name,
+            product_reference_id: product.isVariantOf.bestSku.referenceId[0]?.Value,
           },
         ],
       },
@@ -52,8 +51,8 @@ export const useProductLink = ({
         url: window.location.href,
         items: [
           {
-            item_id: product.isVariantOf.productGroupID,
-            item_variant: product.sku,
+            item_id: product.isVariantOf.productId,
+            item_variant: product.isVariantOf.bestSku.itemId,
             index,
           },
         ],

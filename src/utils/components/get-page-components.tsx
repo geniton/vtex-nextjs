@@ -8,8 +8,8 @@ import footer from 'data/components/footer.json'
 import themeConfigs from 'data/components/theme-configs.json'
 import MockProductDetailsJSON from 'data/components/product-details.json'
 import MockProductGalleryJSON from 'data/components/product-gallery.json'
-import MockBannergridJSON from 'data/components/bannergrid.json'
-import MockFirstProductShelfJSON from 'data/components/first-product-shelf.json'
+// import MockBannergridJSON from 'data/components/bannergrid.json'
+import MockFirstProductShelfJSON from 'data/components/showcase.json'
 import MockCrossSellingViewShelfJSON from 'data/components/cross-selling-shelf-view.json'
 import MockCrossSellingBuyShelfJSON from 'data/components/cross-selling-shelf-buy.json'
 import MockSearchResultProductGalleryJSON from 'data/components/search-result-product-gallery.json'
@@ -23,7 +23,7 @@ export default function getPageComponents(pageName?: string) {
     pageData: [],
   }
 
-  if (pageName === 'home') {
+  if (pageName === 'pagina-inicial') {
     data.pageData = [
       {
         id: 101,
@@ -32,7 +32,7 @@ export default function getPageComponents(pageName?: string) {
       },
       {
         id: 102,
-        component: 'ProductShelf',
+        component: 'Showcase',
         componentData: { ...MockFirstProductShelfJSON, ...Variables },
       },
       {
@@ -75,11 +75,6 @@ export default function getPageComponents(pageName?: string) {
 
   if (pageName === 'category') {
     data.pageData = [
-      {
-        id: 111,
-        component: 'Bannergrid',
-        componentData: { ...MockBannergridJSON },
-      },
       {
         id: 112,
         component: 'ProductGallery',

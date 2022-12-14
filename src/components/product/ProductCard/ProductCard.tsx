@@ -3,7 +3,6 @@ import {
   ProductCardActions as UIProductCardActions,
   ProductCardContent as UIProductCardContent,
 } from '@faststore/ui'
-import { gql } from '@faststore/graphql-utils'
 import { memo, useRef } from 'react'
 import type { ReactNode } from 'react'
 import type {
@@ -383,68 +382,5 @@ function ProductCard({
     </UIProductCard>
   )
 }
-
-export const fragment = gql`
-  fragment ProductSummary_product on StoreProduct {
-    id: productID
-    slug
-    sku
-    brand {
-      brandName: name
-    }
-    name
-    gtin
-    productID
-    description
-    sellers {
-      sellerId
-      sellerName
-      addToCartLink
-      sellerDefault
-      AvailableQuantity
-      Installments {
-        Value
-        InterestRate
-        TotalValuePlusInterestRate
-        NumberOfInstallments
-        PaymentSystemName
-        PaymentSystemGroupName
-        Name
-      }
-      Price
-      ListPrice
-      discountHighlights {
-        name
-      }
-    }
-
-    isVariantOf {
-      productGroupID
-      name
-    }
-
-    image {
-      url
-      alternateName
-    }
-
-    brand {
-      name
-    }
-
-    offers {
-      lowPrice
-      offers {
-        availability
-        price
-        listPrice
-        quantity
-        seller {
-          identifier
-        }
-      }
-    }
-  }
-`
 
 export default memo(ProductCard)

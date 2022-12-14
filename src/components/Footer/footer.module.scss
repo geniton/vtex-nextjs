@@ -1,0 +1,197 @@
+@import 'src/styles/scaffold';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  @include media('>=notebook') {
+    gap: 20px;
+    padding-top: 50px;
+  }
+}
+
+.footerWrapper {
+  @include media('>=notebook') {
+    > div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.footerWrapperDivisor {
+  .footerRow {
+    border-top: 1px solid var(--light);
+    margin-top: 20px;
+  }
+}
+
+.mobileFull {
+  @include media('<=notebook') {
+    padding: 0 !important;
+  }
+}
+
+.deskFull {
+  padding: 0 !important;
+}
+
+.footerRowBorder {
+  @include media('<=notebook') {
+    border-bottom: 1px solid var(--dark);
+  }
+}
+
+.footerRow {
+  width: 100%;
+  > p {
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+.footerRow h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  padding: 15px 0;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.footerNav {
+  li {
+    text-align: center;
+
+    svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    img {
+      height: 50px;
+      object-fit: contain;
+    }
+
+    @include media('>=notebook') {
+        a {
+          padding-top: 0;
+        }
+  
+    }
+
+    a {
+      font-size: 12px;
+      display: inline-block;
+      width: auto;
+      color: var(--normal) !important;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.footerNavMenu {
+  ul {
+    h3 {
+      @include media('>=notebook') {
+          padding-top: 0;
+      }
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      @include media('>=notebook') {
+        a {
+          padding-top: 0;
+        }
+      }
+
+      @include media('>=notebook') {
+        gap: 15px;
+      }
+    }
+  }
+}
+
+.footerNavImages {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    @include media('>=notebook') {
+      gap: 15px;
+    }
+  }
+}
+
+.footerNavAccordion {
+  transition: 300ms all ease-in-out;
+
+  @include media('<=notebook') {
+    overflow: hidden;
+    height: 0;
+  }
+
+  ul li {
+    &:last-child {
+      @include media('<=notebook') {
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+.footerAccordionBtn {
+  @include media('<=notebook') {
+    cursor: pointer;
+  }
+}
+
+.footerBtnIcon {
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  z-index: -1;
+
+  &[class*='active'] {
+    &:after {
+      opacity: 0;
+    }
+  }
+
+  @include media('>=notebook') {
+    display: none;
+  }
+
+  &:after,
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    transition: 300ms all ease-in-out;
+  }
+
+  &:after {
+    transform: rotate(90deg);
+  }
+}

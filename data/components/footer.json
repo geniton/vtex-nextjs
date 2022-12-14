@@ -1,666 +1,466 @@
 {
-  "content": {
-    "copyright": "<p>2021 Retail Hub &#8211; Todos os Direitos Reservados</p>",
-    "row": [
-      {
-        "type": "links",
-        "title": "Para você",
-        "links": [
-          {
-            "link": {
-              "title": "Feminino",
-              "url": "/feminino",
-              "target": ""
-            }
-          },
-          {
-            "link": {
-              "title": "Masculino",
-              "url": "/masculino",
-              "target": ""
-            }
-          },
-          {
-            "link": {
-              "title": "Infantil",
-              "url": "/infantil",
-              "target": ""
-            }
-          },
-          {
-            "link": {
-              "title": "Bem-estar",
-              "url": "/bem-estar",
-              "target": ""
-            }
-          }
-        ]
-      },
-      {
-        "type": "links",
-        "title": "Para sua casa",
-        "links": [
-          {
-            "link": {
-              "title": "Casa",
-              "url": "/casa",
-              "target": ""
-            }
-          },
-          {
-            "link": {
-              "title": "Eletrônicos",
-              "url": "/eletronicos",
-              "target": ""
-            }
-          },
-          {
-            "link": {
-              "title": "Empório",
-              "url": "/emporio",
-              "target": ""
-            }
-          },
-          {
-            "link": {
-              "title": "Outros",
-              "url": "/outro",
-              "target": ""
-            }
-          }
-        ]
-      },
-      {
-        "type": "links",
-        "title": "Fale Conosco",
-        "links": [
-          {
-            "link": {
-              "title": "Nosso Whatsapp",
-              "url": "https://api.whatsapp.com/send?phone=55111111111111",
-              "target": ""
-            }
-          },
-          {
-            "link": {
-              "title": "Formulário de Contato",
-              "url": "/institucional/fale-conosco",
-              "target": ""
-            }
-          }
-        ]
-      }
-    ],
-    "secondRow": [
-      {
-        "title": "Segurança",
-        "type": "images",
-        "images": [
-          {
-            "image": {
-              "ID": 7297,
-              "id": 7297,
-              "title": "let-s-encrypt-logo-DF90D21CBA-seeklogo.com_",
-              "filename": "let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-              "filesize": 4350,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-              "link": "https://dev.retailhub.digital/let-s-encrypt-logo-df90d21cba-seeklogo-com_/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "let-s-encrypt-logo-df90d21cba-seeklogo-com_",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-10-08 18:50:44",
-              "modified": "2021-10-08 18:50:44",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 300,
-              "height": 233,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-                "thumbnail-width": 150,
-                "thumbnail-height": 117,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-                "medium-width": 300,
-                "medium-height": 233,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-                "medium_large-width": 300,
-                "medium_large-height": 233,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-                "large-width": 300,
-                "large-height": 233,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-                "1536x1536-width": 300,
-                "1536x1536-height": 233,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
-                "2048x2048-width": 300,
-                "2048x2048-height": 233
-              }
-            }
-          },
-          {
-            "image": {
-              "ID": 7296,
-              "id": 7296,
-              "title": "pci-menor-1",
-              "filename": "pci-menor-1.png",
-              "filesize": 8219,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/10/pci-menor-1.png",
-              "link": "https://dev.retailhub.digital/pci-menor-1/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "pci-menor-1",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-10-08 18:49:45",
-              "modified": "2021-10-08 18:49:45",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 200,
-              "height": 187,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/10/pci-menor-1.png",
-                "thumbnail-width": 150,
-                "thumbnail-height": 140,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/10/pci-menor-1.png",
-                "medium-width": 200,
-                "medium-height": 187,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/10/pci-menor-1.png",
-                "medium_large-width": 200,
-                "medium_large-height": 187,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/10/pci-menor-1.png",
-                "large-width": 200,
-                "large-height": 187,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/10/pci-menor-1.png",
-                "1536x1536-width": 200,
-                "1536x1536-height": 187,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/10/pci-menor-1.png",
-                "2048x2048-width": 200,
-                "2048x2048-height": 187
-              }
-            }
-          }
-        ]
-      },
-      {
-        "title": "Tecnologia",
-        "type": "images",
-        "images": [
-          {
-            "image": {
-              "ID": 7298,
-              "id": 7298,
-              "title": "LOGO_Fundo_Transparente (1)",
-              "filename": "LOGO_Fundo_Transparente-1.png",
-              "filesize": 6680,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
-              "link": "https://dev.retailhub.digital/logo_fundo_transparente-1/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "logo_fundo_transparente-1",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-10-08 18:52:22",
-              "modified": "2021-10-08 18:52:22",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 1492,
-              "height": 275,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
-                "thumbnail-width": 150,
-                "thumbnail-height": 28,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
-                "medium-width": 300,
-                "medium-height": 55,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
-                "medium_large-width": 768,
-                "medium_large-height": 142,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
-                "large-width": 1024,
-                "large-height": 189,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
-                "1536x1536-width": 1492,
-                "1536x1536-height": 275,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
-                "2048x2048-width": 1492,
-                "2048x2048-height": 275
+  "data": [
+    {
+      "mobileFull": true,
+      "deskFull": false,
+      "data": [
+        {
+          "title": "SOBRE A VIX",
+          "type": "menu",
+          "addAccordionMobile": true,
+          "items": [
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "SOBRE A MARCA"
               }
             },
-            "link": {
-              "title": "",
-              "url": "https://www.retailhub.com.br",
-              "target": "_blank"
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "PAULA HERMANNY"
+              }
+            },
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "CAMPANHAS"
+              }
+            },
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "CASA VIX"
+              }
+            },
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "VIX BLUC"
+              }
             }
-          },
-          {
-            "image": {
-              "ID": 7299,
-              "id": 7299,
-              "title": "rhub-vtex-02 (1)",
-              "filename": "rhub-vtex-02-1.png",
-              "filesize": 709,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/10/rhub-vtex-02-1.png",
-              "link": "https://dev.retailhub.digital/rhub-vtex-02-1/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-vtex-02-1",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-10-08 18:52:26",
-              "modified": "2021-10-08 18:52:26",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 94,
-              "height": 35,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/10/rhub-vtex-02-1.png",
-                "thumbnail-width": 94,
-                "thumbnail-height": 35,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/10/rhub-vtex-02-1.png",
-                "medium-width": 94,
-                "medium-height": 35,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/10/rhub-vtex-02-1.png",
-                "medium_large-width": 94,
-                "medium_large-height": 35,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/10/rhub-vtex-02-1.png",
-                "large-width": 94,
-                "large-height": 35,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/10/rhub-vtex-02-1.png",
-                "1536x1536-width": 94,
-                "1536x1536-height": 35,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/10/rhub-vtex-02-1.png",
-                "2048x2048-width": 94,
-                "2048x2048-height": 35
+          ]
+        },
+        {
+          "title": "ATENDIMENTO E-STORE",
+          "type": "menu",
+          "addAccordionMobile": true,
+          "items": [
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "POLITICA DE TROCA E DEVOLUÇÕES"
               }
             },
-            "link": {
-              "title": "",
-              "url": "https://www.vtex.com",
-              "target": "_blank"
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "POLÍTICA DE PRIVACIDADE"
+              }
+            },
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "DÚVIDAS FREQUENTES"
+              }
+            },
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "RETIRE EM LOJA"
+              }
+            },
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "TABELA DE MEDIDAS"
+              }
+            },
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "TERMOS DE USO"
+              }
             }
-          }
-        ]
-      },
-      {
-        "title": "Formas de pagamento",
-        "type": "images",
-        "images": [
-          {
-            "image": {
-              "ID": 2519,
-              "id": 2519,
-              "title": "rhub-visa",
-              "filename": "rhub-visa.png",
-              "filesize": 960,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-visa.png",
-              "link": "https://dev.retailhub.digital/rhub-visa/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-visa",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-09-20 13:09:49",
-              "modified": "2021-09-20 13:09:49",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 57,
-              "height": 19,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-visa.png",
-                "thumbnail-width": 57,
-                "thumbnail-height": 19,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-visa.png",
-                "medium-width": 57,
-                "medium-height": 19,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-visa.png",
-                "medium_large-width": 57,
-                "medium_large-height": 19,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-visa.png",
-                "large-width": 57,
-                "large-height": 19,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-visa.png",
-                "1536x1536-width": 57,
-                "1536x1536-height": 19,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-visa.png",
-                "2048x2048-width": 57,
-                "2048x2048-height": 19
+          ]
+        },
+        {
+          "title": "CONTATO",
+          "type": "menu",
+          "addAccordionMobile": true,
+          "items": [
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "E-STORE"
               }
             },
-            "link": ""
-          },
-          {
-            "image": {
-              "ID": 2516,
-              "id": 2516,
-              "title": "rhub-mastercard",
-              "filename": "rhub-mastercard.png",
-              "filesize": 687,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-mastercard.png",
-              "link": "https://dev.retailhub.digital/rhub-mastercard/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-mastercard",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-09-20 13:09:45",
-              "modified": "2021-09-20 13:09:45",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 46,
-              "height": 36,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-mastercard.png",
-                "thumbnail-width": 46,
-                "thumbnail-height": 36,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-mastercard.png",
-                "medium-width": 46,
-                "medium-height": 36,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-mastercard.png",
-                "medium_large-width": 46,
-                "medium_large-height": 36,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-mastercard.png",
-                "large-width": 46,
-                "large-height": 36,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-mastercard.png",
-                "1536x1536-width": 46,
-                "1536x1536-height": 36,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-mastercard.png",
-                "2048x2048-width": 46,
-                "2048x2048-height": 36
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "ATACADO"
               }
             },
-            "link": ""
-          },
-          {
-            "image": {
-              "ID": 2514,
-              "id": 2514,
-              "title": "rhub-express",
-              "filename": "rhub-express.png",
-              "filesize": 875,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-express.png",
-              "link": "https://dev.retailhub.digital/rhub-express/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-express",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-09-20 13:09:43",
-              "modified": "2021-09-20 13:09:43",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 110,
-              "height": 61,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-express.png",
-                "thumbnail-width": 110,
-                "thumbnail-height": 61,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-express.png",
-                "medium-width": 110,
-                "medium-height": 61,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-express.png",
-                "medium_large-width": 110,
-                "medium_large-height": 61,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-express.png",
-                "large-width": 110,
-                "large-height": 61,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-express.png",
-                "1536x1536-width": 110,
-                "1536x1536-height": 61,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-express.png",
-                "2048x2048-width": 110,
-                "2048x2048-height": 61
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "TRABALHE CONOSCO"
+              }
+            }
+          ]
+        },
+        {
+          "title": "ONDE COMPRAR",
+          "type": "menu",
+          "addAccordionMobile": true,
+          "items": [
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "LOJAS VIX"
               }
             },
-            "link": ""
-          },
-          {
-            "image": {
-              "ID": 2517,
-              "id": 2517,
-              "title": "rhub-picpay",
-              "filename": "rhub-picpay.png",
-              "filesize": 648,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-picpay.png",
-              "link": "https://dev.retailhub.digital/rhub-picpay/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-picpay",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-09-20 13:09:47",
-              "modified": "2021-09-20 13:09:47",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 71,
-              "height": 23,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-picpay.png",
-                "thumbnail-width": 71,
-                "thumbnail-height": 23,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-picpay.png",
-                "medium-width": 71,
-                "medium-height": 23,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-picpay.png",
-                "medium_large-width": 71,
-                "medium_large-height": 23,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-picpay.png",
-                "large-width": 71,
-                "large-height": 23,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-picpay.png",
-                "1536x1536-width": 71,
-                "1536x1536-height": 23,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-picpay.png",
-                "2048x2048-width": 71,
-                "2048x2048-height": 23
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "LOJAS MULTIMARCAS"
               }
             },
-            "link": ""
-          },
-          {
-            "image": {
-              "ID": 2512,
-              "id": 2512,
-              "title": "rhub-boleto",
-              "filename": "rhub-boleto.png",
-              "filesize": 447,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-boleto.png",
-              "link": "https://dev.retailhub.digital/rhub-boleto/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-boleto",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-09-20 13:09:41",
-              "modified": "2021-09-20 13:09:41",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 48,
-              "height": 48,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-boleto.png",
-                "thumbnail-width": 48,
-                "thumbnail-height": 48,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-boleto.png",
-                "medium-width": 48,
-                "medium-height": 48,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-boleto.png",
-                "medium_large-width": 48,
-                "medium_large-height": 48,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-boleto.png",
-                "large-width": 48,
-                "large-height": 48,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-boleto.png",
-                "1536x1536-width": 48,
-                "1536x1536-height": 48,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-boleto.png",
-                "2048x2048-width": 48,
-                "2048x2048-height": 48
+            {
+              "link": {
+                "url": "#",
+                "target": "_self",
+                "title": "INTERNACIONAL"
+              }
+            }
+          ]
+        },
+        {
+          "title": "SAC",
+          "type": "menu",
+          "items": [
+            {
+              "link": {
+                "url": "tel:+5524992187896",
+                "target": "_self",
+                "title": "(24) 99218-7896"
               }
             },
-            "link": ""
-          },
-          {
-            "image": {
-              "ID": 2513,
-              "id": 2513,
-              "title": "rhub-elo",
-              "filename": "rhub-elo.png",
-              "filesize": 772,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-elo.png",
-              "link": "https://dev.retailhub.digital/rhub-elo/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-elo",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-09-20 13:09:42",
-              "modified": "2021-09-20 13:09:42",
-              "menu_order": 0,
-              "mime_type": "image/png",
+            {
+              "title": "REDES SOCIAIS",
               "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 35,
-              "height": 36,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-elo.png",
-                "thumbnail-width": 35,
-                "thumbnail-height": 36,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-elo.png",
-                "medium-width": 35,
-                "medium-height": 36,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-elo.png",
-                "medium_large-width": 35,
-                "medium_large-height": 36,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-elo.png",
-                "large-width": 35,
-                "large-height": 36,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-elo.png",
-                "1536x1536-width": 35,
-                "1536x1536-height": 36,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-elo.png",
-                "2048x2048-width": 35,
-                "2048x2048-height": 36
-              }
-            },
-            "link": ""
-          },
-          {
-            "image": {
-              "ID": 2515,
-              "id": 2515,
-              "title": "rhub-hipercard",
-              "filename": "rhub-hipercard.png",
-              "filesize": 608,
-              "url": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-hipercard.png",
-              "link": "https://dev.retailhub.digital/rhub-hipercard/",
-              "alt": "",
-              "author": "2",
-              "description": "",
-              "caption": "",
-              "name": "rhub-hipercard",
-              "status": "inherit",
-              "uploaded_to": 0,
-              "date": "2021-09-20 13:09:44",
-              "modified": "2021-09-20 13:09:44",
-              "menu_order": 0,
-              "mime_type": "image/png",
-              "type": "image",
-              "subtype": "png",
-              "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
-              "width": 68,
-              "height": 30,
-              "sizes": {
-                "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-hipercard.png",
-                "thumbnail-width": 68,
-                "thumbnail-height": 30,
-                "medium": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-hipercard.png",
-                "medium-width": 68,
-                "medium-height": 30,
-                "medium_large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-hipercard.png",
-                "medium_large-width": 68,
-                "medium_large-height": 30,
-                "large": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-hipercard.png",
-                "large-width": 68,
-                "large-height": 30,
-                "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-hipercard.png",
-                "1536x1536-width": 68,
-                "1536x1536-height": 30,
-                "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/09/rhub-hipercard.png",
-                "2048x2048-width": 68,
-                "2048x2048-height": 30
-              }
-            },
-            "link": ""
-          }
-        ]
-      }
-    ],
-    "storesTitle": "Busque todas as lojas"
-  },
-  "controls": {
-    "general": {
-      "showStoresFilter": true,
-      "filterType": "stores",
-      "groupFilter": false,
-      "stateCategories": []
+              "items": [
+                {
+                  "link": {
+                    "url": "#",
+                    "target": "_self",
+                    "title": ""
+                  },
+                  "icon": {
+                    "name": "facebook"
+                  }
+                },
+                {
+                  "link": {
+                    "url": "#",
+                    "target": "_self",
+                    "title": ""
+                  },
+                  "icon": {
+                    "name": "instagram"
+                  }
+                },
+                {
+                  "link": {
+                    "url": "#",
+                    "target": "_self",
+                    "title": ""
+                  },
+                  "icon": {
+                    "name": "spotify"
+                  }
+                },
+                {
+                  "link": {
+                    "url": "#",
+                    "target": "_self",
+                    "title": ""
+                  },
+                  "icon": {
+                    "name": "pinterest"
+                  }
+                },
+                {
+                  "link": {
+                    "url": "#",
+                    "target": "_self",
+                    "title": ""
+                  },
+                  "icon": {
+                    "name": "youtube"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
-    "style": {
-      "firstSectionBg": "",
-      "secondSectionBg": "",
-      "color": "",
-      "borderColor": "",
-      "filterBg": "",
-      "filterColor": ""
+    {
+      "mobileFull": false,
+      "deskFull": false,
+      "data": [
+        {
+          "title": "",
+          "type": "image",
+          "items": [
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/payment-visa.png?v=637418292326670000",
+                "width": 50,
+                "height": 50,
+                "alt": "visa",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/payment-visa.png?v=637418292326670000"
+                }
+              }
+            },
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/payment-master.png?v=637418292318230000",
+                 "width": 50,
+                "height": 50,
+                "alt": "master",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/payment-master.png?v=637418292318230000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            },
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/payment-amex.png?v=637418292234470000",
+                 "width": 50,
+                "height": 50,
+                "alt": "amex",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/payment-amex.png?v=637418292234470000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            },
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/payment-pix.png?v=637540981925600000",
+                 "width": 50,
+                "height": 50,
+                "alt": "pix",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/payment-pix.png?v=637540981925600000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            },
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/payment-transferencia.png?v=637540981923870000",
+                 "width": 50,
+                "height": 50,
+                "alt": "transfer",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/payment-transferencia.png?v=637540981923870000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "",
+          "type": "image",
+          "items": [
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/selo-compre-e-confie.png?v=637418292471500000",
+                "width": 50,
+                "height": 50,
+                "alt": "compre & confie",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/selo-compre-e-confie.png?v=637418292471500000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            },
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/selo-amazon.png?v=637418292457300000",
+                "width": 70,
+                "height": 70,
+                "alt": "amazon",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/selo-amazon.png?v=637418292457300000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            },
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/pci-security-new.png?v=637745839296530000",
+                "width": 70,
+                "height": 70,
+                "alt": "pc-security",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/pci-security-new.png?v=637745839296530000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            },
+            {
+              "link": {
+                "url": "",
+                "target": "_self",
+                "title": ""
+              },
+              "image": {
+                "url": "https://vixbrasil.vteximg.com.br/arquivos/security-lets-encrypt-new.png?v=637751003797570000",
+                "width": 70,
+                "height": 70,
+                "alt": "let's encrypt",
+                "sizes": {
+                  "full": "https://vixbrasil.vteximg.com.br/arquivos/security-lets-encrypt-new.png?v=637751003797570000",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "",
+          "type": "image",
+          "items": [{
+            "link": {
+              "url": "https://www.retailhub.com.br",
+              "target": "_blank",
+              "title": ""
+            },
+            "image": {
+              "url": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:1492/u:https://content.retailhub.digital/wp-content/uploads/2021/10/LOGO_Fundo_Transparente-1.png",
+              "width": 100,
+              "height": 30,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:1492/u:https://content.retailhub.digital/wp-content/uploads/2021/10/LOGO_Fundo_Transparente-1.png"
+              }
+            }
+          },
+            {
+              "link": {
+                "url": "https://www.vtex.com",
+                "target": "_blank",
+                "title": ""
+              },
+              "image": {
+                "url": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:94/u:https://content.retailhub.digital/wp-content/uploads/2021/10/rhub-vtex-02-1.png",
+                "width": 70,
+                "height": 30,
+                "alt": "Lorem ipsum",
+                "sizes": {
+                  "full": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:94/u:https://content.retailhub.digital/wp-content/uploads/2021/10/rhub-vtex-02-1.png"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "divisor": true,
+      "data": [
+        {
+          "type": "text",
+          "content": "<br><p> Rua Figueira de Melo, 307 - São Cristóvão, Rio de Janeiro - RJ. CEP: 20.941-001 <br> CNPJ: 40.832.444/0010-07 | Razão Social: Vix Varejo LTDA. 2020 Vix Paula Hermanny todos os direitos reservados.</p><br>"
+        }
+      ]
     }
-  }
+  ]
 }

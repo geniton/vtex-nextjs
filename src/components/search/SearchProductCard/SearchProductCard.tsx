@@ -1,5 +1,4 @@
 import { Card, CardContent, CardImage } from '@faststore/ui'
-
 import { Image } from 'src/components/ui/Image'
 import Link from 'src/components/ui/Link'
 import Price from 'src/components/ui/Price'
@@ -26,7 +25,7 @@ function SearchProductCard({
   index,
   ...otherProps
 }: SearchProductCardProps) {
-  const { onSearchInputSelection } = useSearchInput()
+  const { onSearchInputSelection, onToggleNav } = useSearchInput()
   const { onClick, href, ...linkProps } = useProductLink({
     product,
     selectedOffer: 0,
@@ -58,6 +57,7 @@ function SearchProductCard({
         onClick={() => {
           onClick()
           onSearchInputSelection?.(name, href)
+          window.innerWidth <= 1280 && onToggleNav()
         }}
       >
         <CardContent data-fs-search-product-card-content>

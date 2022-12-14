@@ -1,0 +1,36 @@
+.header-float--mobile,
+.header-float--desk {
+    [data-fs-search-input] {
+        border-color: white !important;
+    }
+
+    [data-fs-search-input]::placeholder, 
+    [data-fs-icon] svg {
+        color: white !important;
+    }
+}
+
+.header-nav {
+    @include media("<=notebook") {
+        [data-fs-search-input] {
+            border: none !important;
+            background-color: var(--light) !important;
+            border-radius: 50px;
+        }
+
+        [data-fs-search-input-dropdown-wrapper] {
+            width: 100% !important;
+        }
+    }
+}
+
+.header-logo {
+    img {
+        width: 150px;
+        margin: 0 auto;
+    
+        @include media(">=notebook") {
+            width: 224px;
+        }
+    }
+}

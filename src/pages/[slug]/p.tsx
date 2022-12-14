@@ -82,6 +82,70 @@ function Page({ product, page: { pageData } }: Props) {
   )
 }
 
+export const fragment = gql`
+  fragment ProductSummary_product on StoreProduct {
+    id: productID
+    data
+    slug
+    sku
+    brand {
+      brandName: name
+    }
+    name
+    gtin
+    productID
+    description
+    sellers {
+      sellerId
+      sellerName
+      addToCartLink
+      sellerDefault
+      AvailableQuantity
+      Installments {
+        Value
+        InterestRate
+        TotalValuePlusInterestRate
+        NumberOfInstallments
+        PaymentSystemName
+        PaymentSystemGroupName
+        Name
+      }
+      Price
+      ListPrice
+      discountHighlights {
+        name
+      }
+    }
+
+    isVariantOf {
+      productGroupID
+      name
+    }
+
+    image {
+      url
+      alternateName
+    }
+
+    brand {
+      name
+    }
+
+    offers {
+      lowPrice
+      offers {
+        availability
+        price
+        listPrice
+        quantity
+        seller {
+          identifier
+        }
+      }
+    }
+  }
+`
+
 const query = gql`
   query ServerProductPageQuery($slug: String!) {
     product(locator: [{ key: "slug", value: $slug }]) {

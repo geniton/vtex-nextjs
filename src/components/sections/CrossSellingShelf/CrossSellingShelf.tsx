@@ -1,24 +1,31 @@
 import { useMemo } from 'react'
+import { Components } from '@retailhub/audacity-ui'
 
-import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
-
-import ProductShelf from '../ProductShelf'
-
-interface Props {
-  product: ProductDetailsFragment_ProductFragment
-  content: {
-    kind: string
-  }
-}
-
-const CrossSellingShelf = ({ product, content, content: { kind }, ...otherProps }: Props) => {
+const CrossSellingShelf = ({
+  product,
+  content: { kind },
+  content,
+  ...otherProps
+}: any) => {
   const selectedFacets = useMemo(
     () => [{ key: kind, value: product.isVariantOf.productGroupID }],
     [kind, product.isVariantOf.productGroupID]
   )
 
+  // content: ShowcaseContent
+  // controls: ShowcaseControls
+  // PlatformComponents?: any
+  // PlatformHooks?: any
+  // selectedFacets?: any foi
+
+  return null
+
   return (
-    <ProductShelf content={content} selectedFacets={selectedFacets} {...otherProps} />
+    <Components.Showcase
+      content={content}
+      selectedFacets={selectedFacets}
+      {...otherProps}
+    />
   )
 }
 

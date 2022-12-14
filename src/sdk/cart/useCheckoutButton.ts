@@ -9,6 +9,9 @@ export const useCheckoutButton = () => {
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
+    console.log('isValidating', isValidating, 'id', id);
+    
+
     if (!isValidating && id) {
       window.location.href = `${checkoutUrl}?orderFormId=${id}`
     }

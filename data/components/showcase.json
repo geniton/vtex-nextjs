@@ -1,51 +1,19 @@
 {
-  "storeConfigs": {
-    "storeId": "retailhub",
-    "environment": "vtexcommercestable",
-    "apiBaseUrl": "https://retailhub.vtexcommercestable.com.br"
-  },
   "content": {
+    "title": "Título",
     "link": {
-      "title": "Ver mais",
-      "target": "",
-      "url": "#"
+      "href": "#",
+      "title": "Título"
     },
-    "products": [
-      {
-        "id": 5,
-        "title": "Vodka Absolut - 750 ml"
-      },
-      {
-        "id": 4,
-        "title": "Sapatilha"
-      },
-      {
-        "id": 3,
-        "title": "Smart TV"
-      },
-      {
-        "id": 1,
-        "title": "Sandália"
-      },
-      {
-        "id": 7,
-        "title": "Vodka"
-      },
-      {
-        "id": 9,
-        "title": "Celular"
-      },
-      {
-        "id": 1,
-        "title": "Sandália"
-      }
-    ],
-    "sidebarText": "",
-    "title": "Título"
+    "products": {
+      "type": "products",
+      "productIds": ["2", "1", "28", "3", "6", "50", "51", "52", "56", "59"],
+      "collectionId": ""
+    }
   },
   "controls": {
     "general": {
-      "applyMobileCarouselControls": true,
+      "applyMobileCarouselControls": false,
       "cardControls": {
         "applyLinkOnImage": false,
         "showCarousel": true,
@@ -64,45 +32,72 @@
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível"
+        "unavailableMessage": "Produto Indisponível",
+        "imageFitIn": false,
+        "showSkuVariations": false
       },
       "carouselControls": {
         "arrows": true,
-        "dots": false,
-        "infinite": false,
+        "dots": true,
         "autoplay": false,
-        "autoplaySpeed": 6,
+        "infinite": true,
         "pauseOnHover": true,
         "slidesToShow": 4,
-        "slidesToScroll": 1
+        "slidesToScroll": 3,
+        "autoplaySpeed": 6,
+        "speed": 0.5
       },
-      "effects": {
-        "exchangeImage": true,
-        "hoverShadow": true,
-        "hoverOutlineColor": true,
-        "hoverZoom": true,
-        "hoverWishlist": true
+      "deskVariations": {
+        "hide": false,
+        "full": false
       },
       "mobileCarouselControls": {
         "arrows": true,
+        "pagination": false,
         "infinite": false,
         "autoplay": true,
         "autoplaySpeed": 6,
         "slidesToShow": 2,
         "slidesToScroll": 2
       },
-      "showBreadcrumb": true
+      "mobileVariations": {
+        "hide": false,
+        "full": false
+      }
+    },
+    "effects": {
+      "hoverZoom": true,
+      "exchangeImage": true,
+      "hoverOutlineColor": "",
+      "hoverShadow": true,
+      "hoverArrows": true,
+      "hoverWishlist": true,
+      "hoverBuyButton": true
     },
     "style": {
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
       "cardStyle": {
         "bgColor": "",
         "textColor": "",
         "addShadow": false,
-        "borderColor": "",
-        "borderWidth": 0,
+        "outlineColor": "",
+        "outlineWidth": 1,
         "borderRadius": 0,
         "brandTextColor": "",
-        "buyBtnBgColor": "",
+        "buyBtnBgColor": "var(--primary)",
         "buyBtnTextColor": "",
         "installmentsColor": "",
         "installmentsFont": 12,
@@ -114,8 +109,13 @@
         "pricePerFont": 12,
         "sellerNameTextColor": "",
         "unavailableTextColor": "",
-        "wishlistColor": ""
+        "wishlistColor": "var(--primary)",
+        "textAlign": "center",
+        "descTextColor": ""
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

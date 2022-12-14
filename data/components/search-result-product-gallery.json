@@ -1,10 +1,31 @@
 {
   "controls": {
     "general": {
-      "applyMobileCarouselControls": true,
+      "applyMobileCarouselControls": false,
+      "carouselControls": {
+        "arrows": true,
+        "autoplay": false,
+        "autoplaySpeed": 6,
+        "addBulletInside": true,
+        "dots": true,
+        "infinite": true,
+        "fade": false,
+        "pauseOnHover": true,
+        "slidesToShow": 4,
+        "slidesToScroll": 3
+      },
+      "mobileCarouselControls": {
+        "arrows": true,
+        "pagination": false,
+        "infinite": false,
+        "autoplay": true,
+        "autoplaySpeed": 6,
+        "slidesToShow": 2,
+        "slidesToScroll": 2
+      },
       "cardControls": {
         "applyLinkOnImage": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,
@@ -13,56 +34,60 @@
         "showBrandName": true,
         "showPriceOf": true,
         "showInstallments": true,
-        "showSkuVariations": true,
         "showWishlist": true,
-        "hoverWishlist": true,
         "showRating": true,
         "showDesc": false,
         "showBuyButton": true,
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
-        "showProductUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível"
+        "showUnabailableMessage": true,
+        "unavailableMessage": "Produto Indisponível",
+        "imageFitIn": false,
+        "showSkuVariations": false
       },
-      "carouselControls": {
-        "arrows": true,
-        "dots": false,
-        "infinite": false,
-        "autoplay": false,
-        "autoplaySpeed": 6,
-        "pauseOnHover": true,
-        "slidesToShow": 4,
-        "slidesToScroll": 1
+      "mobileVariations": {
+        "hide": false,
+        "full": false
       },
-      "effects": {
-        "exchangeImage": true,
-        "hoverShadow": true,
-        "hoverOutlineColor": true,
-        "hoverZoom": true
-      },
-      "mobileCarouselControls": {
-        "arrows": true,
-        "infinite": false,
-        "autoplay": true,
-        "autoplaySpeed": 6,
-        "slidesToShow": 2,
-        "slidesToScroll": 2
-      },
-      "showBreadcrumb": true
+      "deskVariations": {
+        "hide": false,
+        "full": false
+      }
+    },
+    "effects": {
+      "hoverZoom": true,
+      "exchangeImage": true,
+      "hoverOutlineColor": "",
+      "hoverShadow": true,
+      "hoverArrows": true,
+      "hoverWishlist": true,
+      "hoverBuyButton": true
     },
     "style": {
-      "backgroundColor": "",
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 32,
+        "right": 0,
+        "bottom": 32,
+        "left": 0
+      },
       "cardStyle": {
+        "bgColor": "",
+        "textColor": "",
         "addShadow": false,
-        "borderColor": "",
-        "borderWidth": 0,
+        "outlineColor": "",
+        "outlineWidth": 1,
         "borderRadius": 0,
-        "background": "",
-        "brandColor": "",
-        "buyButtonBg": "",
-        "buyButtonColor": "",
-        "color": "",
-        "carouselColor": "",
+        "brandTextColor": "",
+        "buyBtnBgColor": "var(--primary)",
+        "buyBtnTextColor": "",
         "installmentsColor": "",
         "installmentsFont": 12,
         "maxImageHeight": 500,
@@ -71,26 +96,15 @@
         "priceFromFont": 13,
         "pricePerColor": "",
         "pricePerFont": 12,
-        "sellerNameColor": "",
-        "unavailableColor": "",
-        "wishlistColor": "red"
-      },
-      "color": "",
-      "customClass": "",
-      "styleCustom": "",
-      "spacings": {
-        "pt": 4,
-        "pb": 4,
-        "pl": 0,
-        "pr": 0,
-        "addSpacingsOnMobile": false,
-        "spacingsMobile": {
-          "pt": 2,
-          "pb": 2,
-          "pl": 0,
-          "pr": 0
-        }
+        "sellerNameTextColor": "",
+        "unavailableTextColor": "",
+        "wishlistColor": "var(--primary)",
+        "textAlign": "center",
+        "descTextColor": ""
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

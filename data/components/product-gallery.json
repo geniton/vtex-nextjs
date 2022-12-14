@@ -2,10 +2,31 @@
   "content": {},
   "controls": {
     "general": {
-      "applyMobileCarouselControls": true,
+      "applyMobileCarouselControls": false,
+      "carouselControls": {
+        "arrows": true,
+        "autoplay": false,
+        "autoplaySpeed": 6,
+        "addBulletInside": true,
+        "dots": true,
+        "infinite": true,
+        "fade": false,
+        "pauseOnHover": true,
+        "slidesToShow": 4,
+        "slidesToScroll": 3
+      },
+      "mobileCarouselControls": {
+        "arrows": true,
+        "pagination": false,
+        "infinite": false,
+        "autoplay": true,
+        "autoplaySpeed": 6,
+        "slidesToShow": 2,
+        "slidesToScroll": 2
+      },
       "cardControls": {
         "applyLinkOnImage": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,
@@ -21,45 +42,52 @@
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível"
+        "unavailableMessage": "Produto Indisponível",
+        "imageFitIn": false,
+        "showSkuVariations": false
       },
-      "carouselControls": {
-        "arrows": true,
-        "dots": false,
-        "infinite": false,
-        "autoplay": false,
-        "autoplaySpeed": 6,
-        "pauseOnHover": true,
-        "slidesToShow": 4,
-        "slidesToScroll": 1
+      "mobileVariations": {
+        "hide": false,
+        "full": false
       },
-      "effects": {
-        "exchangeImage": true,
-        "hoverShadow": true,
-        "hoverOutlineColor": true,
-        "hoverZoom": true,
-        "hoverWishlist": true
-      },
-      "mobileCarouselControls": {
-        "arrows": true,
-        "infinite": false,
-        "autoplay": true,
-        "autoplaySpeed": 6,
-        "slidesToShow": 2,
-        "slidesToScroll": 2
-      },
-      "showBreadcrumb": true
+      "deskVariations": {
+        "hide": false,
+        "full": false
+      }
+    },
+    "effects": {
+      "hoverZoom": true,
+      "exchangeImage": true,
+      "hoverOutlineColor": "",
+      "hoverShadow": true,
+      "hoverArrows": true,
+      "hoverWishlist": true,
+      "hoverBuyButton": true
     },
     "style": {
+      "bgColor": "",
+      "textColor": "",
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "paddings": {
+        "top": 32,
+        "right": 0,
+        "bottom": 32,
+        "left": 0
+      },
       "cardStyle": {
         "bgColor": "",
         "textColor": "",
         "addShadow": false,
-        "borderColor": "",
-        "borderWidth": 0,
+        "outlineColor": "",
+        "outlineWidth": 1,
         "borderRadius": 0,
         "brandTextColor": "",
-        "buyBtnBgColor": "",
+        "buyBtnBgColor": "var(--primary)",
         "buyBtnTextColor": "",
         "installmentsColor": "",
         "installmentsFont": 12,
@@ -71,8 +99,13 @@
         "pricePerFont": 12,
         "sellerNameTextColor": "",
         "unavailableTextColor": "",
-        "wishlistColor": ""
+        "wishlistColor": "var(--primary)",
+        "textAlign": "center",
+        "descTextColor": ""
       }
+    },
+    "css": {
+      "customClass": ""
     }
   }
 }

@@ -93,9 +93,14 @@ const Wishlist: React.FC<any> = ({
     fetchData()
   }, [fetchProducts])
 
-  const products = data?.search?.products?.edges
 
-  console.log(products)
+  let products = []
+
+  if (data?.search?.products?.edges.length) {
+    products = data.search.products.edges.map(({ node }: any) =>
+      JSON.parse(node.data)
+    )
+  }
 
   return (
     <section className={styles.wishlist}>
@@ -113,10 +118,10 @@ const Wishlist: React.FC<any> = ({
             <div data-fs-wishlist-products>
               {products.map((product: any, idx: number) => (
                 <ProductCard
-                  product={product.node}
+                  product={product}
                   controls={controls}
                   index={idx + 1}
-                  key={`${product.node.id}`}
+                  key={`${product.id}`}
                   onChangeLike={() => updateWishlist()}
                 />
               ))}

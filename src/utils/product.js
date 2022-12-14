@@ -1,14 +1,14 @@
-export function findSkuVariantImage(availableImages: any) {
+export function findSkuVariantImage(availableImages) {
   let _availableImages$find
 
   return (_availableImages$find = availableImages.find(
-    (imageProperties: any) => imageProperties.imageLabel === 'skuvariation'
+    (imageProperties) => imageProperties.imageLabel === 'skuvariation'
   )) != null
     ? _availableImages$find
     : availableImages[0]
 }
 
-export function compare(a: any, b: any) {
+export function compare(a, b) {
   // Values are always represented as Strings, so we need to handle numbers
   // in this special case.
   if (!Number.isNaN(Number(a) - Number(b))) {
@@ -26,11 +26,11 @@ export function compare(a: any, b: any) {
   return 0
 }
 
-export function sortVariants(variantsByName: any) {
+export function sortVariants(variantsByName) {
   const sortedVariants = variantsByName
 
   for (const variantProperty in variantsByName) {
-    variantsByName[variantProperty].sort((a: any, b: any) =>
+    variantsByName[variantProperty].sort((a, b) =>
       compare(a.value, b.value)
     )
   }
@@ -38,7 +38,7 @@ export function sortVariants(variantsByName: any) {
   return sortedVariants
 }
 
-export function checkSellersStock(sellers: any) {
+export function checkSellersStock(sellers) {
   let outStock = true
 
   for (let i = 0; i < sellers.length; i++) {
@@ -51,9 +51,9 @@ export function checkSellersStock(sellers: any) {
 }
 
 export function getFormattedVariations(
-  variants: any,
-  dominantVariantName: any,
-  dominantVariantValue: any
+  variants,
+  dominantVariantName,
+  dominantVariantValue
 ) {
   /**
    * SKU options already formatted and indexed by their property name.
@@ -66,10 +66,10 @@ export function getFormattedVariations(
    *   ]
    * }
    */
-  const variantsByName: any = {}
+  const variantsByName = {}
   const previouslySeenPropertyValues = new Set()
 
-  variants.forEach((variant: any) => {
+  variants.forEach((variant) => {
     if (variant.variations.length === 0) {
       return
     }
@@ -78,7 +78,7 @@ export function getFormattedVariations(
 
     const variantImageToUse = findSkuVariantImage(variant.images)
     const dominantVariantEntry = variant.variations.find(
-      (variation: any) => variation.name === dominantVariantName
+      (variation) => variation.name === dominantVariantName
     )
 
     const matchesDominantVariant =
@@ -123,7 +123,7 @@ export function getFormattedVariations(
       return
     }
 
-    variant.variations.forEach((variationProperty: any) => {
+    variant.variations.forEach((variationProperty) => {
       let _variantImageToUse$im2
 
       const nameValueIdentifier = `${variationProperty.name}-${variationProperty.values[0]}`
@@ -155,31 +155,31 @@ export function getFormattedVariations(
   return sortVariants(variantsByName)
 }
 
-export function getActiveSkuVariations(variations: any) {
-  const activeVariations: any = {}
+export function getActiveSkuVariations(variations) {
+  const activeVariations = {}
 
-  variations.forEach((variation: any) => {
+  variations.forEach((variation) => {
     activeVariations[variation.name] = variation.values[0]
   })
 
   return activeVariations
 }
 
-export function getProductInstallments(sellerActive: any) {
+export function getProductInstallments(sellerActive) {
   let productInstallments = null
 
   if (!sellerActive?.Installments?.length) {
     return
   }
 
-  const installmentObj: any = sellerActive.Installments.sort(
-    (a: any, b: any) => {
+  const installmentObj = sellerActive.Installments.sort(
+    (a, b) => {
       return a.Value - b.Value
     }
   )[0]
 
-  const installmentIndex: any = sellerActive.Installments.map(
-    (installment: any, index: number) => {
+  const installmentIndex = sellerActive.Installments.map(
+    (installment, index) => {
       return installment === installmentObj ? index : ''
     }
   ).filter(String)[0]
@@ -193,8 +193,8 @@ export function getProductInstallments(sellerActive: any) {
   return productInstallments
 }
 
-export function getSellerLowPrice(sellers: any) {
-  let bestSeller: any = null
+export function getSellerLowPrice(sellers) {
+  let bestSeller = null
 
   if (!sellers?.length) return
 
@@ -214,4 +214,53 @@ export function getSellerLowPrice(sellers: any) {
   }
 
   return bestSeller
+}
+
+export function getVariantsByName(skuSpecifications) {
+  const variants = {};
+  skuSpecifications == null ? undefined : skuSpecifications.forEach((specification) => {
+    var _specification$field$;
+
+    variants[(_specification$field$ = specification.field.originalName) != null ? _specification$field$ : specification.field.name] = specification.values.map((value) => {
+      var _value$originalName;
+
+      return (_value$originalName = value.originalName) != null ? _value$originalName : value.name;
+    });
+  });
+  return variants;
+}
+
+export function createSlugsMap(variants, dominantVariantName, baseSlug) {
+  /**
+   * Maps property value combinations to their respective SKU's slug. Enables
+   * us to retrieve the slug for the SKU that matches the currently selected
+   * variations in O(1) time.
+   *
+   * Example: `'Color-Red-Size-40': 'classic-shoes-37'`
+   */
+  const slugsMap = {};
+  variants.forEach((variant) => {
+    var _skuSpecificationProp, _skuSpecificationProp2;
+
+    const skuSpecificationProperties = variant.variations;
+
+    if (skuSpecificationProperties.length === 0) {
+      return;
+    } // Make sure that the 'name-value' pair for the dominant variation
+    // is always the first one.
+
+
+    const dominantNameValue = `${dominantVariantName}-${(_skuSpecificationProp = (_skuSpecificationProp2 = skuSpecificationProperties.find((variationDetails) => variationDetails.name === dominantVariantName)) == null ? undefined : _skuSpecificationProp2.values[0]) != null ? _skuSpecificationProp : ''}`;
+    const skuVariantKey = skuSpecificationProperties.reduce((acc, property) => {
+      const shouldIgnore = property.name === dominantVariantName;
+
+      if (shouldIgnore) {
+        return acc;
+      }
+
+      return acc + `-${property.name}-${property.values[0]}`;
+    }, dominantNameValue);
+    slugsMap[skuVariantKey] = `${baseSlug}-${variant.itemId}`;
+  });
+  return slugsMap;
 }

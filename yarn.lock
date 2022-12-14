@@ -2388,10 +2388,10 @@
   resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.4.tgz#a04d63f4d1bf5540a41b01a921c9a7fddc3bd1ca"
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
-"@retailhub/audacity-ui@^0.0.43":
-  version "0.0.43"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.43.tgz#c497b732252d3d45fc37175f9dfb49950c0cddda"
-  integrity sha512-JgcJDHr9Aa8GPyLsI2hWnjxVvv3A42x+eiyH0iu4Zq/FIcnpqNTuypjQsd33co4R3C7LPFcZ/UxIZb6Wci1grw==
+"@retailhub/audacity-ui@^0.0.58":
+  version "0.0.58"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.58.tgz#5959c13f4fcdc6280c1f0d0b28dee2ac19dc0052"
+  integrity sha512-TyJwVcM9m7mDjUAmBrMs3EdH24i9iO1kwT4Gos4sVJcUBNGzZOmKaa5SERXhRrOIjwNCgQirp3BhO9D/djwM7Q==
   dependencies:
     "@types/react-headroom" "^2.2.2"
     axios "^0.27.2"
@@ -13927,6 +13927,11 @@ react-headroom@^3.1.1:
     prop-types "^15.5.8"
     raf "^3.3.0"
     shallowequal "^1.1.0"
+
+react-icons@^4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.7.1.tgz#0f4b25a5694e6972677cb189d2a72eabea7a8345"
+  integrity sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==
 
 react-inlinesvg@^3.0.0:
   version "3.0.1"

@@ -32,7 +32,7 @@
   // Icon
   --fs-search-input-icon-width                    : var(--fs-spacing-4);
   --fs-search-input-icon-height                   : var(--fs-search-input-icon-width);
-  --fs-search-input-icon-color                    : var(--fs-color-neutral-7);
+  --fs-search-input-icon-color                    : var(--dark);
 
   // Dropdown
   --fs-search-input-dropdown-padding              : var(--fs-spacing-3);
@@ -76,10 +76,15 @@
     [data-fs-search-input] {
       width: 100%;
       padding: var(--fs-search-input-padding);
-      background-color: var(--fs-search-input-bkg-color);
-      border: var(--fs-search-input-border-width) solid var(--fs-search-input-border-color);
-      border-radius: var(--fs-search-input-border-radius);
       transition: box-shadow var(--fs-search-input-transition-timing) var(--fs-search-input-transition-timing), border var(--fs-search-input-transition-timing) var(--fs-search-input-transition-function);
+      border-bottom: 1px solid var(--dark);
+      background-color: transparent;
+      color: var(--dark);
+      font-size: 14px;
+
+      &::placeholder {
+        color: var(--dark);
+      }
 
       &:focus,
       &:active,

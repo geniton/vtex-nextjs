@@ -25,7 +25,7 @@ const SearchTop = forwardRef<HTMLDivElement, SearchTopProps>(function SearchTop(
   { testId = 'top-search', topTerms, ...otherProps },
   ref
 ) {
-  const { onSearchInputSelection } = useSearchInput()
+  const { onSearchInputSelection, onToggleNav } = useSearchInput()
   const { terms, isLoading } = useTopSearch(topTerms)
 
   if (terms.length === 0) {
@@ -54,12 +54,13 @@ const SearchTop = forwardRef<HTMLDivElement, SearchTopProps>(function SearchTop(
                   data-fs-search-item-link
                   variant="display"
                   href={formatSearchPath(term.value)}
-                  onClick={() =>
+                  onClick={() =>{
+                    window.innerWidth <= 1280 && onToggleNav()
                     onSearchInputSelection?.(
                       term.value,
                       formatSearchPath(term.value)
                     )
-                  }
+                  }}
                 >
                   <Badge data-fs-search-badge variant="info">
                     {index + 1}
