@@ -58,7 +58,9 @@ const Wishlist: React.FC<any> = ({
 
     async function fetchData() {
       try {
-        const masterDataWishlist = await API.getWishlist(userId)
+        const masterDataWishlist = await fetch(
+          `/api/wishlist?_where=userId=${userId}&_sort=createdIn&_fields=userId,products`
+        ).then((res) => res.json())
 
         const localWishlist = LocalStorage.getData('wishlist') || []
 
