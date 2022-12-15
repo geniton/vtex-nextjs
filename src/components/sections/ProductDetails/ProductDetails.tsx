@@ -64,7 +64,7 @@ function ProductDetails({
 
   const {
     product: {
-      description,
+      // description,
       id,
       sku,
       gtin,
