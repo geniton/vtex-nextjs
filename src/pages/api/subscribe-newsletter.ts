@@ -26,7 +26,7 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
       }
 
       const { data: hasUser } = await http.get(
-        `https://${storeConfig.api.storeId}.myvtex.com/api/dataentities/${acronym}/search?_where=email=${payload.email}&_fields=email`
+        `http://${storeConfig.api.storeId}.myvtex.com/api/dataentities/${acronym}/search?_where=email=${payload.email}&_fields=email`
       )
 
       if (hasUser?.length) {
@@ -36,7 +36,7 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
       }
 
       const { data } = await http.post(
-        `https://${storeConfig.api.storeId}.myvtex.com/api/dataentities/${acronym}/documents`,
+        `http://${storeConfig.api.storeId}.myvtex.com/api/dataentities/${acronym}/documents`,
         payload
       )
 
