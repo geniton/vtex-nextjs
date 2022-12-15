@@ -2388,10 +2388,10 @@
   resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.4.tgz#a04d63f4d1bf5540a41b01a921c9a7fddc3bd1ca"
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
-"@retailhub/audacity-ui@^0.0.69":
-  version "0.0.69"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.69.tgz#66d7962737e629bdea7ddae246c97c28eb188eeb"
-  integrity sha512-fJbVAIAUmILmRNlJov7yzZZRpBoQbPDcXGf8wTkx8iuOwd66S8ENJ+ChccTEvAD/R1aIRHtIGecV2j5cVT2XOA==
+"@retailhub/audacity-ui@^0.0.72":
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.72.tgz#a32e2867d8bcbd5f5afbcaaaa90b19b7039b983c"
+  integrity sha512-E9llu7uIUP1OJJq4gzYqrPmtkU/sFEzGWUPjZMp7rlkCLPGBbZDH/mwWFC+WvnK63iKRLsmjuoXeOxF/I9/wpA==
   dependencies:
     "@types/react-headroom" "^2.2.2"
     axios "^0.27.2"
