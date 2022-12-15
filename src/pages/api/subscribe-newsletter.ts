@@ -10,8 +10,9 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
         Accept: 'application/vnd.vtex.ds.v10+json',
         'Content-Type': 'application/json',
         'X-Vtex-Use-Https': true,
-        'x-vtex-api-appKey': process.env.VTEX_APP_KEY || '',
-        'x-vtex-api-appToken': process.env.VTEX_APP_TOKEN || '',
+        'x-vtex-api-appKey': 'vtexappkey-retailhub-UYRTYS',
+        'x-vtex-api-appToken':
+          'DNDCHMZBQIYCBINPLTTLOQASNUAGJEDIJJZQMQRICPTCVSPKFAJVMFENNKONLSSMFQSRJXDVBLIYWXWVFQBIUHVEFLCBBEWKWHWFZXAHXOTBWFQPOTHVQKRXUNLXUBTX',
       },
       method: 'POST',
     })
