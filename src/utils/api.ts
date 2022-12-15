@@ -37,9 +37,9 @@ export async function updateWishlist(userId?: string) {
       let wishlistProducts: number[] = []
 
       if (masterDataWishlist?.length) {
-        wishlistProducts = JSON.parse(
-          masterDataWishlist[0].products
-        ).filter((item: string) => /^[0-9\b]+$/.test(item))
+        wishlistProducts = JSON.parse(masterDataWishlist[0].products).filter(
+          (item: string) => /^[0-9\b]+$/.test(item)
+        )
       }
 
       wishlistProducts = [...localWishlist, ...wishlistProducts]
@@ -54,10 +54,10 @@ export async function getWishlist(userId: string) {
   return fetchData({
     url: `api/dataentities/WL/search?_where=userId=${userId}&_sort=createdIn DESC&_fields=userId,products`,
     headers: {
-      'x-vtex-api-appkey': 'vtexappkey-retailhub-UYRTYS',
-      'x-vtex-api-apptoken':
+      'x-vtex-api-appKey': 'vtexappkey-retailhub-UYRTYS',
+      'x-vtex-api-appToken':
         'DNDCHMZBQIYCBINPLTTLOQASNUAGJEDIJJZQMQRICPTCVSPKFAJVMFENNKONLSSMFQSRJXDVBLIYWXWVFQBIUHVEFLCBBEWKWHWFZXAHXOTBWFQPOTHVQKRXUNLXUBTX',
-    }
+    },
   })
 }
 
@@ -67,7 +67,7 @@ export async function saveMasterData(data: any) {
   return fetchData({
     url: `api/dataentities/${acronym}/documents`,
     data: payload,
-    method: 'PUT'
+    method: 'PUT',
   })
 }
 

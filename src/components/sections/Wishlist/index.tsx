@@ -9,6 +9,7 @@ import * as LocalStorage from 'src/utils/local-storage'
 import * as API from 'src/utils/api'
 import { useLazyQuery } from 'src/sdk/graphql/useLazyQuery'
 import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
+import { useSession } from 'src/sdk/session'
 
 import styles from './wishlist.module.scss'
 
@@ -18,7 +19,7 @@ const Wishlist: React.FC<any> = ({
     general: { cardControls, mobileVariations, deskVariations },
   },
 }) => {
-  // const { person } = useSession();
+  const sessionData = useSession()
   const [loading, setLoading] = useState(true)
   const [fetchProducts, { data }]: any = useLazyQuery(query, {})
 
@@ -47,7 +48,7 @@ const Wishlist: React.FC<any> = ({
   // }
 
   useEffect(() => {
-    const userId: any = '3d6381e7-ac3f-4972-bbb9-35bcf8da7677'
+    const userId: any = sessionData.person?.id
 
     if (!userId) {
       setLoading(false)
@@ -92,7 +93,6 @@ const Wishlist: React.FC<any> = ({
 
     fetchData()
   }, [fetchProducts])
-
 
   let products = []
 
