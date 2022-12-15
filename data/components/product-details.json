@@ -9,7 +9,7 @@
       "showSoldBy": true,
       "buyNowBtn": true,
       "buyNowBtnText": "Comprar agora",
-      "galleryMode": "with-thumbnails"
+      "galleryMode": "list-with-spaces"
     },
     "style": {
       "margins": {

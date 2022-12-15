@@ -12,14 +12,6 @@ const CrossSellingShelf = ({
     [kind, product.isVariantOf.productGroupID]
   )
 
-  // content: ShowcaseContent
-  // controls: ShowcaseControls
-  // PlatformComponents?: any
-  // PlatformHooks?: any
-  // selectedFacets?: any foi
-
-  return null
-
   return (
     <Components.Showcase
       content={content}

@@ -150,12 +150,12 @@
     }
 
     @include media(">=notebook") {
-      top: var(--fs-search-input-dropdown-position-top-desktop);
+      top: 50px;
       left: 0;
       width: var(--fs-search-input-dropdown-width-desktop);
+      min-width: 500px;
       overflow: hidden;
       border: var(--fs-search-input-dropdown-border-width) solid var(--fs-search-input-dropdown-border-color);
-      border-top: none;
       border-radius: var(--fs-search-input-dropdown-border-radius);
       box-shadow: var(--fs-search-input-dropdown-box-shadow);
     }

@@ -1,7 +1,8 @@
+import { Components } from '@retailhub/audacity-ui'
+
 import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductGrid/product-grid.module.scss'
-import { Components } from '@retailhub/audacity-ui'
 
 interface Props {
   /**
@@ -14,13 +15,22 @@ interface Props {
    */
   pageSize: number
   controls: any
+  [key: string]: any
 }
 
-function ProductGrid({ products, page, pageSize, controls }: Props) {
+function ProductGrid({
+  products,
+  page,
+  pageSize,
+  controls,
+  ...otherProps
+}: Props) {
   if (!products.length) return null
 
-  const parsedProducts = products.map(({ node }: any) => node?.data ? JSON.parse(node?.data) : null)
-  
+  const parsedProducts = products.map(({ node }: any) =>
+    node?.data ? JSON.parse(node?.data) : null
+  )
+
   return (
     <ProductGridSkeleton loading={parsedProducts.length === 0}>
       <ul data-fs-product-grid className={styles.fsProductGrid}>
@@ -30,6 +40,7 @@ function ProductGrid({ products, page, pageSize, controls }: Props) {
               controls={controls}
               product={product}
               index={pageSize * page + idx + 1}
+              {...otherProps}
             />
           </li>
         ))}

@@ -1,13 +1,21 @@
 {
   "content": {
-    "title": "ÚLTIMOS LANÇAMENTOS",
-    "productIds": ["549", "548", "549", "547", "546"]
+    "title": "Título",
+    "link": {
+      "href": "#",
+      "title": "Título"
+    },
+    "products": {
+      "type": "collection",
+      "productIds": ["2", "1", "28", "3", "6", "50", "51", "52", "56", "59"],
+      "collectionId": "150"
+    }
   },
   "controls": {
     "general": {
       "applyMobileCarouselControls": false,
       "cardControls": {
-        "applyLinkOnImage": true,
+        "applyLinkOnImage": false,
         "showCarousel": false,
         "arrows": true,
         "dots": true,
@@ -20,38 +28,32 @@
         "showWishlist": true,
         "showRating": true,
         "showDesc": false,
-        "showBuyButton": false,
+        "showBuyButton": true,
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
         "unavailableMessage": "Produto Indisponível",
-        "imageFitIn": true
+        "imageFitIn": false,
+        "showSkuVariations": false
       },
       "carouselControls": {
         "arrows": true,
-        "dots": false,
-        "infinite": false,
+        "dots": true,
         "autoplay": false,
-        "autoplaySpeed": 6,
+        "infinite": true,
         "pauseOnHover": true,
         "slidesToShow": 4,
-        "slidesToScroll": 1
+        "slidesToScroll": 3,
+        "autoplaySpeed": 6,
+        "speed": 0.5
       },
       "deskVariations": {
         "hide": false,
         "full": false
       },
-      "effects": {
-        "hoverZoom": true,
-        "exchangeImage": true,
-        "hoverOutlineColor": "",
-        "hoverShadow": true,
-        "hoverArrows": false,
-        "hoverWishlist": true,
-        "hoverBuyButton": false
-      },
       "mobileCarouselControls": {
         "arrows": true,
+        "pagination": false,
         "infinite": false,
         "autoplay": true,
         "autoplaySpeed": 6,
@@ -62,6 +64,15 @@
         "hide": false,
         "full": false
       }
+    },
+    "effects": {
+      "hoverZoom": true,
+      "exchangeImage": true,
+      "hoverOutlineColor": "",
+      "hoverShadow": true,
+      "hoverArrows": true,
+      "hoverWishlist": true,
+      "hoverBuyButton": true
     },
     "style": {
       "bgColor": "",
@@ -83,21 +94,21 @@
         "textColor": "",
         "addShadow": false,
         "outlineColor": "",
-        "outlineWidth": 0,
+        "outlineWidth": 1,
         "borderRadius": 0,
-        "brandTextColor": "#424242",
-        "buyBtnBgColor": "#424242",
+        "brandTextColor": "",
+        "buyBtnBgColor": "var(--primary)",
         "buyBtnTextColor": "",
         "installmentsColor": "",
-        "installmentsFont": 16,
+        "installmentsFont": 12,
         "maxImageHeight": 500,
-        "productNameColor": "#424242",
+        "productNameColor": "",
         "priceFromColor": "",
-        "priceFromFont": 16,
-        "pricePerColor": "var(--primary)",
-        "pricePerFont": 20,
-        "sellerNameTextColor": "#424242",
-        "unavailableTextColor": "#424242",
+        "priceFromFont": 13,
+        "pricePerColor": "",
+        "pricePerFont": 12,
+        "sellerNameTextColor": "",
+        "unavailableTextColor": "",
         "wishlistColor": "var(--primary)",
         "textAlign": "center",
         "descTextColor": ""

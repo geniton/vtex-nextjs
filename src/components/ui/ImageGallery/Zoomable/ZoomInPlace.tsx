@@ -172,6 +172,9 @@ const ZoomInPlace: FC<Props> = ({ children, zoomContent, type, factor }) => {
       className="relative overflow-hidden"
       aria-hidden="true"
       data-fs-image-gallery-zoom
+      style={{
+        cursor: isZoomedIn ? 'zoom-out' : 'zoom-in',
+      }}
     >
       <div
         ref={contentRef}

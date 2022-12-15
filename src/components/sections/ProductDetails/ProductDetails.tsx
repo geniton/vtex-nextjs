@@ -24,7 +24,7 @@ import { getSellerLowPrice } from 'src/utils/product'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
-import ProductDetailsContent from '../ProductDetailsContent'
+// import ProductDetailsContent from '../ProductDetailsContent'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -307,10 +307,10 @@ function ProductDetails({
             </section>
           </section>
         </section>
-        <ProductDetailsContent
+        {/* <ProductDetailsContent
           description={description}
           specifications={isVariantOf.additionalProperty}
-        />
+        /> */}
       </div>
     </Section>
   )

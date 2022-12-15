@@ -4,6 +4,7 @@ import type { CurrencyCode, AddToCartEvent } from '@faststore/sdk'
 
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import type { CartItem } from 'src/sdk/cart'
+import { checkoutUrl } from 'store.config'
 
 import { useSession } from '../session'
 import { useUI } from '../ui/Provider'
@@ -49,7 +50,7 @@ export const useBuyButton = (item: CartItem | null) => {
 
       cartStore.addItem(item)
       if (goToCheckout) {
-        console.log('go to checkout')
+        window.location.href = checkoutUrl
       } else {
         openCart()
       }

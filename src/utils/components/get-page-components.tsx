@@ -9,7 +9,7 @@ import themeConfigs from 'data/components/theme-configs.json'
 import MockProductDetailsJSON from 'data/components/product-details.json'
 import MockProductGalleryJSON from 'data/components/product-gallery.json'
 // import MockBannergridJSON from 'data/components/bannergrid.json'
-import MockFirstProductShelfJSON from 'data/components/showcase.json'
+import MockFirstShowcaseJSON from 'data/components/showcase.json'
 import MockCrossSellingViewShelfJSON from 'data/components/cross-selling-shelf-view.json'
 import MockCrossSellingBuyShelfJSON from 'data/components/cross-selling-shelf-buy.json'
 import MockSearchResultProductGalleryJSON from 'data/components/search-result-product-gallery.json'
@@ -33,7 +33,7 @@ export default function getPageComponents(pageName?: string) {
       {
         id: 102,
         component: 'Showcase',
-        componentData: { ...MockFirstProductShelfJSON, ...Variables },
+        componentData: { ...MockFirstShowcaseJSON, ...Variables },
       },
       {
         id: 103,

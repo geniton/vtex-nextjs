@@ -4,14 +4,14 @@
       {
         "isVideo": false,
         "mobileImage": {
-          "url": "https://picsum.photos/640/760",
+          "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
           "width": "640",
           "height": "760",
           "alt": "Lorem ipsum",
           "filename": "640-760.jpg",
           "extension": "image/jpeg",
           "sizes": {
-            "full": "https://picsum.photos/1200/630",
+            "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
             "crop-600-200": "https://picsum.photos/600/200",
             "crop-300-300": "https://picsum.photos/300/300",
             "crop-200-400": "https://picsum.photos/200/400",
@@ -20,14 +20,14 @@
         },
         "mobileVideo": "",
         "deskImage": {
-          "url": "https://picsum.photos/1200/630",
+          "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
           "width": "1200",
           "height": "630",
           "alt": "Lorem ipsum",
           "filename": "1200-630.jpg",
           "extension": "image/jpeg",
           "sizes": {
-            "full": "https://picsum.photos/1200/630",
+            "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
             "crop-600-200": "https://picsum.photos/600/200",
             "crop-300-300": "https://picsum.photos/300/300",
             "crop-200-400": "https://picsum.photos/200/400",
@@ -47,14 +47,14 @@
       {
         "isVideo": false,
         "mobileImage": {
-          "url": "https://picsum.photos/640/760",
+          "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
           "width": "640",
           "height": "760",
           "alt": "Lorem ipsum",
           "filename": "640-760.jpg",
           "extension": "image/jpeg",
           "sizes": {
-            "full": "https://picsum.photos/1200/630",
+            "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
             "crop-600-200": "https://picsum.photos/600/200",
             "crop-300-300": "https://picsum.photos/300/300",
             "crop-200-400": "https://picsum.photos/200/400",
@@ -64,14 +64,14 @@
         "mobileVideo": "",
         "deskVideo": "",
         "deskImage": {
-          "url": "https://picsum.photos/1200/630",
+          "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
           "width": "1200",
           "height": "630",
           "alt": "Lorem ipsum",
           "filename": "1200-630.jpg",
           "extension": "image/jpeg",
           "sizes": {
-            "full": "https://picsum.photos/1200/630",
+            "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/banner_clubvix_desktop.webp",
             "crop-600-200": "https://picsum.photos/600/200",
             "crop-300-300": "https://picsum.photos/300/300",
             "crop-200-400": "https://picsum.photos/200/400",
@@ -94,11 +94,11 @@
       "applyMobileCarouselControls": false,
       "mobileVariations": {
         "hide": false,
-        "full": false
+        "full": true
       },
       "deskVariations": {
         "hide": false,
-        "full": false
+        "full": true
       },
       "carouselControls": {
         "arrows": true,

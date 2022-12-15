@@ -1,14 +1,14 @@
 {
   "content": {
-    "title": "Título",
+    "title": "<h2><strong>Título</strong></h2>",
     "link": {
       "href": "#",
       "title": "Título"
     },
     "products": {
-      "type": "products",
+      "type": "collection",
       "productIds": ["2", "1", "28", "3", "6", "50", "51", "52", "56", "59"],
-      "collectionId": ""
+      "collectionId": "150"
     }
   },
   "controls": {
@@ -16,7 +16,7 @@
       "applyMobileCarouselControls": false,
       "cardControls": {
         "applyLinkOnImage": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,

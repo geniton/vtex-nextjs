@@ -422,12 +422,12 @@
             "hiddenMobile": false,
             "hiddenDesk": false,
             "logo": {
-              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/vix-logo-1.svg",
+              "url": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:3110/u:https://content.retailhub.digital/wp-content/uploads/2022/07/AUDACITY.svg",
               "width": 1200,
               "height": 630,
               "alt": "Lorem ipsum",
               "sizes": {
-                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/vix-logo-1.svg",
+                "full": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:3110/u:https://content.retailhub.digital/wp-content/uploads/2022/07/AUDACITY.svg",
                 "crop-600-200": "https://picsum.photos/600/200",
                 "crop-300-300": "https://picsum.photos/300/300",
                 "crop-200-400": "https://picsum.photos/200/400",
@@ -512,8 +512,8 @@
       "variations": {
         "addStickyHeaderOnMobile": true,
         "addStickyHeaderOnDesk": true,
-        "addFloatingHeaderOnMobile": false,
-        "addFloatingHeaderOnDesk": false
+        "addFloatingHeaderOnMobile": true,
+        "addFloatingHeaderOnDesk": true
       },
       "effects": {
         "hoverBold": true

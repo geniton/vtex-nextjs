@@ -1,4 +1,5 @@
 import SVG from 'react-inlinesvg'
+
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 
 type Props = {
@@ -7,13 +8,11 @@ type Props = {
 
 function CartToggle({
   icon = {
-    url: "https://content.retailhub.digital/wp-content/uploads/2022/11/rhub-cart-three-2.svg"
-  }
+    url: 'https://content.retailhub.digital/wp-content/uploads/2022/11/rhub-cart-three-2.svg',
+  },
 }: Props) {
   const btnProps = useCartToggleButton()
 
-  console.log('icon', icon);
-  
   return (
     <button
       data-fs-button-icon

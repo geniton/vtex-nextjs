@@ -1,7 +1,12 @@
 {
   "content": {
-    "title": "Quem viu, viu também",
-    "kind": "view"
+    "title": "<h2><strong>Quem viu, viu também</strong></h2>",
+    "kind": "view",
+    "products": {
+      "type": "",
+      "productIds": [],
+      "collectionId": ""
+    }
   },
   "controls": {
     "general": {
@@ -24,32 +29,28 @@
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível"
+        "unavailableMessage": "Produto Indisponível",
+        "imageFitIn": false,
+        "showSkuVariations": false
       },
       "carouselControls": {
         "arrows": true,
-        "dots": false,
-        "infinite": false,
+        "dots": true,
         "autoplay": false,
-        "autoplaySpeed": 6,
+        "infinite": true,
         "pauseOnHover": true,
         "slidesToShow": 4,
-        "slidesToScroll": 1
+        "slidesToScroll": 3,
+        "autoplaySpeed": 6,
+        "speed": 0.5
       },
       "deskVariations": {
         "hide": false,
         "full": false
       },
-      "effects": {
-        "hoverZoom": false,
-        "exchangeImage": false,
-        "hoverOutlineColor": "",
-        "hoverShadow": true,
-        "hoverArrows": false,
-        "hoverWishlist": true
-      },
       "mobileCarouselControls": {
         "arrows": true,
+        "pagination": false,
         "infinite": false,
         "autoplay": true,
         "autoplaySpeed": 6,
@@ -60,6 +61,15 @@
         "hide": false,
         "full": false
       }
+    },
+    "effects": {
+      "hoverZoom": true,
+      "exchangeImage": true,
+      "hoverOutlineColor": "",
+      "hoverShadow": true,
+      "hoverArrows": true,
+      "hoverWishlist": true,
+      "hoverBuyButton": true
     },
     "style": {
       "bgColor": "",
@@ -80,11 +90,11 @@
         "bgColor": "",
         "textColor": "",
         "addShadow": false,
-        "borderColor": "",
-        "borderWidth": 0,
+        "outlineColor": "",
+        "outlineWidth": 1,
         "borderRadius": 0,
         "brandTextColor": "",
-        "buyBtnBgColor": "",
+        "buyBtnBgColor": "var(--primary)",
         "buyBtnTextColor": "",
         "installmentsColor": "",
         "installmentsFont": 12,
@@ -96,7 +106,8 @@
         "pricePerFont": 12,
         "sellerNameTextColor": "",
         "unavailableTextColor": "",
-        "wishlistColor": "",
+        "wishlistColor": "var(--primary)",
+        "textAlign": "center",
         "descTextColor": ""
       }
     },

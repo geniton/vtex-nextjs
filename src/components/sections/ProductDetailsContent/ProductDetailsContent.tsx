@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import {
   Table as UITable,
   TableBody as UITableBody,
@@ -165,4 +165,4 @@ function ProductDetailsContent({
   )
 }
 
-export default ProductDetailsContent
+export default memo(ProductDetailsContent)
