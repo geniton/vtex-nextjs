@@ -45,19 +45,11 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
         message: 'success',
       })
     } catch (error) {
-      response
-        .status(error.status)
-        .end(
-          `${error.message}-key-${process.env.VTEX_APP_KEY}-token-${process.env.VTEX_APP_TOKEN}`
-        )
+      response.status(error.status).end(error.message)
     }
   } else {
     response.setHeader('Allow', 'POST')
-    response
-      .status(405)
-      .end(
-        `Method not allowed -key-${process.env.VTEX_APP_KEY}-token-${process.env.VTEX_APP_TOKEN}`
-      )
+    response.status(405).end('Method not allowed')
   }
 }
 
