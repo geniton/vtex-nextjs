@@ -15,10 +15,10 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
       },
       method: 'POST',
     })
-    
+
     try {
       const { acronym, ...payload } = request.body
-      
+
       if (!acronym) {
         return response.status(400).json({
           message: 'acronym field empty',
@@ -45,11 +45,19 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
         message: 'success',
       })
     } catch (error) {
-      response.status(error.status).end(error.message)
+      response
+        .status(error.status)
+        .end(
+          `${error.message}-key-${process.env.VTEX_APP_KEY}-token-${process.env.VTEX_APP_TOKEN}`
+        )
     }
   } else {
     response.setHeader('Allow', 'POST')
-    response.status(405).end('Method not allowed')
+    response
+      .status(405)
+      .end(
+        `Method not allowed -key-${process.env.VTEX_APP_KEY}-token-${process.env.VTEX_APP_TOKEN}`
+      )
   }
 }
 
