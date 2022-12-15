@@ -92,7 +92,7 @@ function ProductDetails({
     id,
     price: sellerActive.Price,
     listPrice: sellerActive.ListPrice,
-    seller: { identifier: sellerActive.identifier },
+    seller: { identifier: sellerActive.sellerId },
     quantity: addQuantity,
     itemOffered: {
       sku,
@@ -293,7 +293,7 @@ function ProductDetails({
                     shippingItem={{
                       id,
                       quantity: addQuantity,
-                      seller: sellerActive.identifier,
+                      seller: sellerActive.sellerId,
                     }}
                   />
                 </>

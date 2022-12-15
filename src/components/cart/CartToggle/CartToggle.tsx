@@ -8,7 +8,7 @@ type Props = {
 
 function CartToggle({
   icon = {
-    url: 'https://content.retailhub.digital/wp-content/uploads/2022/11/rhub-cart-three-2.svg',
+    url: 'https://content.retailhub.digital/wp-content/uploads/2022/12/cart.svg',
   },
 }: Props) {
   const btnProps = useCartToggleButton()

@@ -4,20 +4,23 @@ import type { CurrencyCode, AddToCartEvent } from '@faststore/sdk'
 
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import type { CartItem } from 'src/sdk/cart'
-import { checkoutUrl } from 'store.config'
+import { useCart, cartStore } from 'src/sdk/cart'
+import storeConfig from 'store.config'
 
 import { useSession } from '../session'
 import { useUI } from '../ui/Provider'
-import { cartStore } from './index'
 
 export const useBuyButton = (item: CartItem | null) => {
   const { openCart } = useUI()
+  const { isValidating, id } = useCart()
   const {
     currency: { code },
   } = useSession()
 
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>, goToCheckout: boolean) => {
+      const { checkoutUrl } = storeConfig
+
       e.preventDefault()
 
       if (!item) {
@@ -49,8 +52,9 @@ export const useBuyButton = (item: CartItem | null) => {
       })
 
       cartStore.addItem(item)
-      if (goToCheckout) {
-        window.location.href = checkoutUrl
+
+      if (goToCheckout && !isValidating && id) {
+        window.location.href = `${checkoutUrl}?orderFormId=${id}`
       } else {
         openCart()
       }
