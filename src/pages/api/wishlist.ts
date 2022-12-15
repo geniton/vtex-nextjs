@@ -18,7 +18,7 @@ const wishlist: NextApiHandler = async (request, response) => {
     })
 
     try {
-      const { query } = request
+      const { query }: any = request
       const params = new URLSearchParams(query)
 
       const url = [
