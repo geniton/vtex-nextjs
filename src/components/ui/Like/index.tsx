@@ -1,9 +1,11 @@
 import React, { useState, useEffect, memo, useCallback } from 'react'
+import cn from 'classnames'
+
 import * as LocalStorage from 'src/utils/local-storage'
 import * as API from 'src/utils/api'
+
 import ButtonLink from '../Button/ButtonLink'
 import styles from './like.module.scss'
-import cn from 'classnames'
 import HeartIcon from './HeartIcon'
 
 type LikeProps = {
@@ -57,10 +59,11 @@ const Like: React.FC<LikeProps> = ({
     setWishlistData(wishlistData)
 
     const payload = {
-      acronym: 'WL',
       products: JSON.stringify(wishlistData),
-      userId: '3d6381e7-ac3f-4972-bbb9-35bcf8da7677',
+      userId: '44fcb770-8a4c-4fc0-b532-146d5c34f0cd',
     }
+
+    fetch('/api/wishlist', { method: 'PUT', body: JSON.stringify(payload) })
 
     API.saveMasterData(payload)
     typeof onChangeLike === 'function' && onChangeLike()

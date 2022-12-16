@@ -58,7 +58,7 @@ const Wishlist: React.FC<any> = ({
     async function fetchData() {
       try {
         const masterDataWishlist = await fetch(
-          `/api/wishlist?_where=userId=${userId}&_sort=createdIn&_fields=userId,products`
+          `/api/wishlist?_where=userId=${userId}&_sort=createdIn DESC&_fields=userId,products`
         ).then((res) => res.json())
 
         const localWishlist = LocalStorage.getData('wishlist') || []
@@ -102,6 +102,8 @@ const Wishlist: React.FC<any> = ({
       JSON.parse(node.data)
     )
   }
+
+  return null
 
   return (
     <section className={styles.wishlist}>

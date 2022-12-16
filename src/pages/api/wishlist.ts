@@ -4,17 +4,16 @@ import type { NextApiHandler } from 'next'
 import storeConfig from 'store.config'
 
 const wishlist: NextApiHandler = async (request, response) => {
+  const headers = {
+    'x-vtex-api-appKey': 'vtexappkey-retailhub-UYRTYS',
+    'x-vtex-api-appToken':
+      'DNDCHMZBQIYCBINPLTTLOQASNUAGJEDIJJZQMQRICPTCVSPKFAJVMFENNKONLSSMFQSRJXDVBLIYWXWVFQBIUHVEFLCBBEWKWHWFZXAHXOTBWFQPOTHVQKRXUNLXUBTX',
+  }
+
   if (request.method === 'GET') {
     const http = axios.create({
-      headers: {
-        Accept: 'application/vnd.vtex.ds.v10+json',
-        'Content-Type': 'application/json',
-        'X-Vtex-Use-Https': true,
-        'x-vtex-api-appKey': 'vtexappkey-retailhub-UYRTYS',
-        'x-vtex-api-appToken':
-          'DNDCHMZBQIYCBINPLTTLOQASNUAGJEDIJJZQMQRICPTCVSPKFAJVMFENNKONLSSMFQSRJXDVBLIYWXWVFQBIUHVEFLCBBEWKWHWFZXAHXOTBWFQPOTHVQKRXUNLXUBTX',
-      },
-      method: 'GET',
+      headers,
+      method: 'get',
     })
 
     try {
@@ -22,26 +21,51 @@ const wishlist: NextApiHandler = async (request, response) => {
       const params = new URLSearchParams(query)
 
       const url = [
-        `https://${storeConfig.api.storeId}.vtexcommercestable.com.br/api/dataentities/WL/search`,
+        `https://${storeConfig.api.storeId}.myvtex.com/api/dataentities/WL/search`,
       ]
 
       if (params.toString()) {
         url.push(params.toString())
       }
 
-      const { data } = await http.get(url.join(''))
+      const { data } = await http.get(url.join('?'))
 
       return response.status(200).json({
-        ...data,
+        data,
         message: 'success',
       })
     } catch (error) {
-      response.status(error).end(error)
+      console.log(error)
     }
-  } else {
-    response.setHeader('Allow', 'POST')
-    response.status(405).end('Method not allowed')
   }
+
+  if (request.method === 'PUT') {
+    const http = axios.create({
+      headers,
+      method: 'PUT',
+    })
+
+    try {
+      const payload = request.body
+
+      const { data } = await http.put(
+        `https://${storeConfig.api.storeId}.myvtex.com/api/dataentities/WL/documents`,
+        payload
+      )
+
+      console.log('data', data)
+
+      return response.status(200).json({
+        data,
+        message: 'success',
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  response.setHeader('Allow', 'POST')
+  response.status(405).end('Method not allowed')
 }
 
 export default wishlist
