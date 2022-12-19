@@ -3,7 +3,7 @@
     "imageLocation": "Top",
     "items": [
       {
-        "title": "<h2>Teste</h2>\n",
+        "title": "<h2>Título</h2>\n",
         "image": {
           "url": "https://picsum.photos/1200/630",
           "width": 1200,
@@ -12,61 +12,14 @@
           "sizes": {}
         },
         "link": {
-          "title": "Teste",
-          "url": "/",
-          "target": ""
-        },
-        "id": "teste"
-      },
-      {
-        "title": "<h2>Teste</h2>\n",
-        "image": {
-          "url": "https://picsum.photos/1200/630",
-          "width": 1200,
-          "height": 630,
-          "alt": "Lorem ipsum",
-          "sizes": {}
-        },
-        "link": {
-          "title": "Teste",
-          "url": "/",
-          "target": ""
-        },
-        "id": "teste"
-      },
-      {
-        "title": "<h2>Teste</h2>\n",
-        "image": {
-          "url": "https://picsum.photos/1200/630",
-          "width": 1200,
-          "height": 630,
-          "alt": "Lorem ipsum",
-          "sizes": {}
-        },
-        "link": {
-          "title": "Teste",
-          "url": "/",
-          "target": ""
-        },
-        "id": "teste"
-      },
-      {
-        "title": "<h2>Teste 2</h2>\n",
-        "image": {
-          "url": "https://picsum.photos/1200/630",
-          "width": 1200,
-          "height": 630,
-          "alt": "Lorem ipsum",
-          "sizes": {}
-        },
-        "link": {
-          "title": "Teste",
+          "title": "Link",
           "url": "/",
           "target": ""
         },
         "id": ""
       }
-    ]
+    ],
+    "title": "<h2>Título</h2>"
   },
   "controls": {
     "general": {
@@ -87,11 +40,6 @@
         "hide": false,
         "rounded": false
       },
-      "effects": {
-        "hoverOpacity": false,
-        "hoverZoom": false,
-        "hoverArrows": false
-      },
       "mobileCarouselControls": {
         "showCarousel": true,
         "infinite": false,
@@ -107,6 +55,13 @@
         "rounded": false
       },
       "showImageInCard": true
+    },
+    "effects": {
+      "hoverArrows": false,
+      "cardEffects": {
+        "hoverOpacity": false,
+        "hoverZoom": false
+      }
     },
     "style": {
       "bgColor": "",

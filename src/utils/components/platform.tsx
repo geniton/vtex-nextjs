@@ -18,12 +18,16 @@ import {
   useProductsQueryPrefetch,
 } from 'src/sdk/product/useProductsQuery'
 import { useProductLink } from 'src/sdk/product/useProductLink'
+import { query } from 'src/sdk/product/useProductsQuery'
+import { useLazyQuery } from 'src/sdk/graphql/useLazyQuery'
 
 export const Hooks = {
   useSession,
+  useLazyQuery,
   useProductsQuery,
   useProductsQueryPrefetch,
-  useProductLink
+  useProductLink,
+  query
 }
 
 export const Components = {

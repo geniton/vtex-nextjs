@@ -36,11 +36,12 @@ function Page({ page: { pageData } }: any) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const page = getPageComponents('homepage')
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const slug: any = params?.slug
+  const page = getPageComponents()
 
   try {
-    const data = await api.getCMSpage('homepage')
+    const data = await api.getCMSpage(`lp/${slug}`)
 
     page.pageData = data['pt-BR'].components
 
@@ -56,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 
   return {
-    props: { page, pageName: 'homepage' },
+    props: { page, pageName: 'lp' },
   }
 }
 

@@ -68,9 +68,9 @@ const Footer: React.FC = () => {
     return (
       <ul>
         {items.map(
-          ({ link, title, icon, image, items: subItems, type: subType }: any) =>
+          ({ link, title, icon, image, items: subItems, type: subType }: any, index: number) =>
             type === 'menu' ? (
-              <li>
+              <li key={`${title}-${index}`}>
                 {link?.url || link?.title ? (
                   <Link href={link.url} target={link.target}>{link.title}</Link>
                 ) : (
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
                 {subItems?.length ? renderItems(subItems, subType) : null}
               </li>
             ) : (
-              <li>
+              <li key={`${title}-${index}`}>
                 {link.url ? (
                   <Link href={link.url} target={link.target}>{renderImage({ icon, image })}</Link>
                 ) : (
@@ -94,9 +94,10 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      {data.map(({ data: navData, mobileFull, deskFull, divisor }: any) =>
+      {data.map(({ data: navData, mobileFull, deskFull, divisor }: any, index:number) =>
         data.length ? (
           <div
+            key={`section-${index}`}
             className={cn(styles.footerWrapper, {
               [styles.footerWrapperDivisor]: divisor,
             })}
@@ -108,9 +109,10 @@ const Footer: React.FC = () => {
               })}
             >
               {navData.map(
-                ({ title, items, addAccordionMobile, type, content }: any) =>
+                ({ title, items, addAccordionMobile, type, content }: any, navIndex: number) =>
                   type === 'text' ? (
                     <div
+                      key={`${title}-${navIndex}`}
                       className={cn(styles.footerRow, {
                         [styles.footerRowBorder]: addAccordionMobile,
                       })}

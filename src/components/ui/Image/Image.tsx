@@ -27,7 +27,7 @@ const Image = forwardRef<HTMLImageElement, Props>(
   ({ preload = false, fetchPriority, ...otherProps }, ref) => {
     const imgProps = useImage(otherProps)
     const { src, sizes = '100vw', srcSet } = imgProps
-
+    
     return (
       <>
         {preload && (

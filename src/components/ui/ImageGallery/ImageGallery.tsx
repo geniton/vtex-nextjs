@@ -26,7 +26,7 @@ function ImageGallery({
   productUrl,
 }: ImageGalleryProps) {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
-  const currentImage = images[selectedImageIdx]
+  const currentImage = images[selectedImageIdx || 0]
 
   return (
     <section

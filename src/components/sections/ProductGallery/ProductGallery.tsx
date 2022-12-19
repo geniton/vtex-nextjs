@@ -12,6 +12,7 @@ import Button, { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import { mark } from 'src/sdk/tests/mark'
 import { useUI } from 'src/sdk/ui/Provider'
+import cn from 'classnames'
 
 import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
@@ -20,6 +21,7 @@ import { useDelayedFacets } from './useDelayedFacets'
 import { useDelayedPagination } from './useDelayedPagination'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useProductsPrefetch } from './usePageProducts'
+import { Components } from '@retailhub/audacity-ui'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <ProductGridSkeleton loading />
@@ -55,14 +57,19 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
       </Section>
     )
   }
-
+  
   return (
     <Section
       data-testid="product-gallery"
       className={`${styles.fsProductListing} layout__content-full`}
       data-fs-product-listing
     >
-      <div className="container">
+      <Components.Container
+        className={cn({
+          'mobile-only:p-0': controls?.general?.mobileVariations?.full,
+          'lg:p-0': controls?.general?.deskVariations?.full,
+        })}
+      >
         {searchTerm && (
           <header
             data-fs-product-listing-search-term
@@ -192,7 +199,7 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
             )}
           </div>
         </div>
-      </div>
+      </Components.Container>
     </Section>
   )
 }

@@ -9,7 +9,13 @@
       "showSoldBy": true,
       "buyNowBtn": true,
       "buyNowBtnText": "Comprar agora",
-      "galleryMode": "list-with-spaces"
+      "galleryMode": "list-with-spaces",
+      "mobileVariations": {
+        "full": false
+      },
+      "deskVariations": {
+        "full": false
+      }
     },
     "style": {
       "margins": {

@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 import getPageComponents from 'src/utils/components/get-page-components'
 
 import storeConfig from '../../store.config'
+import { Components } from '@retailhub/audacity-ui'
 
 function Page() {
   useEffect(() => {
@@ -15,7 +16,9 @@ function Page() {
     <>
       <NextSeo noindex nofollow />
 
-      <div>loading...</div>
+      <Components.Container>
+        <Components.LoadingPage />
+      </Components.Container>
     </>
   )
 }

@@ -26,15 +26,17 @@
       "deskVariations": {
         "full": false
       },
-      "effects": {
+      "mobileVariations": {
+        "full": false
+      }
+    },
+    "effects": {
+      "cardEffects": {
         "hoverZoom": false,
         "exchangeImage": false,
         "hoverOutlineColor": "",
         "hoverShadow": true,
         "hoverWishlist": true
-      },
-      "mobileVariations": {
-        "full": false
       }
     },
     "style": {

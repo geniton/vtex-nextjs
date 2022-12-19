@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import type { GetStaticProps } from 'next/types'
 import { NextSeo } from 'next-seo'
+import { Components } from '@retailhub/audacity-ui'
 
 import getPageComponents from 'src/utils/components/get-page-components'
 
@@ -15,7 +16,9 @@ function Page() {
     <>
       <NextSeo noindex nofollow />
 
-      <div>loading...</div>
+      <Components.Container>
+        <Components.LoadingPage />
+      </Components.Container>
     </>
   )
 }

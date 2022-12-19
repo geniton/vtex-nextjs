@@ -4,8 +4,8 @@
       "main": [
         {
           "link": {
-            "title": "Título",
-            "url": "/",
+            "title": "Masculino",
+            "url": "/masculino",
             "target": "_self"
           },
           "hasChildren": true,
@@ -139,8 +139,8 @@
         },
         {
           "link": {
-            "title": "Link",
-            "url": "/",
+            "title": "Feminino",
+            "url": "/feminino",
             "target": "_self"
           },
           "hasChildren": true,
@@ -187,8 +187,8 @@
         },
         {
           "link": {
-            "title": "Link",
-            "url": "/",
+            "title": "Eletrônicos",
+            "url": "/eletronicos",
             "target": "_self"
           },
           "hasChildren": true,
@@ -232,14 +232,6 @@
               ]
             }
           ]
-        },
-        {
-          "link": {
-            "title": "Título",
-            "url": "/",
-            "target": "_self",
-            "type": "firstLevel"
-          }
         }
       ],
       "vertical": {

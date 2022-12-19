@@ -31,7 +31,6 @@ function Layout({ children, page, pageName }: LayoutProps) {
           PlatformHooks={PlatformHooks}
         />
       )}
-
       <main>{children}</main>
 
       <Footer />

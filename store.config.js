@@ -34,7 +34,7 @@ module.exports = {
   },
 
   // Production URLs
-  storeUrl: 'https://retailhub.myvtex.com',
+  storeUrl: 'http://retailhub.myvtex.com',
   secureSubdomain: 'https://secure.retailhub.digital',
   checkoutUrl: 'https://secure.retailhub.digital/checkout',
   loginUrl: 'https://secure.retailhub.digital/api/io/login',

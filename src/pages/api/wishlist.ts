@@ -53,8 +53,6 @@ const wishlist: NextApiHandler = async (request, response) => {
         payload
       )
 
-      console.log('data', data)
-
       return response.status(200).json({
         data,
         message: 'success',

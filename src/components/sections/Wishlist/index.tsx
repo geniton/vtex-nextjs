@@ -2,56 +2,35 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Components } from '@retailhub/audacity-ui'
 import cn from 'classnames'
 
-import ProductCard from 'src/components/product/ProductCard'
 import ButtonLink from 'src/components/ui/Button/ButtonLink'
 import { query } from 'src/sdk/product/useProductsQuery'
 import * as LocalStorage from 'src/utils/local-storage'
 import { useLazyQuery } from 'src/sdk/graphql/useLazyQuery'
-import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
 import { useSession } from 'src/sdk/session'
+import { Hooks } from 'src/utils/components/platform'
 
 import styles from './wishlist.module.scss'
 
-const Wishlist: React.FC<any> = ({
-  controls,
-  controls: {
-    general: { cardControls, mobileVariations, deskVariations },
-  },
-}) => {
+const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
   const sessionData = useSession()
-  const [loading, setLoading] = useState(true)
+  const [wishlistData, setWishlistData] = useState<any[] | undefined>(undefined)
   const [fetchProducts, { data }]: any = useLazyQuery(query, {})
 
-  const updateWishlist = useCallback(async () => {
-    const localWishlist = LocalStorage.getData('wishlist') || []
+  const updateWishlist = useCallback(async (skuId: string) => {
+    if (!wishlistData?.length) return
+    
+    const updatedProducts = wishlistData.filter(
+      (product: any) => product.itemId !== skuId
+    )
 
-    const variables: any = {
-      first: 10,
-      sort: 'score_desc',
-      selectedFacets: [],
-      term: `sku:${localWishlist.join(';')}`,
-    }
-
-    await fetchProducts(variables)
-  }, [fetchProducts])
-
-  // function saveLocalStorage(products: number[]) {
-  //   StorageUtils.saveData('wishlist', products)
-  // }
-
-  // function removeProduct(productId: number) {
-  //   const newProducts = data.filter((product) => product !== productId)
-
-  //   saveLocalStorage(newProducts)
-  //   setData(newProducts)
-  // }
+    setWishlistData(updatedProducts)
+  }, [])
 
   useEffect(() => {
     const userId: any = sessionData.person?.id
 
     if (!userId) {
-      setLoading(false)
-
+      // router.push('/login')
       return
     }
 
@@ -66,9 +45,9 @@ const Wishlist: React.FC<any> = ({
         let finalProductIds: string[] = []
 
         if (masterDataWishlist.length) {
-          finalProductIds = JSON.parse(masterDataWishlist[0].products).filter(
-            (item: string) => /^[0-9\b]+$/.test(item)
-          )
+          finalProductIds = JSON.parse(
+            masterDataWishlist[0].products
+          ).filter((item: string) => /^[0-9\b]+$/.test(item))
         }
 
         finalProductIds = Array.from(
@@ -88,60 +67,77 @@ const Wishlist: React.FC<any> = ({
       } catch (err) {
         console.log(err)
       }
-
-      setLoading(false)
     }
 
     fetchData()
-  }, [fetchProducts])
+  }, [sessionData])
 
-  let products = []
+  useEffect(() => {
+    
+    if (wishlistData?.length) {
+      return
+    }
 
-  if (data?.search?.products?.edges.length) {
-    products = data.search.products.edges.map(({ node }: any) =>
-      JSON.parse(node.data)
-    )
-  }
+    let products = []
 
-  return null
+    if (data?.search?.products?.edges?.length) {
+      products = data.search.products.edges.map(({ node }: any) =>
+        JSON.parse(node.data)
+      )
+    }
+
+    setWishlistData(products)
+  }, [data])
 
   return (
-    <section className={styles.wishlist}>
+    <section
+      className={styles.wishlist}
+      style={{
+        backgroundColor: style?.bgColor,
+      }}
+    >
       <Components.Container
         className={cn({
-          'mobile-only:p-0': mobileVariations.full,
-          'lg:p-0': deskVariations.full,
+          'mobile-only:p-0': general?.mobileVariations?.full,
+          'lg:p-0': general?.deskVariations?.full,
         })}
       >
-        <ProductShelfSkeleton
-          loading={loading}
-          displayButton={cardControls?.showBuyButton}
-        >
-          {products?.length ? (
+        <Components.ShowcaseSkeleton loading={wishlistData === undefined}>
+          {wishlistData?.length ? (
             <div data-fs-wishlist-products>
-              {products.map((product: any, idx: number) => (
-                <ProductCard
-                  product={product}
-                  controls={controls}
-                  index={idx + 1}
-                  key={`${product.id}`}
-                  onChangeLike={() => updateWishlist()}
-                />
-              ))}
+              {wishlistData.map((product: any, index: number) => {
+                return (
+                  <Components.ProductCard
+                    product={product}
+                    controls={general?.cardControls}
+                    effects={effects?.cardEffects}
+                    style={style?.cardStyle}
+                    index={index + 1}
+                    key={`${product.itemId}`}
+                    onChangeLike={updateWishlist}
+                    PlatformHooks={Hooks}
+                  />
+                )
+              })}
             </div>
-          ) : (
-            <div data-fs-wishlist-content>
-              <h3>Sua wishlist está sem produtos :(</h3>
-              <p>
-                para adicionar um navegue em nosso site e clique no coração dos
-                produtos que gostar !
-              </p>
-              <ButtonLink data-fs-wishlist-button href="/">
-                escolher produtos
-              </ButtonLink>
-            </div>
-          )}
-        </ProductShelfSkeleton>
+          ) : null}
+        </Components.ShowcaseSkeleton>
+
+        {wishlistData !== undefined && !wishlistData?.length && (
+          <div className="text-center">
+            <h3>Sua wishlist está sem produtos :(</h3>
+            <p>
+              para adicionar um navegue em nosso site e clique no coração dos
+              produtos que gostar !
+            </p>
+            <ButtonLink
+              className="bg-[color:var(--primary)] text-white py-3 px-4 mt-2.5 inline-block text-base"
+              href="/"
+            >
+              escolher produtos
+            </ButtonLink>
+          </div>
+        )}
       </Components.Container>
     </section>
   )

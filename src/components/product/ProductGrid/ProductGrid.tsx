@@ -37,7 +37,9 @@ function ProductGrid({
         {parsedProducts.map((product, idx: number) => (
           <li key={`${product.id}`}>
             <Components.ProductCard
-              controls={controls}
+              controls={controls?.general?.cardControls}
+              effects={controls?.effects?.cardEffects}
+              style={controls?.style?.cardStyle}
               product={product}
               index={pageSize * page + idx + 1}
               {...otherProps}

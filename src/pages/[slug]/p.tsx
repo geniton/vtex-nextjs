@@ -13,6 +13,7 @@ import type {
 import storeConfig from 'store.config'
 import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from 'src/utils/components/render-components'
+import api from 'src/utils/api'
 
 type PageProps = {
   pageData: any
@@ -249,6 +250,22 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
 
   if (errors.length > 0) {
     throw errors[0]
+  }
+
+  try {
+    const cmsData = await api.getCMSpage("product")
+
+    page.pageData = cmsData['pt-BR'].components
+
+    if (cmsData?.message === 'Resource not found') {
+      return {
+        notFound: true,
+      }
+    }
+  } catch ({ message }: any) {
+    return {
+      notFound: true,
+    }
   }
 
   return {

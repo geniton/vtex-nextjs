@@ -16,6 +16,7 @@ import { Components as PlatformComponents } from 'src/utils/components/platform'
 import storeConfig from '../../store.config'
 import RenderComponents from '../utils/components/render-components'
 import VARIABLES from '../../config/variables.json'
+import api from 'src/utils/api'
 
 const useSearchParams = () => {
   const [params, setParams] = useState<SearchState | null>(null)
@@ -94,6 +95,22 @@ function Page({ page: { pageData }, ...props }: Props) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const page = getPageComponents('search')
+
+  try {
+    const data = await api.getCMSpage("search")
+
+    page.pageData = data['pt-BR'].components
+
+    if (data?.message === 'Resource not found') {
+      return {
+        notFound: true,
+      }
+    }
+  } catch ({ message }: any) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: { page },

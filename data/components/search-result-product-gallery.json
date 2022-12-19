@@ -55,13 +55,15 @@
       }
     },
     "effects": {
-      "hoverZoom": true,
-      "exchangeImage": true,
-      "hoverOutlineColor": "",
-      "hoverShadow": true,
       "hoverArrows": true,
-      "hoverWishlist": true,
-      "hoverBuyButton": true
+      "cardEffects": {
+        "hoverZoom": true,
+        "exchangeImage": true,
+        "hoverOutlineColor": "",
+        "hoverShadow": true,
+        "hoverWishlist": true,
+        "hoverBuyButton": true
+      }
     },
     "style": {
       "bgColor": "",

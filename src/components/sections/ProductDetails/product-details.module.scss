@@ -35,7 +35,7 @@
   }
 
   [data-fs-product-details-section] {
-    grid-column: span 8;
+    grid-column: span 12;
     height: fit-content;
 
     [data-fs-sku-selector] {
@@ -112,7 +112,7 @@
 
     @include media(">=tablet") {
       position: sticky;
-      top: 40px;
+      top: 120px;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       grid-column: span 6;

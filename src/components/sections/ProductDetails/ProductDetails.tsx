@@ -2,6 +2,7 @@ import { gql } from '@faststore/graphql-utils'
 import { sendAnalyticsEvent } from '@faststore/sdk'
 import { useEffect, useState } from 'react'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
+import cn from 'classnames'
 
 import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
@@ -24,6 +25,8 @@ import { getSellerLowPrice } from 'src/utils/product'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
+import { Components } from '@retailhub/audacity-ui'
+import { VariationsProps } from '@retailhub/audacity-ui/src/types'
 // import ProductDetailsContent from '../ProductDetailsContent'
 
 interface Props {
@@ -34,6 +37,8 @@ interface Props {
       showSkuName: boolean
       showProductReference: boolean
       galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
+      mobileVariations: VariationsProps
+      deskVariations: VariationsProps
     }
   }
 }
@@ -46,6 +51,8 @@ function ProductDetails({
       showSkuName,
       showProductReference,
       galleryMode,
+      mobileVariations,
+      deskVariations
     },
   },
 }: Props) {
@@ -174,7 +181,12 @@ function ProductDetails({
       className={`${styles.fsProductDetails} layout__content layout__section`}
       sku-id={sku}
     >
-      <div className="container">
+      <Components.Container
+        className={cn({
+          'mobile-only:p-0': mobileVariations?.full,
+          'md:p-0': deskVariations?.full
+        })}
+      >
         <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
         <section data-fs-product-details-body>
@@ -188,7 +200,7 @@ function ProductDetails({
 
           <section data-fs-product-details-info>
             <header data-fs-product-details-title>{productTitle()}</header>
-            {sellers.length >= 2 ? (
+            {/* {sellers.length >= 2 ? (
               <ul data-fs-product-details-seller-items>
                 {sellers.map((seller: any) => (
                   <li data-fs-product-details-seller-item key={seller.sellerId}>
@@ -218,7 +230,7 @@ function ProductDetails({
                   </li>
                 ))}
               </ul>
-            ) : null}
+            ) : null} */}
             <section
               data-fs-product-details-settings
               data-fs-product-details-section
@@ -311,7 +323,7 @@ function ProductDetails({
           description={description}
           specifications={isVariantOf.additionalProperty}
         /> */}
-      </div>
+      </Components.Container>
     </Section>
   )
 }
