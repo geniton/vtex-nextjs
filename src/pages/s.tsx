@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import type { SearchState } from '@faststore/sdk'
-import type { GetStaticProps } from 'next/types'
+import type { GetServerSideProps } from 'next/types'
 
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import SROnly from 'src/components/ui/SROnly'
@@ -12,11 +12,11 @@ import { useApplySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
 import getPageComponents from 'src/utils/components/get-page-components'
 import { Components as PlatformComponents } from 'src/utils/components/platform'
+import api from 'src/utils/api'
 
 import storeConfig from '../../store.config'
 import RenderComponents from '../utils/components/render-components'
 import VARIABLES from '../../config/variables.json'
-import api from 'src/utils/api'
 
 const useSearchParams = () => {
   const [params, setParams] = useState<SearchState | null>(null)
@@ -93,11 +93,11 @@ function Page({ page: { pageData }, ...props }: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const page = getPageComponents('search')
 
   try {
-    const data = await api.getCMSpage("search")
+    const data = await api.getCMSpage('search')
 
     page.pageData = data['pt-BR'].components
 

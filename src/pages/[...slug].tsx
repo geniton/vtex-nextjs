@@ -1,5 +1,5 @@
 import { gql } from '@faststore/graphql-utils'
-import type { GetStaticPaths, GetStaticProps } from 'next/types'
+import type { GetServerSideProps } from 'next/types'
 
 import { mark } from 'src/sdk/tests/mark'
 import { execute } from 'src/server'
@@ -63,7 +63,7 @@ interface PageProps {
   page: any
 }
 
-export const getStaticProps: GetStaticProps<
+export const getServerSideProps: GetServerSideProps<
   PageProps,
   { slug: string[] }
 > = async ({ params }) => {
@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps<
     operationName: query,
   })
 
-  const pageName = "category"
+  const pageName = 'category'
 
   const page = getPageComponents(pageName)
 
@@ -98,13 +98,6 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: { collection: data?.collection ?? null, page, pageName },
-  }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
   }
 }
 
