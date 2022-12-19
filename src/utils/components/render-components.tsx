@@ -1,5 +1,5 @@
 import React from 'react'
-import { Components } from '@retailhub/audacity-ui'
+import { Components } from 'src/@ui'
 
 import variables from 'config/variables.json'
 import storeConfig from 'store.config'
@@ -23,10 +23,6 @@ const RenderComponents: React.FC<any> = ({ pageData, ...otherProps }) => {
     }
 
     if (component === 'SingleProduct') {
-      component = 'ProductDetails'
-    }
-
-    if (component === 'Showcase') {
       component = 'ProductDetails'
     }
 
