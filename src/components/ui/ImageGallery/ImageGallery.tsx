@@ -14,7 +14,7 @@ export interface ImageElementData {
 
 interface ImageGalleryProps {
   images: ImageElementData[]
-  galleryMode: 'carousel' | 'list' | 'list-with-spaces'
+  galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
   skuId: string
   productUrl: string
 }
@@ -37,7 +37,7 @@ function ImageGallery({
         <Like skuId={skuId} />
         <Share productUrl={productUrl} />
       </div>
-      {galleryMode === 'carousel' && images.length > 1 ? (
+      {galleryMode === 'with-thumbnails' && images.length > 1 ? (
         <>
           <ImageZoom>
             <Image
