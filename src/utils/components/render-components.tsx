@@ -1,5 +1,5 @@
 import React from 'react'
-import { Components } from 'src/@ui'
+import { Components } from '@retailhub/audacity-ui'
 
 import variables from 'config/variables.json'
 import storeConfig from 'store.config'
