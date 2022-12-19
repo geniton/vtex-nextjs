@@ -504,8 +504,8 @@
       "variations": {
         "addStickyHeaderOnMobile": true,
         "addStickyHeaderOnDesk": true,
-        "addFloatingHeaderOnMobile": true,
-        "addFloatingHeaderOnDesk": true
+        "addFloatingHeaderOnMobile": false,
+        "addFloatingHeaderOnDesk": false
       },
       "effects": {
         "hoverBold": true
