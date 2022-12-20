@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Components } from '@retailhub/audacity-ui'
 import cn from 'classnames'
 
@@ -16,15 +16,15 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
   const [wishlistData, setWishlistData] = useState<any[] | undefined>(undefined)
   const [fetchProducts, { data }]: any = useLazyQuery(query, {})
 
-  const updateWishlist = useCallback(async (skuId: string) => {
+  const updateWishlist = async (skuId: string) => {
     if (!wishlistData?.length) return
-    
+
     const updatedProducts = wishlistData.filter(
-      (product: any) => product.itemId !== skuId
+      (product: any) => product.isVariantOf.bestSku.itemId !== skuId
     )
 
     setWishlistData(updatedProducts)
-  }, [])
+  }
 
   useEffect(() => {
     const userId: any = sessionData.person?.id
@@ -45,9 +45,9 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
         let finalProductIds: string[] = []
 
         if (masterDataWishlist.length) {
-          finalProductIds = JSON.parse(
-            masterDataWishlist[0].products
-          ).filter((item: string) => /^[0-9\b]+$/.test(item))
+          finalProductIds = JSON.parse(masterDataWishlist[0].products).filter(
+            (item: string) => /^[0-9\b]+$/.test(item)
+          )
         }
 
         finalProductIds = Array.from(
@@ -73,8 +73,7 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
   }, [sessionData])
 
   useEffect(() => {
-    
-    if (wishlistData?.length) {
+    if (!data?.search || wishlistData?.length) {
       return
     }
 
@@ -105,20 +104,18 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
         <Components.ShowcaseSkeleton loading={wishlistData === undefined}>
           {wishlistData?.length ? (
             <div data-fs-wishlist-products>
-              {wishlistData.map((product: any, index: number) => {
-                return (
-                  <Components.ProductCard
-                    product={product}
-                    controls={general?.cardControls}
-                    effects={effects?.cardEffects}
-                    style={style?.cardStyle}
-                    index={index + 1}
-                    key={`${product.itemId}`}
-                    onChangeLike={updateWishlist}
-                    PlatformHooks={Hooks}
-                  />
-                )
-              })}
+              {wishlistData?.map((product: any, index: number) => (
+                <Components.ProductCard
+                  product={product}
+                  controls={general?.cardControls}
+                  effects={effects?.cardEffects}
+                  style={style?.cardStyle}
+                  index={index + 1}
+                  key={`${product.itemId}`}
+                  onChangeLike={updateWishlist}
+                  PlatformHooks={Hooks}
+                />
+              ))}
             </div>
           ) : null}
         </Components.ShowcaseSkeleton>

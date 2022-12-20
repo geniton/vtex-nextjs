@@ -64,9 +64,9 @@ function ImageGallery({
           <Image
             src={currentImage.url}
             alt={currentImage.alternateName}
-            sizes="(max-width: 804px) 25vw, 30vw"
-            width={804}
-            height={804 * (3 / 4)}
+            sizes="(max-width: 900px) 25vw, 30vw"
+            width={900}
+            height={900}
             loading="eager"
             fetchPriority="high"
             options={{
@@ -81,9 +81,9 @@ function ImageGallery({
               <Image
                 src={image.url}
                 alt={image.alternateName}
-                sizes="(max-width: 804px) 25vw, 30vw"
-                width={804}
-                height={804 * (3 / 4)}
+                sizes="(max-width: 900px) 25vw, 30vw"
+                width={900}
+                height={900}
                 loading="eager"
                 fetchPriority="high"
                 options={{

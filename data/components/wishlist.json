@@ -4,7 +4,7 @@
       "applyMobileCarouselControls": false,
       "cardControls": {
         "applyLinkOnImage": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,
@@ -16,7 +16,7 @@
         "showWishlist": true,
         "showRating": true,
         "showDesc": false,
-        "showBuyButton": true,
+        "showBuyButton": false,
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
