@@ -1,8 +1,10 @@
 import { gql } from '@faststore/graphql-utils'
 import { sendAnalyticsEvent } from '@faststore/sdk'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import cn from 'classnames'
+import { Components } from 'src/@ui'
+import type { VariationsProps } from '@retailhub/audacity-ui/src/types'
 
 import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
@@ -21,13 +23,9 @@ import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import Selectors from 'src/components/ui/SkuSelector'
 import storeConfig from 'store.config'
-import { getSellerLowPrice } from 'src/utils/product'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
-import { Components } from '@retailhub/audacity-ui'
-import { VariationsProps } from '@retailhub/audacity-ui/src/types'
-// import ProductDetailsContent from '../ProductDetailsContent'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -52,7 +50,7 @@ function ProductDetails({
       showProductReference,
       galleryMode,
       mobileVariations,
-      deskVariations
+      deskVariations,
     },
   },
 }: Props) {
@@ -71,7 +69,7 @@ function ProductDetails({
 
   const {
     product: {
-      // description,
+      description,
       id,
       sku,
       gtin,
@@ -87,13 +85,24 @@ function ProductDetails({
     },
   } = data
 
+  const sellerActive = useMemo(
+    () =>
+      sellers.filter((seller: any) =>
+        sellers.length < 1
+          ? (seller.sellerDefault = true)
+          : seller.sellerDefault
+      )[0],
+    [sellers]
+  )
+
+  const buyDisabled = useMemo(
+    () => !sellerActive.AvailableQuantity,
+    [sellerActive]
+  )
+
   if (skuVariants && variations) {
     skuVariants.availableVariations = JSON.parse(variations)
   }
-
-  const sellerActive = getSellerLowPrice(sellers)
-
-  const buyDisabled = !sellerActive.AvailableQuantity
 
   const buyProps = useBuyButton({
     id,
@@ -184,7 +193,7 @@ function ProductDetails({
       <Components.Container
         className={cn({
           'mobile-only:p-0': mobileVariations?.full,
-          'md:p-0': deskVariations?.full
+          'md:p-0': deskVariations?.full,
         })}
       >
         <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
@@ -198,9 +207,12 @@ function ProductDetails({
             productUrl={`${storeConfig.storeUrl}${link}`}
           />
 
-          <section data-fs-product-details-info>
+          <section
+            data-fs-product-details-info
+            data-fs-product-details-sellers-box={sellers.length > 1}
+          >
             <header data-fs-product-details-title>{productTitle()}</header>
-            {/* {sellers.length >= 2 ? (
+            {sellers.length >= 2 ? (
               <ul data-fs-product-details-seller-items>
                 {sellers.map((seller: any) => (
                   <li data-fs-product-details-seller-item key={seller.sellerId}>
@@ -230,7 +242,7 @@ function ProductDetails({
                   </li>
                 ))}
               </ul>
-            ) : null} */}
+            ) : null}
             <section
               data-fs-product-details-settings
               data-fs-product-details-section
@@ -319,10 +331,10 @@ function ProductDetails({
             </section>
           </section>
         </section>
-        {/* <ProductDetailsContent
+        <Components.ProductDetailsContent
           description={description}
           specifications={isVariantOf.additionalProperty}
-        /> */}
+        />
       </Components.Container>
     </Section>
   )

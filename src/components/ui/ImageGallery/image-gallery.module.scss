@@ -44,6 +44,7 @@
   // Variants Styles
   // --------------------------------------------------------
 
+
   &[data-fs-image-gallery="with-thumbnails"] {
     grid-template-columns: repeat(8, 1fr);
 
@@ -57,6 +58,12 @@
       @include media(">=tablet") {
         grid-column: 2 / span 7;
       }
+    }
+  }
+
+  &[data-fs-image-gallery-full-screen="true"]{
+    [data-fs-image-gallery-zoom] {
+      grid-column: 1 / span 8;
     }
   }
 

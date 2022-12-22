@@ -32,6 +32,7 @@ function ImageGallery({
     <section
       data-fs-image-gallery={galleryMode}
       className={styles.fsImageGallery}
+      data-fs-image-gallery-full-screen={images.length <= 1}
     >
       <div data-fs-image-gallery-share>
         <Like skuId={skuId} />
