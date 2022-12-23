@@ -24,11 +24,11 @@ interface LayoutProps {
   [key: string]: any
 }
 
-function Layout({ children, page: { themeConfigs }, pageName }: LayoutProps) {
+function Layout({ children, page, pageName }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
   return (
-    <ThemeConfigs data={themeConfigs || themeConfigsMock}>
+    <ThemeConfigs data={page?.themeConfigs || themeConfigsMock}>
       <Components.Header
         data={headerMock}
         pageName={pageName}

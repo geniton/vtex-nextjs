@@ -1,11 +1,4 @@
 {
-  "mainColors": {
-    "primary": "#bea669",
-    "secondary": "#bea669",
-    "dark": "#5b5b5b",
-    "normal": "#bbbbbb",
-    "light": "#efefef"
-  },
   "colors": [
     {
       "name": "Azul",
