@@ -6,26 +6,26 @@
     "normal": "#bbbbbb",
     "light": "#efefef"
   },
-  "themeColors": [
+  "colors": [
     {
       "name": "Azul",
-      "color": "#1e73be"
+      "value": "#1e73be"
     },
     {
       "name": "Vermelho",
-      "color": "#dd3333"
+      "value": "#dd3333"
     },
     {
       "name": "Verde",
-      "color": "#81d742"
+      "value": "#81d742"
     },
     {
       "name": "Preto",
-      "color": "#000000"
+      "value": "#000000"
     },
     {
       "name": "Cinza",
-      "color": "#606060"
+      "value": "#606060"
     }
   ],
   "fontName": "nunito",
@@ -52,11 +52,5 @@
       "bgCloseBtn": ""
     }
   },
-  "stateCategories": [
-    "AC",
-    "GO",
-    "PE",
-    "RS",
-    "SP"
-  ]
+  "stateCategories": ["AC", "GO", "PE", "RS", "SP"]
 }

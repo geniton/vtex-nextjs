@@ -6,6 +6,7 @@ import { Components } from '@retailhub/audacity-ui'
 import headerMock from 'data/components/header.json'
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from 'src/utils/components/theme-configs'
+import themeConfigsMock from 'data/components/theme-configs.json'
 import {
   Components as PlatformComponents,
   Hooks as PlatformHooks,
@@ -27,7 +28,7 @@ function Layout({ children, page: { themeConfigs }, pageName }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
   return (
-    <ThemeConfigs data={themeConfigs}>
+    <ThemeConfigs data={themeConfigs || themeConfigsMock}>
       <Components.Header
         data={headerMock}
         pageName={pageName}
