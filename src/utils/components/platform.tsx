@@ -1,5 +1,7 @@
 // components
 import { Link } from '@faststore/ui'
+import router from 'next/router'
+
 
 import { Image } from 'src/components/ui/Image'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
@@ -27,7 +29,8 @@ export const Hooks = {
   useProductsQuery,
   useProductsQueryPrefetch,
   useProductLink,
-  query
+  query,
+  router
 }
 
 export const Components = {

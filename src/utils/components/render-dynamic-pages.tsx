@@ -62,7 +62,7 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageName, ...props }) => {
         </SearchProvider>
       )
     },
-    default: () => (
+    "landing-page": () => (
       <>
         <Seo />
         <SiteLinksSearchBoxJsonLd

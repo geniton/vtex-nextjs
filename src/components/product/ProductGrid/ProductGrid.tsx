@@ -3,6 +3,7 @@ import { Components } from '@retailhub/audacity-ui'
 import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductGrid/product-grid.module.scss'
+import { Hooks as PlatformHooks } from 'src/utils/components/platform'
 
 interface Props {
   /**
@@ -42,6 +43,7 @@ function ProductGrid({
               style={controls?.style?.cardStyle}
               product={product}
               index={pageSize * page + idx + 1}
+              PlatformHooks={PlatformHooks}
               {...otherProps}
             />
           </li>

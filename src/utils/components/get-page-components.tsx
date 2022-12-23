@@ -73,21 +73,6 @@ export default function getPageComponents(pageName?: string) {
     ]
   }
 
-  if (pageName === 'category') {
-    data.pageData = [
-      {
-        id: 112,
-        component: 'ProductGallery',
-        componentData: { ...MockProductGalleryJSON },
-      },
-      {
-        id: 113,
-        component: 'Banner',
-        componentData: { ...MockBannerJSON },
-      },
-    ]
-  }
-
   if (pageName === 'search') {
     data.pageData = [
       {

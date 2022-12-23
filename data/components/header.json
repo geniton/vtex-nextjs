@@ -144,7 +144,7 @@
             "target": "_self"
           },
           "hasChildren": true,
-          "type": "thirdLevel",
+          "type": "firstLevel",
           "children": [
             {
               "link": {
@@ -184,6 +184,16 @@
               ]
             }
           ]
+        },
+        {
+          "link": {
+            "title": "Demo",
+            "url": "/demo",
+            "target": "_self"
+          },
+          "hasChildren": true,
+          "type": "firstLevel",
+          "children": []
         },
         {
           "link": {
@@ -429,7 +439,7 @@
             "logoLink": {
               "title": "",
               "url": "/",
-              "target": "_self"
+              "target": "_blank"
             }
           }
         ]

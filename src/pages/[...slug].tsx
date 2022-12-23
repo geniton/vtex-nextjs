@@ -8,7 +8,6 @@ import type {
   ServerCollectionPageQueryQueryVariables,
 } from '@generated/graphql'
 import storeConfig from 'store.config'
-import getPageComponents from 'src/utils/components/get-page-components'
 import api from 'src/utils/api'
 
 import RenderDynamicPages from '../utils/components/render-dynamic-pages'
@@ -76,20 +75,26 @@ export const getServerSideProps: GetServerSideProps<
     operationName: query,
   })
 
-  const pageName = 'category'
+  let pageName = 'landing-page'
 
-  const page = getPageComponents(pageName)
-
+  const page = {
+    themeConfigs: {},
+    pageData: null
+  }
+  
   try {
-    const cmsData = await api.getCMSpage(pageName)
-
-    page.pageData = cmsData['pt-BR'].components
+    let cmsData = await api.getCMSpage(slug.join('/'))
 
     if (cmsData?.message === 'Resource not found') {
-      return {
-        notFound: true,
-      }
+      cmsData = await api.getCMSpage('category')
+      pageName = 'category'
     }
+
+    page.themeConfigs = {
+      colors: cmsData.site.colors
+    }
+
+    page.pageData = cmsData['pt-BR'].components
   } catch ({ message }: any) {
     return {
       notFound: true,

@@ -5,8 +5,6 @@ import type { MouseEvent } from 'react'
 
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
-import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
-import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import Skeleton from 'src/components/skeletons/Skeleton'
 import Button, { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
@@ -24,7 +22,7 @@ import { useProductsPrefetch } from './usePageProducts'
 import { Components } from '@retailhub/audacity-ui'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
-const GalleryPageSkeleton = <ProductGridSkeleton loading />
+const GalleryPageSkeleton = <Components.ProductGallerySkeleton loading />
 
 interface Props {
   title: string
@@ -82,9 +80,9 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
         )}
         <div data-fs-product-listing-content-grid className="layout__content">
           <div data-fs-product-listing-filters>
-            <FilterSkeleton loading={facets?.length === 0}>
+            <Components.FilterSkeleton loading={facets?.length === 0}>
               <Filter facets={facets} />
-            </FilterSkeleton>
+            </Components.FilterSkeleton>
           </div>
 
           <div data-fs-product-listing-results-count data-count={totalCount}>
@@ -193,7 +191,7 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
                   rel="next"
                   variant="secondary"
                 >
-                  Load more products
+                  Ver mais
                 </ButtonLink>
               </div>
             )}

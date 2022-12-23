@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Components } from '@retailhub/audacity-ui'
 import cn from 'classnames'
 
@@ -7,37 +7,50 @@ import { query } from 'src/sdk/product/useProductsQuery'
 import * as LocalStorage from 'src/utils/local-storage'
 import { useLazyQuery } from 'src/sdk/graphql/useLazyQuery'
 import { useSession } from 'src/sdk/session'
-import { Hooks } from 'src/utils/components/platform'
+import { Hooks as PlatformHooks } from 'src/utils/components/platform'
 
 import styles from './wishlist.module.scss'
+import router from 'next/router'
 
 const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
   const sessionData = useSession()
-  const [wishlistData, setWishlistData] = useState<any[] | undefined>(undefined)
   const [fetchProducts, { data }]: any = useLazyQuery(query, {})
+  const [numberOfAttempts, setNumberOfAttempts] = useState(1)
+  const [listRemovedProducts, updateListRemovedProducts] = useState<any>([])
 
-  const updateWishlist = async (skuId: string) => {
-    if (!wishlistData?.length) return
+  const wishlistData: any = useMemo(() => {
+    if (data?.search?.products?.edges?.length) {
+      return data.search.products.edges.map(({ node }: any) =>
+        JSON.parse(node.data)
+      ).filter(
+        (product: any) => !product.isVariantOf.items.some((p: any) => listRemovedProducts.includes(p.itemId))
+        
+      )
+    }
+    if (data?.search?.products?.edges?.length === 0) {
+      return []
+    }
 
-    const updatedProducts = wishlistData.filter(
-      (product: any) => product.isVariantOf.bestSku.itemId !== skuId
-    )
-
-    setWishlistData(updatedProducts)
-  }
+    return undefined
+  },[data, listRemovedProducts])
 
   useEffect(() => {
-    const userId: any = sessionData.person?.id
+    const userID: string = sessionData.person?.id || ""
 
-    if (!userId) {
-      // router.push('/login')
+    if (!userID) {
+      if (numberOfAttempts === 2) {
+        router.push('/login')
+        return
+      }
+
+      setNumberOfAttempts(numberOfAttempts + 1)
       return
     }
 
     async function fetchData() {
       try {
         const masterDataWishlist = await fetch(
-          `/api/wishlist?_where=userId=${userId}&_sort=createdIn DESC&_fields=userId,products`
+          `/api/wishlist?_where=userId=${userID}&_sort=createdIn DESC&_fields=userId,products`
         ).then((res) => res.json())
 
         const localWishlist = LocalStorage.getData('wishlist') || []
@@ -71,23 +84,7 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
 
     fetchData()
   }, [sessionData])
-
-  useEffect(() => {
-    if (!data?.search || wishlistData?.length) {
-      return
-    }
-
-    let products = []
-
-    if (data?.search?.products?.edges?.length) {
-      products = data.search.products.edges.map(({ node }: any) =>
-        JSON.parse(node.data)
-      )
-    }
-
-    setWishlistData(products)
-  }, [data])
-
+  
   return (
     <section
       className={styles.wishlist}
@@ -101,7 +98,7 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
           'lg:p-0': general?.deskVariations?.full,
         })}
       >
-        <Components.ShowcaseSkeleton loading={wishlistData === undefined}>
+        <Components.ShowcaseSkeleton dots={false} loading={wishlistData === undefined}>
           {wishlistData?.length ? (
             <div data-fs-wishlist-products>
               {wishlistData?.map((product: any, index: number) => (
@@ -111,9 +108,9 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
                   effects={effects?.cardEffects}
                   style={style?.cardStyle}
                   index={index + 1}
-                  key={`${product.itemId}`}
-                  onChangeLike={updateWishlist}
-                  PlatformHooks={Hooks}
+                  key={product.isVariantOf.cacheId}
+                  onChangeLike={(skuId: string) => updateListRemovedProducts([...listRemovedProducts, skuId])}
+                  PlatformHooks={PlatformHooks}
                 />
               ))}
             </div>

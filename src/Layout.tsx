@@ -2,6 +2,8 @@
 import type { ReactNode } from 'react'
 import { lazy, Suspense } from 'react'
 import { Components } from '@retailhub/audacity-ui'
+import headerMock from 'data/components/header.json'
+import themeConfigsMock from 'data/components/theme-configs.json'
 
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from 'src/utils/components/theme-configs'
@@ -18,19 +20,18 @@ interface LayoutProps {
   [key: string]: any
 }
 
-function Layout({ children, page, pageName }: LayoutProps) {
+function Layout({ children, page: { themeConfigs }, pageName }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
   
   return (
-    <ThemeConfigs data={page?.themeConfigs}>
-      {page?.header && (
-        <Components.Header
-          data={page.header}
-          pageName={pageName}
-          PlatformComponents={PlatformComponents}
-          PlatformHooks={PlatformHooks}
-        />
-      )}
+    <ThemeConfigs data={themeConfigs}>
+      <Components.Header
+        data={headerMock}
+        pageName={pageName}
+        PlatformComponents={PlatformComponents}
+        PlatformHooks={PlatformHooks}
+      />
+
       <main>{children}</main>
 
       <Footer />

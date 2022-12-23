@@ -11,7 +11,6 @@ import type {
   ServerProductPageQueryQueryVariables,
 } from '@generated/graphql'
 import storeConfig from 'store.config'
-import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from 'src/utils/components/render-components'
 import api from 'src/utils/api'
 
@@ -241,7 +240,11 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
     operationName: query,
   })
 
-  const page = getPageComponents('pdp')
+  const page = {
+    pageData: null,
+    themeConfigs: {}
+  }
+
   const notFound = errors.find(isNotFoundError)
 
   if (notFound) {
@@ -258,6 +261,10 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
     const cmsData = await api.getCMSpage('product')
 
     page.pageData = cmsData['pt-BR'].components
+
+    page.themeConfigs = {
+      colors: cmsData.site.colors
+    }
 
     if (cmsData?.message === 'Resource not found') {
       return {

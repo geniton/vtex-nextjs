@@ -3,8 +3,6 @@ import { sendAnalyticsEvent } from '@faststore/sdk'
 import { useEffect, useMemo, useState } from 'react'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import cn from 'classnames'
-import { Components } from 'src/@ui'
-import type { VariationsProps } from '@retailhub/audacity-ui/src/types'
 
 import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
@@ -26,6 +24,8 @@ import storeConfig from 'store.config'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
+import { Components } from '@retailhub/audacity-ui'
+import { VariationsProps } from '@retailhub/audacity-ui/src/types'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -50,7 +50,7 @@ function ProductDetails({
       showProductReference,
       galleryMode,
       mobileVariations,
-      deskVariations,
+      deskVariations
     },
   },
 }: Props) {
@@ -85,20 +85,8 @@ function ProductDetails({
     },
   } = data
 
-  const sellerActive = useMemo(
-    () =>
-      sellers.filter((seller: any) =>
-        sellers.length < 1
-          ? (seller.sellerDefault = true)
-          : seller.sellerDefault
-      )[0],
-    [sellers]
-  )
-
-  const buyDisabled = useMemo(
-    () => !sellerActive.AvailableQuantity,
-    [sellerActive]
-  )
+  const sellerActive = useMemo(() => sellers.filter((seller: any) => sellers.length < 1 ? seller.sellerDefault = true : seller.sellerDefault)[0], [sellers])
+  const buyDisabled = useMemo(() => !sellerActive.AvailableQuantity, [sellerActive])
 
   if (skuVariants && variations) {
     skuVariants.availableVariations = JSON.parse(variations)
@@ -193,7 +181,7 @@ function ProductDetails({
       <Components.Container
         className={cn({
           'mobile-only:p-0': mobileVariations?.full,
-          'md:p-0': deskVariations?.full,
+          'md:p-0': deskVariations?.full
         })}
       >
         <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
@@ -207,10 +195,7 @@ function ProductDetails({
             productUrl={`${storeConfig.storeUrl}${link}`}
           />
 
-          <section
-            data-fs-product-details-info
-            data-fs-product-details-sellers-box={sellers.length > 1}
-          >
+          <section data-fs-product-details-info>
             <header data-fs-product-details-title>{productTitle()}</header>
             {sellers.length >= 2 ? (
               <ul data-fs-product-details-seller-items>

@@ -1,8 +1,7 @@
+import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
-import type { GetStaticProps } from 'next/types'
-
-import getPageComponents from 'src/utils/components/get-page-components'
+import api from 'src/utils/api'
 
 const useErrorState = () => {
   const router = useRouter()
@@ -27,8 +26,27 @@ function Page() {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const page = getPageComponents()
+export const getServerSideProps: GetServerSideProps = async () => {
+  const page = {
+    themeConfigs: {}
+  }
+
+  try {
+    const data = await api.getCMSpage('homepage')
+    page.themeConfigs = {
+      colors: data.site.colors
+    }
+
+    if (data?.message === 'Resource not found') {
+      return {
+        notFound: true,
+      }
+    }
+  } catch ({ message }: any) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: { page },

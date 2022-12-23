@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
-import type { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import { Components } from '@retailhub/audacity-ui'
 
-import getPageComponents from 'src/utils/components/get-page-components'
-
 import storeConfig from '../../store.config'
+import { GetServerSideProps } from 'next'
+import api from 'src/utils/api'
 
 function Page() {
   useEffect(() => {
@@ -23,8 +22,27 @@ function Page() {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const page = getPageComponents()
+export const getServerSideProps: GetServerSideProps = async () => {
+  const page = {
+    themeConfigs: {}
+  }
+
+  try {
+    const data = await api.getCMSpage('homepage')
+    page.themeConfigs = {
+      colors: data.site.colors
+    }
+
+    if (data?.message === 'Resource not found') {
+      return {
+        notFound: true,
+      }
+    }
+  } catch ({ message }: any) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: { page },

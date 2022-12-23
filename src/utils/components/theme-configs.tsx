@@ -20,15 +20,9 @@ const ThemeConfigs: React.FC<any> = ({ children, data }) => {
 
     if (!data) return
 
-    if (data.mainColors && !!Object.values(data.mainColors).length) {
-      for (const variable in data.mainColors) {
-        variables.push(`--${variable}:${data.mainColors[variable]};`)
-      }
-    }
-
-    if (data.themeColors?.length) {
-      data.themeColors.forEach(({ name, color }: any) => {
-        variables.push(`--${name}:${color};`)
+    if (data.colors?.length) {
+      data.colors.forEach(({ name, value }: any) => {
+        variables.push(`--${name}:${value};`)
       })
     }
 

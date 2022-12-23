@@ -3,7 +3,6 @@ import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
-import getPageComponents from 'src/utils/components/get-page-components'
 import RenderComponents from 'src/utils/components/render-components'
 import api from 'src/utils/api'
 
@@ -37,12 +36,18 @@ function Page({ page: { pageData } }: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const page = getPageComponents('homepage')
+  const page = {
+    pageData: null,
+    themeConfigs: {}
+  }
 
   try {
     const data = await api.getCMSpage('homepage')
 
     page.pageData = data['pt-BR'].components
+    page.themeConfigs = {
+      colors: data.site.colors
+    }
 
     if (data?.message === 'Resource not found') {
       return {

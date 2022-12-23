@@ -35,7 +35,7 @@
   }
 
   [data-fs-product-details-section] {
-    grid-column: span 12;
+    grid-column: span 9;
     height: fit-content;
 
     [data-fs-sku-selector] {
@@ -76,6 +76,14 @@
 
   [data-fs-product-details-section-full="true"] {
     grid-column: span 12;
+  }
+
+  [data-fs-product-details-section-full="false"] {
+    padding: 20px;
+    border: 1px solid var(--fs-product-details-section-border-color);
+    [data-fs-quantity-selector] {
+      min-width: 109px;
+    }
   }
 
   [data-fs-product-details-title],
@@ -120,19 +128,11 @@
   }
 
   [data-fs-product-details-seller-items] {
-    grid-column: span 4;
+    grid-column: span 3;
   }
 
   [data-fs-product-details-box] {
     grid-column: span 6;
-  }
-
-  [data-fs-product-details-seller-item] {
-    &:not(:first-child) {
-      [data-fs-product-details-seller-btn] {
-        border-top: 0;
-      }
-    }
   }
 
   [data-fs-product-details-seller-btn] {
@@ -146,6 +146,7 @@
     background-color: var(--light);
     border: 1px solid var(--fs-product-details-section-border-color);
     border-right: 0;
+    word-break: break-word;
 
     &::before {
       position: absolute;
@@ -168,18 +169,19 @@
     }
   }
 
+  [data-fs-product-details-seller-item] {
+    &:not(:first-child) {
+      [data-fs-product-details-seller-btn] {
+        border-top: 0;
+      }
+    }
+  }
+
   [data-fs-product-details-seller-btn-active="true"] {
     color: var(--primary);
     background-color: var(--white);
 
     &::after {
-      position: absolute;
-      top: 0;
-      right: -1px;
-      display: block;
-      width: 1px;
-      height: 100%;
-      content: "";
       background-color: white;
     }
 
@@ -190,6 +192,24 @@
       content: "\2713";
       background-color: var(--primary);
       border-color: var(--primary);
+    }
+  }
+
+  [data-fs-product-details-seller-btn-active] {
+    &::after {
+      position: absolute;
+      top: 0;
+      right: -1px;
+      display: block;
+      width: 1px;
+      height: 100%;
+      content: "";
+    }
+
+    @include media("<=tablet") {
+      &::after {
+        background-color: var(--fs-product-details-section-border-color);
+      }
     }
   }
 

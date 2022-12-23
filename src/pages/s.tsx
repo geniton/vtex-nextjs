@@ -10,7 +10,6 @@ import SROnly from 'src/components/ui/SROnly'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useApplySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
-import getPageComponents from 'src/utils/components/get-page-components'
 import { Components as PlatformComponents } from 'src/utils/components/platform'
 import api from 'src/utils/api'
 
@@ -94,14 +93,20 @@ function Page({ page: { pageData }, ...props }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const page = getPageComponents('search')
+  const page = {
+    pageData: null,
+    themeConfigs: {}
+  }
 
   try {
-    const data = await api.getCMSpage('search')
+    const cmsData = await api.getCMSpage('search')
 
-    page.pageData = data['pt-BR'].components
+    page.pageData = cmsData['pt-BR'].components
+    page.themeConfigs = {
+      colors: cmsData.site.colors
+    }
 
-    if (data?.message === 'Resource not found') {
+    if (cmsData?.message === 'Resource not found') {
       return {
         notFound: true,
       }
