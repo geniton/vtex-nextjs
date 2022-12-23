@@ -72,7 +72,6 @@ function ProductCard({
         arrows,
         dots,
         showDesc,
-        imageFitIn,
       },
       effects: {
         exchangeImage,
@@ -169,9 +168,6 @@ function ProductCard({
                   height={360 / aspectRatio}
                   sizes="(max-width: 768px) 25vw, 30vw"
                   loading="lazy"
-                  options={{
-                    fitIn: imageFitIn,
-                  }}
                 />
               </figure>
             ))}
@@ -188,9 +184,6 @@ function ProductCard({
               width={360}
               height={360 / aspectRatio}
               loading="lazy"
-              options={{
-                fitIn: imageFitIn,
-              }}
             />
             {exchangeImage && images.length > 1 ? (
               <Image
@@ -199,9 +192,6 @@ function ProductCard({
                 width={360}
                 height={360 / aspectRatio}
                 loading="lazy"
-                options={{
-                  fitIn: imageFitIn,
-                }}
                 className="absolute top-0"
                 data-fs-product-card-image-exchange={exchangeImage}
               />

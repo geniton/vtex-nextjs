@@ -43,7 +43,6 @@
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
         "unavailableMessage": "Produto Indisponível",
-        "imageFitIn": false,
         "showSkuVariations": false
       },
       "mobileVariations": {

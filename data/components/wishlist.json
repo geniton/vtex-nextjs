@@ -20,8 +20,7 @@
         "titleBuyButton": "Ver Produto",
         "buttonUnavailableTitle": "Avise-me",
         "showUnabailableMessage": true,
-        "unavailableMessage": "Produto Indisponível",
-        "imageFitIn": false
+        "unavailableMessage": "Produto Indisponível"
       },
       "deskVariations": {
         "full": false
