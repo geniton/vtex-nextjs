@@ -1,6 +1,6 @@
-import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
+
 import api from 'src/utils/api'
 
 const useErrorState = () => {
@@ -30,15 +30,16 @@ function Page() {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps = async () => {
   const page = {
-    themeConfigs: {}
+    themeConfigs: {},
   }
 
   try {
     const data = await api.getCMSpage('homepage')
+
     page.themeConfigs = {
-      colors: data.site.colors
+      colors: data.site.colors,
     }
 
     if (data?.message === 'Resource not found') {
