@@ -2,12 +2,15 @@
 import type { ReactNode } from 'react'
 import { lazy, Suspense } from 'react'
 import { Components } from '@retailhub/audacity-ui'
-import headerMock from 'data/components/header.json'
-import themeConfigsMock from 'data/components/theme-configs.json'
 
+import headerMock from 'data/components/header.json'
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from 'src/utils/components/theme-configs'
-import { Components as PlatformComponents, Hooks as PlatformHooks } from 'src/utils/components/platform'
+import {
+  Components as PlatformComponents,
+  Hooks as PlatformHooks,
+} from 'src/utils/components/platform'
+
 import Footer from './components/Footer'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
@@ -22,7 +25,7 @@ interface LayoutProps {
 
 function Layout({ children, page: { themeConfigs }, pageName }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
-  
+
   return (
     <ThemeConfigs data={themeConfigs}>
       <Components.Header
