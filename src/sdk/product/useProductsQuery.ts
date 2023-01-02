@@ -30,6 +30,7 @@ export const query = gql`
     ) {
       products {
         pageInfo {
+          hasNextPage
           totalCount
         }
         edges {

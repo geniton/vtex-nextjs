@@ -1,17 +1,12 @@
-import Variables from 'config/variables.json'
-import MockBannerJSON from 'data/components/banner.json'
-import MockTipbarJSON from 'data/components/tipbar.json'
-import MockNewsletterJSON from 'data/components/newsletter.json'
-import MockStoresJSON from 'data/components/stores.json'
 import header from 'data/components/header.json'
 import footer from 'data/components/footer.json'
 import themeConfigs from 'data/components/theme-configs.json'
 import MockProductDetailsJSON from 'data/components/product-details.json'
 // import MockBannergridJSON from 'data/components/bannergrid.json'
-import MockFirstShowcaseJSON from 'data/components/showcase.json'
 import MockCrossSellingViewShelfJSON from 'data/components/cross-selling-shelf-view.json'
 import MockCrossSellingBuyShelfJSON from 'data/components/cross-selling-shelf-buy.json'
 import MockSearchResultProductGalleryJSON from 'data/components/search-result-product-gallery.json'
+import MockProducts from 'data/components/products.json'
 import MockWishlistJSON from 'data/components/wishlist.json'
 
 export default function getPageComponents(pageName?: string) {
@@ -22,33 +17,13 @@ export default function getPageComponents(pageName?: string) {
     pageData: [],
   }
 
-  if (pageName === 'pagina-inicial') {
+  if (pageName === 'products') {
     data.pageData = [
       {
         id: 101,
-        component: 'Banner',
-        componentData: { ...MockBannerJSON },
-      },
-      {
-        id: 102,
-        component: 'Showcase',
-        componentData: { ...MockFirstShowcaseJSON, ...Variables },
-      },
-      {
-        id: 103,
-        component: 'Tipbar',
-        componentData: { ...MockTipbarJSON },
-      },
-      {
-        id: 105,
-        component: 'Stores',
-        componentData: { ...MockStoresJSON, ...Variables },
-      },
-      {
-        id: 107,
-        component: 'Newsletter',
-        componentData: { ...MockNewsletterJSON },
-      },
+        component: 'Products',
+        componentData: { ...MockProducts },
+      }
     ]
   }
 

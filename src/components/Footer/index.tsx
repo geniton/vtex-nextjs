@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Components } from '@retailhub/audacity-ui'
-import { data } from 'data/components/footer.json'
+import FooterMock from 'data/components/footer.json'
 import Link from 'src/components/ui/Link'
 import styles from './footer.module.scss'
 import cn from 'classnames'
@@ -94,8 +94,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      {data.map(({ data: navData, mobileFull, deskFull, divisor }: any, index:number) =>
-        data.length ? (
+      {FooterMock.data.map(({ data: navData, mobileFull, deskFull, divisor }: any, index:number) =>
+        FooterMock.data.length ? (
           <div
             key={`section-${index}`}
             className={cn(styles.footerWrapper, {

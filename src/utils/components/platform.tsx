@@ -33,6 +33,10 @@ export const Hooks = {
   router
 }
 
+export const Queries = {
+  productQuery: query,
+}
+
 export const Components = {
   Breadcrumb,
   CartToggle,
