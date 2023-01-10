@@ -2,7 +2,6 @@
 import { Link } from '@faststore/ui'
 import router from 'next/router'
 
-
 import { Image } from 'src/components/ui/Image'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import ProductGallery from 'src/components/sections/ProductGallery'
@@ -18,9 +17,9 @@ import { useSession } from 'src/sdk/session'
 import {
   useProductsQuery,
   useProductsQueryPrefetch,
+  query,
 } from 'src/sdk/product/useProductsQuery'
 import { useProductLink } from 'src/sdk/product/useProductLink'
-import { query } from 'src/sdk/product/useProductsQuery'
 import { useLazyQuery } from 'src/sdk/graphql/useLazyQuery'
 
 export const Hooks = {
@@ -30,11 +29,12 @@ export const Hooks = {
   useProductsQueryPrefetch,
   useProductLink,
   query,
-  router
+  router,
 }
 
 export const Queries = {
   productQuery: query,
+  useProductsQueryPrefetch,
 }
 
 export const Components = {

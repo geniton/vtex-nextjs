@@ -6,7 +6,7 @@
   // --------------------------------------------------------
 
   // Default properties
-  --fs-product-grid-gap-mobile        : var(--fs-grid-gap-0);
+  --fs-product-grid-gap-mobile        : var(--fs-grid-gap-1);
   --fs-product-grid-gap-tablet        : var(--fs-product-grid-gap-mobile);
   --fs-product-grid-gap-desktop       : var(--fs-grid-gap-2);
 
@@ -21,6 +21,10 @@
   display: grid;
   grid-template-columns: repeat(var(--fs-product-grid-columns-mobile), 1fr);
   grid-gap: var(--fs-product-grid-gap-mobile);
+
+  [class*='product-card'] {
+    margin: 0;
+  }
 
   @include media(">=tablet") {
     $pagination-start-index: 2;

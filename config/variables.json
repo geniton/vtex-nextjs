@@ -1,5 +1,5 @@
 {
-  "apiBaseUrl": "https://content.retailhub.digital/wp-json",
+  "wordpressApiBaseUrl": "https://content.retailhub.digital/wp-json",
   "cdn": "https://retailhub.vteximg.com.br/arquivos",
   "baseImageUrl": "/arquivos",
   "websiteUrls": {

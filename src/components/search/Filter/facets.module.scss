@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     height: var(--fs-facets-title-height);
-    margin-bottom: var(--fs-facets-title-margin-bottom);
+    margin-bottom: 13px;
 
     @include media("<notebook") {
       display: none;

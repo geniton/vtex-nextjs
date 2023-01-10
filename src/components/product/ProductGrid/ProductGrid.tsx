@@ -1,6 +1,6 @@
 import { Components } from '@retailhub/audacity-ui'
+import { memo } from 'react'
 
-import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductGrid/product-grid.module.scss'
 import { Hooks as PlatformHooks } from 'src/utils/components/platform'
@@ -33,10 +33,12 @@ function ProductGrid({
   )
 
   return (
-    <ProductGridSkeleton loading={parsedProducts.length === 0}>
+    <Components.ProductGallerySkeleton
+      loading={!parsedProducts || parsedProducts.length === 0}
+    >
       <ul data-fs-product-grid className={styles.fsProductGrid}>
         {parsedProducts.map((product, idx: number) => (
-          <li key={`${product.id}`}>
+          <li key={`${product.isVariantOf.cacheId}`}>
             <Components.ProductCard
               controls={controls?.general?.cardControls}
               effects={controls?.effects?.cardEffects}
@@ -49,8 +51,8 @@ function ProductGrid({
           </li>
         ))}
       </ul>
-    </ProductGridSkeleton>
+    </Components.ProductGallerySkeleton>
   )
 }
 
-export default ProductGrid
+export default memo(ProductGrid)

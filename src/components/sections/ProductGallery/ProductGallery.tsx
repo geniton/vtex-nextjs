@@ -1,16 +1,16 @@
 import { useSearch } from '@faststore/sdk'
 import { NextSeo } from 'next-seo'
-import { lazy, Suspense } from 'react'
+import { lazy, memo, Suspense } from 'react'
 import type { MouseEvent } from 'react'
+import cn from 'classnames'
+import { Components } from '@retailhub/audacity-ui'
 
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
-import Skeleton from 'src/components/skeletons/Skeleton'
 import Button, { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import { mark } from 'src/sdk/tests/mark'
 import { useUI } from 'src/sdk/ui/Provider'
-import cn from 'classnames'
 
 import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
@@ -19,7 +19,6 @@ import { useDelayedFacets } from './useDelayedFacets'
 import { useDelayedPagination } from './useDelayedPagination'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useProductsPrefetch } from './usePageProducts'
-import { Components } from '@retailhub/audacity-ui'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <Components.ProductGallerySkeleton loading />
@@ -55,7 +54,7 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
       </Section>
     )
   }
-  
+
   return (
     <Section
       data-testid="product-gallery"
@@ -86,29 +85,36 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
           </div>
 
           <div data-fs-product-listing-results-count data-count={totalCount}>
-            <Skeleton
-              shimmer
-              variant="text"
+            <Components.Skeleton
               loading={!data}
+              margin="0px"
               data-fs-product-listing-results-count-skeleton
+              style={{
+                height: '36px',
+              }}
             >
               <h2 data-testid="total-product-count">{totalCount} Results</h2>
-            </Skeleton>
+            </Components.Skeleton>
           </div>
 
           <div data-fs-product-listing-sort>
-            <Skeleton
-              shimmer
-              variant="text"
+            <Components.Skeleton
+              margin="0px"
+              style={{
+                height: '36px',
+                marginRight: '14px',
+              }}
               loading={facets?.length === 0}
               data-fs-product-listing-sort-skeleton
             >
               <Sort />
-            </Skeleton>
+            </Components.Skeleton>
 
-            <Skeleton
-              shimmer
-              variant="button"
+            <Components.Skeleton
+              margin="0px"
+              style={{
+                height: '36px',
+              }}
               loading={facets?.length === 0}
               data-fs-product-listing-filter-button-skeleton
             >
@@ -122,7 +128,7 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
               >
                 Filters
               </Button>
-            </Skeleton>
+            </Components.Skeleton>
           </div>
 
           <div data-fs-product-listing-results>
@@ -203,4 +209,4 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
 }
 
 ProductGallery.displayName = 'ProductGallery'
-export default mark(ProductGallery)
+export default memo(mark(ProductGallery))

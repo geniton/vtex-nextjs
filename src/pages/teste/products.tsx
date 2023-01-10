@@ -1,15 +1,37 @@
-import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
+// import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 
-import { mark } from 'src/sdk/tests/mark'
-import storeConfig from 'store.config'
-import { Components } from '@retailhub/audacity-ui'
-import MockData from 'data/components/products.json'
-import { Hooks, Queries } from 'src/utils/components/platform'
+// import { mark } from 'src/sdk/tests/mark'
+// import storeConfig from 'store.config'
+// import { useProductsQuery, useProductsQueryPrefetch } from 'src/sdk/product/useProductsQuery'
+// import { useEffect, useState } from 'react'
 
 function Page() {
+  // const [page, setPage] = useState(0)
+  //   const products = useProductsQuery(
+  //     {
+  //       first: 10,
+  //       term: '',
+  //       selectedFacets: [{ key: 'productClusterIds', value: "150" }]
+  //     }
+  //   )
+
+  //   const prefetch = useProductsQueryPrefetch({
+  //     first: 10,
+  //     sort: 'score_desc',
+  //     after: (10 * (page ?? 0)).toString(),
+  //     term: '',
+  //     selectedFacets: [{ key: 'productClusterIds', value: "150" }]
+  //   })
+
+  //   useEffect(() => {
+  //     prefetch()
+  //   }, [page])
+
+  return null
+
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         title={storeConfig.seo.title}
         description={storeConfig.seo.description}
         titleTemplate={storeConfig.seo.titleTemplate}
@@ -30,13 +52,11 @@ function Page() {
           },
         ]}
       />
-      <Components.Products
-        PlatformQueries={Queries}
-        PlatformHooks={Hooks}
-        {...MockData}
-      />
+      <button disabled={!products?.pageInfo?.hasNextPage} onClick={() => {
+        setPage(page + 1)
+      }}> Pagination ({page + 1}) total products ({products?.edges.length})</button> */}
     </>
   )
 }
 
-export default mark(Page)
+export default Page

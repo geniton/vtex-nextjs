@@ -1,7 +1,7 @@
 import { useSearch } from '@faststore/sdk'
+import { memo, useMemo } from 'react'
 
 import ProductGrid from 'src/components/product/ProductGrid'
-import Sentinel from 'src/sdk/search/Sentinel'
 
 import ProductTiles from '../ProductTiles'
 import { useProducts } from './usePageProducts'
@@ -24,23 +24,23 @@ function GalleryPage({
   const products = useProducts(page) ?? []
   const { itemsPerPage } = useSearch()
 
-  const productsSponsored = showSponsoredProducts
-    ? products.slice(0, 2)
-    : undefined
+  const productsSponsored = useMemo(
+    () => (showSponsoredProducts ? products.slice(0, 2) : undefined),
+    [products, showSponsoredProducts]
+  )
 
-  const middleItemIndex = Math.ceil(itemsPerPage / 2)
+  const middleItemIndex = useMemo(
+    () => Math.ceil(itemsPerPage / 2),
+    [itemsPerPage]
+  )
 
-  const shouldDisplaySponsoredProducts =
-    page === 0 && productsSponsored && productsSponsored.length > 1
+  const shouldDisplaySponsoredProducts = useMemo(
+    () => page === 0 && productsSponsored && productsSponsored.length > 1,
+    [page, productsSponsored]
+  )
 
   return (
     <>
-      <Sentinel
-        products={products}
-        page={page}
-        pageSize={itemsPerPage}
-        title={title}
-      />
       {shouldDisplaySponsoredProducts ? (
         <>
           <ProductGrid
@@ -85,4 +85,4 @@ function GalleryPage({
   )
 }
 
-export default GalleryPage
+export default memo(GalleryPage)
