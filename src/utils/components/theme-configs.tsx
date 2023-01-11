@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react'
-import Head from 'next/head';
+import Head from 'next/head'
 
 import PublicDataJSON from 'src/public/data.json'
 // import formatScripts from 'src/store-ui/src/utils/format-scripts'
@@ -22,12 +22,14 @@ const ThemeConfigs: React.FC<any> = ({ children, data }) => {
 
     if (data.colors?.length) {
       data.colors.forEach(({ name, value }: any) => {
-        variables.push(`--${name}:${value};`)
+        variables.push(`--aud-${name}:${value};`)
       })
     }
 
     if (data.fontName && publicData.fonts[data.fontName]?.fontFamily) {
-      variables.push(`--font-primary: ${publicData.fonts[data.fontName].fontFamily};`)
+      variables.push(
+        `--font-primary: ${publicData.fonts[data.fontName].fontFamily};`
+      )
     }
 
     return `:root {${variables.join('')}}`
@@ -38,10 +40,13 @@ const ThemeConfigs: React.FC<any> = ({ children, data }) => {
   return (
     <>
       <Head>
-        {<style type="text/css">{`
+        {
+          <style type="text/css">
+            {`
           ${getVariables()}
           ${data?.styleCustom}`}
-        </style>}
+          </style>
+        }
 
         {/* {scripts?.length
           ? scripts.map(({ attrs, script }: any, index: number) => (
