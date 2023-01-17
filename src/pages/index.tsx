@@ -70,8 +70,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
   }
 
-  console.log('page', page)
-
   return {
     props: { page, pageName: 'homepage' },
   }
