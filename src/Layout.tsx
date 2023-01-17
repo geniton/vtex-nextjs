@@ -19,7 +19,7 @@ const RegionModal = lazy(
 
 interface LayoutProps {
   children: ReactNode
-  page: {
+  page?: {
     header: any
     footer: any
     themeConfigs: any
@@ -30,23 +30,25 @@ interface LayoutProps {
 function Layout({ children, page }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
-  console.log('page.header =>', page.header)
-
   return (
     <ThemeConfigs data={page?.themeConfigs || themeConfigsMock}>
-      <Components.Header
-        PlatformComponents={PlatformComponents}
-        PlatformHooks={PlatformHooks}
-        {...page.header}
-      />
+      {page?.header && (
+        <Components.Header
+          PlatformComponents={PlatformComponents}
+          PlatformHooks={PlatformHooks}
+          {...page?.header}
+        />
+      )}
 
       <main>{children}</main>
 
-      <Components.Footer
-        PlatformComponents={PlatformComponents}
-        PlatformHooks={PlatformHooks}
-        {...page.footer}
-      />
+      {page?.footer && (
+        <Components.Footer
+          PlatformComponents={PlatformComponents}
+          PlatformHooks={PlatformHooks}
+          {...page?.footer}
+        />
+      )}
 
       {displayCart && (
         <Suspense fallback={null}>
