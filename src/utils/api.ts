@@ -71,9 +71,9 @@ export async function saveMasterData(data: any) {
   })
 }
 
-export async function getCMSpage(page: string) {
+export async function audacityCMS(slug: string) {
   return fetch(
-    `https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/page/${page}`
+    `https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/${slug}`
   ).then((res) => res.json())
 }
 
@@ -81,5 +81,5 @@ export default {
   fetchData,
   getWishlist,
   saveMasterData,
-  getCMSpage,
+  audacityCMS,
 }

@@ -35,8 +35,6 @@ const ThemeConfigs: React.FC<any> = ({ children, data }) => {
     return `:root {${variables.join('')}}`
   }
 
-  // const scripts = formatScripts(data?.scripts) || []
-
   return (
     <>
       <Head>

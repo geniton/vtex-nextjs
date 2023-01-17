@@ -241,8 +241,10 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
   })
 
   const page = {
+    header: null,
+    footer: null,
     pageData: null,
-    themeConfigs: {}
+    themeConfigs: {},
   }
 
   const notFound = errors.find(isNotFoundError)
@@ -258,15 +260,22 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
   }
 
   try {
-    const cmsData = await api.getCMSpage('product')
+    const productPage = await api.audacityCMS('page/product')
+    const header = await api.audacityCMS('header')
+    const footer = await api.audacityCMS('footer')
 
-    page.pageData = cmsData['pt-BR'].components
-
+    page.pageData = productPage['pt-BR'].components
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
     page.themeConfigs = {
-      colors: cmsData.site.colors
+      colors: productPage.site.colors,
     }
 
-    if (cmsData?.message === 'Resource not found') {
+    if (
+      productPage?.message === 'Resource not found' ||
+      header?.message === 'Resource not found' ||
+      footer?.message === 'Resource not found'
+    ) {
       return {
         notFound: true,
       }

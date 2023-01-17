@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { NextSeo } from 'next-seo'
+import { Components } from '@retailhub/audacity-ui'
+import type { GetServerSideProps } from 'next'
+
+import api from 'src/utils/api'
 
 import storeConfig from '../../store.config'
-import { Components } from '@retailhub/audacity-ui'
-import { GetServerSideProps } from 'next'
-import api from 'src/utils/api'
 
 function Page() {
   useEffect(() => {
@@ -24,16 +25,27 @@ function Page() {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = {
-    themeConfigs: {}
+    header: null,
+    footer: null,
+    themeConfigs: {},
   }
 
   try {
-    const data = await api.getCMSpage('homepage')
+    const homepage = await api.audacityCMS('page/homepage')
+    const header = await api.audacityCMS('header')
+    const footer = await api.audacityCMS('footer')
+
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
     page.themeConfigs = {
-      colors: data.site.colors
+      colors: homepage.site.colors,
     }
 
-    if (data?.message === 'Resource not found') {
+    if (
+      homepage?.message === 'Resource not found' ||
+      header?.message === 'Resource not found' ||
+      footer?.message === 'Resource not found'
+    ) {
       return {
         notFound: true,
       }

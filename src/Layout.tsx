@@ -3,16 +3,14 @@ import type { ReactNode } from 'react'
 import { lazy, Suspense } from 'react'
 import { Components } from '@retailhub/audacity-ui'
 
-import headerMock from 'data/components/header.json'
 import { useUI } from 'src/sdk/ui/Provider'
 import ThemeConfigs from 'src/utils/components/theme-configs'
 import themeConfigsMock from 'data/components/theme-configs.json'
-import {
-  Components as PlatformComponents,
-  Hooks as PlatformHooks,
-} from 'src/utils/components/platform'
 
-import Footer from './components/Footer'
+import {
+  Hooks as PlatformHooks,
+  Components as PlatformComponents,
+} from './utils/components/platform'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
@@ -21,24 +19,34 @@ const RegionModal = lazy(
 
 interface LayoutProps {
   children: ReactNode
+  page: {
+    header: any
+    footer: any
+    themeConfigs: any
+  }
   [key: string]: any
 }
 
-function Layout({ children, page, pageName }: LayoutProps) {
+function Layout({ children, page }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
+
+  console.log('page.header =>', page.header)
 
   return (
     <ThemeConfigs data={page?.themeConfigs || themeConfigsMock}>
       <Components.Header
-        data={headerMock}
-        pageName={pageName}
         PlatformComponents={PlatformComponents}
         PlatformHooks={PlatformHooks}
+        {...page.header}
       />
 
       <main>{children}</main>
 
-      <Footer />
+      <Components.Footer
+        PlatformComponents={PlatformComponents}
+        PlatformHooks={PlatformHooks}
+        {...page.footer}
+      />
 
       {displayCart && (
         <Suspense fallback={null}>

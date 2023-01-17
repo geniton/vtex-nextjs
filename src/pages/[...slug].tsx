@@ -78,23 +78,39 @@ export const getServerSideProps: GetServerSideProps<
   let pageName = 'landing-page'
 
   const page = {
+    header: null,
+    footer: null,
+    pageData: null,
     themeConfigs: {},
-    pageData: null
   }
-  
-  try {
-    let cmsData = await api.getCMSpage(slug.join('/'))
 
-    if (cmsData?.message === 'Resource not found') {
-      cmsData = await api.getCMSpage('category')
+  try {
+    let pageData = await api.audacityCMS(`page/${slug.join('/')}`)
+
+    if (pageData?.message === 'Resource not found') {
+      pageData = await api.audacityCMS('page/category')
       pageName = 'category'
     }
 
+    const header = await api.audacityCMS('header')
+    const footer = await api.audacityCMS('footer')
+
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
+    page.pageData = pageData['pt-BR'].components
     page.themeConfigs = {
-      colors: cmsData.site.colors
+      colors: pageData.site.colors,
     }
 
-    page.pageData = cmsData['pt-BR'].components
+    if (
+      pageData?.message === 'Resource not found' ||
+      header?.message === 'Resource not found' ||
+      footer?.message === 'Resource not found'
+    ) {
+      return {
+        notFound: true,
+      }
+    }
   } catch ({ message }: any) {
     return {
       notFound: true,

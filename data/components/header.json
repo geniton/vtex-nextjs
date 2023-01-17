@@ -4,8 +4,8 @@
       "main": [
         {
           "link": {
-            "title": "Masculino",
-            "url": "/masculino",
+            "title": "Título",
+            "url": "/",
             "target": "_self"
           },
           "hasChildren": true,
@@ -139,12 +139,12 @@
         },
         {
           "link": {
-            "title": "Feminino",
-            "url": "/feminino",
+            "title": "Link",
+            "url": "/",
             "target": "_self"
           },
           "hasChildren": true,
-          "type": "firstLevel",
+          "type": "thirdLevel",
           "children": [
             {
               "link": {
@@ -187,23 +187,219 @@
         },
         {
           "link": {
-            "title": "Demo",
-            "url": "/demo",
-            "target": "_self"
-          },
-          "hasChildren": true,
-          "type": "firstLevel",
-          "children": []
-        },
-        {
-          "link": {
-            "title": "Eletrônicos",
-            "url": "/eletronicos",
+            "title": "Link",
+            "url": "/",
             "target": "_self"
           },
           "hasChildren": true,
           "type": "thirdLevelGrid",
+          "showBanner": true,
+          "banner": {
+            "image": {
+              "url": "https://picsum.photos/1200/630",
+              "width": 1200,
+              "height": 630,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            },
+            "link": {
+              "title": "",
+              "url": "/",
+              "target": ""
+            }
+          },
           "children": [
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": ""
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": ""
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": ""
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": ""
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": ""
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": "",
+                  "url": "/",
+                  "target": ""
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": ""
+                  }
+                }
+              ]
+            },
             {
               "link": {
                 "title": "Link",
@@ -242,6 +438,14 @@
               ]
             }
           ]
+        },
+        {
+          "link": {
+            "title": "Título",
+            "url": "/",
+            "target": "_self",
+            "type": "firstLevel"
+          }
         }
       ],
       "vertical": {
@@ -291,7 +495,7 @@
       }
     },
     "headerbar": {
-      "active": false,
+      "active": true,
       "type": "text",
       "items": [
         {
@@ -388,122 +592,262 @@
     },
     "blocks": [
       {
-        "mobileWidth": "33",
-        "deskWidth": "33",
+        "columns": "4",
+        "mobileColumns": "1",
         "horizontalAlign": "flex-start",
-        "components": [
-          {
-            "componentName": "burger",
-            "hiddenMobile": false,
-            "hiddenDesk": false
-          },
-          {
-            "componentName": "searchBar",
-            "placeholder": "O que você procura?",
-            "hiddenMobile": true,
-            "hiddenDesk": false,
-            "maxWidth": "300"
-          },
-          {
-            "componentName": "searchIcon",
-            "hiddenMobile": false,
-            "hiddenDesk": true,
-            "icon": {
-              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/search-icon.svg"
+        "showImage": true,
+        "showSearchBar": false,
+        "showLogin": false,
+        "showCart": false,
+        "showBurger": false,
+        "showRichText": false,
+        "showNav": false,
+        "showVerticalNav": false,
+        "image": {
+          "mobileImage": {
+            "url": "https://picsum.photos/640/760",
+            "width": "640",
+            "height": "760",
+            "alt": "Lorem ipsum",
+            "filename": "640-760.jpg",
+            "extension": "image/jpeg",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
             }
-          }
-        ]
-      },
-      {
-        "mobileWidth": "33",
-        "deskWidth": "33",
-        "horizontalAlign": "center",
-        "components": [
-          {
-            "componentName": "logo",
-            "hiddenMobile": false,
-            "hiddenDesk": false,
-            "logo": {
-              "url": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:3110/u:https://content.retailhub.digital/wp-content/uploads/2022/07/AUDACITY.svg",
-              "width": 1200,
-              "height": 630,
-              "alt": "Lorem ipsum",
-              "sizes": {
-                "full": "https://contentretailhubdidbf8e.zapwp.com/q:i/r:1/wp:1/w:3110/u:https://content.retailhub.digital/wp-content/uploads/2022/07/AUDACITY.svg",
-                "crop-600-200": "https://picsum.photos/600/200",
-                "crop-300-300": "https://picsum.photos/300/300",
-                "crop-200-400": "https://picsum.photos/200/400",
-                "crop-1920-1040": "https://picsum.photos/1920/1040"
-              }
+          },
+          "deskImage": {
+            "url": "https://picsum.photos/640/760",
+            "width": "640",
+            "height": "760",
+            "alt": "Lorem ipsum",
+            "filename": "640-760.jpg",
+            "extension": "image/jpeg",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "link": {
+            "url": "",
+            "target": "_self",
+            "title": ""
+          },
+          "imageControls": {
+            "mobileVariations": {
+              "hide": false
             },
-            "logoLink": {
-              "title": "",
-              "url": "/",
-              "target": "_blank"
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
             }
           }
-        ]
-      },
-      {
-        "mobileWidth": "33",
-        "deskWidth": "33",
-        "horizontalAlign": "flex-end",
-        "components": [
-          {
-            "componentName": "profile",
-            "hiddenMobile": true,
-            "hiddenDesk": false,
-            "icon": {
-              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/profile.svg",
-              "width": 1200,
-              "height": 630,
-              "alt": "Lorem ipsum",
-              "sizes": {
-                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/profile.svg",
-                "crop-600-200": "https://picsum.photos/600/200",
-                "crop-300-300": "https://picsum.photos/300/300",
-                "crop-200-400": "https://picsum.photos/200/400",
-                "crop-1920-1040": "https://picsum.photos/1920/1040"
-              }
-            }
-          },
-          {
-            "componentName": "wishlist",
-            "hiddenMobile": true,
-            "hiddenDesk": false,
-            "icon": {
-              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/wishlist.svg",
-              "width": 1200,
-              "height": 630,
-              "alt": "Lorem ipsum",
-              "sizes": {
-                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/wishlist.svg",
-                "crop-600-200": "https://picsum.photos/600/200",
-                "crop-300-300": "https://picsum.photos/300/300",
-                "crop-200-400": "https://picsum.photos/200/400",
-                "crop-1920-1040": "https://picsum.photos/1920/1040"
-              }
-            }
-          },
-          {
-            "componentName": "cartToggle",
-            "hiddenMobile": false,
-            "hiddenDesk": false,
-            "icon": {
-              "url": "https://content.retailhub.digital/wp-content/uploads/2022/12/cart.svg",
-              "width": 1200,
-              "height": 630,
-              "alt": "Lorem ipsum",
-              "sizes": {
-                "full": "https://content.retailhub.digital/wp-content/uploads/2022/12/cart.svg",
-                "crop-600-200": "https://picsum.photos/600/200",
-                "crop-300-300": "https://picsum.photos/300/300",
-                "crop-200-400": "https://picsum.photos/200/400",
-                "crop-1920-1040": "https://picsum.photos/1920/1040"
-              }
+        },
+        "searchBar": {
+          "searchBarControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
             }
           }
-        ]
+        },
+        "richText": {
+          "verticalAlignment": "top",
+          "richTextControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
+            }
+          }
+        },
+        "nav": {
+          "navControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
+            }
+          }
+        },
+        "login": {
+          "iconUrl": {
+            "ID": 7297,
+            "id": 7297,
+            "title": "let-s-encrypt-logo-DF90D21CBA-seeklogo.com_",
+            "filename": "let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+            "filesize": 4350,
+            "url": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+            "link": "https://dev.retailhub.digital/let-s-encrypt-logo-df90d21cba-seeklogo-com_/",
+            "alt": "",
+            "author": "2",
+            "description": "",
+            "caption": "",
+            "name": "let-s-encrypt-logo-df90d21cba-seeklogo-com_",
+            "status": "inherit",
+            "uploaded_to": 0,
+            "date": "2021-10-08 18:50:44",
+            "modified": "2021-10-08 18:50:44",
+            "menu_order": 0,
+            "mime_type": "image/png",
+            "type": "image",
+            "subtype": "png",
+            "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
+            "width": 300,
+            "height": 233,
+            "sizes": {
+              "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "thumbnail-width": 150,
+              "thumbnail-height": 117,
+              "medium": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "medium-width": 300,
+              "medium-height": 233,
+              "medium_large": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "medium_large-width": 300,
+              "medium_large-height": 233,
+              "large": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "large-width": 300,
+              "large-height": 233,
+              "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "1536x1536-width": 300,
+              "1536x1536-height": 233,
+              "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "2048x2048-width": 300,
+              "2048x2048-height": 233
+            }
+          },
+          "loggedContent": "Óla, #nome",
+          "unLoggedContent": "<strong>Bem vindo</strong></br>Acesse sua conta",
+          "loginControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
+            }
+          }
+        },
+        "cart": {
+          "iconUrl": {
+            "ID": 7297,
+            "id": 7297,
+            "title": "let-s-encrypt-logo-DF90D21CBA-seeklogo.com_",
+            "filename": "let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+            "filesize": 4350,
+            "url": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+            "link": "https://dev.retailhub.digital/let-s-encrypt-logo-df90d21cba-seeklogo-com_/",
+            "alt": "",
+            "author": "2",
+            "description": "",
+            "caption": "",
+            "name": "let-s-encrypt-logo-df90d21cba-seeklogo-com_",
+            "status": "inherit",
+            "uploaded_to": 0,
+            "date": "2021-10-08 18:50:44",
+            "modified": "2021-10-08 18:50:44",
+            "menu_order": 0,
+            "mime_type": "image/png",
+            "type": "image",
+            "subtype": "png",
+            "icon": "https://dev.retailhub.digital/wp/wp-includes/images/media/default.png",
+            "width": 300,
+            "height": 233,
+            "sizes": {
+              "thumbnail": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "thumbnail-width": 150,
+              "thumbnail-height": 117,
+              "medium": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "medium-width": 300,
+              "medium-height": 233,
+              "medium_large": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "medium_large-width": 300,
+              "medium_large-height": 233,
+              "large": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "large-width": 300,
+              "large-height": 233,
+              "1536x1536": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "1536x1536-width": 300,
+              "1536x1536-height": 233,
+              "2048x2048": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
+              "2048x2048-width": 300,
+              "2048x2048-height": 233
+            }
+          },
+          "cartControls": {
+            "cartAmountCenter": false,
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
+            }
+          }
+        },
+        "verticalNav": {
+          "verticalNavControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
+            }
+          }
+        },
+        "burger": {
+          "burgerControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": ""
+            }
+          }
+        },
+        "paddings": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "margins": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
       }
     ]
   },
@@ -514,8 +858,8 @@
       "variations": {
         "addStickyHeaderOnMobile": true,
         "addStickyHeaderOnDesk": true,
-        "addFloatingHeaderOnMobile": false,
-        "addFloatingHeaderOnDesk": false
+        "addFloatingHeaderOnMobile": true,
+        "addFloatingHeaderOnDesk": true
       },
       "effects": {
         "hoverBold": true

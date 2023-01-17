@@ -1,8 +1,7 @@
 import type { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
-import api from 'src/utils/api'
-import getPageComponents from 'src/utils/components/get-page-components'
 
+import api from 'src/utils/api'
 import RenderComponents from 'src/utils/components/render-components'
 
 function Page({ page }: any) {
@@ -15,15 +14,30 @@ function Page({ page }: any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = getPageComponents('wishlist')
+  const page = {
+    header: null,
+    footer: null,
+    pageData: null,
+    themeConfigs: {},
+  }
 
   try {
-    const data = await api.getCMSpage('homepage')
+    const wishlistPage = await api.audacityCMS('page/wishlist')
+    const header = await api.audacityCMS('header')
+    const footer = await api.audacityCMS('footer')
+
+    page.pageData = wishlistPage['pt-BR'].components
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
     page.themeConfigs = {
-      colors: data.site.colors
+      colors: wishlistPage.site.colors,
     }
 
-    if (data?.message === 'Resource not found') {
+    if (
+      wishlistPage?.message === 'Resource not found' ||
+      header?.message === 'Resource not found' ||
+      footer?.message === 'Resource not found'
+    ) {
       return {
         notFound: true,
       }

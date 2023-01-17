@@ -38,27 +38,39 @@ function Page({ page: { pageData } }: any) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = {
     pageData: null,
-    themeConfigs: {}
+    header: null,
+    footer: null,
+    themeConfigs: {},
   }
 
   try {
-    const data = await api.getCMSpage('homepage')
+    const homepage = await api.audacityCMS('page/homepage')
+    const header = await api.audacityCMS('header')
+    const footer = await api.audacityCMS('footer')
 
-    page.pageData = data['pt-BR'].components
+    page.pageData = homepage['pt-BR'].components
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
     page.themeConfigs = {
-      colors: data.site.colors
+      colors: homepage.site.colors,
     }
 
-    if (data?.message === 'Resource not found') {
+    if (
+      homepage?.message === 'Resource not found' ||
+      header?.message === 'Resource not found' ||
+      footer?.message === 'Resource not found'
+    ) {
       return {
         notFound: true,
       }
     }
-  } catch ({ message }: any) {
+  } catch ({ message }) {
     return {
       notFound: true,
     }
   }
+
+  console.log('page', page)
 
   return {
     props: { page, pageName: 'homepage' },

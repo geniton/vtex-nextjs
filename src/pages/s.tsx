@@ -94,19 +94,29 @@ function Page({ page: { pageData }, ...props }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = {
+    header: null,
+    footer: null,
     pageData: null,
-    themeConfigs: {}
+    themeConfigs: {},
   }
 
   try {
-    const cmsData = await api.getCMSpage('search')
+    const searchPage = await api.audacityCMS('page/search')
+    const header = await api.audacityCMS('header')
+    const footer = await api.audacityCMS('footer')
 
-    page.pageData = cmsData['pt-BR'].components
+    page.pageData = searchPage['pt-BR'].components
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
     page.themeConfigs = {
-      colors: cmsData.site.colors
+      colors: searchPage.site.colors,
     }
 
-    if (cmsData?.message === 'Resource not found') {
+    if (
+      searchPage?.message === 'Resource not found' ||
+      header?.message === 'Resource not found' ||
+      footer?.message === 'Resource not found'
+    ) {
       return {
         notFound: true,
       }
