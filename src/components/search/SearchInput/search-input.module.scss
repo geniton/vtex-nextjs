@@ -1,5 +1,31 @@
 @import "src/styles/scaffold";
 
+.fsSearchInputNavAside {
+  [data-fs-search-section] {
+    // padding-top: 0 !important;
+    padding-top: 0;
+  }
+  [data-fs-search-input-form] {
+    // height: var(--fs-search-input-height-mobile) !important; 
+    height: var(--fs-search-input-height-mobile); 
+  }
+  [data-fs-search-input-dropdown-wrapper] {
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+    border-width: 0;
+    top: 43px;
+
+    [data-fs-search-product-card-prices] {
+      display: block;
+
+      [data-fs-price] {
+        display: block;
+      }
+    }
+  }
+}
+
 .fs-search-input {
   // --------------------------------------------------------
   // Design Tokens for Search Input
@@ -58,7 +84,6 @@
 
   position: relative;
   z-index: 10;
-  padding: 0 16px;
 
   @include media(">=notebook") {
     padding: 0;

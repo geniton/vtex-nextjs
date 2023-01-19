@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import { sendAnalyticsEvent } from '@faststore/sdk'
 import type { SearchEvent } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
+import classNames from 'classnames'
 import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef as UISearchInputRef,
@@ -36,6 +37,7 @@ export type SearchInputProps = {
   onSearchClick?: () => void
   buttonTestId?: string
   containerStyle?: CSSProperties
+  variation?: string
 } & Omit<UISearchInputProps, 'onSubmit'>
 
 export type SearchInputRef = UISearchInputRef & { resetSearchInput: () => void }
@@ -53,6 +55,7 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       onSearchClick,
       buttonTestId = 'store-search-button',
       containerStyle,
+      variation,
       ...otherProps
     },
     ref
@@ -79,12 +82,14 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       }
 
     useOnClickOutside(searchRef, () => setSearchDropdownVisible(false))
-    
+
     return (
       <div
         ref={searchRef}
         data-fs-search-input-wrapper
-        className={styles.fsSearchInput}
+        className={classNames(styles.fsSearchInput, {
+          [styles.fsSearchInputNavAside]: variation === 'nav-aside',
+        })}
         data-fs-search-input-dropdown-visible={searchDropdownVisible}
         style={containerStyle}
       >
@@ -103,6 +108,7 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             onChange={(e) => setSearchQuery(e.target.value)}
             onSubmit={(term) => {
               const path = formatSearchPath(term)
+
               onSearchInputSelection(term, path)
               router.push(path)
             }}
