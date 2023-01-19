@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
     header: null,
     footer: null,
     pageData: null,
+    menus: [],
     themeConfigs: {},
   }
 
@@ -25,10 +26,12 @@ export const getStaticProps: GetStaticProps = async () => {
     const wishlistPage = await api.audacityCMS('page/wishlist')
     const header = await api.audacityCMS('header')
     const footer = await api.audacityCMS('footer')
+    const menus = await api.audacityCMS('menu')
 
     page.pageData = wishlistPage['pt-BR'].components
     page.header = header['pt-BR'].data
     page.footer = footer['pt-BR'].data
+    page.menus = menus.data
     page.themeConfigs = {
       colors: wishlistPage.site.colors,
     }

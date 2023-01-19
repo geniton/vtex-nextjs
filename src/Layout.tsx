@@ -22,12 +22,13 @@ interface LayoutProps {
   page?: {
     header: any
     footer: any
+    menus: any[]
     themeConfigs: any
   }
   [key: string]: any
 }
 
-function Layout({ children, page }: LayoutProps) {
+function Layout({ children, page, pageName }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
   return (
@@ -36,6 +37,8 @@ function Layout({ children, page }: LayoutProps) {
         <Components.Header
           PlatformComponents={PlatformComponents}
           PlatformHooks={PlatformHooks}
+          pageName={pageName}
+          menus={page.menus}
           {...page?.header}
         />
       )}
