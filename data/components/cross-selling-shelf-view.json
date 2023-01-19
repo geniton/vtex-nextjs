@@ -1,19 +1,14 @@
 {
   "content": {
     "title": "<h2><strong>Quem viu, viu também</strong></h2>",
-    "kind": "view",
-    "products": {
-      "type": "",
-      "productIds": [],
-      "collectionId": ""
-    }
+    "kind": "view"
   },
   "controls": {
     "general": {
       "applyMobileCarouselControls": false,
       "cardControls": {
         "applyLinkOnImage": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,

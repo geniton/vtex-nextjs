@@ -1,19 +1,14 @@
 {
   "content": {
     "title": "<h2><strong>Quem comprou, comprou também</strong></h2>",
-    "kind": "buy",
-    "products": {
-      "type": "",
-      "productIds": [],
-      "collectionId": ""
-    }
+    "kind": "buy"
   },
   "controls": {
     "general": {
       "applyMobileCarouselControls": false,
       "cardControls": {
         "applyLinkOnImage": false,
-        "showCarousel": true,
+        "showCarousel": false,
         "arrows": true,
         "dots": true,
         "addImagesLimit": true,
