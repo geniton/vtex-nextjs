@@ -187,7 +187,9 @@ function ProductDetails({
 
   return (
     <Section
+      id="product-page"
       className={`${styles.fsProductDetails} layout__content layout__section`}
+      product-id={isVariantOf.productGroupID}
       sku-id={sku}
     >
       <Components.Container
