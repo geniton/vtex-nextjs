@@ -1,205 +1,60 @@
 {
+  "pageName": "homepage",
   "content": {
-    "menus": {
-      "main": [
-        {
-          "link": {
-            "title": "Título",
-            "url": "/",
-            "target": "_self"
-          },
-          "hasChildren": true,
-          "type": "secondLevel",
-          "children": [
-            {
-              "link": {
-                "title": "Título",
-                "url": " /",
-                "target": ""
+    "blocks": [
+      {
+        "type": "buttons",
+        "buttons": {
+          "showBurger": true,
+          "showImage": false,
+          "burger": {
+            "nav": "bcb4b7dc-1ca7-4ec8-9835-8a5a011be313",
+            "burgerControls": {
+              "mobileVariations": {
+                "hide": false
               },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
+              "deskVariations": {
+                "hide": false
               },
-              "children": [
-                {
-                  "link": {
-                    "title": "Título",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Calçados",
-                "url": " /feminino/calcados",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Botas",
-                    "url": "/feminino/calcados/botas",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "tets",
-                    "url": "http://teste",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "teste",
-                    "url": "http://teste",
-                    "target": ""
-                  }
-                },
-                {
-                  "link": {
-                    "title": "teste",
-                    "url": "http://teste",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Calçados",
-                "url": " /feminino/calcados",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": false
+              "style": {
+                "width": null
+              }
             }
-          ]
-        },
-        {
-          "link": {
-            "title": "Link",
-            "url": "/",
-            "target": "_self"
           },
-          "hasChildren": true,
-          "type": "thirdLevel",
-          "children": [
-            {
-              "link": {
-                "title": "Link",
-                "url": "/",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
+          "burgerControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": null
             }
-          ]
-        },
-        {
-          "link": {
-            "title": "Link",
-            "url": "/",
-            "target": "_self"
           },
-          "hasChildren": true,
-          "type": "thirdLevelGrid",
-          "showBanner": true,
-          "banner": {
-            "image": {
-              "url": "https://picsum.photos/1200/630",
-              "width": 1200,
-              "height": 630,
+          "image": {
+            "mobileImage": {
+              "url": "https://picsum.photos/640/760",
+              "width": "640",
+              "height": "760",
               "alt": "Lorem ipsum",
+              "filename": "640-760.jpg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            },
+            "deskImage": {
+              "url": "https://picsum.photos/640/760",
+              "width": "640",
+              "height": "760",
+              "alt": "Lorem ipsum",
+              "filename": "640-760.jpg",
+              "extension": "image/jpeg",
               "sizes": {
                 "full": "https://picsum.photos/1200/630",
                 "crop-600-200": "https://picsum.photos/600/200",
@@ -209,392 +64,121 @@
               }
             },
             "link": {
-              "title": "",
-              "url": "/",
-              "target": ""
+              "url": null,
+              "target": "_self",
+              "title": null
             }
           },
-          "children": [
-            {
-              "link": {
-                "title": "Link",
-                "url": "/",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            },
-            {
-              "link": {
-                "title": "Link",
-                "url": "/",
-                "target": ""
-              },
-              "showBanner": true,
-              "banner": {
-                "image": {
-                  "url": "https://picsum.photos/1200/630",
-                  "width": 1200,
-                  "height": 630,
-                  "alt": "Lorem ipsum",
-                  "sizes": {
-                    "full": "https://picsum.photos/1200/630",
-                    "crop-600-200": "https://picsum.photos/600/200",
-                    "crop-300-300": "https://picsum.photos/300/300",
-                    "crop-200-400": "https://picsum.photos/200/400",
-                    "crop-1920-1040": "https://picsum.photos/1920/1040"
-                  }
-                },
-                "link": {
-                  "title": "",
-                  "url": "/",
-                  "target": ""
-                }
-              },
-              "children": [
-                {
-                  "link": {
-                    "title": "Link",
-                    "url": "/",
-                    "target": ""
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "link": {
-            "title": "Título",
-            "url": "/",
-            "target": "_self",
-            "type": "firstLevel"
-          }
-        }
-      ],
-      "vertical": {
-        "title": "Título",
-        "buttonText": "Botão Título",
-        "menu": [
-          {
-            "link": {
-              "title": "Link",
-              "url": "/",
-              "target": ""
-            },
-            "hasChildren": true,
+          "showLogin": false,
+          "showRichText": false,
+          "showCart": false,
+          "richText": {
+            "content": "<p>Texto</p>",
+            "verticalAlignment": "center"
+          },
+          "login": {
             "icon": {
-              "url": "https://picsum.photos/1200/630",
-              "width": 1200,
-              "height": 630,
-              "alt": "Lorem ipsum",
-              "sizes": {
-                "full": "https://picsum.photos/600/200",
-                "crop-600-200": "https://picsum.photos/600/200",
-                "crop-300-300": "https://picsum.photos/300/300",
-                "crop-200-400": "https://picsum.photos/200/400",
-                "crop-1920-1040": "https://picsum.photos/1920/1040"
-              }
-            },
-            "children": [
-              {
-                "link": {
-                  "title": "Link",
-                  "url": "/",
-                  "target": ""
+              "uuid": "42693b63-598a-4d1b-a5d3-fb7e56839d98",
+              "disk": "s3",
+              "media_type": "original",
+              "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/42693b63-598a-4d1b-a5d3-fb7e56839d98",
+              "filename": "banner_RTW-S23_desktop-black.jpg",
+              "extension": "image/jpeg",
+              "alt": "banner_RTW-S23_desktop-black.jpg",
+              "width": "1920",
+              "height": "998",
+              "created_at": "2023-01-17T18:33:58.000000Z",
+              "updated_at": "2023-01-17T18:33:58.000000Z",
+              "children": [
+                {
+                  "uuid": "d3660660-7b76-4177-a778-e5371c30d6bc",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/d3660660-7b76-4177-a778-e5371c30d6bc",
+                  "filename": "banner_RTW-S23_desktop-black.jpg",
+                  "extension": "image/jpeg",
+                  "alt": "banner_RTW-S23_desktop-black.jpg",
+                  "width": "1920",
+                  "height": "998",
+                  "created_at": "2023-01-17T18:33:58.000000Z",
+                  "updated_at": "2023-01-17T18:33:58.000000Z"
                 },
-                "children": [
-                  {
-                    "link": {
-                      "title": "Link",
-                      "url": "/",
-                      "target": ""
-                    }
-                  }
-                ]
-              }
-            ]
+                {
+                  "uuid": "170ace39-93dd-4029-9f91-ea1453e9faa9",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/170ace39-93dd-4029-9f91-ea1453e9faa9",
+                  "filename": "banner_RTW-S23_desktop-black.jpg",
+                  "extension": "image/jpeg",
+                  "alt": "banner_RTW-S23_desktop-black.jpg",
+                  "width": "600",
+                  "height": "998",
+                  "created_at": "2023-01-17T18:33:58.000000Z",
+                  "updated_at": "2023-01-17T18:33:58.000000Z"
+                }
+              ],
+              "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/42693b63-598a-4d1b-a5d3-fb7e56839d98"
+            }
+          },
+          "richTextControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "width": "100px"
+            }
           }
-        ]
-      }
-    },
-    "headerbar": {
-      "active": true,
-      "type": "text",
-      "items": [
-        {
-          "mobileImage": {
-            "url": "https://picsum.photos/1200/630",
-            "width": 1200,
-            "height": 630,
-            "alt": "Lorem ipsum",
-            "sizes": {
-              "full": "https://picsum.photos/1200/630",
-              "crop-600-200": "https://picsum.photos/600/200",
-              "crop-300-300": "https://picsum.photos/300/300",
-              "crop-200-400": "https://picsum.photos/200/400",
-              "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
-          },
-          "deskImage": {
-            "url": "https://picsum.photos/1200/630",
-            "width": 1200,
-            "height": 630,
-            "alt": "Lorem ipsum",
-            "sizes": {
-              "full": "https://picsum.photos/1200/630",
-              "crop-600-200": "https://picsum.photos/600/200",
-              "crop-300-300": "https://picsum.photos/300/300",
-              "crop-200-400": "https://picsum.photos/200/400",
-              "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
-          },
-          "link": {},
-          "content": "💲 Utilize o cupom 5OFF para 5% de desconto na sua primeira compra!"
         },
-        {
-          "mobileImage": {
-            "url": "https://picsum.photos/1200/630",
-            "width": 1200,
-            "height": 630,
-            "alt": "Lorem ipsum",
-            "sizes": {
-              "full": "https://picsum.photos/1200/630",
-              "crop-600-200": "https://picsum.photos/600/200",
-              "crop-300-300": "https://picsum.photos/300/300",
-              "crop-200-400": "https://picsum.photos/200/400",
-              "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
+        "blockControls": {
+          "columns": "4",
+          "mobileColumns": "4",
+          "horizontalAlign": "space-between",
+          "mobileVariations": {
+            "hide": false
           },
-          "deskImage": {
-            "url": "https://picsum.photos/1200/630",
-            "width": 1200,
-            "height": 630,
-            "alt": "Lorem ipsum",
-            "sizes": {
-              "full": "https://picsum.photos/1200/630",
-              "crop-600-200": "https://picsum.photos/600/200",
-              "crop-300-300": "https://picsum.photos/300/300",
-              "crop-200-400": "https://picsum.photos/200/400",
-              "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
+          "deskVariations": {
+            "hide": false
           },
-          "link": {},
-          "content": "💳 Parcele em até 10x sem juros!"
+          "paddings": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "bgColor": null,
+          "margins": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "gap": "20"
         },
-        {
-          "mobileImage": {
-            "url": "https://picsum.photos/1200/630",
-            "width": 1200,
-            "height": 630,
-            "alt": "Lorem ipsum",
-            "sizes": {
-              "full": "https://picsum.photos/1200/630",
-              "crop-600-200": "https://picsum.photos/600/200",
-              "crop-300-300": "https://picsum.photos/300/300",
-              "crop-200-400": "https://picsum.photos/200/400",
-              "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
-          },
-          "deskImage": {
-            "url": "https://picsum.photos/1200/630",
-            "width": 1200,
-            "height": 630,
-            "alt": "Lorem ipsum",
-            "sizes": {
-              "full": "https://picsum.photos/1200/630",
-              "crop-600-200": "https://picsum.photos/600/200",
-              "crop-300-300": "https://picsum.photos/300/300",
-              "crop-200-400": "https://picsum.photos/200/400",
-              "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
-          },
-          "link": {},
-          "content": "🎁 Brinde exclusivo em compras acima de R$ 300,00"
-        }
-      ]
-    },
-    "blocks": [
-      {
         "columns": "4",
         "mobileColumns": "1",
         "horizontalAlign": "flex-start",
+        "mobileVariations": {
+          "hide": false
+        },
+        "deskVariations": {
+          "hide": false
+        },
+        "paddings": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "bgColor": null,
+        "margins": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
         "showImage": true,
         "showSearchBar": false,
         "showLogin": false,
@@ -605,39 +189,107 @@
         "showVerticalNav": false,
         "image": {
           "mobileImage": {
-            "url": "https://picsum.photos/640/760",
-            "width": "640",
-            "height": "760",
-            "alt": "Lorem ipsum",
-            "filename": "640-760.jpg",
-            "extension": "image/jpeg",
+            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/a9cc83c5-47de-4419-b34e-249741215725",
+            "width": "500",
+            "height": "93",
+            "alt": "audacity-logo.png",
+            "filename": "audacity-logo.png",
+            "extension": "image/png",
             "sizes": {
               "full": "https://picsum.photos/1200/630",
               "crop-600-200": "https://picsum.photos/600/200",
               "crop-300-300": "https://picsum.photos/300/300",
               "crop-200-400": "https://picsum.photos/200/400",
               "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
+            },
+            "uuid": "a9cc83c5-47de-4419-b34e-249741215725",
+            "disk": "s3",
+            "media_type": "original",
+            "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/a9cc83c5-47de-4419-b34e-249741215725",
+            "created_at": "2023-01-13T10:39:11.000000Z",
+            "updated_at": "2023-01-13T10:39:11.000000Z",
+            "children": [
+              {
+                "uuid": "b6a8279a-f392-425b-ba53-30d00cdaa20b",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/b6a8279a-f392-425b-ba53-30d00cdaa20b",
+                "filename": "audacity-logo.png",
+                "extension": "image/png",
+                "alt": "audacity-logo.png",
+                "width": "500",
+                "height": "93",
+                "created_at": "2023-01-13T10:39:11.000000Z",
+                "updated_at": "2023-01-13T10:39:11.000000Z"
+              },
+              {
+                "uuid": "19afbb9d-a4b5-4502-813b-faaf02cf63ec",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/19afbb9d-a4b5-4502-813b-faaf02cf63ec",
+                "filename": "audacity-logo.png",
+                "extension": "image/png",
+                "alt": "audacity-logo.png",
+                "width": "600",
+                "height": "93",
+                "created_at": "2023-01-13T10:39:12.000000Z",
+                "updated_at": "2023-01-13T10:39:12.000000Z"
+              }
+            ]
           },
           "deskImage": {
-            "url": "https://picsum.photos/640/760",
-            "width": "640",
-            "height": "760",
-            "alt": "Lorem ipsum",
-            "filename": "640-760.jpg",
-            "extension": "image/jpeg",
+            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/a9cc83c5-47de-4419-b34e-249741215725",
+            "width": "500",
+            "height": "93",
+            "alt": "audacity-logo.png",
+            "filename": "audacity-logo.png",
+            "extension": "image/png",
             "sizes": {
               "full": "https://picsum.photos/1200/630",
               "crop-600-200": "https://picsum.photos/600/200",
               "crop-300-300": "https://picsum.photos/300/300",
               "crop-200-400": "https://picsum.photos/200/400",
               "crop-1920-1040": "https://picsum.photos/1920/1040"
-            }
+            },
+            "uuid": "a9cc83c5-47de-4419-b34e-249741215725",
+            "disk": "s3",
+            "media_type": "original",
+            "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/a9cc83c5-47de-4419-b34e-249741215725",
+            "created_at": "2023-01-13T10:39:11.000000Z",
+            "updated_at": "2023-01-13T10:39:11.000000Z",
+            "children": [
+              {
+                "uuid": "b6a8279a-f392-425b-ba53-30d00cdaa20b",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/b6a8279a-f392-425b-ba53-30d00cdaa20b",
+                "filename": "audacity-logo.png",
+                "extension": "image/png",
+                "alt": "audacity-logo.png",
+                "width": "500",
+                "height": "93",
+                "created_at": "2023-01-13T10:39:11.000000Z",
+                "updated_at": "2023-01-13T10:39:11.000000Z"
+              },
+              {
+                "uuid": "19afbb9d-a4b5-4502-813b-faaf02cf63ec",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/19afbb9d-a4b5-4502-813b-faaf02cf63ec",
+                "filename": "audacity-logo.png",
+                "extension": "image/png",
+                "alt": "audacity-logo.png",
+                "width": "600",
+                "height": "93",
+                "created_at": "2023-01-13T10:39:12.000000Z",
+                "updated_at": "2023-01-13T10:39:12.000000Z"
+              }
+            ]
           },
           "link": {
-            "url": "",
-            "target": "_self",
-            "title": ""
+            "title": "logo",
+            "url": "/",
+            "target": null
           },
           "imageControls": {
             "mobileVariations": {
@@ -647,7 +299,7 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
           }
         },
@@ -660,12 +312,12 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
           }
         },
         "richText": {
-          "verticalAlignment": "top",
+          "verticalAlignment": "center",
           "richTextControls": {
             "mobileVariations": {
               "hide": false
@@ -674,9 +326,10 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
-          }
+          },
+          "content": "<p>Logo</p>"
         },
         "nav": {
           "navControls": {
@@ -687,7 +340,7 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
           }
         },
@@ -700,10 +353,10 @@
             "filesize": 4350,
             "url": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
             "link": "https://dev.retailhub.digital/let-s-encrypt-logo-df90d21cba-seeklogo-com_/",
-            "alt": "",
+            "alt": null,
             "author": "2",
-            "description": "",
-            "caption": "",
+            "description": null,
+            "caption": null,
             "name": "let-s-encrypt-logo-df90d21cba-seeklogo-com_",
             "status": "inherit",
             "uploaded_to": 0,
@@ -747,7 +400,7 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
           }
         },
@@ -760,10 +413,10 @@
             "filesize": 4350,
             "url": "https://dev.retailhub.digital/app/uploads/2021/10/let-s-encrypt-logo-DF90D21CBA-seeklogo.com_.png",
             "link": "https://dev.retailhub.digital/let-s-encrypt-logo-df90d21cba-seeklogo-com_/",
-            "alt": "",
+            "alt": null,
             "author": "2",
-            "description": "",
-            "caption": "",
+            "description": null,
+            "caption": null,
             "name": "let-s-encrypt-logo-df90d21cba-seeklogo-com_",
             "status": "inherit",
             "uploaded_to": 0,
@@ -806,7 +459,7 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
           }
         },
@@ -819,7 +472,7 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
           }
         },
@@ -832,12 +485,670 @@
               "hide": false
             },
             "style": {
-              "width": ""
+              "width": null
             }
           }
         },
+        "imageControls": {
+          "style": {
+            "maxImageWidth": "300px"
+          }
+        }
+      },
+      {
+        "type": "image",
+        "image": {
+          "mobileImage": {
+            "uuid": "de784fa1-e675-4b17-b083-9dd81415a957",
+            "disk": "s3",
+            "media_type": "original",
+            "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957",
+            "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "extension": "image/jpeg",
+            "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "width": "1024",
+            "height": "576",
+            "created_at": "2023-01-19T14:54:52.000000Z",
+            "updated_at": "2023-01-19T14:54:52.000000Z",
+            "children": [
+              {
+                "uuid": "21d1bf88-ef81-48ce-afd2-114994a149e1",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/21d1bf88-ef81-48ce-afd2-114994a149e1",
+                "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "extension": "image/jpeg",
+                "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "width": "1024",
+                "height": "576",
+                "created_at": "2023-01-19T14:54:53.000000Z",
+                "updated_at": "2023-01-19T14:54:53.000000Z"
+              },
+              {
+                "uuid": "96316e43-ea54-4e8b-8ae0-851c90eb6ef7",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/96316e43-ea54-4e8b-8ae0-851c90eb6ef7",
+                "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "extension": "image/jpeg",
+                "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "width": "600",
+                "height": "576",
+                "created_at": "2023-01-19T14:54:53.000000Z",
+                "updated_at": "2023-01-19T14:54:53.000000Z"
+              }
+            ],
+            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957"
+          },
+          "deskImage": {
+            "uuid": "de784fa1-e675-4b17-b083-9dd81415a957",
+            "disk": "s3",
+            "media_type": "original",
+            "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957",
+            "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "extension": "image/jpeg",
+            "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "width": "1024",
+            "height": "576",
+            "created_at": "2023-01-19T14:54:52.000000Z",
+            "updated_at": "2023-01-19T14:54:52.000000Z",
+            "children": [
+              {
+                "uuid": "21d1bf88-ef81-48ce-afd2-114994a149e1",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/21d1bf88-ef81-48ce-afd2-114994a149e1",
+                "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "extension": "image/jpeg",
+                "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "width": "1024",
+                "height": "576",
+                "created_at": "2023-01-19T14:54:53.000000Z",
+                "updated_at": "2023-01-19T14:54:53.000000Z"
+              },
+              {
+                "uuid": "96316e43-ea54-4e8b-8ae0-851c90eb6ef7",
+                "disk": "s3",
+                "media_type": "original",
+                "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/96316e43-ea54-4e8b-8ae0-851c90eb6ef7",
+                "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "extension": "image/jpeg",
+                "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+                "width": "600",
+                "height": "576",
+                "created_at": "2023-01-19T14:54:53.000000Z",
+                "updated_at": "2023-01-19T14:54:53.000000Z"
+              }
+            ],
+            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957"
+          },
+          "link": {
+            "url": "/",
+            "target": null,
+            "title": "Audacity"
+          }
+        },
+        "imageControls": {
+          "mobileVariations": {
+            "hide": false
+          },
+          "deskVariations": {
+            "hide": false
+          },
+          "style": {
+            "minWidth": null,
+            "maxWidth": "200px",
+            "maxImageWidth": "500%"
+          }
+        },
+        "blockControls": {
+          "columns": "4",
+          "mobileColumns": "4",
+          "horizontalAlign": "center",
+          "mobileVariations": {
+            "hide": false
+          },
+          "deskVariations": {
+            "hide": false
+          },
+          "bgColor": null,
+          "paddings": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "margins": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        "columns": null,
+        "mobileColumns": null,
+        "horizontalAlign": null,
+        "mobileVariations": null,
+        "deskVariations": null,
+        "bgColor": null,
+        "paddings": null,
+        "margins": null,
+        "buttons": [],
+        "showImage": null,
+        "showSearchBar": null,
+        "showLogin": null,
+        "showCart": null,
+        "showBurger": null,
+        "showRichText": null,
+        "showNav": null,
+        "showVerticalNav": null,
+        "searchBar": [],
+        "richText": [],
+        "nav": null,
+        "login": null,
+        "cart": null,
+        "verticalNav": null,
+        "burger": null
+      },
+      {
+        "type": "buttons",
+        "buttons": {
+          "showImage": true,
+          "showLogin": true,
+          "showCart": true,
+          "showRichText": false,
+          "showSearchIcon": true,
+          "image": {
+            "mobileImage": {
+              "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "width": "787",
+              "height": "787",
+              "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+              "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              },
+              "uuid": "413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "disk": "s3",
+              "media_type": "original",
+              "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "created_at": "2023-01-18T19:56:30.000000Z",
+              "updated_at": "2023-01-18T19:56:30.000000Z",
+              "children": [
+                {
+                  "uuid": "c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
+                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "extension": "image/jpeg",
+                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "width": "787",
+                  "height": "787",
+                  "created_at": "2023-01-18T19:56:30.000000Z",
+                  "updated_at": "2023-01-18T19:56:30.000000Z"
+                },
+                {
+                  "uuid": "c997e880-2c49-4af6-90b0-5068dfaa7d32",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c997e880-2c49-4af6-90b0-5068dfaa7d32",
+                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "extension": "image/jpeg",
+                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "width": "600",
+                  "height": "787",
+                  "created_at": "2023-01-18T19:56:31.000000Z",
+                  "updated_at": "2023-01-18T19:56:31.000000Z"
+                }
+              ]
+            },
+            "deskImage": {
+              "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "width": "787",
+              "height": "787",
+              "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+              "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              },
+              "uuid": "413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "disk": "s3",
+              "media_type": "original",
+              "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "created_at": "2023-01-18T19:56:30.000000Z",
+              "updated_at": "2023-01-18T19:56:30.000000Z",
+              "children": [
+                {
+                  "uuid": "c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
+                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "extension": "image/jpeg",
+                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "width": "787",
+                  "height": "787",
+                  "created_at": "2023-01-18T19:56:30.000000Z",
+                  "updated_at": "2023-01-18T19:56:30.000000Z"
+                },
+                {
+                  "uuid": "c997e880-2c49-4af6-90b0-5068dfaa7d32",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c997e880-2c49-4af6-90b0-5068dfaa7d32",
+                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "extension": "image/jpeg",
+                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "width": "600",
+                  "height": "787",
+                  "created_at": "2023-01-18T19:56:31.000000Z",
+                  "updated_at": "2023-01-18T19:56:31.000000Z"
+                }
+              ]
+            },
+            "link": {
+              "url": null,
+              "target": "_self",
+              "title": null
+            }
+          },
+          "imageControls": {
+            "mobileVariations": {
+              "hide": true
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "order": 1,
+              "maxWidth": "32px",
+              "minWidth": "32px",
+              "paddings": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "maxImageWidth": "50px"
+            }
+          },
+          "searchIcon": {
+            "icon": {
+              "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "width": "787",
+              "height": "787",
+              "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+              "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              },
+              "uuid": "413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "disk": "s3",
+              "media_type": "original",
+              "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
+              "created_at": "2023-01-18T19:56:30.000000Z",
+              "updated_at": "2023-01-18T19:56:30.000000Z",
+              "children": [
+                {
+                  "uuid": "c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
+                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "extension": "image/jpeg",
+                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "width": "787",
+                  "height": "787",
+                  "created_at": "2023-01-18T19:56:30.000000Z",
+                  "updated_at": "2023-01-18T19:56:30.000000Z"
+                },
+                {
+                  "uuid": "c997e880-2c49-4af6-90b0-5068dfaa7d32",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c997e880-2c49-4af6-90b0-5068dfaa7d32",
+                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "extension": "image/jpeg",
+                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+                  "width": "600",
+                  "height": "787",
+                  "created_at": "2023-01-18T19:56:31.000000Z",
+                  "updated_at": "2023-01-18T19:56:31.000000Z"
+                }
+              ]
+            },
+            "text": "Buscar"
+          },
+          "searchBarControls": {
+            "searchBarModel": "box",
+            "style": {
+              "cornerRounding": {
+                "top": 10,
+                "right": 10,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          },
+          "searchIconControls": {
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "order": 1,
+              "maxImageWidth": "32px",
+              "minImageWidth": "32px",
+              "paddings": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          },
+          "login": {
+            "icon": {
+              "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/a402fc18-f556-4d4f-a69a-7e0a2bd90187",
+              "width": "497",
+              "height": "704",
+              "alt": "Novidadesnovidade 3 (497x704).jpg",
+              "filename": "Novidadesnovidade 3 (497x704).jpg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              },
+              "uuid": "a402fc18-f556-4d4f-a69a-7e0a2bd90187",
+              "disk": "s3",
+              "media_type": "original",
+              "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/a402fc18-f556-4d4f-a69a-7e0a2bd90187",
+              "created_at": "2023-01-13T20:38:16.000000Z",
+              "updated_at": "2023-01-13T20:38:16.000000Z",
+              "children": [
+                {
+                  "uuid": "103c72b1-9415-43ef-8286-f16e63815e8d",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/103c72b1-9415-43ef-8286-f16e63815e8d",
+                  "filename": "Novidadesnovidade 3 (497x704).jpg",
+                  "extension": "image/jpeg",
+                  "alt": "Novidadesnovidade 3 (497x704).jpg",
+                  "width": "497",
+                  "height": "704",
+                  "created_at": "2023-01-13T20:38:16.000000Z",
+                  "updated_at": "2023-01-13T20:38:16.000000Z"
+                },
+                {
+                  "uuid": "54858f3f-216b-4153-a640-e6c936428481",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/54858f3f-216b-4153-a640-e6c936428481",
+                  "filename": "Novidadesnovidade 3 (497x704).jpg",
+                  "extension": "image/jpeg",
+                  "alt": "Novidadesnovidade 3 (497x704).jpg",
+                  "width": "600",
+                  "height": "704",
+                  "created_at": "2023-01-13T20:38:16.000000Z",
+                  "updated_at": "2023-01-13T20:38:16.000000Z"
+                }
+              ]
+            },
+            "loggedContent": "<p>Olá, #nome</p>",
+            "unLoggedContent": "<p>Faça o login</p>"
+          },
+          "loginControls": {
+            "mobileVariations": {
+              "hide": true
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "order": 2,
+              "width": null,
+              "minImageWidth": null,
+              "maxImageWidth": "30px",
+              "paddings": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          },
+          "cart": {
+            "icon": {
+              "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/42693b63-598a-4d1b-a5d3-fb7e56839d98",
+              "width": "1920",
+              "height": "998",
+              "alt": "banner_RTW-S23_desktop-black.jpg",
+              "filename": "banner_RTW-S23_desktop-black.jpg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              },
+              "uuid": "42693b63-598a-4d1b-a5d3-fb7e56839d98",
+              "disk": "s3",
+              "media_type": "original",
+              "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/42693b63-598a-4d1b-a5d3-fb7e56839d98",
+              "created_at": "2023-01-17T18:33:58.000000Z",
+              "updated_at": "2023-01-17T18:33:58.000000Z",
+              "children": [
+                {
+                  "uuid": "d3660660-7b76-4177-a778-e5371c30d6bc",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/d3660660-7b76-4177-a778-e5371c30d6bc",
+                  "filename": "banner_RTW-S23_desktop-black.jpg",
+                  "extension": "image/jpeg",
+                  "alt": "banner_RTW-S23_desktop-black.jpg",
+                  "width": "1920",
+                  "height": "998",
+                  "created_at": "2023-01-17T18:33:58.000000Z",
+                  "updated_at": "2023-01-17T18:33:58.000000Z"
+                },
+                {
+                  "uuid": "170ace39-93dd-4029-9f91-ea1453e9faa9",
+                  "disk": "s3",
+                  "media_type": "original",
+                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/170ace39-93dd-4029-9f91-ea1453e9faa9",
+                  "filename": "banner_RTW-S23_desktop-black.jpg",
+                  "extension": "image/jpeg",
+                  "alt": "banner_RTW-S23_desktop-black.jpg",
+                  "width": "600",
+                  "height": "998",
+                  "created_at": "2023-01-17T18:33:58.000000Z",
+                  "updated_at": "2023-01-17T18:33:58.000000Z"
+                }
+              ]
+            }
+          },
+          "cartControls": {
+            "cartAmountCenter": false,
+            "cartAmountTop": true,
+            "roundedCart": true,
+            "removedAmount": true,
+            "mobileVariations": {
+              "hide": false
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "order": 3,
+              "width": "45px",
+              "height": "45px",
+              "minicartBgColor": "green",
+              "minicartQuantityBgColor": "black",
+              "minicartQuantityTextColor": "red",
+              "paddings": {
+                "top": 8,
+                "right": 8,
+                "bottom": 8,
+                "left": 8
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "maxImageWidth": "50px"
+            }
+          },
+          "richText": {
+            "content": null
+          },
+          "richTextControls": {
+            "mobileVariations": {
+              "hide": true
+            },
+            "deskVariations": {
+              "hide": false
+            },
+            "style": {
+              "order": 4,
+              "width": "100px"
+            }
+          }
+        },
+        "blockControls": {
+          "columns": "4",
+          "mobileColumns": "4",
+          "horizontalAlign": "flex-end",
+          "gap": 20,
+          "paddings": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "margins": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        "columns": null,
+        "mobileColumns": null,
+        "horizontalAlign": null,
+        "gap": 20,
+        "paddings": null,
+        "margins": null,
+        "mobileVariations": null,
+        "deskVariations": null,
+        "bgColor": null,
+        "showImage": null,
+        "showSearchBar": null,
+        "showLogin": null,
+        "showCart": null,
+        "showBurger": null,
+        "showRichText": null,
+        "showNav": null,
+        "showVerticalNav": null,
+        "image": [],
+        "searchBar": [],
+        "richText": [],
+        "nav": null,
+        "login": null,
+        "cart": null,
+        "verticalNav": null,
+        "burger": null,
+        "imageControls": null
+      },
+      {
+        "type": "menu",
+        "nav": "bcb4b7dc-1ca7-4ec8-9835-8a5a011be313",
+        "navControls": {
+          "mobileVariations": {
+            "hide": false
+          },
+          "deskVariations": {
+            "hide": false
+          },
+          "style": {
+            "width": null
+          }
+        },
+        "blockControls": {
+          "columns": "12",
+          "mobileColumns": "12",
+          "horizontalAlign": "center",
+          "mobileVariations": {
+            "hide": false
+          },
+          "deskVariations": {
+            "hide": false
+          },
+          "paddings": {
+            "top": 15,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "margins": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        "columns": "12",
+        "mobileColumns": "12",
+        "horizontalAlign": "flex-start",
+        "mobileVariations": {
+          "hide": false
+        },
+        "deskVariations": {
+          "hide": false
+        },
         "paddings": {
-          "top": 0,
+          "top": 15,
           "right": 0,
           "bottom": 0,
           "left": 0
@@ -849,12 +1160,600 @@
           "left": 0
         }
       }
-    ]
+    ],
+    "menus": {
+      "main": [
+        {
+          "link": {
+            "title": "Título",
+            "url": "/",
+            "target": "_self"
+          },
+          "hasChildren": true,
+          "type": "secondLevel",
+          "children": [
+            {
+              "link": {
+                "title": "Título",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Título",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Calçados",
+                "url": "/feminino/calcados",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Botas",
+                    "url": "/feminino/calcados/botas",
+                    "target": null
+                  }
+                },
+                {
+                  "link": {
+                    "title": "tets",
+                    "url": "http://teste",
+                    "target": null
+                  }
+                },
+                {
+                  "link": {
+                    "title": "teste",
+                    "url": "http://teste",
+                    "target": null
+                  }
+                },
+                {
+                  "link": {
+                    "title": "teste",
+                    "url": "http://teste",
+                    "target": null
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Calçados",
+                "url": "/feminino/calcados",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": false
+            }
+          ]
+        },
+        {
+          "link": {
+            "title": "Link",
+            "url": "/",
+            "target": "_self"
+          },
+          "hasChildren": true,
+          "type": "thirdLevel",
+          "children": [
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "link": {
+            "title": "Link",
+            "url": "/",
+            "target": "_self"
+          },
+          "hasChildren": true,
+          "type": "thirdLevelGrid",
+          "showBanner": true,
+          "banner": {
+            "image": {
+              "url": "https://picsum.photos/1200/630",
+              "width": 1200,
+              "height": 630,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            },
+            "link": {
+              "title": null,
+              "url": "/",
+              "target": null
+            }
+          },
+          "children": [
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            },
+            {
+              "link": {
+                "title": "Link",
+                "url": "/",
+                "target": null
+              },
+              "showBanner": true,
+              "banner": {
+                "image": {
+                  "url": "https://picsum.photos/1200/630",
+                  "width": 1200,
+                  "height": 630,
+                  "alt": "Lorem ipsum",
+                  "sizes": {
+                    "full": "https://picsum.photos/1200/630",
+                    "crop-600-200": "https://picsum.photos/600/200",
+                    "crop-300-300": "https://picsum.photos/300/300",
+                    "crop-200-400": "https://picsum.photos/200/400",
+                    "crop-1920-1040": "https://picsum.photos/1920/1040"
+                  }
+                },
+                "link": {
+                  "title": null,
+                  "url": "/",
+                  "target": null
+                }
+              },
+              "children": [
+                {
+                  "link": {
+                    "title": "Link",
+                    "url": "/",
+                    "target": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "link": {
+            "title": "Título",
+            "url": "/",
+            "target": "_self",
+            "type": "firstLevel"
+          }
+        }
+      ],
+      "vertical": {
+        "title": "Título",
+        "buttonText": "Botão Título",
+        "menu": [
+          {
+            "link": {
+              "title": "Link",
+              "url": "/",
+              "target": null
+            },
+            "hasChildren": true,
+            "icon": {
+              "url": "https://picsum.photos/1200/630",
+              "width": 1200,
+              "height": 630,
+              "alt": "Lorem ipsum",
+              "sizes": {
+                "full": "https://picsum.photos/600/200",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            },
+            "children": [
+              {
+                "link": {
+                  "title": "Link",
+                  "url": "/",
+                  "target": null
+                },
+                "children": [
+                  {
+                    "link": {
+                      "title": "Link",
+                      "url": "/",
+                      "target": null
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "headerbar": {
+      "active": true,
+      "type": "text",
+      "items": [
+        {
+          "mobileImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "deskImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "link": [],
+          "content": "💲 Utilize o cupom 5OFF para 5% de desconto na sua primeira compra!"
+        },
+        {
+          "mobileImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "deskImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "link": [],
+          "content": "💳 Parcele em até 10x sem juros!"
+        },
+        {
+          "mobileImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "deskImage": {
+            "url": "https://picsum.photos/1200/630",
+            "width": 1200,
+            "height": 630,
+            "alt": "Lorem ipsum",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            }
+          },
+          "link": [],
+          "content": "🎁 Brinde exclusivo em compras acima de R$ 300,00"
+        }
+      ]
+    }
   },
   "controls": {
     "general": {
-      "showVerticalNav": false,
-      "cartAmountCenter": false,
       "variations": {
         "addStickyHeaderOnMobile": true,
         "addStickyHeaderOnDesk": true,
@@ -863,19 +1762,33 @@
       },
       "effects": {
         "hoverBold": true
-      }
+      },
+      "showVerticalNav": true,
+      "cartAmountCenter": false
     },
     "style": {
-      "bgColor": "",
-      "menuBurgerColor": "",
-      "userColor": "",
-      "userTextColor": "",
+      "bgColor": null,
+      "paddings": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "margins": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "menuBurgerColor": null,
+      "userColor": null,
+      "userTextColor": "var(--aud-danger)",
       "wishlistColor": "red",
-      "minicartBgColor": "",
-      "minicartQuantityTextColor": "",
-      "navBgColor": "",
+      "minicartBgColor": null,
+      "minicartQuantityTextColor": null,
+      "navBgColor": null,
       "navItemsTextColor": "r",
-      "navSubItemsTextColor": "",
+      "navSubItemsTextColor": null,
       "headerbarBgColor": "black",
       "headerbarTextColor": "white"
     }

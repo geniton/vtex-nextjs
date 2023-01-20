@@ -1,30 +1,5 @@
 @import "src/styles/scaffold";
 
-.fsSearchInputNavAside {
-  [data-fs-search-section] {
-    // padding-top: 0 !important;
-    padding-top: 0;
-  }
-  [data-fs-search-input-form] {
-    // height: var(--fs-search-input-height-mobile) !important; 
-    height: var(--fs-search-input-height-mobile); 
-  }
-  [data-fs-search-input-dropdown-wrapper] {
-    width: 100%;
-    min-width: 100%;
-    padding: 0;
-    border-width: 0;
-    top: 43px;
-
-    [data-fs-search-product-card-prices] {
-      display: block;
-
-      [data-fs-price] {
-        display: block;
-      }
-    }
-  }
-}
 
 .fs-search-input {
   // --------------------------------------------------------
@@ -102,7 +77,6 @@
       width: 100%;
       padding: var(--fs-search-input-padding);
       transition: box-shadow var(--fs-search-input-transition-timing) var(--fs-search-input-transition-timing), border var(--fs-search-input-transition-timing) var(--fs-search-input-transition-function);
-      border-bottom: 1px solid var(--dark);
       background-color: transparent;
       color: var(--dark);
       font-size: 14px;
@@ -186,5 +160,41 @@
     }
 
     [data-fs-search-input-loading-text] { padding-top: var(--fs-spacing-3); }
+  }
+
+  // --------------------------------------------------------
+  // Variations
+  // --------------------------------------------------------
+
+  &[data-fs-search-input-variation-nav-aside="true"] {
+    [data-fs-search-section] {
+      // padding-top: 0 !important;
+      padding-top: 0;
+    }
+    [data-fs-search-input-form] {
+      // height: var(--fs-search-input-height-mobile) !important; 
+      height: var(--fs-search-input-height-mobile); 
+    }
+    [data-fs-search-input-dropdown-wrapper] {
+      width: 100%;
+      min-width: 100%;
+      padding: 0;
+      border-width: 0;
+      top: 49px;
+  
+      [data-fs-search-product-card-prices] {
+        display: block;
+  
+        [data-fs-price] {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &[data-fs-search-input-variation-full="true"] {
+    [data-fs-search-input-dropdown-wrapper="true"] {
+      top: 48px;
+    }
   }
 }

@@ -87,10 +87,12 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       <div
         ref={searchRef}
         data-fs-search-input-wrapper
-        className={classNames(styles.fsSearchInput, {
-          [styles.fsSearchInputNavAside]: variation === 'nav-aside',
-        })}
         data-fs-search-input-dropdown-visible={searchDropdownVisible}
+        className={styles.fsSearchInput}
+        data-fs-search-input-variation-nav-aside={
+          variation === 'search-input-nav-aside'
+        }
+        data-fs-search-input-variation-full={variation === 'search-input-full'}
         style={containerStyle}
       >
         <SearchInputProvider onSearchInputSelection={onSearchInputSelection}>
