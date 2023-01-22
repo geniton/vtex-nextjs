@@ -1,0 +1,559 @@
+[
+  {
+    "title": "Banner",
+    "uuid": null,
+    "component": "Banner",
+    "componentData": {
+      "content": {
+        "items": [
+          {
+            "isVideo": false,
+            "mobileImage": {
+              "url": "https://picsum.photos/640/760",
+              "width": "640",
+              "height": "760",
+              "alt": "Lorem ipsum",
+              "filename": "640-760.jpg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            },
+            "mobileVideo": null,
+            "deskImage": {
+              "url": "https://picsum.photos/1200/630",
+              "width": "1200",
+              "height": "630",
+              "alt": "Lorem ipsum",
+              "filename": "1200-630.jpg",
+              "extension": "image/jpeg",
+              "sizes": {
+                "full": "https://picsum.photos/1200/630",
+                "crop-600-200": "https://picsum.photos/600/200",
+                "crop-300-300": "https://picsum.photos/300/300",
+                "crop-200-400": "https://picsum.photos/200/400",
+                "crop-1920-1040": "https://picsum.photos/1920/1040"
+              }
+            },
+            "deskVideo": null,
+            "link": {
+              "url": null,
+              "target": "_self",
+              "title": null
+            },
+            "id": null,
+            "showDesc": true,
+            "desc": "xD"
+          }
+        ]
+      },
+      "controls": {
+        "general": {
+          "applyMobileCarouselControls": false,
+          "mobileVariations": {
+            "hide": false,
+            "full": false
+          },
+          "deskVariations": {
+            "hide": false,
+            "full": true
+          },
+          "carouselControls": {
+            "arrows": true,
+            "infinite": true,
+            "autoplay": true,
+            "autoplaySpeed": "6",
+            "pauseOnHover": true,
+            "slidesToShow": "1",
+            "slidesToScroll": "1",
+            "dots": true,
+            "showArrowsAboveCards": false,
+            "showBulletsAboveCards": false
+          },
+          "mobileCarouselControls": {
+            "arrows": true,
+            "infinite": false,
+            "autoplay": true,
+            "autoplaySpeed": "6",
+            "slidesToShow": 2,
+            "slidesToScroll": 2,
+            "showArrowsAboveCards": false,
+            "showBulletsAboveCards": false
+          },
+          "effects": {
+            "hoverOpacity": false,
+            "hoverArrows": false
+          }
+        },
+        "style": {
+          "bgColor": null,
+          "textColor": null,
+          "gap": 0,
+          "margins": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "paddings": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        "css": {
+          "customClass": null
+        }
+      }
+    }
+  },
+  {
+    "title": "Showcase",
+    "uuid": null,
+    "component": "Showcase",
+    "componentData": {
+      "content": {
+        "title": "<h2><strong>Título</strong></h2>",
+        "products": {
+          "type": "collection",
+          "productIds": [],
+          "collectionId": "151"
+        }
+      },
+      "controls": {
+        "general": {
+          "applyMobileCarouselControls": false,
+          "carouselControls": {
+            "arrows": true,
+            "autoplay": false,
+            "autoplaySpeed": 6,
+            "addBulletInside": true,
+            "dots": true,
+            "infinite": true,
+            "fade": false,
+            "pauseOnHover": true,
+            "slidesToShow": 4,
+            "slidesToScroll": 3,
+            "showArrowsAboveCards": false,
+            "showBulletsAboveCards": false
+          },
+          "mobileCarouselControls": {
+            "arrows": true,
+            "pagination": false,
+            "infinite": false,
+            "autoplay": true,
+            "autoplaySpeed": 6,
+            "slidesToShow": 2,
+            "slidesToScroll": 2
+          },
+          "cardControls": {
+            "applyLinkOnImage": false,
+            "showCarousel": false,
+            "arrows": true,
+            "dots": true,
+            "addImagesLimit": true,
+            "imagesQuantity": 3,
+            "showSellerName": true,
+            "showBrandName": true,
+            "showPriceOf": true,
+            "showInstallments": true,
+            "showWishlist": true,
+            "showRating": true,
+            "showDesc": false,
+            "showBuyButton": true,
+            "titleBuyButton": "Ver Produto",
+            "buttonUnavailableTitle": "Avise-me",
+            "showUnabailableMessage": true,
+            "unavailableMessage": "Produto Indisponível",
+            "showSkuVariations": false,
+            "addFixedSizeOnImage": true,
+            "imageSize": 250
+          },
+          "mobileVariations": {
+            "hide": false,
+            "full": false
+          },
+          "deskVariations": {
+            "hide": false,
+            "full": false
+          }
+        },
+        "effects": {
+          "hoverArrows": false,
+          "cardEffects": {
+            "hoverZoom": true,
+            "exchangeImage": true,
+            "hoverOutlineColor": null,
+            "hoverShadow": true,
+            "hoverWishlist": true,
+            "hoverBuyButton": false,
+            "hoverBuyButtonTextColor": null,
+            "hoverBuyButtonBgColor": null
+          }
+        },
+        "style": {
+          "bgColor": null,
+          "textColor": null,
+          "margins": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "paddings": {
+            "top": 32,
+            "right": 0,
+            "bottom": 32,
+            "left": 0
+          },
+          "cardStyle": {
+            "bgColor": "var(--aud-primary)",
+            "textColor": "var(--aud-white)",
+            "addShadow": true,
+            "outlineColor": "var(--aud-secondary)",
+            "outlineWidth": "0",
+            "borderRadius": {
+              "top": 10,
+              "left": 10,
+              "right": 10,
+              "bottom": 10
+            },
+            "brandTextColor": "var(--aud-secondary)",
+            "buyBtnBgColor": "var(--aud-primary)",
+            "buyBtnTextColor": null,
+            "installmentsColor": null,
+            "installmentsFont": 12,
+            "maxImageHeight": 500,
+            "productNameColor": null,
+            "priceFromColor": null,
+            "priceFromFont": 13,
+            "pricePerColor": null,
+            "pricePerFont": 12,
+            "sellerNameTextColor": null,
+            "unavailableTextColor": null,
+            "wishlistColor": "var(--aud-danger)",
+            "textAlign": "center",
+            "descTextColor": null,
+            "buyButtonBorderColor": null,
+            "buyButtonBorderWidth": "var(--aud-success)",
+            "borderColor": "var(--aud-black)",
+            "borderWidth": "1",
+            "buyButtonBgColor": "var(--aud-black)",
+            "buyButtonTextColor": "var(--aud-success)",
+            "cornerRounding": {
+              "top": 10,
+              "left": 10,
+              "right": 10,
+              "bottom": 10
+            }
+          }
+        },
+        "css": {
+          "customClass": null
+        }
+      }
+    }
+  },
+  {
+    "title": "Blocos",
+    "uuid": null,
+    "component": "Blocks",
+    "componentData": {
+      "content": {
+        "blocks": [
+          {
+            "type": "image",
+            "blockControls": {
+              "columns": "6",
+              "mobileColumns": "2",
+              "paddings": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            },
+            "image": {
+              "mobileImage": {
+                "url": "https://picsum.photos/640/760",
+                "width": 640,
+                "height": 760,
+                "alt": "Lorem ipsum",
+                "filename": "640-760.jpg",
+                "extension": "image/jpeg",
+                "sizes": {
+                  "full": "https://picsum.photos/1200/630",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              },
+              "deskImage": {
+                "url": "https://picsum.photos/760/460",
+                "width": 760,
+                "height": 460,
+                "alt": "Lorem ipsum",
+                "filename": "760-460.jpg",
+                "extension": "image/jpeg",
+                "sizes": {
+                  "full": "https://picsum.photos/1200/630",
+                  "crop-600-200": "https://picsum.photos/600/200",
+                  "crop-300-300": "https://picsum.photos/300/300",
+                  "crop-200-400": "https://picsum.photos/200/400",
+                  "crop-1920-1040": "https://picsum.photos/1920/1040"
+                }
+              },
+              "link": {
+                "url": null,
+                "target": "_self",
+                "title": null
+              }
+            },
+            "richText": {
+              "content": null,
+              "verticalAlignment": "center"
+            },
+            "showcase": {
+              "title": null,
+              "products": {
+                "type": "products",
+                "productIds": [],
+                "collectionId": null
+              }
+            }
+          },
+          {
+            "type": "richText",
+            "blockControls": {
+              "columns": "6",
+              "mobileColumns": "2",
+              "paddings": {
+                "top": 24,
+                "right": 48,
+                "bottom": 24,
+                "left": 48
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            },
+            "image": {
+              "mobileImage": [],
+              "deskImage": [],
+              "link": []
+            },
+            "richText": {
+              "content": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>",
+              "verticalAlignment": "center"
+            },
+            "showcase": {
+              "title": null,
+              "products": {
+                "type": "products",
+                "productIds": [],
+                "collectionId": null
+              }
+            }
+          },
+          {
+            "type": "showcase",
+            "blockControls": {
+              "columns": "12",
+              "mobileColumns": "2",
+              "paddings": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            },
+            "image": {
+              "mobileImage": [],
+              "deskImage": [],
+              "link": []
+            },
+            "richText": {
+              "content": null,
+              "verticalAlignment": "center"
+            },
+            "showcase": {
+              "title": "<h2><strong>Título</strong></h2>",
+              "products": {
+                "type": "collection",
+                "productIds": [],
+                "collectionId": "151"
+              }
+            },
+            "showcaseControls": {
+              "general": {
+                "applyMobileCarouselControls": false,
+                "carouselControls": {
+                  "arrows": true,
+                  "autoplay": false,
+                  "autoplaySpeed": 6,
+                  "addBulletInside": true,
+                  "dots": true,
+                  "infinite": true,
+                  "fade": false,
+                  "pauseOnHover": true,
+                  "slidesToShow": 4,
+                  "slidesToScroll": 3
+                },
+                "mobileCarouselControls": {
+                  "arrows": true,
+                  "pagination": false,
+                  "infinite": false,
+                  "autoplay": true,
+                  "autoplaySpeed": 6,
+                  "slidesToShow": 2,
+                  "slidesToScroll": 2
+                },
+                "cardControls": {
+                  "applyLinkOnImage": false,
+                  "showCarousel": false,
+                  "arrows": true,
+                  "dots": true,
+                  "addImagesLimit": true,
+                  "imagesQuantity": 3,
+                  "showSellerName": true,
+                  "showBrandName": true,
+                  "showPriceOf": true,
+                  "showInstallments": true,
+                  "showWishlist": true,
+                  "showRating": true,
+                  "showDesc": false,
+                  "showBuyButton": true,
+                  "titleBuyButton": "Ver Produto",
+                  "buttonUnavailableTitle": "Avise-me",
+                  "showUnabailableMessage": true,
+                  "unavailableMessage": "Produto Indisponível",
+                  "showSkuVariations": false,
+                  "addFixedSizeOnImage": true,
+                  "imageSize": 250
+                },
+                "mobileVariations": {
+                  "hide": false,
+                  "full": false
+                },
+                "deskVariations": {
+                  "hide": false,
+                  "full": false
+                }
+              },
+              "effects": {
+                "hoverArrows": false,
+                "cardEffects": {
+                  "exchangeImage": true,
+                  "hoverZoom": true,
+                  "hoverOutlineColor": null,
+                  "hoverShadow": true,
+                  "hoverWishlist": true,
+                  "hoverBuyButton": true
+                }
+              },
+              "style": {
+                "bgColor": null,
+                "textColor": null,
+                "margins": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "paddings": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "cardStyle": {
+                  "bgColor": null,
+                  "textColor": null,
+                  "addShadow": false,
+                  "outlineColor": null,
+                  "outlineWidth": 1,
+                  "borderRadius": 0,
+                  "brandTextColor": null,
+                  "buyBtnBgColor": "var(--aud-primary)",
+                  "buyBtnTextColor": null,
+                  "installmentsColor": null,
+                  "installmentsFont": 12,
+                  "maxImageHeight": 500,
+                  "productNameColor": null,
+                  "priceFromColor": null,
+                  "priceFromFont": 13,
+                  "pricePerColor": null,
+                  "pricePerFont": 12,
+                  "sellerNameTextColor": null,
+                  "unavailableTextColor": null,
+                  "wishlistColor": "var(--aud-primary)",
+                  "textAlign": "center",
+                  "descTextColor": null
+                }
+              },
+              "css": {
+                "customClass": null
+              }
+            }
+          }
+        ]
+      },
+      "controls": {
+        "general": {
+          "mobileVariations": {
+            "hide": false,
+            "full": false,
+            "removeContainerSpaces": null
+          },
+          "deskVariations": {
+            "hide": false,
+            "full": false,
+            "removeContainerSpaces": null
+          }
+        },
+        "style": {
+          "bgColor": null,
+          "textColor": null,
+          "gap": 24,
+          "margins": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "paddings": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        "css": {
+          "customClass": null,
+          "customCSS": null
+        }
+      }
+    }
+  }
+]

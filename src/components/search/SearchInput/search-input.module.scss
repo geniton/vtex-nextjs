@@ -78,11 +78,11 @@
       padding: var(--fs-search-input-padding);
       transition: box-shadow var(--fs-search-input-transition-timing) var(--fs-search-input-transition-timing), border var(--fs-search-input-transition-timing) var(--fs-search-input-transition-function);
       background-color: transparent;
-      color: var(--dark);
+      color: currentColor;
       font-size: 14px;
 
       &::placeholder {
-        color: var(--dark);
+        color: currentColor;
       }
 
       &:focus,
@@ -120,7 +120,7 @@
     [data-fs-button] svg {
       width: var(--fs-search-input-icon-width);
       height: var(--fs-search-input-icon-height);
-      color: var(--fs-search-input-icon-color);
+      color: currentColor;
     }
   }
 

@@ -499,15 +499,23 @@
         "type": "image",
         "image": {
           "mobileImage": {
+            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957",
+            "width": "1024",
+            "height": "576",
+            "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "extension": "image/jpeg",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            },
             "uuid": "de784fa1-e675-4b17-b083-9dd81415a957",
             "disk": "s3",
             "media_type": "original",
             "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957",
-            "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
-            "extension": "image/jpeg",
-            "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
-            "width": "1024",
-            "height": "576",
             "created_at": "2023-01-19T14:54:52.000000Z",
             "updated_at": "2023-01-19T14:54:52.000000Z",
             "children": [
@@ -537,19 +545,26 @@
                 "created_at": "2023-01-19T14:54:53.000000Z",
                 "updated_at": "2023-01-19T14:54:53.000000Z"
               }
-            ],
-            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957"
+            ]
           },
           "deskImage": {
+            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957",
+            "width": "1024",
+            "height": "576",
+            "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
+            "extension": "image/jpeg",
+            "sizes": {
+              "full": "https://picsum.photos/1200/630",
+              "crop-600-200": "https://picsum.photos/600/200",
+              "crop-300-300": "https://picsum.photos/300/300",
+              "crop-200-400": "https://picsum.photos/200/400",
+              "crop-1920-1040": "https://picsum.photos/1920/1040"
+            },
             "uuid": "de784fa1-e675-4b17-b083-9dd81415a957",
             "disk": "s3",
             "media_type": "original",
             "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957",
-            "filename": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
-            "extension": "image/jpeg",
-            "alt": "WhatsApp Image 2022-12-20 at 18.39.41.jpeg",
-            "width": "1024",
-            "height": "576",
             "created_at": "2023-01-19T14:54:52.000000Z",
             "updated_at": "2023-01-19T14:54:52.000000Z",
             "children": [
@@ -579,8 +594,7 @@
                 "created_at": "2023-01-19T14:54:53.000000Z",
                 "updated_at": "2023-01-19T14:54:53.000000Z"
               }
-            ],
-            "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/de784fa1-e675-4b17-b083-9dd81415a957"
+            ]
           },
           "link": {
             "url": "/",
@@ -657,7 +671,7 @@
           "showLogin": true,
           "showCart": true,
           "showRichText": false,
-          "showSearchIcon": true,
+          "showSearchIcon": false,
           "image": {
             "mobileImage": {
               "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
@@ -791,11 +805,11 @@
           },
           "searchIcon": {
             "icon": {
-              "url": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
-              "width": "787",
-              "height": "787",
-              "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
-              "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
+              "url": "https://picsum.photos/640/760",
+              "width": "640",
+              "height": "760",
+              "alt": "Lorem ipsum",
+              "filename": "640-760.jpg",
               "extension": "image/jpeg",
               "sizes": {
                 "full": "https://picsum.photos/1200/630",
@@ -803,54 +817,9 @@
                 "crop-300-300": "https://picsum.photos/300/300",
                 "crop-200-400": "https://picsum.photos/200/400",
                 "crop-1920-1040": "https://picsum.photos/1920/1040"
-              },
-              "uuid": "413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
-              "disk": "s3",
-              "media_type": "original",
-              "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/413e2225-1ab4-49eb-b77e-74cfc5bf3f77",
-              "created_at": "2023-01-18T19:56:30.000000Z",
-              "updated_at": "2023-01-18T19:56:30.000000Z",
-              "children": [
-                {
-                  "uuid": "c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
-                  "disk": "s3",
-                  "media_type": "original",
-                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c1a3bc8d-9145-4617-a5f8-4b0a2e365a96",
-                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
-                  "extension": "image/jpeg",
-                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
-                  "width": "787",
-                  "height": "787",
-                  "created_at": "2023-01-18T19:56:30.000000Z",
-                  "updated_at": "2023-01-18T19:56:30.000000Z"
-                },
-                {
-                  "uuid": "c997e880-2c49-4af6-90b0-5068dfaa7d32",
-                  "disk": "s3",
-                  "media_type": "original",
-                  "url_disk": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/c997e880-2c49-4af6-90b0-5068dfaa7d32",
-                  "filename": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
-                  "extension": "image/jpeg",
-                  "alt": "WhatsApp Image 2023-01-12 at 12.04.47.jpeg",
-                  "width": "600",
-                  "height": "787",
-                  "created_at": "2023-01-18T19:56:31.000000Z",
-                  "updated_at": "2023-01-18T19:56:31.000000Z"
-                }
-              ]
-            },
-            "text": "Buscar"
-          },
-          "searchBarControls": {
-            "searchBarModel": "box",
-            "style": {
-              "cornerRounding": {
-                "top": 10,
-                "right": 10,
-                "bottom": 0,
-                "left": 0
               }
-            }
+            },
+            "text": "<p>Buscar</p>"
           },
           "searchIconControls": {
             "mobileVariations": {
@@ -864,6 +833,26 @@
               "maxImageWidth": "32px",
               "minImageWidth": "32px",
               "paddings": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "margins": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          },
+          "searchBarControls": {
+            "searchBarModel": "box",
+            "style": {
+              "bgColor": "",
+              "textColor": "",
+              "borderColor": "",
+              "cornerRounding": {
                 "top": 0,
                 "right": 0,
                 "bottom": 0,
@@ -928,7 +917,7 @@
               ]
             },
             "loggedContent": "<p>Olá, #nome</p>",
-            "unLoggedContent": "<p>Faça o login</p>"
+            "unLoggedContent": "<p><span style=\"color: var(--aud-black);\">Faça o login</span></p>"
           },
           "loginControls": {
             "mobileVariations": {
@@ -1757,8 +1746,8 @@
       "variations": {
         "addStickyHeaderOnMobile": true,
         "addStickyHeaderOnDesk": true,
-        "addFloatingHeaderOnMobile": true,
-        "addFloatingHeaderOnDesk": true
+        "addFloatingHeaderOnMobile": false,
+        "addFloatingHeaderOnDesk": false
       },
       "effects": {
         "hoverBold": true

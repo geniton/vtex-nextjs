@@ -2389,9 +2389,9 @@
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
 "@retailhub/audacity-ui@^0.0.148":
-  version "0.0.141"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.141.tgz#04a0c68b510a706ec1c4fb0b1b5980ec7f00797b"
-  integrity sha512-De/bjg2uBlB8zxx7GpowGK1os4ZWiHfDavkl7uRSdNr0bcF5NM8o9gNpV5bjnqsSVPN3Zvkk94dis/F/kEyN1A==
+  version "0.0.148"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.148.tgz#8caef327e7aacf7e1b6498a198ed3a13096d7e23"
+  integrity sha512-96477U5oBW2rsXR1o/Xa/6HPDBXMUSabxuT3v1JYv1J9QkzEd91nzHtsKflnvbtj9u7S5Gwn/25g+7KASBOMqQ==
   dependencies:
     "@faststore/graphql-utils" "^1.11.8"
     "@types/react-headroom" "^2.2.2"
