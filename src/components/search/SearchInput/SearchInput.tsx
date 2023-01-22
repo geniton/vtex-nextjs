@@ -12,7 +12,6 @@ import { useRouter } from 'next/router'
 import { sendAnalyticsEvent } from '@faststore/sdk'
 import type { SearchEvent } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
-import classNames from 'classnames'
 import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef as UISearchInputRef,
