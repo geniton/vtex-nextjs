@@ -36,7 +36,7 @@
     "@faststore/graphql-utils": "^1.11.8",
     "@faststore/sdk": "^1.11.8",
     "@faststore/ui": "^1.12.23",
-    "@retailhub/audacity-ui": "^0.0.148",
+    "@retailhub/audacity-ui": "^0.0.149",
     "@splidejs/react-splide": "^0.7.12",
     "@vtex/client-cms": "^0.2.10",
     "axios": "^0.27.2",
