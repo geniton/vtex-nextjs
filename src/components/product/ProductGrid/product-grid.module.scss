@@ -22,7 +22,7 @@
   grid-template-columns: repeat(var(--fs-product-grid-columns-mobile), 1fr);
   grid-gap: var(--fs-product-grid-gap-mobile);
 
-  [class*='product-card'] {
+  article[class*='product-card'] {
     margin: 0;
   }
 

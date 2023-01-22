@@ -42,11 +42,11 @@
   --fs-sku-selector-option-border-width          : var(--fs-border-width-thick);
   --fs-sku-selector-option-border-color          : var(--dark);
   --fs-sku-selector-option-border-radius         : var(--fs-border-radius);
-  --fs-sku-selector-option-border-color-hover    : var(--primary);
+  --fs-sku-selector-option-border-color-hover    : var(--aud-primary);
 
   --fs-sku-selector-option-checked-border-width  : var(--fs-sku-selector-option-border-width);
   --fs-sku-selector-option-checked-border-color  : var(--fs-sku-selector-option-border-color-hover);
-  --fs-sku-selector-option-checked-box-shadow    : 0 0 0 1px var(--primary);
+  --fs-sku-selector-option-checked-box-shadow    : 0 0 0 1px var(--aud-primary);
   --fs-sku-selector-option-checked-bkg-color     : var(--fs-sku-selector-option-bkg-color-hover);
 
   --fs-sku-selector-option-disabled-width        : var(--fs-border-width);

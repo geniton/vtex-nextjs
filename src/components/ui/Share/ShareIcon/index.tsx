@@ -3,7 +3,7 @@ type Props = {
   color?: string
 }
 
-const ShareIcon: React.FC<Props> = ({ color = 'var(--primary)', ...otherProps }) => {
+const ShareIcon: React.FC<Props> = ({ color = 'var(--aud-primary)', ...otherProps }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="-21 0 512 512" width="20" height="20" fill={color} {...otherProps}>
       <path d="m453.332031 85.332031c0 38.292969-31.039062 69.335938-69.332031 69.335938s-69.332031-31.042969-69.332031-69.335938c0-38.289062 31.039062-69.332031 69.332031-69.332031s69.332031 31.042969 69.332031 69.332031zm0 0" />

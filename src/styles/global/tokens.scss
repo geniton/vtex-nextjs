@@ -36,23 +36,23 @@ body {
 
   // HIERARCHY
   --fs-color-primary-text              : var(--fs-color-text-inverse);
-  --fs-color-primary-bkg               : var(--primary);
-  --fs-color-primary-bkg-hover         : var(--primary);
-  --fs-color-primary-bkg-active        : var(--primary);
-  --fs-color-primary-bkg-light         : var(--primary);
-  --fs-color-primary-bkg-light-active  : var(--primary);
+  --fs-color-primary-bkg               : var(--aud-primary);
+  --fs-color-primary-bkg-hover         : var(--aud-primary);
+  --fs-color-primary-bkg-active        : var(--aud-primary);
+  --fs-color-primary-bkg-light         : var(--aud-primary);
+  --fs-color-primary-bkg-light-active  : var(--aud-primary);
 
   --fs-color-secondary-text            : var(--fs-color-primary-bkg);
   --fs-color-secondary-bkg             : transparent;
   --fs-color-secondary-bkg-hover       : var(--fs-color-primary-bkg);
-  --fs-color-secondary-bkg-active      : var(--primary);
-  --fs-color-secondary-bkg-light       : var(--primary);
+  --fs-color-secondary-bkg-active      : var(--aud-primary);
+  --fs-color-secondary-bkg-light       : var(--aud-primary);
   --fs-color-secondary-bkg-light-active: var(--fs-color-secondary-bkg-light);
 
   --fs-color-tertiary-text             : var(--fs-color-link);
   --fs-color-tertiary-bkg              : transparent;
-  --fs-color-tertiary-bkg-hover        : var(--primary);
-  --fs-color-tertiary-bkg-active       : var(--primary);
+  --fs-color-tertiary-bkg-hover        : var(--aud-primary);
+  --fs-color-tertiary-bkg-active       : var(--aud-primary);
   --fs-color-tertiary-bkg-light        : var(--fs-color-neutral-0);
   --fs-color-tertiary-bkg-light-active : var(--fs-color-tertiary-bkg-light);
 
@@ -66,9 +66,9 @@ body {
   --fs-color-action-bkg-light          : var(--fs-color-neutral-0);
   --fs-color-action-bkg-light-active   : var(--fs-color-tertiary-bkg-light);
 
-  --fs-color-link                      : var(--primary);
-  --fs-color-link-hover                : var(--primary);
-  --fs-color-link-active               : var(--primary);
+  --fs-color-link                      : var(--aud-primary);
+  --fs-color-link-hover                : var(--aud-primary);
+  --fs-color-link-active               : var(--aud-primary);
   --fs-color-link-visited              : #6058ba;
   --fs-color-link-inverse              : var(--fs-color-neutral-0);
 
@@ -77,8 +77,8 @@ body {
   --fs-color-text-inverse              : var(--fs-color-neutral-0);
   --fs-color-text-display              : var(--fs-color-neutral-7);
 
-  --fs-color-focus-ring                : var(--primary);
-  --fs-color-focus-ring-outline        : var(--primary);
+  --fs-color-focus-ring                : var(--aud-primary);
+  --fs-color-focus-ring-outline        : var(--aud-primary);
   --fs-color-focus-ring-danger         : #e1adad;
 
   // SITUATIONS
@@ -95,7 +95,7 @@ body {
   --fs-color-danger-border             : var(--fs-color-danger-text);
 
   --fs-color-info-text                 : var(--fs-color-text);
-  --fs-color-info-bkg                  : var(--primary);
+  --fs-color-info-bkg                  : var(--aud-primary);
 
   --fs-color-highlighted-text          : var(--fs-color-text-display);
   --fs-color-highlighted-bkg           : var(--fs-color-accent-0);
@@ -111,7 +111,7 @@ body {
   // --------------------------------------------------------
 
   // FACE
-  --fs-text-face-body                  : -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --fs-text-face-body                  : 'Roboto', sans-serif;
   --fs-text-face-title                 : var(--fs-text-face-body);
 
   // WEIGHT
@@ -260,8 +260,8 @@ body {
   --fs-border-width-thickest           : 3px;
 
   --fs-border-color                    : var(--fs-color-neutral-4);
-  --fs-border-color-hover              : var(--primary);
-  --fs-border-color-active             : var(--primary);
+  --fs-border-color-hover              : var(--aud-primary);
+  --fs-border-color-active             : var(--aud-primary);
   --fs-border-color-disabled           : var(--fs-color-neutral-4);
 
   --fs-border-color-light              : var(--fs-color-neutral-2);
@@ -272,5 +272,5 @@ body {
   // SHADOW
   --fs-shadow                          : none;
   --fs-shadow-darker                   : 0 0 10px rgb(0 0 0 / 20%);
-  --fs-shadow-hover                    : 0 0 0 1px var(--primary);
+  --fs-shadow-hover                    : 0 0 0 1px var(--aud-primary);
 }

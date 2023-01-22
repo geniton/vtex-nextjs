@@ -87,7 +87,7 @@
         "outlineWidth": 1,
         "borderRadius": 0,
         "brandTextColor": "",
-        "buyBtnBgColor": "var(--primary)",
+        "buyBtnBgColor": "var(--aud-primary)",
         "buyBtnTextColor": "",
         "installmentsColor": "",
         "installmentsFont": 12,
@@ -99,7 +99,7 @@
         "pricePerFont": 12,
         "sellerNameTextColor": "",
         "unavailableTextColor": "",
-        "wishlistColor": "var(--primary)",
+        "wishlistColor": "var(--aud-primary)",
         "textAlign": "center",
         "descTextColor": ""
       }

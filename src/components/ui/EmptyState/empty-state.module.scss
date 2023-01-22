@@ -56,12 +56,12 @@
   // Button
 
   [data-fs-button="true"] {
-    background-color: var(--primary);
-    border-color: var(--primary);
+    background-color: var(--aud-primary);
+    border-color: var(--aud-primary);
     color: white;
     &:hover {
-      background-color: var(--primary);
-    border-color: var(--primary);
+      background-color: var(--aud-primary);
+    border-color: var(--aud-primary);
     color: white;
     opacity: 0.9;
     }

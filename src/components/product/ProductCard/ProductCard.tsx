@@ -22,8 +22,8 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductCard/product-card.module.scss'
-import Like from 'src/components/ui/Like'
 import { getProductInstallments, getSellerLowPrice } from 'src/utils/product'
+import { Hooks as PlatformHooks } from 'src/utils/components/platform'
 
 type Variant = 'wide' | 'default'
 
@@ -246,9 +246,10 @@ function ProductCard({
       {...otherProps}
     >
       {showWishlist && (
-        <Like
+        <Components.Like
           skuId={sku}
           onChangeLike={onChangeLike}
+          PlatformHooks={PlatformHooks}
           width="17"
           height="17"
           color={wishlistColor}

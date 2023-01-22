@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { Components } from '@retailhub/audacity-ui'
 
 import { Image } from 'src/components/ui/Image'
 import styles from 'src/components/ui/ImageGallery/image-gallery.module.scss'
+import { Hooks as PlatformHooks } from 'src/utils/components/platform'
 
 import { ImageGallerySelector, ImageZoom } from '.'
-import Like from '../Like'
 import Share from '../Share'
 
 export interface ImageElementData {
@@ -35,7 +36,7 @@ function ImageGallery({
       data-fs-image-gallery-full-screen={images.length <= 1}
     >
       <div data-fs-image-gallery-share>
-        <Like skuId={skuId} />
+        <Components.Like PlatformHooks={PlatformHooks} skuId={skuId} />
         <Share productUrl={productUrl} />
       </div>
       {galleryMode === 'with-thumbnails' && images.length > 1 ? (

@@ -125,7 +125,7 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
               produtos que gostar !
             </p>
             <ButtonLink
-              className="bg-[color:var(--primary)] text-white py-3 px-4 mt-2.5 inline-block text-base"
+              className="bg-[color:var(--aud-primary)] text-white py-3 px-4 mt-2.5 inline-block text-base"
               href="/"
             >
               escolher produtos

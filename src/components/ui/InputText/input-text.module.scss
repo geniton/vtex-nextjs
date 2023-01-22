@@ -91,12 +91,12 @@
     }
 
     &:hover:not(:disabled):not(:focus-visible):not(:focus) {
-      border-color: var(--primary);
+      border-color: var(--aud-primary);
       box-shadow: var(--fs-input-box-shadow-hover);
     }
 
     &:focus {
-      border-color: var(--primary);
+      border-color: var(--aud-primary);
       border-width: 2px;
     }
 
