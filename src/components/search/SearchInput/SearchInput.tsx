@@ -6,6 +6,7 @@ import {
   useState,
   useDeferredValue,
   useImperativeHandle,
+  useEffect,
 } from 'react'
 import type { CSSProperties } from 'react'
 import { useRouter } from 'next/router'
@@ -37,6 +38,7 @@ export type SearchInputProps = {
   buttonTestId?: string
   containerStyle?: CSSProperties
   variation?: string
+  dropdownVisible?: boolean
 } & Omit<UISearchInputProps, 'onSubmit'>
 
 export type SearchInputRef = UISearchInputRef & { resetSearchInput: () => void }
@@ -55,6 +57,7 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       buttonTestId = 'store-search-button',
       containerStyle,
       variation,
+      dropdownVisible = false,
       ...otherProps
     },
     ref
@@ -80,7 +83,14 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
         setSearchQuery(term)
       }
 
-    useOnClickOutside(searchRef, () => setSearchDropdownVisible(false))
+    useOnClickOutside(
+      searchRef,
+      () => !dropdownVisible && setSearchDropdownVisible(false)
+    )
+
+    useEffect(() => {
+      setSearchDropdownVisible(dropdownVisible)
+    }, [])
 
     return (
       <div
@@ -91,7 +101,9 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
         data-fs-search-input-variation-nav-aside={
           variation === 'search-input-nav-aside'
         }
-        data-fs-search-input-variation-full={variation === 'search-input-full'}
+        data-fs-search-input-variation-full={
+          variation === 'search-input-nav-bar'
+        }
         style={containerStyle}
       >
         <SearchInputProvider onSearchInputSelection={onSearchInputSelection}>
