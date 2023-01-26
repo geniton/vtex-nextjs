@@ -290,7 +290,7 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
   }
 
   return {
-    props: { product: data.product, page },
+    props: { product: data.product, page, pageName: 'page/product' },
   }
 }
 

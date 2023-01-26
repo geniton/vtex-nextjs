@@ -38,7 +38,6 @@ export type SearchInputProps = {
   buttonTestId?: string
   containerStyle?: CSSProperties
   variation?: string
-  dropdownVisible?: boolean
 } & Omit<UISearchInputProps, 'onSubmit'>
 
 export type SearchInputRef = UISearchInputRef & { resetSearchInput: () => void }
@@ -57,7 +56,6 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       buttonTestId = 'store-search-button',
       containerStyle,
       variation,
-      dropdownVisible = false,
       ...otherProps
     },
     ref
@@ -83,13 +81,14 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
         setSearchQuery(term)
       }
 
-    useOnClickOutside(
-      searchRef,
-      () => !dropdownVisible && setSearchDropdownVisible(false)
-    )
+    useOnClickOutside(searchRef, () => setSearchDropdownVisible(false))
 
     useEffect(() => {
-      setSearchDropdownVisible(dropdownVisible)
+      if (variation === 'search-input-nav-bar') {
+        setTimeout(() => {
+          searchRef?.current?.querySelector('input')?.focus()
+        }, 100)
+      }
     }, [])
 
     return (

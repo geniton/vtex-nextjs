@@ -173,7 +173,7 @@
     }
     [data-fs-search-input-form] {
       // height: var(--fs-search-input-height-mobile) !important; 
-      height: var(--fs-search-input-height-mobile); 
+      height: auto;
     }
     [data-fs-search-input-dropdown-wrapper] {
       width: 100%;
