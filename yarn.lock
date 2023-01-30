@@ -2388,10 +2388,10 @@
   resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.4.tgz#a04d63f4d1bf5540a41b01a921c9a7fddc3bd1ca"
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
-"@retailhub/audacity-ui@^0.0.176":
-  version "0.0.176"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.176.tgz#a3ab64e529be9967c0def6ac6015c56e90f65a84"
-  integrity sha512-y7PDullkqULz3uiGGuqeAxIl0xgUama1KOJ92PTpUH2uRmXGI/+TqA9fkbo6vm4QFdVnEyaCtE1yXLNbcIojaQ==
+"@retailhub/audacity-ui@^0.0.177":
+  version "0.0.177"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.177.tgz#b33dae08a7950b34ba8866f7eed11c640a69d7b3"
+  integrity sha512-ZnJy+YkNLHQhI6QCicxWOHGzfFElhcXSDV8qf2cXoSQ6Os1srXbt0kocavOK21Iz7qKEMeMYSHWt9BXC1xCQWw==
   dependencies:
     "@faststore/graphql-utils" "^1.11.8"
     "@types/react-headroom" "^2.2.2"
