@@ -10,6 +10,7 @@ import type { AnalyticsItem, SearchSelectItemEvent } from '../analytics/types'
 export type ProductLinkOptions = {
   index: number
   product: ProductSummary_ProductFragment | any
+  currentSku?: ProductSummary_ProductFragment | any
   selectedOffer: number
 }
 
@@ -23,9 +24,10 @@ function getSlug(product: any) {
 export const useProductLink = ({
   index,
   product,
+  currentSku,
   selectedOffer,
 }: ProductLinkOptions) => {
-  const slug = product.slug || getSlug(product)
+  const slug = currentSku?.slug || product.slug || getSlug(product)
   const {
     currency: { code },
   } = useSession()
