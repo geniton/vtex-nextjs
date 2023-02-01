@@ -192,7 +192,7 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
         type: 'onError',
         payload: {
           displayClearButton: true,
-          errorMessage: 'You entered an invalid Postal Code',
+          errorMessage: 'Você digitou um CEP inválido',
         },
       })
     }

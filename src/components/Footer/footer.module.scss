@@ -37,7 +37,7 @@
 
 .footerRowBorder {
   @include media('<=notebook') {
-    border-bottom: 1px solid var(--dark);
+    border-bottom: 1px solid var(--aud-gray);
   }
 }
 

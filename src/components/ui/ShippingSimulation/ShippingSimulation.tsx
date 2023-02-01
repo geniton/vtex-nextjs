@@ -5,9 +5,7 @@ import type { HTMLAttributes } from 'react'
 import Price from 'src/components/ui/Price'
 import { usePriceFormatter } from 'src/sdk/product/useFormattedPrice'
 
-import Icon from '../Icon'
 import InputText from '../InputText'
-import Link from '../Link'
 import styles from './shipping-simulation.module.scss'
 import { useShippingSimulation } from './useShippingSimulation'
 
@@ -56,60 +54,59 @@ function ShippingSimulation({
         Calcular frete
       </h2>
 
-      <InputText
-        actionable
-        error={errorMessage}
-        id="shipping-postal-code"
-        label="Postal Code"
-        value={shippingPostalCode}
-        onInput={handleOnInput}
-        onSubmit={handleSubmit}
-        onClear={() => dispatch({ type: 'clear' })}
-        displayClearButton={displayClearButton}
-      />
+      <div>
+        <InputText
+          actionable
+          error={errorMessage}
+          id="shipping-postal-code"
+          buttonActionText="Calcular"
+          placeholder="00000-000"
+          value={shippingPostalCode}
+          onInput={handleOnInput}
+          onSubmit={handleSubmit}
+          onClear={() => dispatch({ type: 'clear' })}
+          displayClearButton={displayClearButton}
+        />
 
-      <Link href="/" data-fs-shipping-simulation-link>
-        {"I don't know my Postal Code"}
-        <Icon name="ArrowSquareOut" width={18} height={18} />
-      </Link>
+        {hasShippingOptions && (
+          <>
+            <header data-fs-shipping-simulation-header>
+              <h3 data-fs-shipping-simulation-subtitle>Shipping options</h3>
+              <p className="text__body" data-fs-shipping-simulation-location>
+                {shippingLocation}
+              </p>
+            </header>
 
-      {hasShippingOptions && (
-        <>
-          <header data-fs-shipping-simulation-header>
-            <h3 data-fs-shipping-simulation-subtitle>Shipping options</h3>
-            <p className="text__body" data-fs-shipping-simulation-location>
-              {shippingLocation}
-            </p>
-          </header>
+            <Table data-fs-shipping-simulation-table>
+              <TableBody>
+                {shippingOptions.map((option) => (
+                  <TableRow
+                    key={option.carrier}
+                    data-fs-shipping-simulation-table-row
+                  >
+                    <TableCell data-fs-shipping-simulation-table-cell>
+                      {option.carrier}
+                    </TableCell>
+                    <TableCell data-fs-shipping-simulation-table-cell>
+                      {option.localizedEstimates}
+                    </TableCell>
+                    <TableCell data-fs-shipping-simulation-table-cell>
+                      {option.price && (
+                        <Price
+                          formatter={formatter}
+                          value={option.price}
+                          SRText="price"
+                        />
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </>
+        )}
+      </div>
 
-          <Table data-fs-shipping-simulation-table>
-            <TableBody>
-              {shippingOptions.map((option) => (
-                <TableRow
-                  key={option.carrier}
-                  data-fs-shipping-simulation-table-row
-                >
-                  <TableCell data-fs-shipping-simulation-table-cell>
-                    {option.carrier}
-                  </TableCell>
-                  <TableCell data-fs-shipping-simulation-table-cell>
-                    {option.localizedEstimates}
-                  </TableCell>
-                  <TableCell data-fs-shipping-simulation-table-cell>
-                    {option.price && (
-                      <Price
-                        formatter={formatter}
-                        value={option.price}
-                        SRText="price"
-                      />
-                    )}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </>
-      )}
     </section>
   )
 }

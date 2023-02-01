@@ -103,16 +103,18 @@ function CartItem({ item, gift = false }: Props) {
           </p>
           {!gift && (
             <span data-fs-cart-item-prices>
-              <Price
-                value={item.listPrice}
-                formatter={useFormattedPrice}
-                testId="list-price"
-                data-value={item.listPrice}
-                variant="listing"
-                classes="text__legend"
-                SRText="Original price:"
-                data-fs-price-from
-              />
+              {item.listPrice > item.price && (
+                <Price
+                  value={item.listPrice}
+                  formatter={useFormattedPrice}
+                  testId="list-price"
+                  data-value={item.listPrice}
+                  variant="listing"
+                  classes="text__legend"
+                  SRText="Original price:"
+                  data-fs-price-from
+                />
+              )}
               <Price
                 value={item.price}
                 formatter={useFormattedPrice}
@@ -135,7 +137,7 @@ function CartItem({ item, gift = false }: Props) {
             iconPosition="left"
             {...btnProps}
           >
-            Remove
+            Remover
           </Button>
           <QuantitySelector
             min={1}

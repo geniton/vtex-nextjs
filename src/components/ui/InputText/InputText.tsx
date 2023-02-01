@@ -1,4 +1,4 @@
-import { Input as UIInput, Label as UILabel } from '@faststore/ui'
+import { Input as UIInput } from '@faststore/ui'
 import type { MutableRefObject } from 'react'
 import type { InputProps } from '@faststore/ui'
 
@@ -15,7 +15,7 @@ type DefaultProps = {
   /**
    * The text displayed to identify input text.
    */
-  label: string
+  label?: string
   /**
    * The error message is displayed when an error occurs.
    */
@@ -67,7 +67,6 @@ export type InputTextProps = DefaultProps &
 
 const InputText = ({
   id,
-  label,
   type = 'text',
   error,
   displayClearButton,
@@ -82,7 +81,6 @@ const InputText = ({
   ...otherProps
 }: InputTextProps) => {
   const shouldDisplayError = !disabled && error && error !== ''
-  const shouldDisplayButton = actionable && !disabled && value !== ''
 
   return (
     <div
@@ -100,10 +98,8 @@ const InputText = ({
         placeholder={placeholder}
         {...otherProps}
       />
-      <UILabel htmlFor={id}>{label}</UILabel>
 
-      {shouldDisplayButton &&
-        (displayClearButton || error ? (
+        {(displayClearButton || error) ? (
           <Button
             variant="tertiary"
             data-fs-button-icon
@@ -119,7 +115,7 @@ const InputText = ({
           <Button variant="tertiary" size="small" onClick={onSubmit}>
             {buttonActionText}
           </Button>
-        ))}
+        )}
       {shouldDisplayError && (
         <span data-fs-input-text-error-message>{error}</span>
       )}

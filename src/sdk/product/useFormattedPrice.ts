@@ -6,13 +6,8 @@ interface PriceFormatterOptions {
 
 export const usePriceFormatter = ({ decimals }: PriceFormatterOptions = {}) => {
   return useCallback(
-    (price: number) =>
-      Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: decimals ? 2 : 0,
-      }).format(price),
-    ['BRL', 'pt-BR', decimals]
+    (price: number) => price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+    ['brl', 'pt-BR', decimals]
   )
 }
 

@@ -35,11 +35,11 @@ function Layout({ children, page, pageName }: LayoutProps) {
     <ThemeConfigs data={page?.themeConfigs || themeConfigsMock}>
       {page?.header && (
         <Components.Header
+          {...page?.header}
           PlatformComponents={PlatformComponents}
           PlatformHooks={PlatformHooks}
           pageName={pageName}
           menus={page.menus}
-          {...page?.header}
         />
       )}
 

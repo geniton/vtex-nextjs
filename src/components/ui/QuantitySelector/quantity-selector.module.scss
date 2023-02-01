@@ -55,11 +55,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: var(--fs-qty-selector-width);
+  width: 100%;
   min-width: calc(var(--fs-control-tap-size) * 2.7);
-  height: var(--fs-qty-selector-height);
+  height: 43px;
   border-radius: var(--fs-qty-selector-border-radius);
-  box-shadow: var(--fs-qty-selector-shadow);
+  border: 1px solid var(--aud-gray-light);
 
   [data-store-icon] {
     margin: 0;
@@ -75,14 +75,12 @@
     color: var(--fs-qty-selector-text-color);
     text-align: center;
     background-color: var(--fs-qty-selector-bkg-color);
-    border: var(--fs-qty-selector-border-width) solid var(--fs-qty-selector-border-color);
     border-radius: var(--fs-qty-selector-border-radius);
     transition:
       var(--fs-qty-selector-transition-property)
       var(--fs-qty-selector-transition-timing)
       var(--fs-qty-selector-transition-function);
-
-    @include input-focus-ring;
+      outline: none;
   }
 
   [data-quantity-selector-button] {
@@ -92,11 +90,22 @@
     justify-content: center;
     min-width: var(--fs-control-tap-size);
     height: 100%;
-    min-height: var(--fs-control-tap-size);
+    min-height: 43px;
     padding: var(--fs-spacing-1);
     background-color: var(--fs-qty-selector-button-bkg-color);
-    border: 0;
-    border-radius: var(--fs-qty-selector-button-border-radius);
+    width: 33%;
+
+    &[data-quantity-selector-button="left"] {
+      border-right: 1px solid var(--aud-gray-light);
+    }
+    &[data-quantity-selector-button="right"] {
+      border-left: 1px solid var(--aud-gray-light);
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
 
     [data-store-icon] {
       display: flex;
@@ -137,16 +146,6 @@
 
         background-color: var(--fs-qty-selector-button-bkg-color-focus);
       }
-    }
-  }
-
-  &:hover {
-    [data-quantity-selector-input]:not(:disabled):not(:focus) {
-      color: var(--fs-qty-selector-text-color-hover);
-      background-color: var(--fs-qty-selector-bkg-color-hover);
-      border-color: var(--fs-qty-selector-border-color-hover);
-      border-width: var(--fs-qty-selector-border-width-hover);
-      box-shadow: var(--fs-qty-selector-shadow-hover);
     }
   }
 

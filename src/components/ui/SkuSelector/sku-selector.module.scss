@@ -40,7 +40,7 @@
   --fs-sku-selector-option-bkg-color-hover       : var(--fs-color-primary-bkg-light);
 
   --fs-sku-selector-option-border-width          : var(--fs-border-width-thick);
-  --fs-sku-selector-option-border-color          : var(--dark);
+  --fs-sku-selector-option-border-color          : var(--aud-gray);
   --fs-sku-selector-option-border-radius         : var(--fs-border-radius);
   --fs-sku-selector-option-border-color-hover    : var(--aud-primary);
 
@@ -80,12 +80,16 @@
   [data-fs-sku-selector-title] {
     width: 100%;
     margin-bottom: var(--fs-sku-selector-title-margin-bottom);
-  }
 
+    strong {
+      color: var(--aud-primary);
+    }
+  }
+  
   [data-fs-radio-option] {
     position: relative;
-    min-width: var(--fs-sku-selector-option-width);
-    height: var(--fs-sku-selector-option-height);
+    height: 34px;
+    font-size: 10.5px;
 
     span {
       position: relative;
@@ -94,10 +98,11 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      border: var(--fs-border-width) solid var(--fs-sku-selector-option-border-color);
+      border: 1px solid var(--aud-tertiary);
       border-radius: var(--fs-sku-selector-option-border-radius);
       box-shadow: 0;
-      transition: box-shadow var(--fs-sku-selector-option-transition-timing) var(--fs-sku-selector-option-transition-function), background-color var(--fs-sku-selector-option-transition-timing) var(--fs-sku-selector-option-transition-function);
+      padding: 3px 13px;
+      transition: 300ms all ease;
     }
 
     [data-fs-sku-selector-option] {
@@ -109,9 +114,6 @@
       opacity: 0;
 
       // @include sku-selector-focus-ring;
-      + span {
-        padding: 0 3px;
-      }
 
       &[data-fs-sku-selector-variant="image"] {
         [data-fs-sku-selector-option-image] {
@@ -121,6 +123,10 @@
           transition: transform var(--fs-sku-selector-image-transition-timing) var(--fs-sku-selector-image-transition-function);
           transform-origin: center center;
         }
+      }
+
+      &[data-fs-sku-selector-variant="label"] {
+        height: 24px;
       }
 
       &:checked + span [data-fs-sku-selector-option-image] {
@@ -134,7 +140,6 @@
         }
 
         + span {
-          box-shadow: var(--fs-sku-selector-option-checked-box-shadow);
           border-color: var(--fs-sku-selector-option-checked-border-color);
           
           &:after {
@@ -145,7 +150,6 @@
 
       &:checked + span {
         border-color: var(--fs-sku-selector-option-checked-border-color);
-        box-shadow: var(--fs-sku-selector-option-checked-box-shadow);
       }
 
       &[data-fs-sku-selector-option-disabled="true"] {
@@ -178,6 +182,14 @@
       }
     }
   }
+
+  // [data-fs-sku-selector] {
+  //   &[data-fs-sku-selector-variant="image"] {
+  //     > [data-fs-radio-option] {
+  //      background-color: red;
+  //     }
+  //   }
+  // }
 
   // --------------------------------------------------------
   // Variants Styles

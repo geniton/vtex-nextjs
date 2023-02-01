@@ -34,6 +34,7 @@ interface Props {
       showProductName: boolean
       showSkuName: boolean
       showProductReference: boolean
+      buyNowBtn: boolean
       galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
       mobileVariations: VariationsProps
       deskVariations: VariationsProps
@@ -48,6 +49,7 @@ function ProductDetails({
       showProductName,
       showSkuName,
       showProductReference,
+      buyNowBtn,
       galleryMode,
       mobileVariations,
       deskVariations,
@@ -95,10 +97,9 @@ function ProductDetails({
     [sellers]
   )
 
-  const buyDisabled = useMemo(
-    () => !sellerActive.AvailableQuantity,
-    [sellerActive]
-  )
+  const buyDisabled = useMemo(() => !sellerActive.AvailableQuantity, [
+    sellerActive,
+  ])
 
   if (skuVariants && variations) {
     skuVariants.availableVariations = JSON.parse(variations)
@@ -247,17 +248,27 @@ function ProductDetails({
               data-fs-product-details-section
               data-fs-product-details-section-full={sellers.length <= 1}
             >
+              {skuVariants && (
+                <Selectors
+                  slugsMap={skuVariants.slugsMap}
+                  availableVariations={skuVariants.availableVariations}
+                  activeVariations={skuVariants.activeVariations}
+                  data-fs-product-details-selectors
+                />
+              )}
               <section data-fs-product-details-values>
                 <div data-fs-product-details-prices>
-                  <Price
-                    value={sellerActive.ListPrice}
-                    formatter={useFormattedPrice}
-                    testId="list-price"
-                    data-value={sellerActive.ListPrice}
-                    variant="listing"
-                    classes="text__legend"
-                    SRText="Original price:"
-                  />
+                  {sellerActive.ListPrice > sellerActive.Price && (
+                    <Price
+                      value={sellerActive.ListPrice}
+                      formatter={useFormattedPrice}
+                      testId="list-price"
+                      data-value={sellerActive.ListPrice}
+                      variant="listing"
+                      classes="text__legend"
+                      SRText="Original price:"
+                    />
+                  )}
                   <Price
                     value={sellerActive.Price}
                     formatter={useFormattedPrice}
@@ -273,14 +284,6 @@ function ProductDetails({
                   <p className="price__new">{isValidating ? '' : formattedPrice}</p>
                 </div> */}
               </section>
-              {skuVariants && (
-                <Selectors
-                  slugsMap={skuVariants.slugsMap}
-                  availableVariations={skuVariants.availableVariations}
-                  activeVariations={skuVariants.activeVariations}
-                  data-fs-product-details-selectors
-                />
-              )}
               {sellerActive.AvailableQuantity ? (
                 <>
                   {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
@@ -293,23 +296,27 @@ function ProductDetails({
                       max={10}
                       onChange={setAddQuantity}
                     />
-                    {isValidating ? (
-                      <AddToCartLoadingSkeleton />
-                    ) : (
-                      <>
-                        <ButtonBuy disabled={buyDisabled} {...buyProps}>
-                          Adicionar
-                        </ButtonBuy>
-                        <ButtonBuy
-                          disabled={buyDisabled}
-                          icon={false}
-                          goToCheckout
-                          {...buyProps}
-                        >
-                          Comprar agora
-                        </ButtonBuy>
-                      </>
-                    )}
+                    <div data-fs-product-details-buttons-wrapper>
+                      {isValidating ? (
+                        <AddToCartLoadingSkeleton />
+                      ) : (
+                        <>
+                          <ButtonBuy disabled={buyDisabled} {...buyProps}>
+                            Adicionar
+                          </ButtonBuy>
+                          {buyNowBtn && (
+                            <ButtonBuy
+                              disabled={buyDisabled}
+                              icon={false}
+                              goToCheckout
+                              {...buyProps}
+                            >
+                              Comprar agora
+                            </ButtonBuy>
+                          )}
+                        </>
+                      )}
+                    </div>
                   </div>
                   <ShippingSimulation
                     data-fs-product-details-shipping

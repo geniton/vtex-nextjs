@@ -26,6 +26,7 @@
 
     h1 {
       font-weight: 600;
+      font-size: 17.5px;
     }
 
     // Title prop
@@ -44,9 +45,9 @@
   }
 
   [data-fs-product-title-addendum] {
-    margin-top: var(--fs-product-title-addendum-margin-top);
-    font-size: var(--fs-product-title-addendum-size);
+    margin-top: 10px;
+    font-size: 12px;
     line-height: var(--fs-product-title-addendum-line-height);
-    color: var(--fs-product-title-addendum-color);
+    color: #bbbbbb;
   }
 }

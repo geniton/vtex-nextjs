@@ -34,7 +34,7 @@ function RegionInput({ closeModal }: Props) {
 
       closeModal()
     } catch (error) {
-      setErrorMessage('You entered an invalid Postal Code')
+      setErrorMessage('Você digitou um CEP inválido')
     }
   }
 

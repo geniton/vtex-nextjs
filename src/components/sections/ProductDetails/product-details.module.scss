@@ -46,6 +46,7 @@
       width: 100%;
       background-color: var(--aud-primary);
       border: none;
+      min-height: 43px;
 
       &:hover {
         opacity: 0.9;
@@ -57,7 +58,7 @@
 
       &[data-variant="spot"] {
         margin: 0;
-        font-weight: var(--fs-text-weight-black);
+        font-weight: 400;
       }
     }
 
@@ -82,7 +83,7 @@
     padding: 20px;
     border: 1px solid var(--fs-product-details-section-border-color);
     [data-fs-quantity-selector] {
-      min-width: 109px;
+      width: 30%;
     }
   }
 
@@ -102,9 +103,10 @@
   // -----------------------------
 
   [data-fs-product-details-title] {
+    border-bottom: 1px solid var(--aud-gray-light);
+    padding-bottom: 15px;
     @include media(">=tablet") {
       grid-column: span 12;
-      border-bottom: 0;
       border-radius: var(--fs-product-details-section-border-radius) var(--fs-product-details-section-border-radius) 0 0;
     }
   }
@@ -116,7 +118,7 @@
   [data-fs-product-details-info] {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 0;
 
     @include media(">=tablet") {
       position: sticky;
@@ -159,7 +161,7 @@
       height: 18px;
       text-align: center;
       content: "";
-      border: 1px solid var(--dark);
+      border: 1px solid var(--aud-gray);
       border-radius: 50%;
       transform: translateY(-50%);
     }
@@ -219,9 +221,10 @@
     display: flex;
     flex-direction: column;
     row-gap: var(--fs-spacing-3);
+    padding-top: 15px;
 
     @include media(">=tablet") {
-      row-gap: var(--fs-spacing-4);
+      row-gap: var(--fs-spacing-3);
     }
   }
 
@@ -229,6 +232,8 @@
     display: flex;
     flex-direction: column;
     row-gap: var(--fs-spacing-3);
+    border-bottom: 1px solid var(--aud-gray-light);
+    padding-bottom: 15px;
 
     // @include media(">=tablet") {
     //   row-gap: var(--fs-spacing-4);
@@ -287,11 +292,21 @@
   // -----------------------------
 
   [data-fs-product-details-wrapper] {
-    display: flex;
-    grid-gap: 15px;
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-gap: var(--fs-spacing-3);
 
     @include media("<=notebook") {
-      flex-wrap: wrap;
+      display: block;
+    }
+  }
+
+  [data-fs-product-details-buttons-wrapper] {
+    display: flex;
+    gap: var(--fs-spacing-3);
+
+    @include media("<=notebook") {
+      margin-top: 15px;
     }
   }
 

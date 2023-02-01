@@ -43,7 +43,7 @@ const Badge = ({
       {actionable && (
         <Button
           data-fs-badge-button="true"
-          aria-label="Remove"
+          aria-label="Remover"
           onClick={onClose}
           icon={<Icon name="X" width={18} height={18} weight="bold" />}
           iconPosition="left"

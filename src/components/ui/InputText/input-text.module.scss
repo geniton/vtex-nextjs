@@ -60,28 +60,18 @@
   }
 
   input {
-    height: var(--fs-input-height);
-    padding: var(--fs-input-padding);
+    padding: 12px;
     font-size: var(--fs-input-text-size);
     line-height: var(--fs-input-line-height);
-    color: var(--fs-input-text-color);
-    border: var(--fs-input-border-width) solid var(--fs-input-border-color);
+    color: var(--aud-gray);
+    border: var(--fs-input-border-width) solid var(--aud-gray-light);
     border-radius: var(--fs-input-border-radius);
-    box-shadow: var(--fs-input-box-shadow);
     outline: none;
+    background-color: white !important;
 
     &:placeholder-shown + label {
       top: calc(1.5 * (var(--fs-input-text-size) / 2));
       overflow: hidden;
-    }
-
-    &::placeholder {
-      opacity: 0;
-      transition: inherit;
-    }
-
-    &:focus::placeholder {
-      opacity: 1;
     }
 
     &:not(:placeholder-shown) + label,
@@ -89,15 +79,10 @@
       top: rem(6px);
       font-size: var(--fs-input-label-size);
     }
-
-    &:hover:not(:disabled):not(:focus-visible):not(:focus) {
-      border-color: var(--aud-primary);
-      box-shadow: var(--fs-input-box-shadow-hover);
-    }
-
+    
     &:focus {
       border-color: var(--aud-primary);
-      border-width: 2px;
+      border-width: 1px;
     }
 
     &:disabled {
@@ -123,14 +108,6 @@
   &[data-fs-input-text-error="true"] {
     input {
       border-color: var(--fs-input-error-border-color);
-
-      @include input-focus-ring($outline: #{var(--fs-input-error-focus-ring)},
-      $border: #{var(--fs-input-error-border-color)});
-
-      &:hover:not(:disabled):not(:focus-visible):not(:focus) {
-        border-color: var(--fs-input-error-border-color);
-        box-shadow: var(--fs-input-error-box-shadow);
-      }
     }
 
     [data-fs-input-text-error-message] {

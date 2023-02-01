@@ -30,7 +30,7 @@
 
   // Dropdown Button
   --fs-breadcrumb-dropdown-button-margin-left         : var(--fs-breadcrumb-margin-left);
-  --fs-breadcrumb-dropdown-button-color               : var(--dark);
+  --fs-breadcrumb-dropdown-button-color               : var(--aud-gray);
   --fs-breadcrumb-dropdown-button-border-radius       : var(--fs-spacing-0);
   --fs-breadcrumb-dropdown-button-transition-property : var(--fs-transition-property);
   --fs-breadcrumb-dropdown-button-transition-timing   : var(--fs-transition-timing);
@@ -128,7 +128,7 @@
 
   [data-fs-breadcrumb-link] {
     padding: 0;
-    color: var(--dark);
+    color: var(--aud-gray);
     transition: 300ms all ease-in-out;
 
     &:hover {

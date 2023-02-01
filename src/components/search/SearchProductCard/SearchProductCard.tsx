@@ -74,16 +74,18 @@ function SearchProductCard({
               {name}
             </p>
             <span data-fs-search-product-card-prices>
-              <Price
-                value={listPrice}
-                formatter={useFormattedPrice}
-                testId="list-price"
-                data-value={listPrice}
-                variant="listing"
-                classes="text__legend"
-                SRText="Original price:"
-                data-fs-price-from
-              />
+              {listPrice > spotPrice && (
+                <Price
+                  value={listPrice}
+                  formatter={useFormattedPrice}
+                  testId="list-price"
+                  data-value={listPrice}
+                  variant="listing"
+                  classes="text__legend"
+                  SRText="Original price:"
+                  data-fs-price-from
+                />
+              )}
               <Price
                 value={spotPrice}
                 formatter={useFormattedPrice}
