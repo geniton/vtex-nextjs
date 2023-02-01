@@ -18,6 +18,7 @@ function SkuSelector({ ...props }: SkuSelectorProps) {
           <UIRadioOption
             data-fs-sku-selector-option
             data-fs-sku-selector-option-disabled={option.disabled}
+            data-fs-sku-selector-option-image={variant === 'image'}
             key={String(index)}
             label={option.label}
             value={option.value}

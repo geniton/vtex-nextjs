@@ -51,7 +51,7 @@
 
   --fs-sku-selector-option-disabled-width        : var(--fs-border-width);
   --fs-sku-selector-option-disabled-color        : var(--fs-color-disabled-text);
-  --fs-sku-selector-option-disabled-border-color : var(--fs-color-neutral-4);
+  --fs-sku-selector-option-disabled-border-color : var(--aud-tertiary);
   --fs-sku-selector-option-disabled-bkg-color    : var(--fs-sku-selector-option-disabled-border-color);
   --fs-sku-selector-option-disabled-box-shadow   : 0 0 0 1px var(--fs-sku-selector-option-disabled-border-color);
 
@@ -85,10 +85,15 @@
       color: var(--aud-primary);
     }
   }
+
+  [data-fs-sku-selector-option-image="true"] + span {
+    width: 42px !important;
+  }
   
   [data-fs-radio-option] {
     position: relative;
     height: 34px;
+    min-width: 42px;
     font-size: 10.5px;
 
     span {
@@ -101,7 +106,7 @@
       border: 1px solid var(--aud-tertiary);
       border-radius: var(--fs-sku-selector-option-border-radius);
       box-shadow: 0;
-      padding: 3px 13px;
+      padding: 3px 8px;
       transition: 300ms all ease;
     }
 
@@ -156,7 +161,7 @@
         + span {
           overflow: hidden;
           color: var(--fs-sku-selector-option-disabled-color);
-          border-color: var(--fs-color-neutral-4);
+          border-color: var(--aud-tertiary);
           // box-shadow: var(--fs-sku-selector-option-disabled-box-shadow);
   
           &::after {
@@ -172,11 +177,12 @@
 
         &:checked + span,
         &:hover + span {
-          border-color: var(--fs-color-neutral-4);
-          box-shadow: var(--fs-sku-selector-option-disabled-box-shadow);
+          border-color: var(--aud-primary);
+          box-shadow: var(--aud-primary);
+          color: var(--aud-primary);
 
           &:after {
-            background-color: var(--fs-sku-selector-option-disabled-bkg-color);
+            background-color: var(--aud-primary);
           }
         }
       }
