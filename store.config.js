@@ -1,10 +1,19 @@
+const {
+  seo,
+  api,
+  session,
+  storeUrl,
+  secureSubdomain,
+  checkoutUrl,
+  loginUrl,
+  accountUrl,
+  lighthouse,
+  cypress,
+  analytics,
+} = require('config/variables.json')
+
 module.exports = {
-  seo: {
-    title: 'Retailhub',
-    description: 'Retailhub FastStore',
-    titleTemplate: '%s | FastStore',
-    author: 'Retailhub Framework',
-  },
+  seo,
 
   // Theming
   theme: 'custom-theme',
@@ -13,57 +22,27 @@ module.exports = {
   platform: 'vtex',
 
   // Platform specific configs for API
-  api: {
-    storeId: 'retailhub',
-    workspace: 'master',
-    environment: 'vtexcommercestable',
-    hideUnavailableItems: true,
-  },
+  api,
 
   // Default session
-  session: {
-    currency: {
-      code: 'BRL',
-      symbol: 'R$',
-    },
-    locale: 'pt-BR',
-    channel: '{"salesChannel":"1","regionId":""}',
-    country: 'BRA',
-    postalCode: null,
-    person: null,
-  },
+  session,
 
   // Production URLs
-  storeUrl: 'http://retailhub.myvtex.com',
-  secureSubdomain: 'https://secure.retailhub.digital',
-  checkoutUrl: 'https://secure.retailhub.digital/checkout',
-  loginUrl: 'https://secure.retailhub.digital/api/io/login',
-  accountUrl: 'https://secure.retailhub.digital/api/io/account',
+  storeUrl,
+  secureSubdomain,
+  checkoutUrl,
+  loginUrl,
+  accountUrl,
 
   // Lighthouse CI
   lighthouse: {
+    ...lighthouse,
     server: process.env.BASE_SITE_URL || 'http://localhost:3000',
-    pages: {
-      home: '/',
-      pdp: '/apple-magic-mouse/p',
-      collection: '/office',
-    },
   },
 
   // E2E CI
-  cypress: {
-    pages: {
-      home: '/',
-      pdp: '/apple-magic-mouse/p',
-      collection: '/office',
-      collection_filtered:
-        '/office/?category-1=office&marca=acer&facets=category-1%2Cmarca',
-      search: '/s?q=orange',
-    },
-  },
+  cypress,
 
-  analytics: {
-    // https://developers.google.com/tag-platform/tag-manager/web#standard_web_page_installation,
-    gtmContainerId: 'GTM-PGHZ95N',
-  },
+  // https://developers.google.com/tag-platform/tag-manager/web#standard_web_page_installation,
+  analytics,
 }

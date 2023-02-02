@@ -1,25 +1,50 @@
 {
+  "storeUrl": "http://retailhub.myvtex.com",
+  "secureSubdomain": "https://secure.retailhub.digital",
+  "checkoutUrl": "https://secure.retailhub.digital/checkout",
+  "loginUrl": "https://secure.retailhub.digital/api/io/login",
+  "accountUrl": "https://secure.retailhub.digital/api/io/account",
   "wordpressApiBaseUrl": "https://content.retailhub.digital/wp-json",
-  "cdn": "https://retailhub.vteximg.com.br/arquivos",
-  "baseImageUrl": "/arquivos",
-  "websiteUrls": {
-    "account": "/_secure/account",
-    "addresses": "/_secure/account#/addresses",
-    "cards": "/_secure/account#/cards",
-    "cart": "/checkout/#/cart",
-    "login": "/_secure/account",
-    "logout": "/no-cache/user/logout",
-    "orders": "/_secure/account#/orders",
-    "wishlist": "/wishlist"
+  "seo": {
+    "title": "Retailhub",
+    "description": "Retailhub FastStore",
+    "titleTemplate": "%s | FastStore",
+    "author": "Retailhub Framework"
   },
-  "foodConfig": {
-    "container": ".foodApp-container",
-    "fieldName": "Opcionais Food",
-    "cta": ".seller-buy a",
-    "app": {
-      "id": "food",
-      "name": "skus"
+  "api": {
+    "storeId": "retailhub",
+    "workspace": "master",
+    "environment": "vtexcommercestable",
+    "hideUnavailableItems": true
+  },
+  "session": {
+    "currency": {
+      "code": "BRL",
+      "symbol": "R$"
     },
-    "categoryId": "425"
+    "locale": "pt-BR",
+    "channel": "{\"salesChannel\":\"1\",\"regionId\":\"\"}",
+    "country": "BRA",
+    "postalCode": null,
+    "person": null
+  },
+  "lighthouse": {
+    "pages": {
+      "home": "/",
+      "pdp": "/apple-magic-mouse/p",
+      "collection": "/office"
+    }
+  },
+  "cypress": {
+    "pages": {
+      "home": "/",
+      "pdp": "/apple-magic-mouse/p",
+      "collection": "/office",
+      "collection_filtered": "/office/?category-1=office&marca=acer&facets=category-1%2Cmarca",
+      "search": "/s?q=orange"
+    }
+  },
+  "analytics": {
+    "gtmContainerId": "GTM-PGHZ95N"
   }
 }
