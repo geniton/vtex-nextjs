@@ -3,7 +3,6 @@ import { memo, useMemo } from 'react'
 
 import ProductGrid from 'src/components/product/ProductGrid'
 
-import ProductTiles from '../ProductTiles'
 import { useProducts } from './usePageProducts'
 
 /* If showSponsoredProducts is true, a ProductTiles will be displayed in between two blocks of ProductGrid on the page 0 */
@@ -58,10 +57,12 @@ function GalleryPage({
               Sections should be self contained and should not import other sections.
               We should remove/refactor this section from here
             */}
-            <ProductTiles
+            <ProductGrid
               controls={controls}
-              selectedFacets={[{ key: 'productClusterIds', value: '141' }]}
-              title=""
+              products={products}
+              page={page}
+              pageSize={itemsPerPage}
+              {...props}
             />
           </div>
           <ProductGrid

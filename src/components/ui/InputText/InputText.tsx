@@ -71,7 +71,7 @@ const InputText = ({
   error,
   displayClearButton,
   actionable,
-  buttonActionText = 'Apply',
+  buttonActionText = '',
   onSubmit,
   onClear,
   placeholder = ' ', // initializes with an empty space to style float label using `placeholder-shown`
@@ -99,23 +99,25 @@ const InputText = ({
         {...otherProps}
       />
 
-        {(displayClearButton || error) ? (
-          <Button
-            variant="tertiary"
-            data-fs-button-icon
-            data-fs-button-size="small"
-            aria-label="Clear Field"
-            icon={<Icon name="XCircle" width={20} height={20} />}
-            onClick={() => {
-              onClear?.()
-              inputRef?.current?.focus()
-            }}
-          />
-        ) : (
+      {displayClearButton || error ? (
+        <Button
+          variant="tertiary"
+          data-fs-button-icon
+          data-fs-button-size="small"
+          aria-label="Limpar Campo"
+          icon={<Icon name="XCircle" width={20} height={20} />}
+          onClick={() => {
+            onClear?.()
+            inputRef?.current?.focus()
+          }}
+        />
+      ) : (
+        buttonActionText && (
           <Button variant="tertiary" size="small" onClick={onSubmit}>
             {buttonActionText}
           </Button>
-        )}
+        )
+      )}
       {shouldDisplayError && (
         <span data-fs-input-text-error-message>{error}</span>
       )}

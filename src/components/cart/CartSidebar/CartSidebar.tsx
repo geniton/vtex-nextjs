@@ -100,7 +100,7 @@ function CartSidebar() {
                   iconPosition="right"
                   {...btnProps}
                 >
-                  {isValidating ? 'Loading...' : 'Checkout'}
+                  {isValidating ? 'Loading...' : 'FINALIZAR COMPRA'}
                 </Button>
               }
             />
