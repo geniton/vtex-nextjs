@@ -99,7 +99,6 @@ function FilterSlider({
             fadeOut()
           }}
         >
-          Apply
         </Button>
       </footer>
     </SlideOver>

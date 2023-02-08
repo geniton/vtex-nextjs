@@ -73,7 +73,7 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
             className="layout__content"
           >
             <h1>
-              Showing results for: <span>{searchTerm}</span>
+              Mostrar resultados por: <span>{searchTerm}</span>
             </h1>
           </header>
         )}
@@ -93,7 +93,7 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
                 height: '36px',
               }}
             >
-              <h2 data-testid="total-product-count">{totalCount} Results</h2>
+              <h2 data-testid="total-product-count">{totalCount} Resultados</h2>
             </Components.Skeleton>
           </div>
 

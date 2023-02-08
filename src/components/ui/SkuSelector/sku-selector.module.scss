@@ -134,8 +134,8 @@
         height: 24px;
       }
 
-      &:checked + span [data-fs-sku-selector-option-image] {
-        transform: scale(.85);
+      &[data-fs-sku-selector-option-image="true"]:checked + span {
+        background-color: white !important;
       }
 
       &:hover {
@@ -154,6 +154,8 @@
       }
 
       &:checked + span {
+        background-color: var(--aud-beige);
+        color: var(--aud-primary);
         border-color: var(--fs-sku-selector-option-checked-border-color);
       }
 

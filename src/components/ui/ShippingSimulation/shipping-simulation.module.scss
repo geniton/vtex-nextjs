@@ -93,7 +93,7 @@ text-align: center;
   }
 
   [data-fs-shipping-simulation-table-row] {
-    background-color: var(--fs-shipping-simulation-table-row-bkg-color);
+    background-color: var(--tertiary);
 
     &:nth-child(even) {
       background-color: var(--fs-shipping-simulation-table-row-even-bkg-color);
