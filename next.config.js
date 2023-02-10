@@ -17,6 +17,7 @@ const nextConfig = {
       'retailhub.vtexassets.com',
       'retailhub.vteximg.com.br',
       'picsum.photos',
+      'lkz4u1i0x8.execute-api.us-east-1.amazonaws.com',
     ],
     formats: ['image/avif', 'image/webp'],
   },

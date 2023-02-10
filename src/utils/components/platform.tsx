@@ -1,8 +1,8 @@
 // components
 import { Link } from '@faststore/ui'
 import router from 'next/router'
+import Image from 'next/image'
 
-import { Image } from 'src/components/ui/Image'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import ProductDetails from 'src/components/sections/ProductDetails'
@@ -39,8 +39,16 @@ export const Components = {
   Breadcrumb,
   CartToggle,
   CrossSellingShelf,
-  Image: ({ preload, fetchPriority, ...otherProps }: any) => (
-    <Image {...otherProps} withoutThumborOptions />
+  Image: ({
+    preload,
+    fetchPriority,
+    className,
+    options,
+    ...otherProps
+  }: any) => (
+    <span className={className}>
+      <Image {...otherProps} withoutThumborOptions />
+    </span>
   ),
   Link,
   ProductGallery,
