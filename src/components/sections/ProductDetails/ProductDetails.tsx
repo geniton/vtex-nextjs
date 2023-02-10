@@ -35,11 +35,34 @@ interface Props {
       showSkuName: boolean
       showProductReference: boolean
       buyNowBtn: boolean
+      addProductInformationBelowBuybox: boolean
       galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
       mobileVariations: VariationsProps
       deskVariations: VariationsProps
     }
   }
+}
+
+function getSpecificationHTML(data: any[]) {
+  return `
+  <table className="w-full" style="width:100%;">
+    ${data
+      .map(
+        (specificationItem: any, key: number) => `
+      <tr
+        key=${key}
+        style=${key % 2 ? 'background-color:#f1f2f3;' : ''}
+      >
+        <th className='text-left py-3 pl-4 font-normal'>
+          ${specificationItem.name}
+        </th>
+        <td className="text-right py-3 pr-4">${specificationItem.value}</td>
+      </tr>
+    `
+      )
+      .join('')}
+  </table>
+`
 }
 
 function ProductDetails({
@@ -50,6 +73,7 @@ function ProductDetails({
       showSkuName,
       showProductReference,
       buyNowBtn,
+      addProductInformationBelowBuybox,
       galleryMode,
       mobileVariations,
       deskVariations,
@@ -97,9 +121,10 @@ function ProductDetails({
     [sellers]
   )
 
-  const buyDisabled = useMemo(() => !sellerActive.AvailableQuantity, [
-    sellerActive,
-  ])
+  const buyDisabled = useMemo(
+    () => !sellerActive.AvailableQuantity,
+    [sellerActive]
+  )
 
   if (skuVariants && variations) {
     skuVariants.availableVariations = JSON.parse(variations)
@@ -334,13 +359,32 @@ function ProductDetails({
                   }}
                 />
               )}
+              {addProductInformationBelowBuybox && (
+                <>
+                  <Components.AccordionItem
+                    showIcon
+                    title="Detalhes do produto"
+                    content={description}
+                  />
+                  {isVariantOf.additionalProperty?.length ? (
+                    <Components.AccordionItem
+                      title="Especificações Técnicas"
+                      content={getSpecificationHTML(
+                        isVariantOf.additionalProperty
+                      )}
+                    />
+                  ) : null}
+                </>
+              )}
             </section>
           </section>
         </section>
-        <Components.ProductDetailsContent
-          description={description}
-          specifications={isVariantOf.additionalProperty}
-        />
+        {!addProductInformationBelowBuybox && (
+          <Components.ProductDetailsContent
+            description={description}
+            specifications={isVariantOf.additionalProperty}
+          />
+        )}
       </Components.Container>
     </Section>
   )

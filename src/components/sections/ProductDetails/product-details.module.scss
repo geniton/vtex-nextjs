@@ -122,7 +122,7 @@
 
     @include media(">=tablet") {
       position: sticky;
-      top: 180px;
+      top: 40px;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       grid-column: span 6;
