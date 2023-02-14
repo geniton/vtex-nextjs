@@ -95,12 +95,12 @@ export const getServerSideProps: GetServerSideProps<
 
     const header = await api.audacityCMS('header')
     const footer = await api.audacityCMS('footer')
-    const menus = await api.audacityCMS('menu')
+    // const menus = await api.audacityCMS('menu')
 
     page.header = header['pt-BR'].data
     page.footer = footer['pt-BR'].data
     page.pageData = pageData['pt-BR'].components
-    page.menus = menus.data
+    // page.menus = menus.data
     page.themeConfigs = {
       colors: pageData.site.colors,
     }

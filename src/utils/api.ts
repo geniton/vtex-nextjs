@@ -78,7 +78,7 @@ export async function audacityCMS(slug: string) {
     headers: {
       'audacity-token': Variables.audacityToken,
     },
-  }).then((data: any) => data.json())
+  })
 }
 
 export default {

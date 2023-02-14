@@ -35,12 +35,7 @@ function Page({ page: { pageData } }: any) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
-
+export const getServerSideProps: GetServerSideProps = async () => {
   const page = {
     pageData: null,
     header: null,
@@ -49,16 +44,17 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     themeConfigs: {},
   }
 
+  const homepage = await api.audacityCMS('page/homepage')
+
   try {
-    const homepage = await api.audacityCMS('page/homepage')
     const header = await api.audacityCMS('header')
     const footer = await api.audacityCMS('footer')
-    const menus = await api.audacityCMS('menu')
+    // const menus = await api.audacityCMS('menu')
 
     page.pageData = homepage['pt-BR'].components
     page.header = header['pt-BR'].data
     page.footer = footer['pt-BR'].data
-    page.menus = menus.data
+    page.menus = []
     page.themeConfigs = {
       colors: homepage.site.colors,
     }
