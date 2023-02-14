@@ -5,6 +5,7 @@
   "loginUrl": "https://secure.retailhub.digital/api/io/login",
   "accountUrl": "https://secure.retailhub.digital/api/io/account",
   "wordpressApiBaseUrl": "https://content.retailhub.digital/wp-json",
+  "audacityToken": "audqjimq5hjlcmqjimq5hjlcm",
   "seo": {
     "title": "Retailhub",
     "description": "Retailhub FastStore",

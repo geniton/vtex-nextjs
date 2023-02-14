@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
 import axios from 'axios'
 
-import storeConfig, { storeUrl } from 'store.config'
+import Variables from 'config/variables.json'
+import { storeUrl } from 'store.config'
 import * as LocalStorage from 'src/utils/local-storage'
 
-export async function fetchData({ url, method, headers, data }: any) {
+export async function fetchData({ url, path, method, headers, data }: any) {
   const axiosConfig = {
-    url: `${storeUrl}/${url}`,
+    url: url ?? `${storeUrl}/${path}`,
     method: method ?? 'get',
     headers: {
       Accept: 'application/json; charset=utf-8',
@@ -23,9 +24,9 @@ export async function fetchData({ url, method, headers, data }: any) {
 
 export async function updateWishlist(userId?: string) {
   async function getWishlistData() {
-    return fetch(
-      `${storeConfig.storeUrl}/api/dataentities/WL/search?_where=userId=${userId}&_sort=createdIn DESC&_fields=userId,products`
-    )
+    return fetchData({
+      path: `/api/dataentities/WL/search?_where=userId=${userId}&_sort=createdIn DESC&_fields=userId,products`,
+    })
       .then((res) => res.json())
       .then((res) => res)
   }
@@ -52,7 +53,7 @@ export async function updateWishlist(userId?: string) {
 
 export async function getWishlist(userId: string) {
   return fetchData({
-    url: `api/dataentities/WL/search?_where=userId=${userId}&_sort=createdIn DESC&_fields=userId,products`,
+    path: `api/dataentities/WL/search?_where=userId=${userId}&_sort=createdIn DESC&_fields=userId,products`,
     headers: {
       'x-vtex-api-appKey': 'vtexappkey-retailhub-UYRTYS',
       'x-vtex-api-appToken':
@@ -65,16 +66,19 @@ export async function saveMasterData(data: any) {
   const { acronym, ...payload } = data
 
   return fetchData({
-    url: `api/dataentities/${acronym}/documents`,
+    path: `api/dataentities/${acronym}/documents`,
     data: payload,
     method: 'PUT',
   })
 }
 
 export async function audacityCMS(slug: string) {
-  return fetch(
-    `https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/${slug}`
-  ).then((res) => res.json())
+  return fetchData({
+    url: `https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/${slug}`,
+    headers: {
+      'audacity-token': Variables.audacityToken,
+    },
+  }).then((data: any) => data.json())
 }
 
 export default {
