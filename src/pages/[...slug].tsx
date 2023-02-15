@@ -113,7 +113,7 @@ export const getServerSideProps: GetServerSideProps<
     page.header = header['pt-BR'].data
     page.footer = footer['pt-BR'].data
     page.menus = menus
-    page.pageData = pageData['pt-BR'].components
+    page.pageData = pageData['pt-BR'].components ?? []
     page.themeConfigs = {
       colors: pageData.site.colors,
     }
