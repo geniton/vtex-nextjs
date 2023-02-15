@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import axios from 'axios'
 
-import Variables from 'config/variables.json'
 import { storeUrl } from 'store.config'
 import * as LocalStorage from 'src/utils/local-storage'
 
@@ -72,18 +71,8 @@ export async function saveMasterData(data: any) {
   })
 }
 
-export async function audacityCMS(slug: string) {
-  return fetchData({
-    url: `https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/${slug}`,
-    headers: {
-      'audacity-token': Variables.audacityToken,
-    },
-  })
-}
-
 export default {
   fetchData,
   getWishlist,
   saveMasterData,
-  audacityCMS,
 }
