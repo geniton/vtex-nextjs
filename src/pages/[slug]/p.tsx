@@ -12,7 +12,7 @@ import type {
 } from '@generated/graphql'
 import storeConfig from 'store.config'
 import RenderComponents from 'src/utils/components/render-components'
-import api from 'src/utils/api'
+import { getAllPageData } from 'src/services/audacity'
 
 type PageProps = {
   pageData: any
@@ -261,33 +261,37 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
   }
 
   try {
-    const productPage = await api.audacityCMS('page/product')
-    const header = await api.audacityCMS('header')
-    const footer = await api.audacityCMS('footer')
-    const menus = await api.audacityCMS('menu')
-
-    page.pageData = productPage['pt-BR'].components
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    page.menus = menus.data
-    page.themeConfigs = {
-      colors: productPage.site.colors,
-    }
+    const { header, footer, menus, pageData }: any = await getAllPageData(
+      '/page/product'
+    )
 
     if (
-      productPage?.message === 'Resource not found' ||
-      header?.message === 'Resource not found' ||
-      footer?.message === 'Resource not found'
+      pageData?.message?.includes('Resource not found') ||
+      header?.message?.includes('Resource not found') ||
+      footer?.message?.includes('Resource not found') ||
+      menus?.message?.includes('Resource not found')
     ) {
       return {
         notFound: true,
       }
     }
+
+    page.pageData = pageData['pt-BR'].components
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
+    page.menus = menus.data
+    page.themeConfigs = {
+      colors: pageData.site.colors,
+    }
   } catch ({ message }: any) {
+    console.log(message)
+
     return {
       notFound: true,
     }
   }
+
+  console.log(page)
 
   return {
     props: { product: data.product, page, pageName: 'page/product' },

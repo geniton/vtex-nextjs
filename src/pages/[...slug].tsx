@@ -8,7 +8,7 @@ import type {
   ServerCollectionPageQueryQueryVariables,
 } from '@generated/graphql'
 import storeConfig from 'store.config'
-import api from 'src/utils/api'
+import { getFooter, getHeader, getMenus, getPage } from 'src/services/audacity'
 
 import RenderDynamicPages from '../utils/components/render-dynamic-pages'
 
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps<
 
   let pageName = 'landing-page'
 
-  const page = {
+  const page: any = {
     header: null,
     footer: null,
     pageData: null,
@@ -86,33 +86,36 @@ export const getServerSideProps: GetServerSideProps<
   }
 
   try {
-    let pageData = await api.audacityCMS(`page/${slug.join('/')}`)
+    let pageData = await getPage(`${`/page/${slug.join('/')}`}`)
 
-    if (pageData?.message === 'Resource not found') {
-      pageData = await api.audacityCMS('page/category')
+    if (pageData?.message?.includes('Resource not found')) {
+      pageData = await getPage('/page/category')
       pageName = 'category'
     }
 
-    const header = await api.audacityCMS('header')
-    const footer = await api.audacityCMS('footer')
-    // const menus = await api.audacityCMS('menu')
-
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    page.pageData = pageData['pt-BR'].components
-    // page.menus = menus.data
-    page.themeConfigs = {
-      colors: pageData.site.colors,
-    }
+    const [header, footer, menus] = await Promise.all([
+      getHeader(),
+      getFooter(),
+      getMenus(),
+    ])
 
     if (
-      pageData?.message === 'Resource not found' ||
-      header?.message === 'Resource not found' ||
-      footer?.message === 'Resource not found'
+      pageData?.message?.includes('Resource not found') ||
+      header?.message?.includes('Resource not found') ||
+      footer?.message?.includes('Resource not found') ||
+      menus?.message?.includes('Resource not found')
     ) {
       return {
         notFound: true,
       }
+    }
+
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
+    page.menus = menus
+    page.pageData = pageData['pt-BR'].components
+    page.themeConfigs = {
+      colors: pageData.site.colors,
     }
   } catch ({ message }: any) {
     return {

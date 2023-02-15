@@ -11,7 +11,7 @@ import { ITEMS_PER_PAGE } from 'src/constants'
 import { useApplySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
 import { Components as PlatformComponents } from 'src/utils/components/platform'
-import api from 'src/utils/api'
+import { getAllPageData } from 'src/services/audacity'
 
 import storeConfig from '../../store.config'
 import RenderComponents from '../utils/components/render-components'
@@ -102,27 +102,27 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 
   try {
-    const searchPage = await api.audacityCMS('page/search')
-    const header = await api.audacityCMS('header')
-    const footer = await api.audacityCMS('footer')
-    // const menus = await api.audacityCMS('menu')
-
-    page.pageData = searchPage['pt-BR'].components
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    // page.menus = menus.data
-    page.themeConfigs = {
-      colors: searchPage.site.colors,
-    }
+    const { header, footer, menus, pageData }: any = await getAllPageData(
+      '/page/search'
+    )
 
     if (
-      searchPage?.message === 'Resource not found' ||
-      header?.message === 'Resource not found' ||
-      footer?.message === 'Resource not found'
+      pageData?.message?.includes('Resource not found') ||
+      header?.message?.includes('Resource not found') ||
+      footer?.message?.includes('Resource not found') ||
+      menus?.message?.includes('Resource not found')
     ) {
       return {
         notFound: true,
       }
+    }
+
+    page.pageData = pageData['pt-BR'].components
+    page.header = header['pt-BR'].data
+    page.footer = footer['pt-BR'].data
+    page.menus = menus.data
+    page.themeConfigs = {
+      colors: pageData.site.colors,
     }
   } catch ({ message }: any) {
     return {
