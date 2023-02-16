@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Components } from '@retailhub/audacity-ui'
 import cn from 'classnames'
+import router from 'next/router'
 
 import ButtonLink from 'src/components/ui/Button/ButtonLink'
 import { query } from 'src/sdk/product/useProductsQuery'
@@ -10,81 +11,80 @@ import { useSession } from 'src/sdk/session'
 import { Hooks as PlatformHooks } from 'src/utils/components/platform'
 
 import styles from './wishlist.module.scss'
-import router from 'next/router'
 
 const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
   const sessionData = useSession()
   const [fetchProducts, { data }]: any = useLazyQuery(query, {})
-  const [numberOfAttempts, setNumberOfAttempts] = useState(1)
   const [listRemovedProducts, updateListRemovedProducts] = useState<any>([])
 
   const wishlistData: any = useMemo(() => {
     if (data?.search?.products?.edges?.length) {
-      return data.search.products.edges.map(({ node }: any) =>
-        JSON.parse(node.data)
-      ).filter(
-        (product: any) => !product.isVariantOf.items.some((p: any) => listRemovedProducts.includes(p.itemId))
-        
-      )
+      return data.search.products.edges
+        .map(({ node }: any) => JSON.parse(node.data))
+        .filter(
+          (product: any) =>
+            !product.isVariantOf.items.some((p: any) =>
+              listRemovedProducts.includes(p.itemId)
+            )
+        )
     }
+
     if (data?.search?.products?.edges?.length === 0) {
       return []
     }
 
     return undefined
-  },[data, listRemovedProducts])
+  }, [data, listRemovedProducts])
+
+  const fetchData = useCallback(async () => {
+    try {
+      const masterDataWishlist = await fetch(
+        `/api/wishlist?_where=userId=${sessionData.person?.id}&_sort=createdIn DESC&_fields=userId,products`
+      ).then((res) => res.json())
+
+      const localWishlist = LocalStorage.getData('wishlist') || []
+
+      let finalProductIds: string[] = []
+
+      if (masterDataWishlist.length) {
+        finalProductIds = JSON.parse(masterDataWishlist[0].products).filter(
+          (item: string) => /^[0-9\b]+$/.test(item)
+        )
+      }
+
+      finalProductIds = Array.from(
+        new Set([...localWishlist, ...finalProductIds])
+      )
+
+      LocalStorage.saveData('wishlist', finalProductIds)
+
+      const variables: any = {
+        first: 10,
+        sort: 'score_desc',
+        selectedFacets: [],
+        term: `sku:${finalProductIds.join(';')}`,
+      }
+
+      await fetchProducts(variables)
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
 
   useEffect(() => {
-    const userID: string = sessionData.person?.id || ""
+    const userID: string = sessionData.person?.id || ''
 
     if (!userID) {
-      if (numberOfAttempts === 2) {
-        router.push('/login')
-        return
-      }
+      router.push('/login')
 
-      setNumberOfAttempts(numberOfAttempts + 1)
       return
-    }
-
-    async function fetchData() {
-      try {
-        const masterDataWishlist = await fetch(
-          `/api/wishlist?_where=userId=${userID}&_sort=createdIn DESC&_fields=userId,products`
-        ).then((res) => res.json())
-
-        const localWishlist = LocalStorage.getData('wishlist') || []
-
-        let finalProductIds: string[] = []
-
-        if (masterDataWishlist.length) {
-          finalProductIds = JSON.parse(masterDataWishlist[0].products).filter(
-            (item: string) => /^[0-9\b]+$/.test(item)
-          )
-        }
-
-        finalProductIds = Array.from(
-          new Set([...localWishlist, ...finalProductIds])
-        )
-
-        LocalStorage.saveData('wishlist', finalProductIds)
-
-        const variables: any = {
-          first: 10,
-          sort: 'score_desc',
-          selectedFacets: [],
-          term: `sku:${finalProductIds.join(';')}`,
-        }
-
-        await fetchProducts(variables)
-      } catch (err) {
-        console.log(err)
-      }
     }
 
     fetchData()
   }, [sessionData])
-  
+
+  console.log('sessionData', sessionData)
+
   return (
     <section
       className={styles.wishlist}
@@ -98,7 +98,10 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
           'lg:p-0': general?.deskVariations?.full,
         })}
       >
-        <Components.ShowcaseSkeleton dots={false} loading={wishlistData === undefined}>
+        <Components.ShowcaseSkeleton
+          dots={false}
+          loading={wishlistData === undefined}
+        >
           {wishlistData?.length ? (
             <div data-fs-wishlist-products>
               {wishlistData?.map((product: any, index: number) => (
@@ -109,7 +112,9 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
                   style={style?.cardStyle}
                   index={index + 1}
                   key={product.isVariantOf.cacheId}
-                  onChangeLike={(skuId: string) => updateListRemovedProducts([...listRemovedProducts, skuId])}
+                  onChangeLike={(skuId: string) =>
+                    updateListRemovedProducts([...listRemovedProducts, skuId])
+                  }
                   PlatformHooks={PlatformHooks}
                 />
               ))}

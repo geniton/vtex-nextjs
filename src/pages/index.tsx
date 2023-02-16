@@ -1,4 +1,4 @@
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 
 import { mark } from 'src/sdk/tests/mark'
@@ -35,7 +35,7 @@ function Page({ page: { pageData } }: any) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const page = {
     pageData: null,
     header: null,
@@ -63,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     page.pageData = pageData['pt-BR'].components
     page.header = header['pt-BR'].data
     page.footer = footer['pt-BR'].data
-    page.menus = menus
+    page.menus = menus.data
     page.themeConfigs = {
       colors: pageData.site.colors,
     }
@@ -75,6 +75,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: { page, pageName: 'homepage' },
+    revalidate: 30,
   }
 }
 

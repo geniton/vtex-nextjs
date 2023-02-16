@@ -1,5 +1,5 @@
 import { gql } from '@faststore/graphql-utils'
-import type { GetServerSideProps } from 'next/types'
+import type { GetStaticPaths, GetStaticProps } from 'next/types'
 
 import { mark } from 'src/sdk/tests/mark'
 import { execute } from 'src/server'
@@ -62,7 +62,7 @@ interface PageProps {
   page: any
 }
 
-export const getServerSideProps: GetServerSideProps<
+export const getStaticProps: GetStaticProps<
   PageProps,
   { slug: string[] }
 > = async ({ params }) => {
@@ -112,7 +112,7 @@ export const getServerSideProps: GetServerSideProps<
 
     page.header = header['pt-BR'].data
     page.footer = footer['pt-BR'].data
-    page.menus = menus
+    page.menus = menus.data
     page.pageData = pageData['pt-BR'].components ?? []
     page.themeConfigs = {
       colors: pageData.site.colors,
@@ -125,6 +125,14 @@ export const getServerSideProps: GetServerSideProps<
 
   return {
     props: { collection: data?.collection ?? null, page, pageName },
+    revalidate: 30,
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
 }
 

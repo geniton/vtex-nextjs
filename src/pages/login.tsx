@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { NextSeo } from 'next-seo'
 import { Components } from '@retailhub/audacity-ui'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 
 import { getAllPageData } from 'src/services/audacity'
 
@@ -23,7 +23,7 @@ function Page() {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const page = {
     header: null,
     footer: null,
@@ -61,6 +61,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: { page },
+    revalidate: 30,
   }
 }
 

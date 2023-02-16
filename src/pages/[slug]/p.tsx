@@ -1,6 +1,6 @@
 import { isNotFoundError } from '@faststore/api'
 import { gql } from '@faststore/graphql-utils'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
 
 import { useSession } from 'src/sdk/session'
@@ -228,9 +228,7 @@ const query = gql`
   }
 `
 
-export const getServerSideProps: GetServerSideProps<any> = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
   const slug: any = params?.slug
   const { data, errors = [] } = await execute<
     ServerProductPageQueryQueryVariables,
@@ -291,10 +289,16 @@ export const getServerSideProps: GetServerSideProps<any> = async ({
     }
   }
 
-  console.log(page)
-
   return {
     props: { product: data.product, page, pageName: 'page/product' },
+    revalidate: 30,
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
 }
 

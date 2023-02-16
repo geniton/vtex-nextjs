@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import type { SearchState } from '@faststore/sdk'
-import type { GetServerSideProps } from 'next/types'
+import type { GetStaticProps } from 'next/types'
 
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import SROnly from 'src/components/ui/SROnly'
@@ -92,7 +92,7 @@ function Page({ page: { pageData }, ...props }: Props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const page = {
     header: null,
     footer: null,
@@ -132,6 +132,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: { page },
+    revalidate: 30,
   }
 }
 
