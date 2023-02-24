@@ -47,10 +47,10 @@ function FilterSlider({
     >
       <div data-fs-filter-slider-content>
         <header data-fs-filter-slider-header>
-          <h2 className="text__lead">Filters</h2>
+          <h2 className="text__lead">Filtros</h2>
           <Button
             data-fs-filter-slider-header-icon
-            aria-label="Close Filters"
+            aria-label="Fechar Filtros"
             icon={<Icon name="X" width={32} height={32} />}
             onClick={() => {
               dispatch({
@@ -82,7 +82,7 @@ function FilterSlider({
           variant="secondary"
           onClick={() => dispatch({ type: 'selectFacets', payload: [] })}
         >
-          Clear All
+          Limpar
         </Button>
         <Button
           data-fs-filter-slider-footer-button-apply
@@ -99,6 +99,7 @@ function FilterSlider({
             fadeOut()
           }}
         >
+          Aplicar
         </Button>
       </footer>
     </SlideOver>

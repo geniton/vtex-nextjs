@@ -119,7 +119,7 @@ function SearchSuggestions({
       {products.length > 0 && (
         <div data-fs-search-section>
           <div data-fs-search-header>
-            <p data-fs-search-title>Suggested Products</p>
+            <p data-fs-search-title>Produtos Sugeridos</p>
           </div>
           <UIList>
             {products.map((product, index) => (

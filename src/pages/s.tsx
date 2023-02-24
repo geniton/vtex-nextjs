@@ -38,7 +38,7 @@ function Page({ page: { pageData }, ...props }: Props) {
   const searchParams = useSearchParams()
   const applySearchState = useApplySearchState()
   const { description, titleTemplate } = storeConfig.seo
-  const title = 'Search Results'
+  const title = 'Procurar Resultados'
 
   if (!searchParams) {
     return null

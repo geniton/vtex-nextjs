@@ -19,9 +19,9 @@ const SearchHistory = () => {
   return (
     <section data-fs-search-section className={styles.fsSearch}>
       <div data-fs-search-header>
-        <p data-fs-search-title>History</p>
+        <p data-fs-search-title>Histórico</p>
         <Button variant="tertiary" onClick={clearSearchHistory}>
-          Clear History
+          Limpar Histórico
         </Button>
       </div>
       <UIList variant="ordered">

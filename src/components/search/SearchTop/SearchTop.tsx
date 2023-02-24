@@ -45,7 +45,7 @@ const SearchTop = forwardRef<HTMLDivElement, SearchTopProps>(function SearchTop(
       ) : (
         <>
           <div data-fs-search-header>
-            <p data-fs-search-title>Top Search</p>
+            <p data-fs-search-title>Mais buscados</p>
           </div>
           <UIList variant="ordered">
             {terms.map((term, index) => (

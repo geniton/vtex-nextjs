@@ -19,7 +19,6 @@ const nextConfig = {
       'picsum.photos',
       'lkz4u1i0x8.execute-api.us-east-1.amazonaws.com',
     ],
-    formats: ['image/avif', 'image/webp'],
   },
   webpack: (config, { isServer, dev }) => {
     // https://github.com/vercel/next.js/discussions/11267#discussioncomment-2479112

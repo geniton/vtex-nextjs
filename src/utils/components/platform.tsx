@@ -1,7 +1,7 @@
 // components
 import { Link } from '@faststore/ui'
 import router from 'next/router'
-import Image from 'next/future/image'
+import { Image } from 'src/components/ui/Image'
 
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import ProductGallery from 'src/components/sections/ProductGallery'

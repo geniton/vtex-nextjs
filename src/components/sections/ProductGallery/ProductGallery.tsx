@@ -27,11 +27,13 @@ interface Props {
   title: string
   searchTerm?: string
   controls: any
+  content: any
 }
 
-function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
+function ProductGallery({ title, searchTerm, controls, content, ...props }: Props) {
   const { openFilter } = useUI()
   const { pages, addNextPage, addPrevPage } = useSearch()
+  const { emptyGallery } = content ?? {}
 
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)
@@ -47,9 +49,12 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
         data-testid="product-gallery"
         className={`${styles.fsProductListing} layout__content`}
         data-fs-product-listing
+        style={{
+          paddingTop: 0,
+        }}
       >
         <div className="container">
-          <EmptyGallery />
+          <EmptyGallery emptyGallery={emptyGallery || "<h2>OOPS!</h2></br><p>Nenhum produto foi encontrado</p>"}/>
         </div>
       </Section>
     )
@@ -126,7 +131,7 @@ function ProductGallery({ title, searchTerm, controls, ...props }: Props) {
                 aria-label="Open Filters"
                 onClick={openFilter}
               >
-                Filters
+                Filtrar
               </Button>
             </Components.Skeleton>
           </div>

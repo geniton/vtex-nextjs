@@ -60,7 +60,7 @@
       + [data-fs-select-icon] { display: none; }
     }
 
-    @include media("<notebook") { min-height: var(--fs-select-min-height); }
+    // @include media("<notebook") { min-height: var(--fs-select-min-height); }
 
     @include media(">=notebook") { height: var(--fs-select-height); }
   }

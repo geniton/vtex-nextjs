@@ -88,6 +88,12 @@ export const getStaticProps: GetStaticProps<
   try {
     let pageData = await getPage(`${`/page/${slug.join('/')}`}`)
 
+    if (pageData?.message?.includes('Resource not found') && !data) {
+      return {
+        notFound: true
+      }
+    }
+
     if (pageData?.message?.includes('Resource not found')) {
       pageData = await getPage('/page/category')
       pageName = 'category'

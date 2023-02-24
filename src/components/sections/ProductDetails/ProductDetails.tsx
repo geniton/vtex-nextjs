@@ -45,7 +45,7 @@ interface Props {
 
 function getSpecificationHTML(data: any[]) {
   return `
-  <table className="w-full" style="width:100%;">
+  <table class="w-full" style="width:100%;">
     ${data
       .map(
         (specificationItem: any, key: number) => `
@@ -53,10 +53,10 @@ function getSpecificationHTML(data: any[]) {
         key=${key}
         style=${key % 2 ? 'background-color:#f1f2f3;' : ''}
       >
-        <th className='text-left py-3 pl-4 font-normal'>
+        <th class='text-left py-3 pl-4 font-normal'>
           ${specificationItem.name}
         </th>
-        <td className="text-right py-3 pr-4">${specificationItem.value}</td>
+        <td class="text-right py-3 pr-4">${specificationItem.value}</td>
       </tr>
     `
       )
@@ -369,6 +369,7 @@ function ProductDetails({
                   {isVariantOf.additionalProperty?.length ? (
                     <Components.AccordionItem
                       title="Especificações Técnicas"
+                      showIcon
                       content={getSpecificationHTML(
                         isVariantOf.additionalProperty
                       )}
