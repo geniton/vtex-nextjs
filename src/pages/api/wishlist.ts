@@ -1,13 +1,13 @@
 import axios from 'axios'
 import type { NextApiHandler } from 'next'
 
+import { vtexKey, vtexToken } from 'config/variables.json'
 import storeConfig from 'store.config'
 
 const wishlist: NextApiHandler = async (request, response) => {
   const headers = {
-    'x-vtex-api-appKey': 'vtexappkey-retailhub-UYRTYS',
-    'x-vtex-api-appToken':
-      'DNDCHMZBQIYCBINPLTTLOQASNUAGJEDIJJZQMQRICPTCVSPKFAJVMFENNKONLSSMFQSRJXDVBLIYWXWVFQBIUHVEFLCBBEWKWHWFZXAHXOTBWFQPOTHVQKRXUNLXUBTX',
+    'x-vtex-api-appKey': vtexKey,
+    'x-vtex-api-appToken': vtexToken,
   }
 
   if (request.method === 'GET') {

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import type { NextApiHandler } from 'next'
 
+import { vtexKey, vtexToken } from 'config/variables.json'
 import storeConfig from 'store.config'
 
 const subscribeNewsletter: NextApiHandler = async (request, response) => {
@@ -10,9 +11,8 @@ const subscribeNewsletter: NextApiHandler = async (request, response) => {
         Accept: 'application/vnd.vtex.ds.v10+json',
         'Content-Type': 'application/json',
         'X-Vtex-Use-Https': true,
-        'x-vtex-api-appKey': 'vtexappkey-retailhub-UYRTYS',
-        'x-vtex-api-appToken':
-          'DNDCHMZBQIYCBINPLTTLOQASNUAGJEDIJJZQMQRICPTCVSPKFAJVMFENNKONLSSMFQSRJXDVBLIYWXWVFQBIUHVEFLCBBEWKWHWFZXAHXOTBWFQPOTHVQKRXUNLXUBTX',
+        'x-vtex-api-appKey': vtexKey,
+        'x-vtex-api-appToken': vtexToken,
       },
       method: 'POST',
     })

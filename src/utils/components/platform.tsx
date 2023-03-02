@@ -1,8 +1,8 @@
 // components
 import { Link } from '@faststore/ui'
 import router from 'next/router'
-import { Image } from 'src/components/ui/Image'
 
+import { Image } from 'src/components/ui/Image'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import ProductDetails from 'src/components/sections/ProductDetails'
@@ -46,12 +46,7 @@ export const Components = {
     options,
     ...otherProps
   }: any) => (
-    <Image
-      className={className}
-      {...otherProps}
-      layout="raw"
-      withoutThumborOptions
-    />
+    <Image className={className} {...otherProps} withoutThumborOptions />
   ),
   Link,
   ProductGallery,

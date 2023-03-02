@@ -2388,7 +2388,7 @@
   resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.4.tgz#a04d63f4d1bf5540a41b01a921c9a7fddc3bd1ca"
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
-"@retailhub/audacity-ui@^0.0.212":
+"@retailhub/audacity-ui@^0.0.211":
   version "0.0.211"
   resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.211.tgz#0330be8be05345239a72ddc8e8b73eb92bfde3bf"
   integrity sha512-Fow0xv8a3AKlvLPfpjy0/HNCklp4j2OR3p0oussWDks64Q3muwJLY4N6Gz4w8s/NjgYUgKscxA6mwEMTKLgrOQ==
@@ -15802,10 +15802,10 @@ sweetalert2@^11.4.26:
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.6.11.tgz#98079f34f18e9cc702f4964e4514309f2aba7b58"
   integrity sha512-KFMJWyvOdWkFY5shMYJdBPUwwU/1WoYfRx0uSvvxUYm6vSENUUuoXBOo2oGT/PMnEPsHAZyOrOVUZ1WCOccM7w==
 
-swiper@^8.4.4:
-  version "8.4.5"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.4.5.tgz#149ca81f67393d3f33abddd0f968fc37e99980b5"
-  integrity sha512-zveyEFBBv4q1sVkbJHnuH4xCtarKieavJ4SxP0QEHvdpPLJRuD7j/Xg38IVVLbp7Db6qrPsLUePvxohYx39Agw==
+swiper@^8.4.7:
+  version "8.4.7"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.4.7.tgz#0301d385c3efc8efe8b66a64187edcb30e3067ee"
+  integrity sha512-VwO/KU3i9IV2Sf+W2NqyzwWob4yX9Qdedq6vBtS0rFqJ6Fa5iLUJwxQkuD4I38w0WDJwmFl8ojkdcRFPHWD+2g==
   dependencies:
     dom7 "^4.0.4"
     ssr-window "^4.0.2"
