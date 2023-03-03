@@ -2388,10 +2388,10 @@
   resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.4.tgz#a04d63f4d1bf5540a41b01a921c9a7fddc3bd1ca"
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
-"@retailhub/audacity-ui@^0.0.211":
-  version "0.0.211"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.211.tgz#0330be8be05345239a72ddc8e8b73eb92bfde3bf"
-  integrity sha512-Fow0xv8a3AKlvLPfpjy0/HNCklp4j2OR3p0oussWDks64Q3muwJLY4N6Gz4w8s/NjgYUgKscxA6mwEMTKLgrOQ==
+"@retailhub/audacity-ui@^0.0.217":
+  version "0.0.217"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-ui/-/audacity-ui-0.0.217.tgz#27a7af53bbbbf2cfa0d9503d9562a8586f7f97a9"
+  integrity sha512-fXZjoiAh6bIQcKVoZqxRX9A8ln0ABq1Tw8ia+Qu4KSA9KSP3rVjngsQGqo6qNlhy0K9FUT5WXj1JA1odCBESUQ==
   dependencies:
     "@faststore/graphql-utils" "^1.11.8"
     "@types/react-headroom" "^2.2.2"
@@ -2403,9 +2403,11 @@
     react-inlinesvg "^3.0.0"
     react-input-mask "^2.0.4"
     react-scroll-to-component "^1.0.2"
+    react-share "^4.4.1"
     react-slick "^0.29.0"
     react-use-scroll-position "^2.0.0"
     sweetalert2 "^11.4.26"
+    swiper "^9.1.0"
 
 "@rollup/plugin-graphql@^1.0.0":
   version "1.1.0"
@@ -7332,13 +7334,6 @@ dom-walk@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
   integrity sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==
-
-dom7@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/dom7/-/dom7-4.0.4.tgz#8b68c5d8e5e2ed0fddb1cb93e433bc9060c8f3fb"
-  integrity sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw==
-  dependencies:
-    ssr-window "^4.0.0"
 
 domain-browser@^1.1.1:
   version "1.2.0"
@@ -15265,7 +15260,7 @@ sshpk@^1.14.1:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
-ssr-window@^4.0.0, ssr-window@^4.0.2:
+ssr-window@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
   integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
@@ -15802,12 +15797,11 @@ sweetalert2@^11.4.26:
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.6.11.tgz#98079f34f18e9cc702f4964e4514309f2aba7b58"
   integrity sha512-KFMJWyvOdWkFY5shMYJdBPUwwU/1WoYfRx0uSvvxUYm6vSENUUuoXBOo2oGT/PMnEPsHAZyOrOVUZ1WCOccM7w==
 
-swiper@^8.4.7:
-  version "8.4.7"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.4.7.tgz#0301d385c3efc8efe8b66a64187edcb30e3067ee"
-  integrity sha512-VwO/KU3i9IV2Sf+W2NqyzwWob4yX9Qdedq6vBtS0rFqJ6Fa5iLUJwxQkuD4I38w0WDJwmFl8ojkdcRFPHWD+2g==
+swiper@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-9.1.0.tgz#1a804254aa5b52724038ea1b4007193742a6bbf3"
+  integrity sha512-Ck8CywwfUghkbUAHbxTAWyeUAcNrIDNJ6EnKFBGGcHDjeqbh0Jq08RbmD5fMu1a0oOv1eIkUGVkqNJy/asm+yA==
   dependencies:
-    dom7 "^4.0.4"
     ssr-window "^4.0.2"
 
 swr@^1.3.0:
