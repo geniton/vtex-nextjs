@@ -3,6 +3,7 @@ import type { ReactNode, AriaAttributes } from 'react'
 import type { ButtonProps as UIButtonProps } from '@faststore/ui'
 
 import styles from './button.module.scss'
+import React from 'react'
 
 export type Variant = 'primary' | 'secondary' | 'tertiary'
 export type Size = 'small' | 'regular'
@@ -43,7 +44,7 @@ export interface ButtonProps
   onClick?: any
 }
 
-function Button({
+const Button = React.forwardRef(({
   variant,
   size = 'regular',
   inverse,
@@ -53,7 +54,7 @@ function Button({
   'aria-label': ariaLabel,
   disabled,
   ...props
-}: ButtonProps) {
+}: ButtonProps) => {
   const isButtonIcon = icon && !iconPosition
 
   return (
@@ -72,6 +73,6 @@ function Button({
       {iconPosition === 'right' && <UIIcon component={icon} />}
     </UIButton>
   )
-}
+})
 
 export default Button

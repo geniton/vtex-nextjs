@@ -185,13 +185,13 @@ export type IStoreSession = {
 };
 
 export type Installment = {
-  InterestRate: Maybe<Scalars['Int']>;
+  InterestRate: Maybe<Scalars['Float']>;
   Name: Maybe<Scalars['String']>;
   NumberOfInstallments: Maybe<Scalars['Int']>;
   PaymentSystemGroupName: Maybe<Scalars['String']>;
   PaymentSystemName: Maybe<Scalars['String']>;
-  TotalValuePlusInterestRate: Maybe<Scalars['Int']>;
-  Value: Maybe<Scalars['Int']>;
+  TotalValuePlusInterestRate: Maybe<Scalars['Float']>;
+  Value: Maybe<Scalars['Float']>;
 };
 
 export type LogisticsInfo = {

@@ -7,9 +7,9 @@ const typeDefs = `
   }
 
   type Installment {
-    Value: Int
-    InterestRate: Int
-    TotalValuePlusInterestRate: Int
+    Value: Float
+    InterestRate: Float
+    TotalValuePlusInterestRate: Float
     NumberOfInstallments: Int
     PaymentSystemName: String
     PaymentSystemGroupName: String

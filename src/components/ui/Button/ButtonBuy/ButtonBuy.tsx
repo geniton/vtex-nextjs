@@ -1,20 +1,18 @@
 import Icon from 'src/components/ui/Icon'
 
-import Button from '../Button'
 import type { ButtonProps } from '../Button'
 import styles from '../button.module.scss'
+import React from 'react'
 
-type Props = ButtonProps
-
-function ButtonBuy({
+const ButtonBuy = React.forwardRef(({
   children,
   icon = true,
   goToCheckout,
   onClick,
   ...otherProps
-}: Props) {
+}: ButtonProps, ref: any) => {
   return (
-    <Button
+    <button
       className={styles.fsButton}
       data-fs-button
       data-fs-button-buy
@@ -22,14 +20,15 @@ function ButtonBuy({
       onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
         onClick(event, goToCheckout)
       }
+      ref={ref}
       {...otherProps}
     >
       {icon && (
         <Icon name="ShoppingCart" width={18} height={18} weight="bold" />
       )}
       {children}
-    </Button>
+    </button>
   )
-}
+})
 
 export default ButtonBuy

@@ -5,6 +5,10 @@
 
 @import "src/styles/scaffold";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   --fs-body-bkg: var(--fs-color-body-bkg);
 

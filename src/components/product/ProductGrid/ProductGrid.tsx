@@ -26,16 +26,14 @@ function ProductGrid({
   controls,
   ...otherProps
 }: Props) {
-  if (!products.length) return null
-
-  const parsedProducts = products.map(({ node }: any) =>
-    node?.data ? JSON.parse(node?.data) : null
-  )
+  const parsedProducts = products.length
+    ? products.map(({ node }: any) =>
+        node?.data ? JSON.parse(node?.data) : null
+      )
+    : []
 
   return (
-    <Components.ProductGallerySkeleton
-      loading={!parsedProducts || parsedProducts.length === 0}
-    >
+    <Components.ProductGallerySkeleton loading={parsedProducts.length === 0}>
       <ul data-fs-product-grid className={styles.fsProductGrid}>
         {parsedProducts.map((product, idx: number) => (
           <li key={`${product.isVariantOf.cacheId}`}>

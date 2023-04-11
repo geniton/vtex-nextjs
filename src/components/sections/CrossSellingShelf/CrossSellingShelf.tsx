@@ -22,11 +22,11 @@ type Props = {
 const CrossSellingShelf = ({ content, controls }: Props) => {
   const [productId, setProductId] = useState('')
 
-  const { kind } = content ?? {}
+  const { type } = content ?? {}
 
   const selectedFacets = useMemo(
-    () => [{ key: kind, value: productId }],
-    [kind, productId]
+    () => [{ key: type, value: productId }],
+    [type, productId]
   )
 
   useEffect(() => {

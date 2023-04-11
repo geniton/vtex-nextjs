@@ -305,6 +305,10 @@
     display: flex;
     gap: var(--fs-spacing-3);
 
+    button {
+      border-style: solid !important;
+    }
+
     @include media("<=notebook") {
       margin-top: 15px;
     }

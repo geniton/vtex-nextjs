@@ -1,10 +1,11 @@
 import { gql } from '@faststore/graphql-utils'
 import { sendAnalyticsEvent } from '@faststore/sdk'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import cn from 'classnames'
-import { Components } from '@retailhub/audacity-ui'
-import type { VariationsProps } from '@retailhub/audacity-ui/src/types'
+import type { SingleProductControls } from '@retailhub/audacity-ui/src/components/single-product/types'
+import { Components, Utils } from '@retailhub/audacity-ui'
+import Image from 'next/future/image'
 
 import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
@@ -23,24 +24,14 @@ import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import Selectors from 'src/components/ui/SkuSelector'
 import storeConfig from 'store.config'
+import CardIcon from 'src/images/card.png'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
-  controls: {
-    general: {
-      showProductName: boolean
-      showSkuName: boolean
-      showProductReference: boolean
-      buyNowBtn: boolean
-      addProductInformationBelowBuybox: boolean
-      galleryMode: 'with-thumbnails' | 'list' | 'list-with-spaces'
-      mobileVariations: VariationsProps
-      deskVariations: VariationsProps
-    }
-  }
+  controls: SingleProductControls
 }
 
 function getSpecificationHTML(data: any[]) {
@@ -73,16 +64,51 @@ function ProductDetails({
       showSkuName,
       showProductReference,
       buyNowBtn,
+      buyNowBtnText,
       addProductInformationBelowBuybox,
-      galleryMode,
       mobileVariations,
       deskVariations,
+      galleryWithCarousel,
+      galleryWithThumbnails,
+      galleryImagesPerView,
+      galleryThumbnailsPosition,
     },
+    effects,
+    style,
   },
 }: Props) {
   const { currency } = useSession()
   const [addQuantity, setAddQuantity] = useState(1)
   const [sellers, setSellers] = useState<any>(staleProduct.sellers)
+  const [installmentsModal, setInstallmentsModal] = useState(false)
+  const buyButtonReference = useRef<HTMLButtonElement>(null)
+  const buyNowButtonReference = useRef<HTMLButtonElement>(null)
+
+  const {
+    priceFromFontSize,
+    priceFromColor,
+    pricePerFontSize,
+    pricePerColor,
+    buyButtonTextColor,
+    buyButtonBgColor,
+    buyButtonCornerRounding,
+    buyButtonBorderWidth,
+    buyButtonBorderColor,
+    buyNowButtonTextColor,
+    buyNowButtonBgColor,
+    buyNowButtonBorderWidth,
+    buyNowButtonBorderColor,
+    buyNowButtonCornerRounding,
+  } = style ?? {}
+
+  const {
+    hoverBuyButtonBgColor,
+    hoverBuyButtonTextColor,
+    hoverBuyButtonBorderColor,
+    hoverBuyNowButtonBgColor,
+    hoverBuyNowButtonTextColor,
+    hoverBuyNowButtonBorderColor,
+  } = effects ?? {}
 
   // Stale while revalidate the product for fetching the new price etc
   const { data, isValidating } = useProduct(staleProduct.id, {
@@ -111,6 +137,8 @@ function ProductDetails({
     },
   } = data
 
+  const { margins, paddings } = style ?? {}
+
   const sellerActive = useMemo(
     () =>
       sellers.filter((seller: any) =>
@@ -125,10 +153,6 @@ function ProductDetails({
     () => !sellerActive.AvailableQuantity,
     [sellerActive]
   )
-
-  if (skuVariants && variations) {
-    skuVariants.availableVariations = JSON.parse(variations)
-  }
 
   const buyProps = useBuyButton({
     id,
@@ -146,6 +170,48 @@ function ProductDetails({
       additionalProperty,
     },
   })
+
+  const installments = useMemo(
+    () => Utils?.Vtex?.Product?.getProductInstallments(sellerActive),
+    [sellerActive]
+  )
+
+  const installmentPrices = useMemo(
+    () => Utils?.Vtex?.Product?.getInstallmentPrices(sellerActive),
+    []
+  )
+
+  function handleHoverButton(action: string, buttonName: string) {
+    const buyButton = buyButtonReference.current as HTMLElement
+    const buyNowButton = buyNowButtonReference.current as HTMLElement
+
+    if (action === 'enter') {
+      if (buttonName === 'buyButton') {
+        buyButton.style.backgroundColor =
+          hoverBuyButtonBgColor || buyButtonBgColor || ''
+        buyButton.style.color =
+          hoverBuyButtonTextColor || buyButtonTextColor || ''
+        buyButton.style.borderColor =
+          hoverBuyButtonBorderColor || buyButtonBorderColor || ''
+      } else if (buttonName === 'buyNowButton') {
+        buyNowButton.style.backgroundColor =
+          hoverBuyNowButtonBgColor || buyNowButtonBgColor || ''
+        buyNowButton.style.color = hoverBuyNowButtonTextColor || buyNowButtonTextColor ||  ''
+        buyNowButton.style.borderColor =
+          hoverBuyNowButtonBorderColor || buyNowButtonBorderColor || ''
+      }
+    } else if (action === 'leave') {
+      if (buttonName === 'buyButton') {
+        buyButton.style.backgroundColor = buyButtonBgColor || ''
+        buyButton.style.color = buyButtonTextColor || ''
+        buyButton.style.borderColor = buyButtonBorderColor || ''
+      } else if (buttonName === 'buyNowButton') {
+        buyNowButton.style.backgroundColor = buyNowButtonBgColor || ''
+        buyNowButton.style.color = buyNowButtonTextColor || ''
+        buyNowButton.style.borderColor = buyNowButtonBorderColor || ''
+      }
+    }
+  }
 
   function productTitle() {
     const title: string[] = []
@@ -211,12 +277,24 @@ function ProductDetails({
     setSellers(data?.product.sellers)
   }, [data])
 
+  if (skuVariants && variations) {
+    skuVariants.availableVariations = JSON.parse(variations)
+  }
+
   return (
     <Section
       id="product-page"
       className={`${styles.fsProductDetails} layout__content layout__section`}
       product-id={isVariantOf.productGroupID}
       sku-id={sku}
+      style={{
+        margin: margins
+          ? `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`
+          : '',
+        padding: paddings
+          ? `${paddings.top}px ${paddings.right}px ${paddings.bottom}px ${paddings.left}px`
+          : '',
+      }}
     >
       <Components.Container
         className={cn({
@@ -228,8 +306,10 @@ function ProductDetails({
 
         <section data-fs-product-details-body>
           <ImageGallery
-            data-fs-product-details-gallery
-            galleryMode={galleryMode}
+            withCarousel={galleryWithCarousel}
+            imagesPerView={galleryImagesPerView}
+            thumbnailsPosition={galleryThumbnailsPosition}
+            withThumbnails={galleryWithThumbnails}
             images={image}
             skuId={sku}
             productUrl={`${storeConfig.storeUrl}${link}`}
@@ -292,6 +372,10 @@ function ProductDetails({
                       variant="listing"
                       classes="text__legend"
                       SRText="Original price:"
+                      style={{
+                        fontSize: priceFromFontSize ? `${priceFromFontSize}px` : '',
+                        color: priceFromColor,
+                      }}
                     />
                   )}
                   <Price
@@ -302,6 +386,10 @@ function ProductDetails({
                     variant="spot"
                     classes="text__lead"
                     SRText="Sale Price:"
+                    style={{
+                      fontSize: pricePerFontSize ? `${pricePerFontSize}px` : '',
+                      color: pricePerColor,
+                    }}
                   />
                 </div>
                 {/* <div className="prices">
@@ -309,6 +397,39 @@ function ProductDetails({
                   <p className="price__new">{isValidating ? '' : formattedPrice}</p>
                 </div> */}
               </section>
+              {installments?.NumberOfInstallments > 1 && (
+                <div data-fs-product-details-installments>
+                  <Image src={CardIcon} width={20} height={20} alt="card" />
+                  <div data-fs-product-details-installments-content>
+                    <span>
+                      ou{' '}
+                      {`${Utils.Formats?.formatPrice(
+                        installments.TotalValuePlusInterestRate
+                      )}`}{' '}
+                      em até{' '}
+                      <strong>{`${installments.NumberOfInstallments}x`}</strong>{' '}
+                      de{' '}
+                      <strong>
+                        {Utils.Formats?.formatPrice(installments?.Value)}
+                      </strong>{' '}
+                      {installments.InterestRate === 0 && '(sem juros)'}
+                    </span>
+                    <button
+                      data-fs-product-details-methods-btn
+                      onClick={() => setInstallmentsModal(true)}
+                    >
+                      Mais formas de pagamento
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <Components.Shared.InstallmentsModal
+                isOpen={installmentsModal}
+                installmentPrices={installmentPrices}
+                onClose={() => setInstallmentsModal(false)}
+              />
+
               {sellerActive.AvailableQuantity ? (
                 <>
                   {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
@@ -326,7 +447,24 @@ function ProductDetails({
                         <AddToCartLoadingSkeleton />
                       ) : (
                         <>
-                          <ButtonBuy disabled={buyDisabled} {...buyProps}>
+                          <ButtonBuy 
+                            disabled={buyDisabled}
+                            style={{
+                              backgroundColor: buyButtonBgColor,
+                              color: buyButtonTextColor,
+                              borderWidth: buyButtonBorderWidth
+                              ? `${buyButtonBorderWidth}px`
+                              : '',
+                              borderColor: buyButtonBorderColor,
+                              borderRadius: buyButtonCornerRounding
+                              ? `${buyButtonCornerRounding.top}px ${buyButtonCornerRounding.right}px ${buyButtonCornerRounding.bottom}px ${buyButtonCornerRounding.left}px`
+                              : '',
+                            }} 
+                            {...buyProps}
+                            onMouseEnter={() => handleHoverButton('enter', 'buyButton')}
+                            onMouseLeave={() => handleHoverButton('leave', 'buyButton')}
+                            ref={buyButtonReference}
+                          >
                             Adicionar
                           </ButtonBuy>
                           {buyNowBtn && (
@@ -334,9 +472,27 @@ function ProductDetails({
                               disabled={buyDisabled}
                               icon={false}
                               goToCheckout
+                              style={{
+                                backgroundColor: buyNowButtonBgColor,
+                                color: buyNowButtonTextColor,
+                                borderWidth: buyNowButtonBorderWidth
+                                  ? `${buyNowButtonBorderWidth}px`
+                                  : '',
+                                borderColor: buyNowButtonBorderColor,
+                                borderRadius: buyNowButtonCornerRounding
+                                  ? `${buyNowButtonCornerRounding.top}px ${buyNowButtonCornerRounding.right}px ${buyNowButtonCornerRounding.bottom}px ${buyNowButtonCornerRounding.left}px`
+                                  : '',
+                              }}
+                              onMouseEnter={() =>
+                                handleHoverButton('enter', 'buyNowButton')
+                              }
+                              onMouseLeave={() =>
+                                handleHoverButton('leave', 'buyNowButton')
+                              }
+                              ref={buyNowButtonReference}
                               {...buyProps}
                             >
-                              Comprar agora
+                              {buyNowBtnText ?? 'Comprar agora' }
                             </ButtonBuy>
                           )}
                         </>
