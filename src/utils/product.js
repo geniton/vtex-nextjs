@@ -1,3 +1,16 @@
+export const VALUE_REFERENCES = {
+  attachment: 'ATTACHMENT',
+  specification: 'SPECIFICATION',
+}
+
+export function attachmentToPropertyValue(attachment) {
+  return {
+    name: attachment.name,
+    value: attachment.content,
+    valueReference: VALUE_REFERENCES.attachment,
+  }
+}
+
 export function findSkuVariantImage(availableImages) {
   let _availableImages$find
 
@@ -30,9 +43,7 @@ export function sortVariants(variantsByName) {
   const sortedVariants = variantsByName
 
   for (const variantProperty in variantsByName) {
-    variantsByName[variantProperty].sort((a, b) =>
-      compare(a.value, b.value)
-    )
+    variantsByName[variantProperty].sort((a, b) => compare(a.value, b.value))
   }
 
   return sortedVariants
@@ -172,11 +183,9 @@ export function getProductInstallments(sellerActive) {
     return
   }
 
-  const installmentObj = sellerActive.Installments.sort(
-    (a, b) => {
-      return a.Value - b.Value
-    }
-  )[0]
+  const installmentObj = sellerActive.Installments.sort((a, b) => {
+    return a.Value - b.Value
+  })[0]
 
   const installmentIndex = sellerActive.Installments.map(
     (installment, index) => {
@@ -217,17 +226,27 @@ export function getSellerLowPrice(sellers) {
 }
 
 export function getVariantsByName(skuSpecifications) {
-  const variants = {};
-  skuSpecifications == null ? undefined : skuSpecifications.forEach((specification) => {
-    var _specification$field$;
+  const variants = {}
 
-    variants[(_specification$field$ = specification.field.originalName) != null ? _specification$field$ : specification.field.name] = specification.values.map((value) => {
-      var _value$originalName;
+  skuSpecifications == null
+    ? undefined
+    : skuSpecifications.forEach((specification) => {
+        let _specification$field$
 
-      return (_value$originalName = value.originalName) != null ? _value$originalName : value.name;
-    });
-  });
-  return variants;
+        variants[
+          (_specification$field$ = specification.field.originalName) != null
+            ? _specification$field$
+            : specification.field.name
+        ] = specification.values.map((value) => {
+          let _value$originalName
+
+          return (_value$originalName = value.originalName) != null
+            ? _value$originalName
+            : value.name
+        })
+      })
+
+  return variants
 }
 
 export function createSlugsMap(variants, dominantVariantName, baseSlug) {
@@ -238,29 +257,42 @@ export function createSlugsMap(variants, dominantVariantName, baseSlug) {
    *
    * Example: `'Color-Red-Size-40': 'classic-shoes-37'`
    */
-  const slugsMap = {};
-  variants.forEach((variant) => {
-    var _skuSpecificationProp, _skuSpecificationProp2;
+  const slugsMap = {}
 
-    const skuSpecificationProperties = variant.variations;
+  variants.forEach((variant) => {
+    let _skuSpecificationProp
+    let _skuSpecificationProp2
+
+    const skuSpecificationProperties = variant.variations
 
     if (skuSpecificationProperties.length === 0) {
-      return;
+      return
     } // Make sure that the 'name-value' pair for the dominant variation
     // is always the first one.
 
+    const dominantNameValue = `${dominantVariantName}-${
+      (_skuSpecificationProp =
+        (_skuSpecificationProp2 = skuSpecificationProperties.find(
+          (variationDetails) => variationDetails.name === dominantVariantName
+        )) == null
+          ? undefined
+          : _skuSpecificationProp2.values[0]) != null
+        ? _skuSpecificationProp
+        : ''
+    }`
 
-    const dominantNameValue = `${dominantVariantName}-${(_skuSpecificationProp = (_skuSpecificationProp2 = skuSpecificationProperties.find((variationDetails) => variationDetails.name === dominantVariantName)) == null ? undefined : _skuSpecificationProp2.values[0]) != null ? _skuSpecificationProp : ''}`;
     const skuVariantKey = skuSpecificationProperties.reduce((acc, property) => {
-      const shouldIgnore = property.name === dominantVariantName;
+      const shouldIgnore = property.name === dominantVariantName
 
       if (shouldIgnore) {
-        return acc;
+        return acc
       }
 
-      return acc + `-${property.name}-${property.values[0]}`;
-    }, dominantNameValue);
-    slugsMap[skuVariantKey] = `${baseSlug}-${variant.itemId}`;
-  });
-  return slugsMap;
+      return `${acc}-${property.name}-${property.values[0]}`
+    }, dominantNameValue)
+
+    slugsMap[skuVariantKey] = `${baseSlug}-${variant.itemId}`
+  })
+
+  return slugsMap
 }

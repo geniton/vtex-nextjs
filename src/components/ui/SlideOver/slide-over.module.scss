@@ -32,7 +32,7 @@
 
     @include media(">=notebook") {
       width: var(--fs-slide-over-partial-width-notebook);
-      max-width: var(--fs-slide-over-partial-max-width-notebook);
+      max-width: 426px;
     }
   }
 

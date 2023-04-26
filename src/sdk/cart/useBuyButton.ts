@@ -12,7 +12,7 @@ import { useUI } from '../ui/Provider'
 
 export const useBuyButton = (item: CartItem | null) => {
   const { openCart } = useUI()
-  const { isValidating, id } = useCart()
+  const cart = useCart()
   const {
     currency: { code },
   } = useSession()
@@ -53,13 +53,15 @@ export const useBuyButton = (item: CartItem | null) => {
 
       cartStore.addItem(item)
 
-      if (goToCheckout && !isValidating && id) {
-        window.location.href = `${checkoutUrl}?orderFormId=${id}`
-      } else {
+      if (!goToCheckout) {
         openCart()
       }
+
+      if (goToCheckout && !cart.isValidating && cart.id) {
+        window.location.href = `${checkoutUrl}?orderFormId=${cart.id}`
+      }
     },
-    [code, item, openCart]
+    [code, item, openCart, cart]
   )
 
   return {

@@ -196,7 +196,8 @@ function ProductDetails({
       } else if (buttonName === 'buyNowButton') {
         buyNowButton.style.backgroundColor =
           hoverBuyNowButtonBgColor || buyNowButtonBgColor || ''
-        buyNowButton.style.color = hoverBuyNowButtonTextColor || buyNowButtonTextColor ||  ''
+        buyNowButton.style.color =
+          hoverBuyNowButtonTextColor || buyNowButtonTextColor || ''
         buyNowButton.style.borderColor =
           hoverBuyNowButtonBorderColor || buyNowButtonBorderColor || ''
       }
@@ -373,7 +374,9 @@ function ProductDetails({
                       classes="text__legend"
                       SRText="Original price:"
                       style={{
-                        fontSize: priceFromFontSize ? `${priceFromFontSize}px` : '',
+                        fontSize: priceFromFontSize
+                          ? `${priceFromFontSize}px`
+                          : '',
                         color: priceFromColor,
                       }}
                     />
@@ -424,7 +427,7 @@ function ProductDetails({
                 </div>
               )}
 
-              <Components.Shared.InstallmentsModal
+              <Components.InstallmentsModal
                 isOpen={installmentsModal}
                 installmentPrices={installmentPrices}
                 onClose={() => setInstallmentsModal(false)}
@@ -447,22 +450,26 @@ function ProductDetails({
                         <AddToCartLoadingSkeleton />
                       ) : (
                         <>
-                          <ButtonBuy 
+                          <ButtonBuy
                             disabled={buyDisabled}
                             style={{
                               backgroundColor: buyButtonBgColor,
                               color: buyButtonTextColor,
                               borderWidth: buyButtonBorderWidth
-                              ? `${buyButtonBorderWidth}px`
-                              : '',
+                                ? `${buyButtonBorderWidth}px`
+                                : '',
                               borderColor: buyButtonBorderColor,
                               borderRadius: buyButtonCornerRounding
-                              ? `${buyButtonCornerRounding.top}px ${buyButtonCornerRounding.right}px ${buyButtonCornerRounding.bottom}px ${buyButtonCornerRounding.left}px`
-                              : '',
-                            }} 
+                                ? `${buyButtonCornerRounding.top}px ${buyButtonCornerRounding.right}px ${buyButtonCornerRounding.bottom}px ${buyButtonCornerRounding.left}px`
+                                : '',
+                            }}
                             {...buyProps}
-                            onMouseEnter={() => handleHoverButton('enter', 'buyButton')}
-                            onMouseLeave={() => handleHoverButton('leave', 'buyButton')}
+                            onMouseEnter={() =>
+                              handleHoverButton('enter', 'buyButton')
+                            }
+                            onMouseLeave={() =>
+                              handleHoverButton('leave', 'buyButton')
+                            }
                             ref={buyButtonReference}
                           >
                             Adicionar
@@ -492,7 +499,7 @@ function ProductDetails({
                               ref={buyNowButtonReference}
                               {...buyProps}
                             >
-                              {buyNowBtnText ?? 'Comprar agora' }
+                              {buyNowBtnText ?? 'Comprar agora'}
                             </ButtonBuy>
                           )}
                         </>
@@ -681,6 +688,13 @@ export const fragment = gql`
       discountHighlights {
         name
       }
+    }
+
+    additionalProperty {
+      propertyID
+      value
+      name
+      valueReference
     }
 
     breadcrumbList {

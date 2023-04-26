@@ -9,6 +9,7 @@ import {
   Hooks as PlatformHooks,
   Components as PlatformComponents,
 } from 'src/utils/components/platform'
+import storeConfig from 'store.config'
 
 interface ContentProps extends ShowcaseContent {
   kind?: string
@@ -47,6 +48,7 @@ const CrossSellingShelf = ({ content, controls }: Props) => {
         ...content,
         products: { type: 'crossSelling' },
       }}
+      storeConfig={storeConfig}
       controls={controls}
       selectedFacets={selectedFacets}
       PlatformHooks={PlatformHooks}

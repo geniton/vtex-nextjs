@@ -6,7 +6,8 @@ import storeConfig from 'store.config'
 import {
   Components as PlatformComponents,
   Hooks as PlatformHooks,
-  Queries as PlatformQueries
+  Queries as PlatformQueries,
+  Utils as PlatformUtils,
 } from 'src/utils/components/platform'
 
 const RenderComponents: React.FC<any> = ({ pageData, ...otherProps }) => {
@@ -16,6 +17,7 @@ const RenderComponents: React.FC<any> = ({ pageData, ...otherProps }) => {
     PlatformComponents,
     PlatformHooks,
     PlatformQueries,
+    PlatformUtils,
     ...otherProps,
   }
 

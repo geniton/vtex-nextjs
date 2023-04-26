@@ -83,8 +83,6 @@ const Wishlist: React.FC<any> = ({ controls: { general, effects, style } }) => {
     fetchData()
   }, [sessionData])
 
-  console.log('sessionData', sessionData)
-
   return (
     <section
       className={styles.wishlist}

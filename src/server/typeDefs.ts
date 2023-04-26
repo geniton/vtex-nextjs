@@ -4,6 +4,7 @@ const typeDefs = `
     link: String
     variations: String
     data: String
+    additionalProperty: [StorePropertyValue!]!
   }
 
   type Installment {
@@ -30,6 +31,13 @@ const typeDefs = `
     ListPrice: Float
     discountHighlights: [DiscountHighlight!]
     AvailableQuantity: Int
+  }
+
+  type StorePropertyValue {
+    propertyID: String!
+    value: ObjectOrString!
+    name: String!
+    valueReference: String!
   }
 `
 

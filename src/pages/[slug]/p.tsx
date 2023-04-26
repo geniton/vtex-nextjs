@@ -131,6 +131,13 @@ export const fragment = gql`
       name
     }
 
+    additionalProperty {
+      propertyID
+      value
+      name
+      valueReference
+    }
+
     offers {
       lowPrice
       offers {

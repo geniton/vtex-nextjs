@@ -11,6 +11,7 @@ import {
   Hooks as PlatformHooks,
   Components as PlatformComponents,
 } from './utils/components/platform'
+import Toast from './components/ui/Toast'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const RegionModal = lazy(
@@ -33,13 +34,17 @@ function Layout({ children, page, pageName }: LayoutProps) {
 
   return (
     <ThemeConfigs data={page?.themeConfigs || themeConfigsMock}>
+      <Toast />
+
       {page?.header && (
         <Components.Header
           {...page?.header}
           PlatformComponents={PlatformComponents}
           PlatformHooks={PlatformHooks}
           pageName={pageName}
-          menus={page.menus}
+          cmsAudacityData={{
+            menus: page.menus,
+          }}
         />
       )}
 

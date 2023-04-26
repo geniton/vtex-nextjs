@@ -11,6 +11,7 @@ const nextConfig = {
     defaultLocale: 'pt-BR',
   },
   images: {
+    minimumCacheTTL: 28800,
     domains: [
       'dev.retailhub.digital',
       'content.retailhub.digital',

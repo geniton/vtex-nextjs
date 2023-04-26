@@ -1,9 +1,9 @@
 import { Button as UIButton, Icon as UIIcon } from '@faststore/ui'
 import type { ReactNode, AriaAttributes } from 'react'
 import type { ButtonProps as UIButtonProps } from '@faststore/ui'
+import React from 'react'
 
 import styles from './button.module.scss'
-import React from 'react'
 
 export type Variant = 'primary' | 'secondary' | 'tertiary'
 export type Size = 'small' | 'regular'
@@ -44,35 +44,41 @@ export interface ButtonProps
   onClick?: any
 }
 
-const Button = React.forwardRef(({
-  variant,
-  size = 'regular',
-  inverse,
-  icon,
-  iconPosition,
-  children,
-  'aria-label': ariaLabel,
-  disabled,
-  ...props
-}: ButtonProps) => {
-  const isButtonIcon = icon && !iconPosition
+const Button = React.forwardRef(
+  ({
+    variant,
+    size = 'regular',
+    inverse,
+    icon,
+    iconPosition,
+    children,
+    'aria-label': ariaLabel,
+    disabled,
+    ...props
+  }: ButtonProps) => {
+    const isButtonIcon = icon && !iconPosition
 
-  return (
-    <UIButton
-      aria-label={ariaLabel}
-      className={styles.fsButton}
-      data-fs-button
-      data-fs-button-inverse={inverse}
-      data-fs-button-size={size}
-      data-fs-button-variant={variant}
-      disabled={disabled}
-      {...props}
-    >
-      {(isButtonIcon || iconPosition === 'left') && <UIIcon component={icon} />}
-      {children}
-      {iconPosition === 'right' && <UIIcon component={icon} />}
-    </UIButton>
-  )
-})
+    return (
+      <UIButton
+        aria-label={ariaLabel}
+        className={styles.fsButton}
+        data-fs-button
+        data-fs-button-inverse={inverse}
+        data-fs-button-size={size}
+        data-fs-button-variant={variant}
+        disabled={disabled}
+        {...props}
+      >
+        {(isButtonIcon || iconPosition === 'left') && (
+          <UIIcon component={icon} />
+        )}
+        {children}
+        {iconPosition === 'right' && <UIIcon component={icon} />}
+      </UIButton>
+    )
+  }
+)
+
+Button.displayName = 'Button'
 
 export default Button
