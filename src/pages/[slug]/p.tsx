@@ -255,6 +255,8 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
 
   const notFound = errors.find(isNotFoundError)
 
+  // console.log(slug)
+
   if (notFound) {
     return {
       notFound: true,
