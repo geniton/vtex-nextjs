@@ -3,7 +3,8 @@ import { NextSeo } from 'next-seo'
 import { lazy, memo, Suspense } from 'react'
 import type { MouseEvent } from 'react'
 import cn from 'classnames'
-import { Components } from '@retailhub/audacity-ui'
+import { VtexComponents } from '@retailhub/audacity-vtex'
+import { Components } from '@retailhub/audacity'
 
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
@@ -21,7 +22,7 @@ import { useGalleryQuery } from './useGalleryQuery'
 import { useProductsPrefetch } from './usePageProducts'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
-const GalleryPageSkeleton = <Components.ProductGallerySkeleton loading />
+const GalleryPageSkeleton = <VtexComponents.ProductGallerySkeleton loading />
 
 interface Props {
   title: string
@@ -84,13 +85,13 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
         )}
         <div data-fs-product-listing-content-grid className="layout__content">
           <div data-fs-product-listing-filters>
-            <Components.FilterSkeleton loading={facets?.length === 0}>
+            <VtexComponents.FilterSkeleton loading={facets?.length === 0}>
               <Filter facets={facets} />
-            </Components.FilterSkeleton>
+            </VtexComponents.FilterSkeleton>
           </div>
 
           <div data-fs-product-listing-results-count data-count={totalCount}>
-            <Components.Skeleton
+            <VtexComponents.Skeleton
               loading={!data}
               margin="0px"
               data-fs-product-listing-results-count-skeleton
@@ -99,11 +100,11 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
               }}
             >
               <h2 data-testid="total-product-count">{totalCount} Resultados</h2>
-            </Components.Skeleton>
+            </VtexComponents.Skeleton>
           </div>
 
           <div data-fs-product-listing-sort>
-            <Components.Skeleton
+            <VtexComponents.Skeleton
               margin="0px"
               style={{
                 height: '36px',
@@ -113,9 +114,9 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
               data-fs-product-listing-sort-skeleton
             >
               <Sort />
-            </Components.Skeleton>
+            </VtexComponents.Skeleton>
 
-            <Components.Skeleton
+            <VtexComponents.Skeleton
               margin="0px"
               style={{
                 height: '36px',
@@ -133,7 +134,7 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
               >
                 Filtrar
               </Button>
-            </Components.Skeleton>
+            </VtexComponents.Skeleton>
           </div>
 
           <div data-fs-product-listing-results>

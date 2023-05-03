@@ -8,19 +8,22 @@ import type {
   ServerCollectionPageQueryQueryVariables,
 } from '@generated/graphql'
 import storeConfig from 'store.config'
-import { getFooter, getHeader, getMenus, getPage } from 'src/services/audacity'
 
-import RenderDynamicPages from '../utils/components/render-dynamic-pages'
+import { RenderDynamicPages } from '../utils'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
+const AudacityClient = new AudacityClientApi({
+  token: process.env.AUDACITY_TOKEN
+})
 interface Props extends ServerCollectionPageQueryQuery {
-  pageName: string
-  page: any
+  pageType: string
+  pageData: any
 }
 
-function Page({ page: { pageData }, ...props }: Props) {
+function Page({ pageData: { page }, ...props }: Props) {
   return (
     <RenderDynamicPages
-      pageData={pageData}
+      components={page}
       seo={{
         openGraph: {
           type: 'website',
@@ -59,7 +62,7 @@ const query = gql`
 
 interface PageProps {
   collection: any
-  page: any
+  pageData: any
 }
 
 export const getStaticProps: GetStaticProps<
@@ -67,74 +70,69 @@ export const getStaticProps: GetStaticProps<
   { slug: string[] }
 > = async ({ params }) => {
   const slug: any = params?.slug
+  const pathSlug = slug.join('/')
   const { data } = await execute<
     ServerCollectionPageQueryQueryVariables,
     ServerCollectionPageQueryQuery
   >({
-    variables: { slug: slug.join('/') ?? '' },
+    variables: { slug: pathSlug ?? '' },
     operationName: query,
   })
 
-  let pageName = 'landing-page'
+  let pageType = 'landing-page'
 
-  const page: any = {
+  const pageData = {
     header: null,
     footer: null,
-    pageData: null,
+    page: null as any,
     menus: null,
     themeConfigs: {},
   }
 
-  try {
-    let pageData = await getPage(`${`/page/${slug.join('/')}`}`)
+  let pageResponse = await AudacityClient.getPage(`page/${pathSlug}`)
 
-    if (pageData.page_type === 'category') {
-      pageName = pageData.page_type
+    if (pageResponse.data?.page_type === 'category') {
+      pageType = pageResponse.data.page_type
     }
 
-    if (pageData?.message?.includes('Resource not found') && !data) {
+    if (pageResponse.data?.page?.message?.includes('Resource not found') && !data) {
       return {
         notFound: true,
       }
     }
 
-    if (pageData?.message?.includes('Resource not found')) {
-      pageData = await getPage('/page/category')
-      pageName = 'category'
+    if (pageResponse.data?.message?.includes('Resource not found')) {
+      pageResponse = await AudacityClient.getPage('page/category')
+      pageType = 'category'
     }
 
     const [header, footer, menus] = await Promise.all([
-      getHeader(),
-      getFooter(),
-      getMenus(),
+      AudacityClient.getHeader(),
+      AudacityClient.getFooter(),
+      AudacityClient.getMenus(),
     ])
 
     if (
-      pageData?.message?.includes('Resource not found') ||
-      header?.message?.includes('Resource not found') ||
-      footer?.message?.includes('Resource not found') ||
-      menus?.message?.includes('Resource not found')
+      pageResponse?.data?.message?.includes('Resource not found') ||
+      header?.data?.message?.includes('Resource not found') ||
+      footer?.data?.message?.includes('Resource not found') ||
+      menus?.data?.message?.includes('Resource not found')
     ) {
       return {
         notFound: true,
       }
     }
 
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    page.menus = menus.data
-    page.pageData = pageData['pt-BR'].components ?? []
-    page.themeConfigs = {
-      colors: pageData.site.colors,
+    pageData.header = header.data['pt-BR'].data
+    pageData.footer = footer.data['pt-BR'].data
+    pageData.menus = menus.data
+    pageData.page = pageResponse.data['pt-BR'].components ?? []
+    pageData.themeConfigs = {
+      colors: pageResponse.data.site?.colors,
     }
-  } catch ({ message }: any) {
-    return {
-      notFound: true,
-    }
-  }
 
   return {
-    props: { collection: data?.collection ?? null, page, pageName },
+    props: { collection: data?.collection ?? null, pageData, pageType },
     revalidate: 30,
   }
 }

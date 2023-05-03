@@ -3,10 +3,14 @@ import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
-import RenderComponents from 'src/utils/components/render-components'
-import { getAllPageData } from 'src/services/audacity'
+import { RenderComponents } from 'src/utils'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
-function Page({ page: { pageData } }: any) {
+const AudacityClient = new AudacityClientApi({
+  token: process.env.AUDACITY_TOKEN
+})
+
+function Page({ pageData: { page } }: any) {
   return (
     <>
       <NextSeo
@@ -30,14 +34,14 @@ function Page({ page: { pageData } }: any) {
           },
         ]}
       />
-      <RenderComponents pageData={pageData} />
+      <RenderComponents components={page} />
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = {
-    pageData: null,
+  const data = {
+    page: null,
     header: null,
     footer: null,
     menus: [],
@@ -45,12 +49,12 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   try {
-    const { header, footer, menus, pageData } = await getAllPageData(
-      '/page/homepage'
+    const { header, footer, menus, page } = await AudacityClient.getAllPageData(
+      'page/homepage'
     )
 
     if (
-      pageData?.message?.includes('Resource not found') ||
+      page?.message?.includes('Resource not found') ||
       header?.message?.includes('Resource not found') ||
       footer?.message?.includes('Resource not found') ||
       menus?.message?.includes('Resource not found')
@@ -60,12 +64,12 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
 
-    page.pageData = pageData['pt-BR'].components
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    page.menus = menus.data
-    page.themeConfigs = {
-      colors: pageData.site.colors,
+    data.page = page['pt-BR'].components
+    data.header = header['pt-BR'].data
+    data.footer = footer['pt-BR'].data
+    data.menus = menus.data
+    data.themeConfigs = {
+      colors: page.site.colors,
     }
   } catch ({ message }) {
     return {
@@ -74,7 +78,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
-    props: { page, pageName: 'homepage' },
+    props: { pageData: data, pageType: 'homepage' },
     revalidate: 30,
   }
 }

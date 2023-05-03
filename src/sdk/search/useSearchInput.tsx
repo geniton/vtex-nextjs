@@ -1,7 +1,7 @@
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 import type { PropsWithChildren } from 'react'
 import { createContext, useContext } from 'react'
-import { Components } from '@retailhub/audacity-ui'
+import { VtexComponents } from '@retailhub/audacity-vtex'
 
 export const formatSearchPath = (term: string) => {
   const { pathname, search } = formatSearchState(
@@ -33,7 +33,7 @@ export function SearchInputProvider({
 
 const useSearchInput = () => {
   const context = useContext(SearchInputContext)
-  const { onToggleNav } = useContext(Components.HeaderContext)
+  const { onToggleNav } = useContext(VtexComponents.HeaderContext)
 
   if (!context) {
     throw new Error('Do not use outside the SearchInputContext context.')

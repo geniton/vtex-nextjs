@@ -9,7 +9,7 @@ import Dropdown, {
   DropdownMenu,
 } from 'src/components/ui/Dropdown'
 import Icon from 'src/components/ui/Icon'
-import Link from 'src/components/ui/Link'
+import Link from 'next/link'
 
 import styles from './breadcrumb.module.scss'
 

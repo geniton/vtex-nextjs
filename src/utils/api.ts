@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 import { storeUrl } from 'store.config'
-import * as LocalStorage from 'src/utils/local-storage'
+import { Utils } from '@retailhub/audacity'
 
 export async function fetchData({ url, path, method, headers, data }: any) {
   const axiosConfig = {
@@ -32,7 +32,7 @@ export async function updateWishlist(userId?: string) {
 
   if (userId) {
     getWishlistData().then((masterDataWishlist) => {
-      const localWishlist = LocalStorage.getData('wishlist') || []
+      const localWishlist = Utils.LocalStorage.getData('wishlist') || []
 
       let wishlistProducts: number[] = []
 
@@ -45,7 +45,7 @@ export async function updateWishlist(userId?: string) {
       wishlistProducts = [...localWishlist, ...wishlistProducts]
       wishlistProducts = Array.from(new Set(wishlistProducts))
 
-      LocalStorage.saveData('wishlist', wishlistProducts)
+      Utils.LocalStorage.saveData('wishlist', wishlistProducts)
     })
   }
 }

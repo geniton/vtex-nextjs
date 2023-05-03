@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Components } from '@retailhub/audacity-ui'
+import { VtexComponents } from '@retailhub/audacity-vtex'
 import type {
   ShowcaseContent,
   ShowcaseControls,
-} from '@retailhub/audacity-ui/dist/components/showcase/types'
+} from '@retailhub/audacity-vtex/src/components/showcase/model'
 
 import {
-  Hooks as PlatformHooks,
-  Components as PlatformComponents,
-} from 'src/utils/components/platform'
+  VtexHooks,
+  NextjsComponents
+} from 'src/utils'
 import storeConfig from 'store.config'
 
 interface ContentProps extends ShowcaseContent {
@@ -43,7 +43,7 @@ const CrossSellingShelf = ({ content, controls }: Props) => {
   if (!productId) return null
 
   return (
-    <Components.Showcase
+    <VtexComponents.Showcase
       content={{
         ...content,
         products: { type: 'crossSelling' },
@@ -51,8 +51,8 @@ const CrossSellingShelf = ({ content, controls }: Props) => {
       storeConfig={storeConfig}
       controls={controls}
       selectedFacets={selectedFacets}
-      PlatformHooks={PlatformHooks}
-      PlatformComponents={PlatformComponents}
+      VtexHooks={VtexHooks}
+      NextjsComponents={NextjsComponents}
     />
   )
 }

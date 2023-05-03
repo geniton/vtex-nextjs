@@ -1,9 +1,9 @@
-import { Components } from '@retailhub/audacity-ui'
+import { VtexComponents } from '@retailhub/audacity-vtex'
 import { memo } from 'react'
 
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductGrid/product-grid.module.scss'
-import { Hooks as PlatformHooks } from 'src/utils/components/platform'
+import { VtexUtils, VtexHooks } from 'src/utils'
 
 interface Props {
   /**
@@ -33,23 +33,24 @@ function ProductGrid({
     : []
 
   return (
-    <Components.ProductGallerySkeleton loading={parsedProducts.length === 0}>
+    <VtexComponents.ProductGallerySkeleton loading={parsedProducts.length === 0}>
       <ul data-fs-product-grid className={styles.fsProductGrid}>
         {parsedProducts.map((product, idx: number) => (
           <li key={`${product.isVariantOf.cacheId}`}>
-            <Components.ProductCard
+            <VtexComponents.ProductCard
               controls={controls?.general?.cardControls}
               effects={controls?.effects?.cardEffects}
               style={controls?.style?.cardStyle}
               product={product}
               index={pageSize * page + idx + 1}
-              PlatformHooks={PlatformHooks}
+              VtexHooks={VtexHooks}
+              VtexUtils={VtexUtils}
               {...otherProps}
             />
           </li>
         ))}
       </ul>
-    </Components.ProductGallerySkeleton>
+    </VtexComponents.ProductGallerySkeleton>
   )
 }
 

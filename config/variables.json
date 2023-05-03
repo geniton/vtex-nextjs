@@ -5,10 +5,6 @@
   "loginUrl": "https://secure.retailhub.digital/api/io/login",
   "accountUrl": "https://secure.retailhub.digital/api/io/account",
   "wordpressApiBaseUrl": "https://content.retailhub.digital/wp-json",
-  "audacityAPI": "https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api",
-  "audacityToken": "audqjimq5hjlcmqjimq5hjlcm",
-  "vtexKey": "vtexappkey-retailhub-UYRTYS",
-  "vtexToken": "DNDCHMZBQIYCBINPLTTLOQASNUAGJEDIJJZQMQRICPTCVSPKFAJVMFENNKONLSSMFQSRJXDVBLIYWXWVFQBIUHVEFLCBBEWKWHWFZXAHXOTBWFQPOTHVQKRXUNLXUBTX",
   "seo": {
     "title": "Retailhub",
     "description": "Retailhub FastStore",

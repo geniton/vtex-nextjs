@@ -1,16 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ReactNode } from 'react'
 import { lazy, Suspense } from 'react'
-import { Components } from '@retailhub/audacity-ui'
-
+import { Components } from '@retailhub/audacity'
+import { VtexComponents } from '@retailhub/audacity-vtex'
+import { ThemeConfigs, VtexHooks, NextjsComponents, VtexComponents as TemplateVtexComponents } from 'src/utils'
 import { useUI } from 'src/sdk/ui/Provider'
-import ThemeConfigs from 'src/utils/components/theme-configs'
-import themeConfigsMock from 'data/components/theme-configs.json'
-
-import {
-  Hooks as PlatformHooks,
-  Components as PlatformComponents,
-} from './utils/components/platform'
+import themeMock from 'data/components/theme-configs.json'
 import Toast from './components/ui/Toast'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
@@ -29,32 +24,33 @@ interface LayoutProps {
   [key: string]: any
 }
 
-function Layout({ children, page, pageName }: LayoutProps) {
+function Layout({ children, pageData, pageType }: LayoutProps) {
   const { cart: displayCart, modal: displayModal } = useUI()
 
   return (
-    <ThemeConfigs data={page?.themeConfigs || themeConfigsMock}>
+    <ThemeConfigs data={pageData?.themeConfigs || themeMock}>
       <Toast />
 
-      {page?.header && (
-        <Components.Header
-          {...page?.header}
-          PlatformComponents={PlatformComponents}
-          PlatformHooks={PlatformHooks}
-          pageName={pageName}
+      {pageData?.header && (
+        <VtexComponents.Header
+          {...pageData?.header}
+          NextjsComponents={NextjsComponents}
+          VtexHooks={VtexHooks}
+          VtexComponents={TemplateVtexComponents}
+          pageType={pageType}
           cmsAudacityData={{
-            menus: page.menus,
+            menus: pageData.menus,
           }}
         />
       )}
 
       <main>{children}</main>
 
-      {page?.footer && (
+      {pageData?.footer && (
         <Components.Footer
-          PlatformComponents={PlatformComponents}
-          PlatformHooks={PlatformHooks}
-          {...page?.footer}
+          NextjsComponents={NextjsComponents}
+          VtexHooks={VtexHooks}
+          {...pageData?.footer}
         />
       )}
 

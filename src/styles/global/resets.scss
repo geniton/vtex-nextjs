@@ -4,7 +4,8 @@
 // ----------------------------------------------------------
 @import "../vendors/modern-normalize.css";
 @import "../audacity/audacity.scss";
-@import "~@retailhub/audacity-ui/dist/audacity-ui.cjs.development.css";
+@import "~@retailhub/audacity/dist/audacity.cjs.development.css";
+@import "~@retailhub/audacity-vtex/dist/audacity-vtex.cjs.development.css";
 
 // Reset default styles
 body {

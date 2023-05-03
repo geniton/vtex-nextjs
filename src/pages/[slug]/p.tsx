@@ -11,18 +11,20 @@ import type {
   ServerProductPageQueryQueryVariables,
 } from '@generated/graphql'
 import storeConfig from 'store.config'
-import RenderComponents from 'src/utils/components/render-components'
-import { getAllPageData } from 'src/services/audacity'
+import { RenderComponents } from 'src/utils'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
-type PageProps = {
-  pageData: any
-}
+const AudacityClient = new AudacityClientApi({
+  token: process.env.AUDACITY_TOKEN
+})
 
 interface Props extends ServerProductPageQueryQuery {
-  page: PageProps
+  pageData: {
+    page: any
+  }
 }
 
-function Page({ product, page: { pageData } }: Props) {
+function Page({ product, pageData: { page } }: Props) {
   const { currency } = useSession()
   const { seo } = product
   const title = seo.title || storeConfig.seo.title
@@ -77,7 +79,7 @@ function Page({ product, page: { pageData } }: Props) {
         }}
       />
 
-      <RenderComponents product={product} pageData={pageData} />
+      <RenderComponents product={product} components={page} />
     </>
   )
 }
@@ -235,20 +237,20 @@ const query = gql`
   }
 `
 
-export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
-  const slug: any = params?.slug
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = params?.slug as string ?? ''
   const { data, errors = [] } = await execute<
     ServerProductPageQueryQueryVariables,
     ServerProductPageQueryQuery
   >({
-    variables: { slug: slug ?? '' },
+    variables: { slug },
     operationName: query,
   })
 
-  const page = {
+  const pageData = {
     header: null,
     footer: null,
-    pageData: null,
+    page: null,
     menus: [],
     themeConfigs: {},
   }
@@ -266,12 +268,12 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
   }
 
   try {
-    const { header, footer, menus, pageData }: any = await getAllPageData(
-      '/page/product'
+    const { header, footer, menus, page } = await AudacityClient.getAllPageData(
+      'page/product'
     )
 
     if (
-      pageData?.message?.includes('Resource not found') ||
+      page?.message?.includes('Resource not found') ||
       header?.message?.includes('Resource not found') ||
       footer?.message?.includes('Resource not found') ||
       menus?.message?.includes('Resource not found')
@@ -281,14 +283,14 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
       }
     }
 
-    page.pageData = pageData['pt-BR'].components
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    page.menus = menus.data
-    page.themeConfigs = {
-      colors: pageData.site.colors,
+    pageData.page = page['pt-BR'].components
+    pageData.header = header['pt-BR'].data
+    pageData.footer = footer['pt-BR'].data
+    pageData.menus = menus.data
+    pageData.themeConfigs = {
+      colors: page.site.colors,
     }
-  } catch ({ message }: any) {
+  } catch ({ message }) {
     console.log(message)
 
     return {
@@ -297,7 +299,7 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
   }
 
   return {
-    props: { product: data.product, page, pageName: 'page/product' },
+    props: { product: data.product, pageData, pageType: 'page/product' },
     revalidate: 30,
   }
 }

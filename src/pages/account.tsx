@@ -1,11 +1,14 @@
 import { useEffect } from 'react'
 import { NextSeo } from 'next-seo'
-import { Components } from '@retailhub/audacity-ui'
+import { Components } from '@retailhub/audacity'
 import type { GetServerSideProps } from 'next'
 
-import { getAllPageData } from 'src/services/audacity'
-
 import storeConfig from '../../store.config'
+import AudacityClientApi from '@retailhub/audacity-client-api'
+
+const AudacityClient = new AudacityClientApi({
+  token: process.env.AUDACITY_TOKEN
+})
 
 function Page() {
   useEffect(() => {
@@ -24,7 +27,7 @@ function Page() {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const page = {
+  const data = {
     header: null,
     footer: null,
     menus: [],
@@ -32,19 +35,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 
   try {
-    const { header, footer, menus, pageData } = await getAllPageData(
-      '/page/homepage'
+    const { header, footer, menus, page } = await AudacityClient.getAllPageData(
+      'page/homepage'
     )
 
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    page.menus = menus.data
-    page.themeConfigs = {
-      colors: pageData.site.colors,
+    data.header = header['pt-BR'].data
+    data.footer = footer['pt-BR'].data
+    data.menus = menus.data
+    data.themeConfigs = {
+      colors: page.site.colors,
     }
 
     if (
-      pageData?.message?.includes('Resource not found') ||
+      page?.message?.includes('Resource not found') ||
       header?.message?.includes('Resource not found') ||
       footer?.message?.includes('Resource not found') ||
       menus?.message?.includes('Resource not found')
@@ -53,14 +56,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
         notFound: true,
       }
     }
-  } catch ({ message }: any) {
+  } catch ({ message }) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: { page },
+    props: { pageData: data },
   }
 }
 

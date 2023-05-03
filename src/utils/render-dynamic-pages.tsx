@@ -6,20 +6,18 @@ import storeConfig from 'store.config'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useApplySearchState as UseApplySearchState } from 'src/sdk/search/state'
 import VARIABLES from 'config/variables.json'
-import { Components as PlatformComponents } from 'src/utils/components/platform'
 
 import UseSearchParams from './use-search-params'
 import Components from './render-components'
 
 type Props = {
-  pageName: string
+  pageType: string
 }
 
-const RenderDynamicPages: React.FC<Props & any> = ({ pageName, ...props }) => {
+const RenderDynamicPages: React.FC<Props & any> = ({ pageType, ...props }) => {
   const pageProps = {
     ...props,
     storeConfig,
-    PlatformComponents,
     ...VARIABLES,
   }
 
@@ -79,10 +77,12 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageName, ...props }) => {
     ),
   }
 
+  if (!pages[pageType]) null
+
   return (
     <>
       <Seo />
-      {pages[pageName] ? pages[pageName]() : pages.default()}
+      {pages[pageType]()}
     </>
   )
 }

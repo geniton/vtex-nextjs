@@ -2,33 +2,35 @@ import type { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 
 import { mark } from 'src/sdk/tests/mark'
-import RenderComponents from 'src/utils/components/render-components'
-import { getAllPageData } from 'src/services/audacity'
+import { RenderComponents } from 'src/utils'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
-
-function Page({ page: { pageData } }: any) {
+const AudacityClient = new AudacityClientApi({
+  token: process.env.AUDACITY_TOKEN
+})
+function Page({ pageData: { page } }: any) {
   return (
     <>
       <NextSeo noindex nofollow />
-      <RenderComponents pageData={pageData} />
+      <RenderComponents components={page} />
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = {
-    pageData: [],
+  const data = {
+    page: null,
     header: null,
     footer: null,
     menus: [],
     themeConfigs: {},
   }
 
-  const { header, footer, menus, pageData } = await getAllPageData(
-    '/page/page-not-found'
+  const { header, footer, menus, page } = await AudacityClient.getAllPageData(
+    'page/page-not-found'
   )
 
-  page.pageData = pageData['pt-BR']?.components ?? [
+  page.pageData = page['pt-BR']?.components ?? [
     {
       title: "404",
       component: "NotFound404",
@@ -39,11 +41,11 @@ export const getStaticProps: GetStaticProps = async () => {
   page.footer = footer['pt-BR']?.data
   page.menus = menus?.data
   page.themeConfigs = {
-    colors: pageData?.site?.colors,
+    colors: page?.site?.colors,
   }
 
   return {
-    props: { page, pageName: 'page-not-found' },
+    props: { pageData: data, pageType: 'page-not-found' },
     revalidate: 30,
   }
 }

@@ -1,13 +1,12 @@
 import axios from 'axios'
 import type { NextApiHandler } from 'next'
 
-import Variables from 'config/variables.json'
 import storeConfig from 'store.config'
 
 const wishlist: NextApiHandler = async (request, response) => {
   const headers = {
-    'x-vtex-api-appKey': Variables.vtexKey,
-    'x-vtex-api-appToken': Variables.vtexToken,
+    'x-vtex-api-appKey': process.env.VTEX_APP_KEY || '',
+    'x-vtex-api-appToken': process.env.VTEX_APP_TOKEN || '',
   }
 
   if (request.method === 'GET') {
@@ -35,7 +34,7 @@ const wishlist: NextApiHandler = async (request, response) => {
         message: 'success',
       })
     } catch (error) {
-      console.log(error)
+      console.log('error',error)
     }
   }
 

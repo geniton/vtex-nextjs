@@ -10,12 +10,15 @@ import SROnly from 'src/components/ui/SROnly'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useApplySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
-import { Components as PlatformComponents } from 'src/utils/components/platform'
-import { getAllPageData } from 'src/services/audacity'
+import { RenderComponents, NextjsComponents, NextjsHooks, VtexHooks, VtexUtils, VtexQueries } from 'src/utils'
 
-import storeConfig from '../../store.config'
-import RenderComponents from '../utils/components/render-components'
-import VARIABLES from '../../config/variables.json'
+import storeConfig from 'store.config'
+import VARIABLES from 'config/variables.json'
+import AudacityClientApi from '@retailhub/audacity-client-api'
+
+const AudacityClient = new AudacityClientApi({
+  token: process.env.AUDACITY_TOKEN
+})
 
 const useSearchParams = () => {
   const [params, setParams] = useState<SearchState | null>(null)
@@ -47,7 +50,11 @@ function Page({ page: { pageData }, ...props }: Props) {
   const pageProps = {
     ...props,
     storeConfig,
-    PlatformComponents,
+    VtexHooks,
+    VtexUtils,
+    VtexQueries,
+    NextjsComponents,
+    NextjsHooks,
     ...VARIABLES,
   }
 
@@ -87,13 +94,13 @@ function Page({ page: { pageData }, ...props }: Props) {
         <Breadcrumb name={searchParams?.term || ''} />
       </div>
 
-      <RenderComponents pageData={pageData} {...pageProps} />
+      <RenderComponents components={pageData} {...pageProps} />
     </SearchProvider>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = {
+  const data = {
     header: null,
     footer: null,
     pageData: null,
@@ -102,12 +109,12 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   try {
-    const { header, footer, menus, pageData }: any = await getAllPageData(
-      '/page/search'
+    const { header, footer, menus, page } = await AudacityClient.getAllPageData(
+      'page/search'
     )
 
     if (
-      pageData?.message?.includes('Resource not found') ||
+      page?.message?.includes('Resource not found') ||
       header?.message?.includes('Resource not found') ||
       footer?.message?.includes('Resource not found') ||
       menus?.message?.includes('Resource not found')
@@ -117,21 +124,21 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
 
-    page.pageData = pageData['pt-BR'].components
-    page.header = header['pt-BR'].data
-    page.footer = footer['pt-BR'].data
-    page.menus = menus.data
-    page.themeConfigs = {
-      colors: pageData.site.colors,
+    data.pageData = page['pt-BR'].components
+    data.header = header['pt-BR'].data
+    data.footer = footer['pt-BR'].data
+    data.menus = menus.data
+    data.themeConfigs = {
+      colors: page.site.colors,
     }
-  } catch ({ message }: any) {
+  } catch ({ message }) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: { page },
+    props: { pageData: data },
     revalidate: 30,
   }
 }

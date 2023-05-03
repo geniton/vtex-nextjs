@@ -3,9 +3,11 @@ import { sendAnalyticsEvent } from '@faststore/sdk'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import cn from 'classnames'
-import type { SingleProductControls } from '@retailhub/audacity-ui/src/components/single-product/types'
-import { Components, Utils } from '@retailhub/audacity-ui'
-import Image from 'next/future/image'
+import { Components, Utils } from '@retailhub/audacity'
+import { VtexComponents, VtexUtils } from '@retailhub/audacity-vtex'
+import { SingleProductControls } from '@retailhub/audacity-vtex/src/components/single-product/model'
+
+import Image from 'next/image'
 
 import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
@@ -172,12 +174,12 @@ function ProductDetails({
   })
 
   const installments = useMemo(
-    () => Utils?.Vtex?.Product?.getProductInstallments(sellerActive),
+    () => VtexUtils.Product?.getProductInstallments(sellerActive),
     [sellerActive]
   )
 
   const installmentPrices = useMemo(
-    () => Utils?.Vtex?.Product?.getInstallmentPrices(sellerActive),
+    () => VtexUtils.Product?.getInstallmentPrices(sellerActive),
     []
   )
 
@@ -427,7 +429,7 @@ function ProductDetails({
                 </div>
               )}
 
-              <Components.InstallmentsModal
+              <VtexComponents.InstallmentsModal
                 isOpen={installmentsModal}
                 installmentPrices={installmentPrices}
                 onClose={() => setInstallmentsModal(false)}
@@ -544,7 +546,7 @@ function ProductDetails({
           </section>
         </section>
         {!addProductInformationBelowBuybox && (
-          <Components.ProductDetailsContent
+          <VtexComponents.SingleProductContent
             description={description}
             specifications={isVariantOf.additionalProperty}
           />
