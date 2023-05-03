@@ -11,8 +11,6 @@ const AudacityClient = new AudacityClientApi({
 })
 
 function Page({ pageData: { page } }: any) {
-  console.log('process.env.AUDACITY_TOKEN', process.env.AUDACITY_TOKEN)
-
   return (
     <>
       <NextSeo
