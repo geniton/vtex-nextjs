@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 import { NextSeo } from 'next-seo'
 import { Components } from '@retailhub/audacity'
 import type { GetServerSideProps } from 'next'
-
-import storeConfig from '../../store.config'
 import AudacityClientApi from '@retailhub/audacity-client-api'
 
+import storeConfig from '../../store.config'
+
 const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN
+  token: process.env.AUDACITY_TOKEN,
 })
 
 function Page() {
@@ -27,7 +27,7 @@ function Page() {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const data = {
+  const pageData = {
     themeConfigs: {},
     header: null,
     footer: null,
@@ -50,10 +50,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
       }
     }
 
-    data.header = header['pt-BR'].data
-    data.footer = footer['pt-BR'].data
-    data.menus = menus.data
-    data.themeConfigs = {
+    pageData.header = header['pt-BR'].data
+    pageData.footer = footer['pt-BR'].data
+    pageData.menus = menus.data
+    pageData.themeConfigs = {
       colors: page.site.colors,
     }
   } catch ({ message }) {
@@ -63,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 
   return {
-    props: { pageData: data },
+    props: { pageData },
   }
 }
 

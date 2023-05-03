@@ -4,20 +4,26 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import type { SearchState } from '@faststore/sdk'
 import type { GetStaticProps } from 'next/types'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import SROnly from 'src/components/ui/SROnly'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useApplySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
-import { RenderComponents, NextjsComponents, NextjsHooks, VtexHooks, VtexUtils, VtexQueries } from 'src/utils'
-
+import {
+  RenderComponents,
+  NextjsComponents,
+  NextjsHooks,
+  VtexHooks,
+  VtexUtils,
+  VtexQueries,
+} from 'src/utils'
 import storeConfig from 'store.config'
 import VARIABLES from 'config/variables.json'
-import AudacityClientApi from '@retailhub/audacity-client-api'
 
 const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN
+  token: process.env.AUDACITY_TOKEN,
 })
 
 const useSearchParams = () => {
@@ -34,10 +40,10 @@ const useSearchParams = () => {
 }
 
 type Props = {
-  page: any
+  pageData: any
 }
 
-function Page({ page: { pageData }, ...props }: Props) {
+function Page({ pageData: { page }, ...props }: Props) {
   const searchParams = useSearchParams()
   const applySearchState = useApplySearchState()
   const { description, titleTemplate } = storeConfig.seo
@@ -94,16 +100,16 @@ function Page({ page: { pageData }, ...props }: Props) {
         <Breadcrumb name={searchParams?.term || ''} />
       </div>
 
-      <RenderComponents components={pageData} {...pageProps} />
+      <RenderComponents components={page} {...pageProps} />
     </SearchProvider>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = {
+  const pageData = {
     header: null,
     footer: null,
-    pageData: null,
+    page: null,
     menus: [],
     themeConfigs: {},
   }
@@ -124,11 +130,11 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
 
-    data.pageData = page['pt-BR'].components
-    data.header = header['pt-BR'].data
-    data.footer = footer['pt-BR'].data
-    data.menus = menus.data
-    data.themeConfigs = {
+    pageData.page = page['pt-BR'].components
+    pageData.header = header['pt-BR'].data
+    pageData.footer = footer['pt-BR'].data
+    pageData.menus = menus.data
+    pageData.themeConfigs = {
       colors: page.site.colors,
     }
   } catch ({ message }) {
@@ -138,7 +144,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
-    props: { pageData: data },
+    props: { pageData },
     revalidate: 30,
   }
 }

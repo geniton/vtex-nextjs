@@ -17,17 +17,17 @@ declare module 'react' {
   }
 }
 
-interface Props extends ImageOptions {
+interface Properties extends ImageOptions {
   preload?: boolean
-  fetchPriority?: string
+  fetchPriority?: any
 }
 
 // TODO: Replace this component by next/image
-const Image = forwardRef<HTMLImageElement, Props>(
+const Image = forwardRef<HTMLImageElement, Properties>(
   ({ preload = false, fetchPriority, ...otherProps }, ref) => {
     const imgProps = useImage(otherProps)
     const { src, sizes = '100vw', srcSet } = imgProps
-    
+
     return (
       <>
         {preload && (

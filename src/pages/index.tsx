@@ -1,13 +1,13 @@
 import type { GetStaticProps } from 'next'
 import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
 import { RenderComponents } from 'src/utils'
-import AudacityClientApi from '@retailhub/audacity-client-api'
 
 const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN
+  token: process.env.AUDACITY_TOKEN,
 })
 
 function Page({ pageData: { page } }: any) {
@@ -40,7 +40,7 @@ function Page({ pageData: { page } }: any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = {
+  const pageData = {
     page: null,
     header: null,
     footer: null,
@@ -64,11 +64,11 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
 
-    data.page = page['pt-BR'].components
-    data.header = header['pt-BR'].data
-    data.footer = footer['pt-BR'].data
-    data.menus = menus.data
-    data.themeConfigs = {
+    pageData.page = page['pt-BR'].components
+    pageData.header = header['pt-BR'].data
+    pageData.footer = footer['pt-BR'].data
+    pageData.menus = menus.data
+    pageData.themeConfigs = {
       colors: page.site.colors,
     }
   } catch ({ message }) {
@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
-    props: { pageData: data, pageType: 'homepage' },
+    props: { pageData, pageType: 'homepage' },
     revalidate: 30,
   }
 }

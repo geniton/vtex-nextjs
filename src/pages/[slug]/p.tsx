@@ -2,6 +2,7 @@ import { isNotFoundError } from '@faststore/api'
 import { gql } from '@faststore/graphql-utils'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
 import { useSession } from 'src/sdk/session'
 import { mark } from 'src/sdk/tests/mark'
@@ -12,10 +13,9 @@ import type {
 } from '@generated/graphql'
 import storeConfig from 'store.config'
 import { RenderComponents } from 'src/utils'
-import AudacityClientApi from '@retailhub/audacity-client-api'
 
 const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN
+  token: process.env.AUDACITY_TOKEN,
 })
 
 interface Props extends ServerProductPageQueryQuery {
@@ -238,7 +238,7 @@ const query = gql`
 `
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = params?.slug as string ?? ''
+  const slug = (params?.slug as string) ?? ''
   const { data, errors = [] } = await execute<
     ServerProductPageQueryQueryVariables,
     ServerProductPageQueryQuery
@@ -291,8 +291,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       colors: page.site.colors,
     }
   } catch ({ message }) {
-    console.log(message)
-
     return {
       notFound: true,
     }
