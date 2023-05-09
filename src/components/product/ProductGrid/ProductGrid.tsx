@@ -3,7 +3,7 @@ import { memo } from 'react'
 
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductGrid/product-grid.module.scss'
-import { VtexUtils, VtexHooks } from 'src/utils'
+import { VtexUtils, VtexHooks, NextjsHooks } from 'src/utils'
 
 interface Props {
   /**
@@ -33,7 +33,9 @@ function ProductGrid({
     : []
 
   return (
-    <VtexComponents.ProductGallerySkeleton loading={parsedProducts.length === 0}>
+    <VtexComponents.ProductGallerySkeleton
+      loading={parsedProducts.length === 0}
+    >
       <ul data-fs-product-grid className={styles.fsProductGrid}>
         {parsedProducts.map((product, idx: number) => (
           <li key={`${product.isVariantOf.cacheId}`}>
@@ -45,6 +47,7 @@ function ProductGrid({
               index={pageSize * page + idx + 1}
               VtexHooks={VtexHooks}
               VtexUtils={VtexUtils}
+              NextjsHooks={NextjsHooks}
               {...otherProps}
             />
           </li>
