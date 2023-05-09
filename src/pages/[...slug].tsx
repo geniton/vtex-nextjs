@@ -1,5 +1,6 @@
 import { gql } from '@faststore/graphql-utils'
 import type { GetStaticPaths, GetStaticProps } from 'next/types'
+import AudacityClientApi from '@retailhub/audacity-client-api'
 
 import { mark } from 'src/sdk/tests/mark'
 import { execute } from 'src/server'
@@ -10,25 +11,30 @@ import type {
 import storeConfig from 'store.config'
 
 import { RenderDynamicPages } from '../utils'
-import AudacityClientApi from '@retailhub/audacity-client-api'
 
 const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN
+  token: process.env.AUDACITY_TOKEN,
 })
+
 interface Props extends ServerCollectionPageQueryQuery {
   pageType: string
   pageData: any
 }
 
-function Page({ pageData: { page }, ...props }: Props) {
+function Page({ pageData: { page }, collection, ...props }: Props) {
   return (
     <RenderDynamicPages
       components={page}
+      collection={collection}
       seo={{
+        title: collection?.seo?.title ?? storeConfig.seo.title,
+        description:
+          collection?.seo?.description ?? storeConfig.seo.description,
         openGraph: {
           type: 'website',
-          title: storeConfig.seo.title,
-          description: storeConfig.seo.description,
+          title: collection?.seo?.title ?? storeConfig.seo.title,
+          description:
+            collection?.seo?.description ?? storeConfig.seo.description,
         },
       }}
       {...props}
@@ -91,45 +97,48 @@ export const getStaticProps: GetStaticProps<
 
   let pageResponse = await AudacityClient.getPage(`page/${pathSlug}`)
 
-    if (pageResponse.data?.page_type === 'category') {
-      pageType = pageResponse.data.page_type
-    }
+  if (pageResponse.data?.page_type === 'category') {
+    pageType = pageResponse.data.page_type
+  }
 
-    if (pageResponse.data?.page?.message?.includes('Resource not found') && !data) {
-      return {
-        notFound: true,
-      }
+  if (
+    pageResponse.data?.page?.message?.includes('Resource not found') &&
+    !data
+  ) {
+    return {
+      notFound: true,
     }
+  }
 
-    if (pageResponse.data?.message?.includes('Resource not found')) {
-      pageResponse = await AudacityClient.getPage('page/category')
-      pageType = 'category'
+  if (pageResponse.data?.message?.includes('Resource not found')) {
+    pageResponse = await AudacityClient.getPage('page/category')
+    pageType = 'category'
+  }
+
+  const [header, footer, menus] = await Promise.all([
+    AudacityClient.getHeader(),
+    AudacityClient.getFooter(),
+    AudacityClient.getMenus(),
+  ])
+
+  if (
+    pageResponse?.data?.message?.includes('Resource not found') ||
+    header?.data?.message?.includes('Resource not found') ||
+    footer?.data?.message?.includes('Resource not found') ||
+    menus?.data?.message?.includes('Resource not found')
+  ) {
+    return {
+      notFound: true,
     }
+  }
 
-    const [header, footer, menus] = await Promise.all([
-      AudacityClient.getHeader(),
-      AudacityClient.getFooter(),
-      AudacityClient.getMenus(),
-    ])
-
-    if (
-      pageResponse?.data?.message?.includes('Resource not found') ||
-      header?.data?.message?.includes('Resource not found') ||
-      footer?.data?.message?.includes('Resource not found') ||
-      menus?.data?.message?.includes('Resource not found')
-    ) {
-      return {
-        notFound: true,
-      }
-    }
-
-    pageData.header = header.data['pt-BR'].data
-    pageData.footer = footer.data['pt-BR'].data
-    pageData.menus = menus.data
-    pageData.page = pageResponse.data['pt-BR'].components ?? []
-    pageData.themeConfigs = {
-      colors: pageResponse.data.site?.colors,
-    }
+  pageData.header = header.data['pt-BR'].data
+  pageData.footer = footer.data['pt-BR'].data
+  pageData.menus = menus.data
+  pageData.page = pageResponse.data['pt-BR'].components ?? []
+  pageData.themeConfigs = {
+    colors: pageResponse.data.site?.colors,
+  }
 
   return {
     props: { collection: data?.collection ?? null, pageData, pageType },
