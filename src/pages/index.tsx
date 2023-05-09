@@ -3,7 +3,6 @@ import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 import AudacityClientApi from '@retailhub/audacity-client-api'
 import { Carousel } from '@faststore/ui'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
@@ -14,42 +13,6 @@ const AudacityClient = new AudacityClientApi({
 })
 
 function Page({ pageData: { page } }: any) {
-  const firstClientX = useRef(0)
-  const firstClientY = useRef(0)
-  const clientX = useRef(0)
-  const clientY = useRef(0)
-
-  function touchStart(e: any) {
-    firstClientX.current = e.touches[0].clientX
-    firstClientY.current = e.touches[0].clientY
-  }
-
-  function preventTouch(e: any) {
-    const minValue = 5
-
-    clientX.current = e.touches[0].clientX - firstClientX.current
-    clientY.current = e.touches[0].clientY - firstClientY.current
-
-    if (Math.abs(clientX.current) > minValue) {
-      e.preventDefault()
-      e.returnValue = false
-
-      return false
-    }
-
-    return true
-  }
-
-  useEffect(() => {
-    window.addEventListener('touchstart', touchStart)
-    window.addEventListener('touchmove', preventTouch, { passive: false })
-
-    return () => {
-      window.removeEventListener('touchstart', touchStart)
-      window.removeEventListener('touchmove', preventTouch)
-    }
-  }, [])
-
   return (
     <>
       <NextSeo

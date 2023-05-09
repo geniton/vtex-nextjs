@@ -1,9 +1,9 @@
 import { Components } from '@retailhub/audacity'
 import { VtexComponents } from '@retailhub/audacity-vtex'
+import { memo } from 'react'
 
 import variables from 'config/variables.json'
 import storeConfig from 'store.config'
-
 import {
   VtexHooks,
   VtexUtils,
@@ -47,9 +47,9 @@ const RenderComponents = ({ components, ...otherProps }: Props): any => {
     }
 
     let Component: any = Components[component as keyof typeof Components]
-    
+
     if (!Component) {
-        Component = VtexComponents[component as keyof typeof VtexComponents]
+      Component = VtexComponents[component as keyof typeof VtexComponents]
     }
 
     return Component ? (
@@ -58,4 +58,4 @@ const RenderComponents = ({ components, ...otherProps }: Props): any => {
   })
 }
 
-export default RenderComponents
+export default memo(RenderComponents)
