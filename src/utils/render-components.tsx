@@ -5,10 +5,10 @@ import { memo } from 'react'
 import variables from 'config/variables.json'
 import storeConfig from 'store.config'
 import {
-  VtexHooks,
-  VtexUtils,
-  VtexQueries,
-  VtexComponents as ModelVtexComponents,
+  // VtexHooks,
+  // VtexUtils,
+  // VtexQueries,
+  // VtexComponents as ModelVtexComponents,
   NextjsComponents,
   NextjsHooks,
 } from 'src/utils'
@@ -23,10 +23,10 @@ const RenderComponents = ({ components, ...otherProps }: Props): any => {
     storeConfig,
     variables,
     // Vtex
-    VtexHooks,
-    VtexQueries,
-    VtexComponents: ModelVtexComponents,
-    VtexUtils,
+    // VtexHooks,
+    // VtexQueries,
+    // VtexComponents: ModelVtexComponents,
+    // VtexUtils,
     // Nextjs
     NextjsComponents,
     NextjsHooks,
