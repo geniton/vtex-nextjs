@@ -59,7 +59,7 @@ export const useLocalizedVariables = ({
     const facets = toArray(selectedFacets)
 
     return {
-      first: first ?? ITEMS_PER_SECTION,
+      first: Number(first) ?? ITEMS_PER_SECTION,
       after: after ?? '0',
       sort: sort ?? ('score_desc' as const),
       term: term ?? '',

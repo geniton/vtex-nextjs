@@ -1338,10 +1338,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.12.29":
-  version "1.12.40"
-  resolved "https://registry.npmjs.org/@faststore/api/-/api-1.12.40.tgz"
-  integrity sha512-1/2tu6rpMHjTQ+YKHK+DpjxcJQhp5u1O0bPQQa8IFX7FzFMskmmJSpNPTJEYa9Aqh6gljjwLIyNffDGlfdM5CQ==
+"@faststore/api@^1.12.28":
+  version "1.12.41"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.12.41.tgz#117461f19fb552ee6ce679aa816ea531959157cf"
+  integrity sha512-g5CL9d7rntC+qLs+KTWI2vcRNmImvIq+R14Ju8dEVC+QKh/IruC4QPPrHxke/27m7YW5qUDth/CW5dZWfPxwEg==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -2371,23 +2371,24 @@
   dependencies:
     axios "^1.3.6"
 
-"@retailhub/audacity-vtex@^0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.27.tgz#aff7d3228d341f4156e2b200267521ad83c01c98"
-  integrity sha512-k8LqY/1Q6WMlLN74E8Bbw2o2FmQexeEJQu1cUu2cQxpAb3Art60Kgx0a4RqjcIpaoxWACcMbg/Skv4K+qu/M3w==
+"@retailhub/audacity-vtex@^0.0.37":
+  version "0.0.37"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.37.tgz#c3f0130fff2158f767a214104e899ad79e7a8679"
+  integrity sha512-b2Nfv6sILKX7CztIoNP+Ehjrpwn5OYYfXLynEwApZOQnaWV8vzdO37SLrLvPLLFFQJYtO0cOiqujf7MOyq/Zmw==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
     ramda "^0.29.0"
+    react-infinite-scroll-component "^6.1.0"
     react-portal "^4.2.2"
     react-slick "^0.29.0"
     react-use-scroll-position "^2.0.0"
     sweetalert2 "^11.7.3"
 
-"@retailhub/audacity@^0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.27.tgz#58db4c2a597d830880389d43ed7b7dca2f8b1d5d"
-  integrity sha512-R60/1nGmxLikPJGlBTquTtcyRRVZzIzCVXC5xR9A/duvd0Ln4pgiBPqPS1Wr1M7GfW6meoageHA2H3J/KpQ5fg==
+"@retailhub/audacity@^0.0.33":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.33.tgz#2662c29a4a314815b21f2092b6f2411dfc62cabe"
+  integrity sha512-zwJZ+QvD2fl/3iy+H+dKWUQbyK/HNH6rh/esUSDAcKPp+q3qsTHOvWPopCCFNxpRWqfLC7Eyc7OccHal2Nu9Tg==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
@@ -14031,6 +14032,13 @@ react-icons@^4.7.1:
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.8.0.tgz"
   integrity sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==
 
+react-infinite-scroll-component@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-component/-/react-infinite-scroll-component-6.1.0.tgz#7e511e7aa0f728ac3e51f64a38a6079ac522407f"
+  integrity sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==
+  dependencies:
+    throttle-debounce "^2.1.0"
+
 react-input-mask@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/react-input-mask/-/react-input-mask-2.0.4.tgz"
@@ -16100,6 +16108,11 @@ third-party-web@^0.12.7:
   version "0.12.7"
   resolved "https://registry.npmjs.org/third-party-web/-/third-party-web-0.12.7.tgz"
   integrity sha512-9d/OfjEOjyeOpnm4F9o0KSK6BI6ytvi9DINSB5h1+jdlCvQlhKpViMSxWpBN9WstdfDQ61BS6NxWqcPCuQCAJg==
+
+throttle-debounce@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
+  integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
 throttle-debounce@^3.0.1:
   version "3.0.1"

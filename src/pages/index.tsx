@@ -1,8 +1,6 @@
 import type { GetStaticProps } from 'next'
 import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 import AudacityClientApi from '@retailhub/audacity-client-api'
-import { Carousel } from '@faststore/ui'
-import Image from 'next/image'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
@@ -37,56 +35,6 @@ function Page({ pageData: { page } }: any) {
         ]}
       />
       <RenderComponents components={page} />
-      <Carousel>
-        <article>
-          <Image
-            src="https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/3f357eb4-90f6-4c73-9e52-6068a6d0b942"
-            width="1366"
-            height="480"
-            alt=""
-          />
-        </article>
-        <article>
-          <Image
-            src="https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/ea841ea2-3222-4caa-b455-aad333296295"
-            width="1366"
-            height="480"
-            alt=""
-          />
-        </article>
-        <article>
-          <Image
-            src="https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/e9775d93-b0b1-484f-9264-e2d6400c4d71"
-            width="1366"
-            height="480"
-            alt=""
-          />
-        </article>
-      </Carousel>
-      <article>
-        <Image
-          src="https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/3f357eb4-90f6-4c73-9e52-6068a6d0b942"
-          width="1366"
-          height="480"
-          alt=""
-        />
-      </article>
-      <article>
-        <Image
-          src="https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/ea841ea2-3222-4caa-b455-aad333296295"
-          width="1366"
-          height="480"
-          alt=""
-        />
-      </article>
-      <article>
-        <Image
-          src="https://lkz4u1i0x8.execute-api.us-east-1.amazonaws.com/api/medias/download/e9775d93-b0b1-484f-9264-e2d6400c4d71"
-          width="1366"
-          height="480"
-          alt=""
-        />
-      </article>
     </>
   )
 }
