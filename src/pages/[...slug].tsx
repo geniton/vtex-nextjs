@@ -134,7 +134,7 @@ export const getStaticProps: GetStaticProps<
 
   pageData.header = header.data['pt-BR'].data
   pageData.footer = footer.data['pt-BR'].data
-  pageData.menus = menus.data
+  pageData.menus = menus.data?.data
   pageData.page = pageResponse.data['pt-BR'].components ?? []
   pageData.themeConfigs = {
     colors: pageResponse.data.site?.colors,
