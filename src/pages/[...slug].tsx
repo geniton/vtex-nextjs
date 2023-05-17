@@ -101,10 +101,7 @@ export const getStaticProps: GetStaticProps<
     pageType = pageResponse.data.page_type
   }
 
-  if (
-    pageResponse.data?.page?.message?.includes('Resource not found') &&
-    !data
-  ) {
+  if (pageResponse.data?.message?.includes('Resource not found') && !data) {
     return {
       notFound: true,
     }
