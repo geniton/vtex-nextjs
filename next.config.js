@@ -19,6 +19,7 @@ const nextConfig = {
       'retailhub.vteximg.com.br',
       'picsum.photos',
       'lkz4u1i0x8.execute-api.us-east-1.amazonaws.com',
+      'd18szw0srtwu3l.cloudfront.net',
     ],
   },
   webpack: (config, { isServer, dev }) => {
