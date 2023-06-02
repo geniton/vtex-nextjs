@@ -1,46 +1,17 @@
-import { gql } from '@faststore/graphql-utils'
-import { useMemo } from 'react'
+import useSWR from 'swr'
 
-import type {
-  BrowserProductQueryQuery,
-  BrowserProductQueryQueryVariables,
-} from '@generated/graphql'
+const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
-import { useQuery } from '../graphql/useQuery'
-import { useSession } from '../session'
+export const useProduct = (slug: string) => {
+  const { data, error, isValidating, mutate } = useSWR(
+    `/api/product?slug=${slug}`,
+    fetcher
+  )
 
-const query = gql`
-  query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {
-    product(locator: $locator) {
-      ...ProductDetailsFragment_product
-    }
+  return {
+    error,
+    isValidating,
+    mutate,
+    data,
   }
-`
-
-export const useProduct = <T extends BrowserProductQueryQuery>(
-  productID: string,
-  fallbackData?: T
-) => {
-  const { channel, locale } = useSession()
-  const variables = useMemo(() => {
-    if (!channel) {
-      throw new Error(`useProduct: 'channel' from session is an empty string.`)
-    }
-
-    return {
-      locator: [
-        { key: 'id', value: productID },
-        { key: 'channel', value: channel },
-        { key: 'locale', value: locale },
-      ],
-    }
-  }, [channel, locale, productID])
-
-  return useQuery<
-    BrowserProductQueryQuery & T,
-    BrowserProductQueryQueryVariables
-  >(query, variables, {
-    fallbackData,
-    revalidateOnMount: true,
-  })
 }

@@ -1,35 +1,36 @@
-import { isNotFoundError } from '@faststore/api'
-import { gql } from '@faststore/graphql-utils'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
 import AudacityClientApi from '@retailhub/audacity-client-api'
+import { VtexUtils, Services } from '@retailhub/audacity-vtex'
 
-import { useSession } from 'src/sdk/session'
+// import { useSession } from 'src/sdk/session'
 import { mark } from 'src/sdk/tests/mark'
-import { execute } from 'src/server'
-import type {
-  ServerProductPageQueryQuery,
-  ServerProductPageQueryQueryVariables,
-} from '@generated/graphql'
 import storeConfig from 'store.config'
 import { RenderComponents } from 'src/utils'
+import { useSession } from 'src/sdk/session'
 
 const AudacityClient = new AudacityClientApi({
   token: process.env.AUDACITY_TOKEN,
 })
 
-interface Props extends ServerProductPageQueryQuery {
+interface Props {
+  skuId: string
+  product: any
+  seo: any
   pageData: {
     page: any
   }
 }
 
-function Page({ product, pageData: { page } }: Props) {
+function Page({ product, seo, skuId, pageData: { page } }: Props) {
   const { currency } = useSession()
-  const { seo } = product
-  const title = seo.title || storeConfig.seo.title
-  const description = seo.description || storeConfig.seo.description
-  const canonical = `${storeConfig.storeUrl}${seo.canonical}`
+  const { title, description, canonical } = seo
+  const seller = VtexUtils.Product.getSellerLowPrice(product?.sellers)
+
+  const images = product?.images.map((img: any) => ({
+    url: img.url,
+    alt: img.alternateName,
+  }))
 
   return (
     <>
@@ -42,7 +43,7 @@ function Page({ product, pageData: { page } }: Props) {
           url: canonical,
           title,
           description,
-          images: product.image.map((img) => ({
+          images: images.map((img: any) => ({
             url: img.url,
             alt: img.alternateName,
           })),
@@ -50,7 +51,7 @@ function Page({ product, pageData: { page } }: Props) {
         additionalMetaTags={[
           {
             property: 'product:price:amount',
-            content: product.offers.lowPrice?.toString() ?? undefined,
+            content: seller?.commertialOffer?.Price.toString() ?? undefined,
           },
           {
             property: 'product:price:currency',
@@ -60,7 +61,7 @@ function Page({ product, pageData: { page } }: Props) {
       />
 
       <BreadcrumbJsonLd
-        itemListElements={product.breadcrumbList.itemListElement}
+        itemListElements={product.breadcrumbs.itemListElement}
       />
 
       <ProductJsonLd
@@ -70,182 +71,24 @@ function Page({ product, pageData: { page } }: Props) {
         sku={product.sku}
         gtin={product.gtin}
         releaseDate={product.releaseDate}
-        images={product.image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
+        images={images.map(({ url }: { url: string }) => url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
         offersType="AggregateOffer"
         offers={{
-          ...product.offers,
-          ...product.offers.offers[0],
+          ...seller.commertialOffer,
           url: canonical,
         }}
       />
 
-      <RenderComponents product={product} components={page} />
+      <RenderComponents product={product} skuId={skuId} components={page} />
     </>
   )
 }
 
-export const fragment = gql`
-  fragment ProductSummary_product on StoreProduct {
-    id: productID
-    data
-    slug
-    sku
-    brand {
-      brandName: name
-    }
-    name
-    gtin
-    productID
-    description
-    sellers {
-      sellerId
-      sellerName
-      addToCartLink
-      sellerDefault
-      AvailableQuantity
-      Installments {
-        Value
-        InterestRate
-        TotalValuePlusInterestRate
-        NumberOfInstallments
-        PaymentSystemName
-        PaymentSystemGroupName
-        Name
-      }
-      Price
-      ListPrice
-      discountHighlights {
-        name
-      }
-    }
-
-    isVariantOf {
-      productGroupID
-      name
-    }
-
-    image {
-      url
-      alternateName
-    }
-
-    brand {
-      name
-    }
-
-    additionalProperty {
-      propertyID
-      value
-      name
-      valueReference
-    }
-
-    offers {
-      lowPrice
-      offers {
-        availability
-        price
-        listPrice
-        quantity
-        seller {
-          identifier
-        }
-      }
-    }
-  }
-`
-
-const query = gql`
-  query ServerProductPageQuery($slug: String!) {
-    product(locator: [{ key: "slug", value: $slug }]) {
-      id: productID
-
-      seo {
-        title
-        description
-        canonical
-      }
-
-      brand {
-        name
-      }
-
-      sku
-      gtin
-      name
-      description
-      releaseDate
-      link
-
-      breadcrumbList {
-        itemListElement {
-          item
-          name
-          position
-        }
-      }
-
-      image {
-        url
-        alternateName
-      }
-
-      offers {
-        lowPrice
-        highPrice
-        priceCurrency
-        offers {
-          availability
-          price
-          priceValidUntil
-          priceCurrency
-          itemCondition
-          seller {
-            identifier
-          }
-        }
-      }
-
-      sellers {
-        sellerId
-        sellerName
-        addToCartLink
-        sellerDefault
-        AvailableQuantity
-        Installments {
-          Value
-          InterestRate
-          TotalValuePlusInterestRate
-          NumberOfInstallments
-          PaymentSystemName
-          PaymentSystemGroupName
-          Name
-        }
-        Price
-        ListPrice
-        discountHighlights {
-          name
-        }
-      }
-
-      isVariantOf {
-        productGroupID
-      }
-
-      ...ProductDetailsFragment_product
-    }
-  }
-`
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = (params?.slug as string) ?? ''
-  const { data, errors = [] } = await execute<
-    ServerProductPageQueryQueryVariables,
-    ServerProductPageQueryQuery
-  >({
-    variables: { slug },
-    operationName: query,
-  })
+  const arr = slug.split('-')
+  const skuId = String(arr.splice(arr.length - 1, 1)?.[0])
+  const newSlug = arr.join('-')
 
   const pageData = {
     header: null,
@@ -253,51 +96,66 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     page: null,
     menus: [],
     themeConfigs: {},
-  }
-
-  const notFound = errors.find(isNotFoundError)
-
-  if (notFound) {
-    return {
-      notFound: true,
-    }
-  }
-
-  if (errors.length > 0) {
-    throw errors[0]
+    product: {} as any,
   }
 
   try {
-    const { header, footer, menus, page } = await AudacityClient.getAllPageData(
-      'page/product'
-    )
+    const [responsePageData, productData] = await Promise.all([
+      AudacityClient.getAllPageData('page/product'),
+      Services.getProduct({
+        store: storeConfig.api.storeId,
+        slug: newSlug,
+        appKey: process.env.VTEX_APP_KEY || '',
+        appToken: process.env.VTEX_APP_TOKEN || '',
+      }),
+    ])
 
     if (
-      page?.message?.includes('Resource not found') ||
-      header?.message?.includes('Resource not found') ||
-      footer?.message?.includes('Resource not found') ||
-      menus?.message?.includes('Resource not found')
+      responsePageData.page?.message?.includes('Resource not found') ||
+      responsePageData.header?.message?.includes('Resource not found') ||
+      responsePageData.footer?.message?.includes('Resource not found') ||
+      responsePageData.menus?.message?.includes('Resource not found') ||
+      !productData?.data?.length
     ) {
       return {
         notFound: true,
       }
     }
 
-    pageData.page = page['pt-BR'].components
-    pageData.header = header['pt-BR'].data
-    pageData.footer = footer['pt-BR'].data
-    pageData.menus = menus.data
+    pageData.page = responsePageData.page['pt-BR'].components
+    pageData.header = responsePageData.header['pt-BR'].data
+    pageData.footer = responsePageData.footer['pt-BR'].data
+    pageData.menus = responsePageData.menus.data
+    pageData.product = productData.data?.[0]
     pageData.themeConfigs = {
-      colors: page.site.colors,
+      colors: responsePageData.page.site.colors,
     }
   } catch ({ message }) {
+    console.log(message)
+
     return {
       notFound: true,
     }
   }
 
+  const seo = {
+    description:
+      pageData.product?.metaTagDescription || storeConfig.seo.description,
+    title: pageData.product?.productTitle || storeConfig.seo.title,
+    canonical: `${storeConfig.storeUrl}/${pageData.product?.linkText}/p`,
+  }
+
   return {
-    props: { product: data.product, pageData, pageType: 'page/product' },
+    props: {
+      product: {
+        ...VtexUtils.Product.getVariant(pageData.product, skuId),
+        productName: pageData.product.productName,
+      },
+      seo,
+      skuId,
+      pageData,
+      pageType: 'page/product',
+    },
     revalidate: 30,
   }
 }

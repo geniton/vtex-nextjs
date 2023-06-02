@@ -1,13 +1,10 @@
-import { gql } from '@faststore/graphql-utils'
 import { sendAnalyticsEvent } from '@faststore/sdk'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import cn from 'classnames'
 import { Components, Utils } from '@retailhub/audacity'
 import { VtexComponents, VtexUtils } from '@retailhub/audacity-vtex'
-import { SingleProductControls } from '@retailhub/audacity-vtex/src/components/single-product/model'
-
-import Image from 'next/image'
+import type { SingleProductControls } from '@retailhub/audacity-vtex/src/components/single-product/model'
 
 import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
@@ -20,19 +17,17 @@ import QuantitySelector from 'src/components/ui/QuantitySelector'
 import ShippingSimulation from 'src/components/ui/ShippingSimulation'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import { useProduct } from 'src/sdk/product/useProduct'
 import { useSession } from 'src/sdk/session'
-import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 import Selectors from 'src/components/ui/SkuSelector'
 import storeConfig from 'store.config'
-import CardIcon from 'src/images/card.png'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
 
 interface Props {
-  product: ProductDetailsFragment_ProductFragment
+  product: any
+  skuId: string
   controls: SingleProductControls
 }
 
@@ -59,7 +54,7 @@ function getSpecificationHTML(data: any[]) {
 }
 
 function ProductDetails({
-  product: staleProduct,
+  product,
   controls: {
     general: {
       showProductName,
@@ -81,10 +76,11 @@ function ProductDetails({
 }: Props) {
   const { currency } = useSession()
   const [addQuantity, setAddQuantity] = useState(1)
-  const [sellers, setSellers] = useState<any>(staleProduct.sellers)
   const [installmentsModal, setInstallmentsModal] = useState(false)
   const buyButtonReference = useRef<HTMLButtonElement>(null)
   const buyNowButtonReference = useRef<HTMLButtonElement>(null)
+  const [sellers, setSellers] = useState<any>(product?.sellers)
+  const [installments, setInstallments] = useState<any>()
 
   const {
     priceFromFontSize,
@@ -113,74 +109,68 @@ function ProductDetails({
   } = effects ?? {}
 
   // Stale while revalidate the product for fetching the new price etc
-  const { data, isValidating } = useProduct(staleProduct.id, {
-    product: staleProduct,
-  })
+  // const { data, isValidating } = useProduct(staleProductstaleProduct.productId)
+  const isValidating = false
 
-  if (!data) {
+  if (!product) {
     throw new Error('NotFound')
   }
 
   const {
-    product: {
-      description,
-      id,
-      sku,
-      gtin,
-      name: variantName,
-      variations,
-      brand,
-      isVariantOf,
-      isVariantOf: { name: productName, skuVariants },
-      image,
-      breadcrumbList: breadcrumbs,
-      additionalProperty,
-      link,
-    },
-  } = data
+    itemId,
+    gtin,
+    variantName,
+    brand,
+    images,
+    breadcrumbs,
+    additionalProperty,
+    link,
+    skuVariants,
+    description,
+    productName,
+    productId,
+  } = product
 
   const { margins, paddings } = style ?? {}
 
   const sellerActive = useMemo(
     () =>
-      sellers.filter((seller: any) =>
+      sellers.find((seller: any) =>
         sellers.length <= 1
           ? (seller.sellerDefault = true)
           : seller.sellerDefault
-      )[0],
+      ),
     [sellers]
   )
 
   const buyDisabled = useMemo(
-    () => !sellerActive.AvailableQuantity,
+    () => !sellerActive.commertialOffer.AvailableQuantity,
     [sellerActive]
   )
 
   const buyProps = useBuyButton({
-    id,
-    price: sellerActive.Price,
-    listPrice: sellerActive.ListPrice,
+    id: itemId,
+    price: sellerActive.commertialOffer.Price,
+    listPrice: sellerActive.commertialOffer.ListPrice,
     seller: { identifier: sellerActive.sellerId },
     quantity: addQuantity,
     itemOffered: {
-      sku,
+      sku: itemId,
       name: variantName,
       gtin,
-      image,
+      image: images,
       brand,
-      isVariantOf,
+      isVariantOf: {
+        productGroupID: productId,
+        name: productName,
+      },
       additionalProperty,
     },
   })
 
-  const installments = useMemo(
-    () => VtexUtils.Product?.getProductInstallments(sellerActive),
-    [sellerActive]
-  )
-
   const installmentPrices = useMemo(
-    () => VtexUtils.Product?.getInstallmentPrices(sellerActive),
-    []
+    () => VtexUtils.Product?.getInstallmentPrices(sellerActive.commertialOffer),
+    [sellerActive]
   )
 
   function handleHoverButton(action: string, buttonName: string) {
@@ -234,8 +224,8 @@ function ProductDetails({
         }
         label={
           <DiscountBadge
-            listPrice={sellerActive.ListPrice}
-            spotPrice={sellerActive.Price}
+            listPrice={sellerActive.commertialOffer.ListPrice}
+            spotPrice={sellerActive.commertialOffer.Price}
             big
           />
         }
@@ -249,15 +239,17 @@ function ProductDetails({
       name: 'view_item',
       params: {
         currency: currency.code as CurrencyCode,
-        value: sellerActive.Price,
+        value: sellerActive.commertialOffer.Price,
         items: [
           {
-            item_id: isVariantOf.productGroupID,
-            item_name: isVariantOf.name,
+            item_id: productId,
+            item_name: productName,
             item_brand: brand.name,
-            item_variant: sku,
-            price: sellerActive.Price,
-            discount: sellerActive.ListPrice - sellerActive.Price,
+            item_variant: itemId,
+            price: sellerActive.commertialOffer.Price,
+            discount:
+              sellerActive.commertialOffer.ListPrice -
+              sellerActive.commertialOffer.Price,
             currency: currency.code as CurrencyCode,
             item_variant_name: variantName,
             product_reference_id: gtin,
@@ -265,31 +257,26 @@ function ProductDetails({
         ],
       },
     })
-  }, [
-    isVariantOf.productGroupID,
-    isVariantOf.name,
-    brand.name,
-    sku,
-    sellerActive,
-    currency.code,
-    variantName,
-    gtin,
-  ])
+  }, [brand.name, itemId, sellerActive, currency.code, variantName, gtin])
 
   useEffect(() => {
-    setSellers(data?.product.sellers)
-  }, [data])
+    setSellers(product.sellers)
+  }, [product])
 
-  if (skuVariants && variations) {
-    skuVariants.availableVariations = JSON.parse(variations)
-  }
+  useEffect(() => {
+    setInstallments(
+      VtexUtils.Product?.getProductInstallments(sellerActive.commertialOffer)
+    )
+  }, [sellerActive])
+
+  if (!sellerActive) return null
 
   return (
     <Section
       id="product-page"
       className={`${styles.fsProductDetails} layout__content layout__section`}
-      product-id={isVariantOf.productGroupID}
-      sku-id={sku}
+      product-id={productId}
+      sku-id={itemId}
       style={{
         margin: margins
           ? `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`
@@ -313,8 +300,8 @@ function ProductDetails({
             imagesPerView={galleryImagesPerView}
             thumbnailsPosition={galleryThumbnailsPosition}
             withThumbnails={galleryWithThumbnails}
-            images={image}
-            skuId={sku}
+            images={images}
+            skuId={itemId}
             productUrl={`${storeConfig.storeUrl}${link}`}
           />
 
@@ -366,12 +353,13 @@ function ProductDetails({
               )}
               <section data-fs-product-details-values>
                 <div data-fs-product-details-prices>
-                  {sellerActive.ListPrice > sellerActive.Price && (
+                  {sellerActive.commertialOffer.ListPrice >
+                    sellerActive.commertialOffer.Price && (
                     <Price
-                      value={sellerActive.ListPrice}
+                      value={sellerActive.commertialOffer.ListPrice}
                       formatter={useFormattedPrice}
                       testId="list-price"
-                      data-value={sellerActive.ListPrice}
+                      data-value={sellerActive.commertialOffer.ListPrice}
                       variant="listing"
                       classes="text__legend"
                       SRText="Original price:"
@@ -384,10 +372,10 @@ function ProductDetails({
                     />
                   )}
                   <Price
-                    value={sellerActive.Price}
+                    value={sellerActive.commertialOffer.Price}
                     formatter={useFormattedPrice}
                     testId="price"
-                    data-value={sellerActive.Price}
+                    data-value={sellerActive.commertialOffer.Price}
                     variant="spot"
                     classes="text__lead"
                     SRText="Sale Price:"
@@ -402,9 +390,36 @@ function ProductDetails({
                   <p className="price__new">{isValidating ? '' : formattedPrice}</p>
                 </div> */}
               </section>
+
               {installments?.NumberOfInstallments > 1 && (
                 <div data-fs-product-details-installments>
-                  <Image src={CardIcon} width={20} height={20} alt="card" />
+                  <svg
+                    fill="#89532f"
+                    version="1.1"
+                    width={20}
+                    height={20}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    enableBackground="new 0 0 24 24"
+                  >
+                    <g>
+                      <g>
+                        <g>
+                          <path d="M23,20H1c-0.6,0-1-0.4-1-1V5c0-0.6,0.4-1,1-1h22c0.6,0,1,0.4,1,1v14C24,19.6,23.6,20,23,20z M2,18h20V6H2V18z" />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path d="M23,10H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,10,23,10z" />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path d="M23,12H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,12,23,12z" />
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
                   <div data-fs-product-details-installments-content>
                     <span>
                       ou{' '}
@@ -429,13 +444,15 @@ function ProductDetails({
                 </div>
               )}
 
-              <VtexComponents.InstallmentsModal
-                isOpen={installmentsModal}
-                installmentPrices={installmentPrices}
-                onClose={() => setInstallmentsModal(false)}
-              />
+              {installmentPrices?.length ? (
+                <VtexComponents.InstallmentsModal
+                  isOpen={installmentsModal}
+                  installmentPrices={installmentPrices}
+                  onClose={() => setInstallmentsModal(false)}
+                />
+              ) : null}
 
-              {sellerActive.AvailableQuantity ? (
+              {sellerActive.commertialOffer.AvailableQuantity ? (
                 <>
                   {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
                   non-composited animation violation due to the button transitioning its
@@ -478,6 +495,7 @@ function ProductDetails({
                           </ButtonBuy>
                           {buyNowBtn && (
                             <ButtonBuy
+                              data-fs-button-variant="buy-now"
                               disabled={buyDisabled}
                               icon={false}
                               goToCheckout
@@ -511,7 +529,7 @@ function ProductDetails({
                   <ShippingSimulation
                     data-fs-product-details-shipping
                     shippingItem={{
-                      id,
+                      id: itemId,
                       quantity: addQuantity,
                       seller: sellerActive.sellerId,
                     }}
@@ -524,6 +542,7 @@ function ProductDetails({
                   }}
                 />
               )}
+
               {addProductInformationBelowBuybox && (
                 <>
                   <Components.AccordionItem
@@ -531,13 +550,11 @@ function ProductDetails({
                     title="Detalhes do produto"
                     content={description}
                   />
-                  {isVariantOf.additionalProperty?.length ? (
+                  {additionalProperty?.length ? (
                     <Components.AccordionItem
                       title="Especificações Técnicas"
                       showIcon
-                      content={getSpecificationHTML(
-                        isVariantOf.additionalProperty
-                      )}
+                      content={getSpecificationHTML(additionalProperty)}
                     />
                   ) : null}
                 </>
@@ -548,7 +565,7 @@ function ProductDetails({
         {!addProductInformationBelowBuybox && (
           <VtexComponents.SingleProductContent
             description={description}
-            specifications={isVariantOf.additionalProperty}
+            specifications={additionalProperty}
           />
         )}
       </Components.Container>
@@ -613,103 +630,5 @@ function AddToCartLoadingSkeleton() {
     </svg>
   )
 }
-
-export const fragment = gql`
-  fragment ProductDetailsFragment_product on StoreProduct {
-    id: productID
-    sku
-    name
-    gtin
-    description
-    link
-    variations
-
-    isVariantOf {
-      name
-      productGroupID
-      additionalProperty {
-        name
-        value
-      }
-      skuVariants {
-        activeVariations
-        slugsMap(dominantVariantName: "Cor")
-        availableVariations(dominantVariantName: "Cor")
-      }
-      hasVariant {
-        offers {
-          offers {
-            availability
-            quantity
-            seller {
-              identifier
-            }
-          }
-        }
-      }
-    }
-
-    image {
-      url
-      alternateName
-    }
-
-    brand {
-      name
-    }
-
-    offers {
-      lowPrice
-      offers {
-        availability
-        price
-        listPrice
-        seller {
-          identifier
-        }
-      }
-    }
-
-    sellers {
-      sellerId
-      sellerName
-      addToCartLink
-      sellerDefault
-      AvailableQuantity
-      Installments {
-        Value
-        InterestRate
-        TotalValuePlusInterestRate
-        NumberOfInstallments
-        PaymentSystemName
-        PaymentSystemGroupName
-        Name
-      }
-      Price
-      ListPrice
-      discountHighlights {
-        name
-      }
-    }
-
-    additionalProperty {
-      propertyID
-      value
-      name
-      valueReference
-    }
-
-    breadcrumbList {
-      itemListElement {
-        item
-        name
-        position
-      }
-    }
-
-    # Contains necessary info to add this item to cart
-    ...CartProductItem
-  }
-`
 
 export default ProductDetails

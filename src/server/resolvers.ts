@@ -1,12 +1,15 @@
+import { VtexUtils } from '@retailhub/audacity-vtex'
+
 import { DOMINANT_SKU_SELECTOR_PROPERTY } from 'src/components/ui/SkuSelector/Selectors'
-import {
+
+const {
   attachmentToPropertyValue,
   createSlugsMap,
   getActiveSkuVariations,
   getFormattedVariations,
   getVariantsByName,
   VALUE_REFERENCES,
-} from 'src/utils/product'
+} = VtexUtils.Product
 
 const resolvers = {
   StoreProduct: {
