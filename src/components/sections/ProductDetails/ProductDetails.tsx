@@ -24,6 +24,8 @@ import storeConfig from 'store.config'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
+import Link from 'next/link'
+import Image from 'next/image'
 
 interface Props {
   product: any
@@ -63,6 +65,7 @@ function ProductDetails({
       buyNowBtn,
       buyNowBtnText,
       addProductInformationBelowBuybox,
+      showSimilarProducts,
       mobileVariations,
       deskVariations,
       galleryWithCarousel,
@@ -80,6 +83,7 @@ function ProductDetails({
   const buyButtonReference = useRef<HTMLButtonElement>(null)
   const buyNowButtonReference = useRef<HTMLButtonElement>(null)
   const [sellers, setSellers] = useState<any>(product?.sellers)
+  const [similarProducts, setSimilarProducts] = useState([])
   const [installments, setInstallments] = useState<any>()
 
   const {
@@ -173,6 +177,28 @@ function ProductDetails({
     [sellerActive]
   )
 
+  function renderSimilarProducts() {
+    console.log('similarProducts', similarProducts)
+    if (!similarProducts?.length) return <></>
+
+    return (
+      <section className={styles.fsProductSimilars}>
+        <span>Produtos Similares</span>
+        <ul>
+          {
+            similarProducts.map(({ items, linkText }: any) => (
+              <li key={`/${linkText}-${items[0]['itemId']}/p`}>
+                <Link href={`/${linkText}-${items[0]['itemId']}/p`}>
+                  <Image alt={items[0]['nameComplete']} width={42} height={34} src={items?.[0]?.images?.[0]?.imageUrl} />
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    )
+  }
+
   function handleHoverButton(action: string, buttonName: string) {
     const buyButton = buyButtonReference.current as HTMLElement
     const buyNowButton = buyNowButtonReference.current as HTMLElement
@@ -234,6 +260,15 @@ function ProductDetails({
     )
   }
 
+  async function getsimilarProducts() {
+    try {
+      const { data } = await fetch(`/api/similar-products?id=${productId}`).then(response => response.json())
+      setSimilarProducts(data)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
     sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
       name: 'view_item',
@@ -268,6 +303,10 @@ function ProductDetails({
       VtexUtils.Product?.getProductInstallments(sellerActive.commertialOffer)
     )
   }, [sellerActive])
+
+  useEffect(() => {
+    getsimilarProducts()
+  }, [])
 
   if (!sellerActive) return null
 
@@ -351,6 +390,11 @@ function ProductDetails({
                   data-fs-product-details-selectors
                 />
               )}
+              {
+                showSimilarProducts && (
+                  renderSimilarProducts()
+                )
+              }
               <section data-fs-product-details-values>
                 <div data-fs-product-details-prices>
                   {sellerActive.commertialOffer.ListPrice >

@@ -347,3 +347,30 @@
     }
   }
 }
+
+.fs-product-similars {
+  padding-bottom: 15px;
+  
+  span {
+    margin-bottom: .5rem;
+    display: block;
+    font-size: 14px;
+  }
+
+  ul {
+    display: flex;
+    gap: .5rem;
+
+    a {
+      display: block;
+      border: 1px solid var(--aud-tertiary);
+      border-radius: var(--fs-sku-selector-option-border-radius);
+      padding: 3px 8px;
+      img {
+        width: 24px;
+        height: 26px;
+        object-fit: contain;
+      }
+    }
+  }
+}

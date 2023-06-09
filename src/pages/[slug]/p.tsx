@@ -150,6 +150,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       product: {
         ...VtexUtils.Product.getVariant(pageData.product, skuId),
         productName: pageData.product.productName,
+        productId:  pageData.product.productId
       },
       seo,
       skuId,
