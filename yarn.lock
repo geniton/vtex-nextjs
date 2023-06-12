@@ -2667,10 +2667,10 @@
     react-use-scroll-position "^2.0.0"
     sweetalert2 "^11.7.3"
 
-"@retailhub/audacity@^0.0.106":
-  version "0.0.106"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.106.tgz#ef1bfb3aad17b10c9b2c1566ad77f11fd2c10441"
-  integrity sha512-bLuLwJWvrZqXik4mTi5YtnwpKfEZvDkwOi6m6aRPSrB9oSKekKSCPCLHx597KGT/lDGx9zgl0hDil6ryMBaJtw==
+"@retailhub/audacity@^0.0.107":
+  version "0.0.107"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.107.tgz#9f4afc1049451dee7e748335fc160fdafcaf2cef"
+  integrity sha512-DY0N0+qMo8AlpUs2FnJY0hfvWPv+YzbpDE/yLKvYx557H0Y5S0Zb4gEndYFwFCtAc6GN03FOpwRctEqfXFngPw==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
