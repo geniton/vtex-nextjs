@@ -2653,10 +2653,10 @@
   dependencies:
     axios "^1.4.0"
 
-"@retailhub/audacity-vtex@^0.0.84":
-  version "0.0.84"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.84.tgz#9c7fab8e9c5797fee07dc8bcca464c33f3a063db"
-  integrity sha512-8nJWF4mKcCOecHEy+69Fy79Yetoe6Y5fh8APhReEU9PxaWcr/szwh6GilOzaCyk5ipf6W57uVRx+85zXBg+1Tw==
+"@retailhub/audacity-vtex@^0.0.85":
+  version "0.0.85"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.85.tgz#bcfac5c7172f0877725a2e8fe4916d1967cff51d"
+  integrity sha512-yNRNB/r9HX9O2Yd6UCKp8+0mTwCs4I6JxUuGhSiruJzDIKP4ApiYVnk90CAtHxHiTXDNB20PclCtklZWvvuZJQ==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
