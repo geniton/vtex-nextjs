@@ -97,13 +97,29 @@ export const getStaticProps: GetStaticProps<
 
   let pageResponse = await AudacityClient.getPage(`page/${pathSlug}`)
 
+  // start validating parent page
+
+  const parentSlug = pageResponse?.data?.parent?.slug?.['pt-BR']
+
+  if (parentSlug && `${parentSlug}/${pathSlug}` !== pathSlug) {
+    return {
+      notFound: true,
+    }
+  }
+
+  // end validating parent page
+
   if (pageResponse.data?.page_type === 'category') {
     pageType = pageResponse.data.page_type
   }
 
   if (pageResponse.data?.message?.includes('Resource not found') && !data) {
-    return {
-      notFound: true,
+    pageResponse = await AudacityClient.getPage(`page/${slug[slug.length - 1]}`)
+
+    if (pageResponse.data?.message?.includes('Resource not found')) {
+      return {
+        notFound: true,
+      }
     }
   }
 
