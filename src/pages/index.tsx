@@ -10,19 +10,19 @@ const AudacityClient = new AudacityClientApi({
   token: process.env.AUDACITY_TOKEN,
 })
 
-function Page({ pageData: { page } }: any) {
+function Page({ pageData: { page, seo } }: any) {
   return (
     <>
       <NextSeo
-        title={storeConfig.seo.title}
-        description={storeConfig.seo.description}
+        title={seo.title}
+        description={seo.description}
         titleTemplate={storeConfig.seo.titleTemplate}
         canonical={storeConfig.storeUrl}
         openGraph={{
           type: 'website',
           url: storeConfig.storeUrl,
-          title: storeConfig.seo.title,
-          description: storeConfig.seo.description,
+          title: seo.title,
+          description: seo.description,
         }}
       />
       <SiteLinksSearchBoxJsonLd
@@ -46,6 +46,10 @@ export const getStaticProps: GetStaticProps = async () => {
     footer: null,
     menus: [],
     themeConfigs: {},
+    seo: {
+      title: '',
+      description: '',
+    },
   }
 
   try {
@@ -70,6 +74,12 @@ export const getStaticProps: GetStaticProps = async () => {
     pageData.menus = menus.data
     pageData.themeConfigs = {
       colors: page.site.colors,
+    }
+    pageData.seo = {
+      title: page['pt-BR']?.seo?.title || page.site?.['pt-BR']?.seo?.title,
+      description:
+        page['pt-BR']?.seo?.description ||
+        page.site?.['pt-BR']?.seo?.description,
     }
   } catch ({ message }) {
     return {

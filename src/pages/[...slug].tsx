@@ -21,20 +21,18 @@ interface Props extends ServerCollectionPageQueryQuery {
   pageData: any
 }
 
-function Page({ pageData: { page }, collection, ...props }: Props) {
+function Page({ pageData: { page, seo }, collection, ...props }: Props) {
   return (
     <RenderDynamicPages
       components={page}
       collection={collection}
       seo={{
-        title: collection?.seo?.title ?? storeConfig.seo.title,
-        description:
-          collection?.seo?.description ?? storeConfig.seo.description,
+        title: seo.title,
+        description: seo.description,
         openGraph: {
           type: 'website',
-          title: collection?.seo?.title ?? storeConfig.seo.title,
-          description:
-            collection?.seo?.description ?? storeConfig.seo.description,
+          title: seo.title,
+          description: seo.description,
         },
       }}
       {...props}
@@ -93,6 +91,10 @@ export const getStaticProps: GetStaticProps<
     page: null as any,
     menus: null,
     themeConfigs: {},
+    seo: {
+      title: storeConfig.seo.title,
+      description: storeConfig.seo.description,
+    },
   }
 
   let pageResponse = await AudacityClient.getPage(`page/${pathSlug}`)
@@ -151,6 +153,18 @@ export const getStaticProps: GetStaticProps<
   pageData.page = pageResponse.data['pt-BR'].components ?? []
   pageData.themeConfigs = {
     colors: pageResponse.data.site?.colors,
+  }
+  pageData.seo = {
+    title:
+      pageType === 'category' && data?.collection?.seo?.title
+        ? data?.collection?.seo?.title
+        : pageResponse.data['pt-BR'].seo?.title ||
+          pageResponse.data.site?.['pt-BR']?.seo?.title,
+    description:
+      pageType === 'category' && data?.collection?.seo?.description
+        ? data?.collection?.seo?.description
+        : pageResponse.data['pt-BR'].seo?.description ||
+          pageResponse.data.site?.['pt-BR']?.seo?.description,
   }
 
   return {

@@ -43,11 +43,10 @@ type Props = {
   pageData: any
 }
 
-function Page({ pageData: { page }, ...props }: Props) {
+function Page({ pageData: { page, seo }, ...props }: Props) {
   const searchParams = useSearchParams()
   const applySearchState = useApplySearchState()
-  const { description, titleTemplate } = storeConfig.seo
-  const title = 'Procurar Resultados'
+  const { title, description } = seo
 
   if (!searchParams) {
     return null
@@ -74,7 +73,7 @@ function Page({ pageData: { page }, ...props }: Props) {
         noindex
         title={title}
         description={description}
-        titleTemplate={titleTemplate}
+        titleTemplate={storeConfig.seo.titleTemplate}
         openGraph={{
           type: 'website',
           title,
@@ -112,6 +111,10 @@ export const getStaticProps: GetStaticProps = async () => {
     page: null,
     menus: [],
     themeConfigs: {},
+    seo: {
+      title: 'Procurar Resultados',
+      description: '',
+    },
   }
 
   try {
@@ -137,6 +140,8 @@ export const getStaticProps: GetStaticProps = async () => {
     pageData.themeConfigs = {
       colors: page.site.colors,
     }
+    pageData.seo.description =
+      page['pt-BR'].seo?.description || page.site?.['pt-BR']?.seo?.description
   } catch ({ message }) {
     return {
       notFound: true,

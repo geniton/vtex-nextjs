@@ -19,10 +19,15 @@ interface Props {
   seo: any
   pageData: {
     page: any
+    seo: {
+      title: string
+      description: string
+      canonical: string
+    }
   }
 }
 
-function Page({ product, seo, skuId, pageData: { page } }: Props) {
+function Page({ product, skuId, pageData: { page, seo } }: Props) {
   const { currency } = useSession()
   const { title, description, canonical } = seo
   const seller = VtexUtils.Product.getSellerLowPrice(product?.sellers)
@@ -97,6 +102,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     menus: [],
     themeConfigs: {},
     product: {} as any,
+    seo: {
+      title: '',
+      description: '',
+      canonical: '',
+    },
   }
 
   try {
@@ -109,6 +119,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         appToken: process.env.VTEX_APP_TOKEN || '',
       }),
     ])
+
+    const PRODUCT = productData.data?.[0]
 
     if (
       responsePageData.page?.message?.includes('Resource not found') ||
@@ -126,9 +138,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     pageData.header = responsePageData.header['pt-BR'].data
     pageData.footer = responsePageData.footer['pt-BR'].data
     pageData.menus = responsePageData.menus.data
-    pageData.product = productData.data?.[0]
     pageData.themeConfigs = {
       colors: responsePageData.page.site.colors,
+    }
+
+    pageData.product = PRODUCT
+
+    pageData.seo = {
+      title: PRODUCT?.productTitle || PRODUCT?.productName,
+      description: PRODUCT?.metaTagDescription || PRODUCT?.description,
+      canonical: `${storeConfig.storeUrl}/${PRODUCT?.linkText}/p`,
     }
   } catch ({ message }) {
     console.log(message)
@@ -138,21 +157,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 
-  const seo = {
-    description:
-      pageData.product?.metaTagDescription || storeConfig.seo.description,
-    title: pageData.product?.productTitle || storeConfig.seo.title,
-    canonical: `${storeConfig.storeUrl}/${pageData.product?.linkText}/p`,
-  }
-
   return {
     props: {
       product: {
         ...VtexUtils.Product.getVariant(pageData.product, skuId),
         productName: pageData.product.productName,
-        productId:  pageData.product.productId
+        productId: pageData.product.productId,
       },
-      seo,
       skuId,
       pageData,
       pageType: 'page/product',

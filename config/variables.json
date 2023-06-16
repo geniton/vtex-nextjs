@@ -8,7 +8,7 @@
   "seo": {
     "title": "Retailhub",
     "description": "Retailhub FastStore",
-    "titleTemplate": "%s | FastStore",
+    "titleTemplate": "%s",
     "author": "Retailhub Framework"
   },
   "api": {
