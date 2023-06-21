@@ -1,6 +1,7 @@
 import { gql } from '@faststore/graphql-utils'
 import type { GetStaticPaths, GetStaticProps } from 'next/types'
 import AudacityClientApi from '@retailhub/audacity-client-api'
+import { Utils } from '@retailhub/audacity'
 
 import { mark } from 'src/sdk/tests/mark'
 import { execute } from 'src/server'
@@ -100,7 +101,6 @@ export const getStaticProps: GetStaticProps<
   let pageResponse = await AudacityClient.getPage(`page/${pathSlug}`)
 
   // start validating parent page
-
   const parentSlug = pageResponse?.data?.parent?.slug?.['pt-BR']
 
   if (parentSlug && `${parentSlug}/${pathSlug}` !== pathSlug) {
@@ -108,8 +108,6 @@ export const getStaticProps: GetStaticProps<
       notFound: true,
     }
   }
-
-  // end validating parent page
 
   if (pageResponse.data?.page_type === 'category') {
     pageType = pageResponse.data.page_type
@@ -153,19 +151,13 @@ export const getStaticProps: GetStaticProps<
   pageData.page = pageResponse.data['pt-BR'].components ?? []
   pageData.themeConfigs = {
     colors: pageResponse.data.site?.colors,
+    favicon: pageResponse.data.site.seo['pt-BR']?.favicon,
   }
-  pageData.seo = {
-    title:
-      pageType === 'category' && data?.collection?.seo?.title
-        ? data?.collection?.seo?.title
-        : pageResponse.data['pt-BR'].seo?.title ||
-          pageResponse.data.site?.['pt-BR']?.seo?.title,
-    description:
-      pageType === 'category' && data?.collection?.seo?.description
-        ? data?.collection?.seo?.description
-        : pageResponse.data['pt-BR'].seo?.description ||
-          pageResponse.data.site?.['pt-BR']?.seo?.description,
-  }
+
+  pageData.seo = Utils.Formats.formatSeo({
+    collection: data?.collection,
+    page: pageResponse.data,
+  })
 
   return {
     props: { collection: data?.collection ?? null, pageData, pageType },

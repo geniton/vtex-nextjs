@@ -41,7 +41,8 @@ export const getStaticProps: GetStaticProps = async () => {
   pageData.footer = footer['pt-BR']?.data
   pageData.menus = menus?.data
   pageData.themeConfigs = {
-    colors: page?.site?.colors,
+    colors: page.site.colors,
+    favicon: page.site.seo['pt-BR']?.favicon,
   }
 
   return {

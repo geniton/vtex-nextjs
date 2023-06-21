@@ -140,12 +140,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     pageData.menus = responsePageData.menus.data
     pageData.themeConfigs = {
       colors: responsePageData.page.site.colors,
+      favicon: responsePageData.page.site.seo['pt-BR']?.favicon,
     }
 
     pageData.product = PRODUCT
 
     pageData.seo = {
-      title: PRODUCT?.productTitle || PRODUCT?.productName,
+      title: `${PRODUCT?.productTitle || PRODUCT?.productName} ${
+        responsePageData.page.site.seo['pt-BR']?.separator
+      } ${responsePageData.page.site.seo['pt-BR']?.title}`,
       description: PRODUCT?.metaTagDescription || PRODUCT?.description,
       canonical: `${storeConfig.storeUrl}/${PRODUCT?.linkText}/p`,
     }
@@ -161,8 +164,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       product: {
         ...VtexUtils.Product.getVariant(pageData.product, skuId),
-        productName: pageData.product.productName,
+        description: pageData.product.description,
         productId: pageData.product.productId,
+        productName: pageData.product.productName,
       },
       skuId,
       pageData,

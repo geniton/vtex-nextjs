@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import type { SearchState } from '@faststore/sdk'
 import type { GetStaticProps } from 'next/types'
 import AudacityClientApi from '@retailhub/audacity-client-api'
+import { Utils } from '@retailhub/audacity'
 
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import SROnly from 'src/components/ui/SROnly'
@@ -73,7 +74,7 @@ function Page({ pageData: { page, seo }, ...props }: Props) {
         noindex
         title={title}
         description={description}
-        titleTemplate={storeConfig.seo.titleTemplate}
+        titleTemplate={title}
         openGraph={{
           type: 'website',
           title,
@@ -112,7 +113,7 @@ export const getStaticProps: GetStaticProps = async () => {
     menus: [],
     themeConfigs: {},
     seo: {
-      title: 'Procurar Resultados',
+      title: '',
       description: '',
     },
   }
@@ -139,9 +140,12 @@ export const getStaticProps: GetStaticProps = async () => {
     pageData.menus = menus.data
     pageData.themeConfigs = {
       colors: page.site.colors,
+      favicon: page.site.seo['pt-BR']?.favicon,
     }
-    pageData.seo.description =
-      page['pt-BR'].seo?.description || page.site?.['pt-BR']?.seo?.description
+
+    pageData.seo = Utils.Formats.formatSeo({
+      page,
+    })
   } catch ({ message }) {
     return {
       notFound: true,

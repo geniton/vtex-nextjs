@@ -5,6 +5,8 @@ import cn from 'classnames'
 import { Components, Utils } from '@retailhub/audacity'
 import { VtexComponents, VtexUtils } from '@retailhub/audacity-vtex'
 import type { SingleProductControls } from '@retailhub/audacity-vtex/src/components/single-product/model'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
@@ -24,8 +26,6 @@ import storeConfig from 'store.config'
 
 import styles from './product-details.module.scss'
 import Section from '../Section'
-import Link from 'next/link'
-import Image from 'next/image'
 
 interface Props {
   product: any
@@ -178,22 +178,24 @@ function ProductDetails({
   )
 
   function renderSimilarProducts() {
-    console.log('similarProducts', similarProducts)
     if (!similarProducts?.length) return <></>
 
     return (
       <section className={styles.fsProductSimilars}>
         <span>Produtos Similares</span>
         <ul>
-          {
-            similarProducts.map(({ items, linkText }: any) => (
-              <li key={`/${linkText}-${items[0]['itemId']}/p`}>
-                <Link href={`/${linkText}-${items[0]['itemId']}/p`}>
-                  <Image alt={items[0]['nameComplete']} width={42} height={34} src={items?.[0]?.images?.[0]?.imageUrl} />
-                </Link>
-              </li>
-            ))
-          }
+          {similarProducts.map(({ items, linkText }: any) => (
+            <li key={`/${linkText}-${items[0].itemId}/p`}>
+              <Link href={`/${linkText}-${items[0].itemId}/p`}>
+                <Image
+                  alt={items[0].nameComplete}
+                  width={42}
+                  height={34}
+                  src={items?.[0]?.images?.[0]?.imageUrl}
+                />
+              </Link>
+            </li>
+          ))}
         </ul>
       </section>
     )
@@ -262,9 +264,12 @@ function ProductDetails({
 
   async function getsimilarProducts() {
     try {
-      const { data } = await fetch(`/api/similar-products?id=${productId}`).then(response => response.json())
+      const { data } = await fetch(
+        `/api/similar-products?id=${productId}`
+      ).then((response) => response.json())
+
       setSimilarProducts(data)
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     }
   }
@@ -390,11 +395,7 @@ function ProductDetails({
                   data-fs-product-details-selectors
                 />
               )}
-              {
-                showSimilarProducts && (
-                  renderSimilarProducts()
-                )
-              }
+              {showSimilarProducts && renderSimilarProducts()}
               <section data-fs-product-details-values>
                 <div data-fs-product-details-prices>
                   {sellerActive.commertialOffer.ListPrice >

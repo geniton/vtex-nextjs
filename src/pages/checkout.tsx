@@ -55,6 +55,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     pageData.menus = menus.data
     pageData.themeConfigs = {
       colors: page.site.colors,
+      favicon: page.site.seo['pt-BR']?.favicon,
     }
   } catch ({ message }) {
     return {

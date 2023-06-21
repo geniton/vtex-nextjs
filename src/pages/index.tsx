@@ -1,6 +1,7 @@
 import type { GetStaticProps } from 'next'
 import { NextSeo, SiteLinksSearchBoxJsonLd } from 'next-seo'
 import AudacityClientApi from '@retailhub/audacity-client-api'
+import { Utils } from '@retailhub/audacity'
 
 import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
@@ -74,13 +75,12 @@ export const getStaticProps: GetStaticProps = async () => {
     pageData.menus = menus.data
     pageData.themeConfigs = {
       colors: page.site.colors,
+      favicon: page.site.seo['pt-BR']?.favicon,
     }
-    pageData.seo = {
-      title: page['pt-BR']?.seo?.title || page.site?.['pt-BR']?.seo?.title,
-      description:
-        page['pt-BR']?.seo?.description ||
-        page.site?.['pt-BR']?.seo?.description,
-    }
+
+    pageData.seo = Utils.Formats.formatSeo({
+      page,
+    })
   } catch ({ message }) {
     return {
       notFound: true,
