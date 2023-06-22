@@ -1,4 +1,4 @@
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
 import AudacityClientApi from '@retailhub/audacity-client-api'
 import { VtexUtils, Services } from '@retailhub/audacity-vtex'
@@ -89,7 +89,7 @@ function Page({ product, skuId, pageData: { page, seo } }: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const slug = (params?.slug as string) ?? ''
   const arr = slug.split('-')
   const skuId = String(arr.splice(arr.length - 1, 1)?.[0])
@@ -172,14 +172,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       pageData,
       pageType: 'page/product',
     },
-    revalidate: 30,
-  }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
   }
 }
 
