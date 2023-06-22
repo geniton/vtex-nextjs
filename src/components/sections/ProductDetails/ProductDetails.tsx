@@ -33,7 +33,7 @@ interface Props {
   controls: SingleProductControls
 }
 
-function getSpecificationHTML(data: any[]) {
+function renderSpecifications(data: any[]) {
   return `
   <table class="w-full" style="width:100%;">
     ${data
@@ -599,7 +599,7 @@ function ProductDetails({
                     <Components.AccordionItem
                       title="Especificações Técnicas"
                       showIcon
-                      content={getSpecificationHTML(additionalProperty)}
+                      content={renderSpecifications(additionalProperty)}
                     />
                   ) : null}
                 </>

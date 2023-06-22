@@ -155,6 +155,7 @@
       order: unset;
       padding: 0;
       background-color: unset;
+      grid-auto-rows: min-content;
     }
 
     [data-fs-product-card] { min-width: 100%; }
