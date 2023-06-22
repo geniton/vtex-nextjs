@@ -43,8 +43,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     pageData.footer = footer['pt-BR'].data
     pageData.menus = menus.data
     pageData.themeConfigs = {
-      colors: page.site.colors,
-      favicon: page.site.seo['pt-BR']?.favicon,
+      colors: page.site?.colors ?? null,
+      favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
     }
 
     if (

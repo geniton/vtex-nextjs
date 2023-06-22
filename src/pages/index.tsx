@@ -12,18 +12,20 @@ const AudacityClient = new AudacityClientApi({
 })
 
 function Page({ pageData: { page, seo } }: any) {
+  const { title, description } = seo ?? {}
+
   return (
     <>
       <NextSeo
-        title={seo.title}
-        description={seo.description}
-        titleTemplate={storeConfig.seo.titleTemplate}
+        title={title}
+        description={description}
+        titleTemplate={title}
         canonical={storeConfig.storeUrl}
         openGraph={{
           type: 'website',
           url: storeConfig.storeUrl,
-          title: seo.title,
-          description: seo.description,
+          title,
+          description,
         }}
       />
       <SiteLinksSearchBoxJsonLd
@@ -74,8 +76,8 @@ export const getStaticProps: GetStaticProps = async () => {
     pageData.footer = footer['pt-BR'].data
     pageData.menus = menus.data
     pageData.themeConfigs = {
-      colors: page.site.colors,
-      favicon: page.site.seo['pt-BR']?.favicon,
+      colors: page.site?.colors ?? null,
+      favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
     }
 
     pageData.seo = Utils.Formats.formatSeo({

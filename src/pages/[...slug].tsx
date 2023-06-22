@@ -23,17 +23,19 @@ interface Props extends ServerCollectionPageQueryQuery {
 }
 
 function Page({ pageData: { page, seo }, collection, ...props }: Props) {
+  const { title, description } = seo ?? {}
+
   return (
     <RenderDynamicPages
       components={page}
       collection={collection}
       seo={{
-        title: seo.title,
-        description: seo.description,
+        title,
+        description,
         openGraph: {
           type: 'website',
-          title: seo.title,
-          description: seo.description,
+          title,
+          description,
         },
       }}
       {...props}
@@ -150,8 +152,8 @@ export const getStaticProps: GetStaticProps<
   pageData.menus = menus.data?.data
   pageData.page = pageResponse.data['pt-BR'].components ?? []
   pageData.themeConfigs = {
-    colors: pageResponse.data.site?.colors,
-    favicon: pageResponse.data.site.seo['pt-BR']?.favicon,
+    colors: pageResponse.data.site?.colors ?? null,
+    favicon: pageResponse.data.site?.seo?.['pt-BR']?.favicon ?? null,
   }
 
   pageData.seo = Utils.Formats.formatSeo({

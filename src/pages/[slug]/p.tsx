@@ -139,8 +139,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     pageData.footer = responsePageData.footer['pt-BR'].data
     pageData.menus = responsePageData.menus.data
     pageData.themeConfigs = {
-      colors: responsePageData.page.site.colors,
-      favicon: responsePageData.page.site.seo['pt-BR']?.favicon,
+      colors: responsePageData.page.site?.colors ?? null,
+      favicon: responsePageData.page.site?.seo?.['pt-BR']?.favicon ?? null,
     }
 
     pageData.product = PRODUCT
