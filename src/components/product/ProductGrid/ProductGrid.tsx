@@ -24,6 +24,7 @@ function ProductGrid({
   page,
   pageSize,
   controls,
+  gridNumber,
   ...otherProps
 }: Props) {
   const parsedProducts = products.length
@@ -35,8 +36,9 @@ function ProductGrid({
   return (
     <VtexComponents.ProductGallerySkeleton
       loading={parsedProducts.length === 0}
+      gridNumber={gridNumber}
     >
-      <ul data-fs-product-grid className={styles.fsProductGrid}>
+      <ul data-fs-product-grid data-fs-product-grid-columns={gridNumber} className={styles.fsProductGrid}>
         {parsedProducts.map((product, idx: number) => (
           <li key={`${product.isVariantOf.cacheId}`}>
             <VtexComponents.ProductCard

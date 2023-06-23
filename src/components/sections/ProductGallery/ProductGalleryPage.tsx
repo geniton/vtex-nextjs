@@ -11,6 +11,7 @@ interface Props {
   title: string
   showSponsoredProducts?: boolean
   controls: any
+  gridNumber: number
 }
 
 function GalleryPage({

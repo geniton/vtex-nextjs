@@ -1,6 +1,6 @@
 import { useSearch } from '@faststore/sdk'
 import { NextSeo } from 'next-seo'
-import { lazy, memo, Suspense } from 'react'
+import { lazy, memo, Suspense, useState } from 'react'
 import type { MouseEvent } from 'react'
 import cn from 'classnames'
 import { VtexComponents } from '@retailhub/audacity-vtex'
@@ -31,7 +31,14 @@ interface Props {
   content: any
 }
 
-function ProductGallery({ title, searchTerm, controls, content, ...props }: Props) {
+function ProductGallery({
+  title,
+  searchTerm,
+  controls,
+  content,
+  ...props
+}: Props) {
+  const [gridNumber, setGridNumber] = useState<number>(2)
   const { openFilter } = useUI()
   const { pages, addNextPage, addPrevPage } = useSearch()
   const { emptyGallery } = content ?? {}
@@ -40,6 +47,10 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
   const facets = useDelayedFacets(data)
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = useDelayedPagination(totalCount)
+
+  function updateGrid(value: React.SetStateAction<number>) {
+    setGridNumber(value)
+  }
 
   useProductsPrefetch(prev ? prev.cursor : null)
   useProductsPrefetch(next ? next.cursor : null)
@@ -55,7 +66,12 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
         }}
       >
         <div className="container">
-          <EmptyGallery emptyGallery={emptyGallery || "<h2>OOPS!</h2></br><p>Nenhum produto foi encontrado</p>"}/>
+          <EmptyGallery
+            emptyGallery={
+              emptyGallery ||
+              '<h2>OOPS!</h2></br><p>Nenhum produto foi encontrado</p>'
+            }
+          />
         </div>
       </Section>
     )
@@ -138,6 +154,7 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
           </div>
 
           <div data-fs-product-listing-results>
+            <Components.GridView grid={gridNumber} onChangeGrid={updateGrid} />
             {/* Add link to previous page. This helps on SEO */}
             {prev !== false && (
               <div data-fs-product-listing-pagination="top">
@@ -178,6 +195,7 @@ function ProductGallery({ title, searchTerm, controls, content, ...props }: Prop
                     showSponsoredProducts={false}
                     page={page}
                     title={title}
+                    gridNumber={gridNumber}
                     {...props}
                   />
                 ))}

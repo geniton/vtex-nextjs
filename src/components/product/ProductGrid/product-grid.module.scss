@@ -22,15 +22,30 @@
   grid-template-columns: repeat(var(--fs-product-grid-columns-mobile), 1fr);
   grid-gap: var(--fs-product-grid-gap-mobile);
   grid-template-rows: max-content;
+  grid-column: 12 span / 12;
 
   article[class*='product-card'] {
     margin: 0;
   }
 
+  &[data-fs-product-grid-columns="1"] {
+    grid-template-columns: 1fr;
+  }
+
+  &[data-fs-product-grid-columns="2"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &[data-fs-product-grid-columns="3"] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &[data-fs-product-grid-columns="4"] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   @include media(">=tablet") {
     $pagination-start-index: 2;
-
-    grid-template-columns: repeat(var(--fs-product-grid-columns-desktop), 1fr);
     grid-gap: var(--fs-product-grid-gap-tablet);
 
     &:nth-of-type(n + #{$pagination-start-index}) {

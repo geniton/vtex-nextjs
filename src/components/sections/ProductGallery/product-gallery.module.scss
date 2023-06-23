@@ -208,6 +208,7 @@
   [data-fs-product-listing-pagination="bottom"] {
     margin-top: var(--padding);
     align-self: flex-end;
+    grid-column: 12 span / 12;
   }
 
   [data-fs-product-listing-empty] {
