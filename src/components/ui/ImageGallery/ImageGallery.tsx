@@ -1,7 +1,7 @@
 import { VtexComponents } from '@retailhub/audacity-vtex'
 
 import styles from 'src/components/ui/ImageGallery/image-gallery.module.scss'
-import { VtexHooks } from 'src/utils'
+import { NextjsHooks, VtexHooks } from 'src/utils'
 
 import Share from '../Share'
 
@@ -32,7 +32,11 @@ function ImageGallery({
   return (
     <section className={styles.fsImageGallery}>
       <div data-fs-image-gallery-share>
-        <VtexComponents.Like VtexHooks={VtexHooks} skuId={skuId} />
+        <VtexComponents.Like
+          VtexHooks={VtexHooks}
+          NextjsHooks={NextjsHooks}
+          skuId={skuId}
+        />
         <Share productUrl={productUrl} />
       </div>
       <VtexComponents.SingleProductGallery
