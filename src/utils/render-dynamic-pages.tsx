@@ -14,14 +14,18 @@ type Props = {
   pageType: string
 }
 
-const RenderDynamicPages: React.FC<Props & any> = ({ pageType, ...props }) => {
+const RenderDynamicPages: React.FC<Props & any> = ({
+  pageType,
+  seo,
+  ...props
+}) => {
   const pageProps = {
     ...props,
     storeConfig,
     ...VARIABLES,
   }
 
-  const { storeUrl, seo } = storeConfig
+  const { storeUrl } = storeConfig
 
   const RenderComponents = () => <Components {...pageProps} />
 
@@ -29,7 +33,7 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageType, ...props }) => {
     <NextSeo
       title={seo.title}
       description={seo.description}
-      titleTemplate={seo.titleTemplate}
+      titleTemplate={seo.title}
       canonical={storeUrl}
       openGraph={{
         type: 'website',
@@ -60,7 +64,7 @@ const RenderDynamicPages: React.FC<Props & any> = ({ pageType, ...props }) => {
         </SearchProvider>
       )
     },
-    "landing-page": () => (
+    'landing-page': () => (
       <>
         <Seo />
         <SiteLinksSearchBoxJsonLd

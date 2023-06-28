@@ -23,21 +23,11 @@ interface Props extends ServerCollectionPageQueryQuery {
 }
 
 function Page({ pageData: { page, seo }, collection, ...props }: Props) {
-  const { title, description } = seo ?? {}
-
   return (
     <RenderDynamicPages
+      seo={seo}
       components={page}
       collection={collection}
-      seo={{
-        title,
-        description,
-        openGraph: {
-          type: 'website',
-          title,
-          description,
-        },
-      }}
       {...props}
     />
   )
