@@ -100,7 +100,10 @@ export const getStaticProps: GetStaticProps<
   // start validating parent page
   const parentSlug = pageResponse?.data?.parent?.['pt-BR']?.slug
 
-  if (parentSlug && `${parentSlug}/${lastPartSlug}` !== pathSlug) {
+  if (
+    (slug.length >= 2 && !parentSlug) ||
+    (parentSlug && `${parentSlug}/${lastPartSlug}` !== pathSlug)
+  ) {
     return {
       notFound: true,
     }
