@@ -101,7 +101,7 @@ export const getStaticProps: GetStaticProps<
   const parentSlug = pageResponse?.data?.parent?.['pt-BR']?.slug
 
   if (
-    (slug.length >= 2 && !parentSlug) ||
+    (slug.length >= 2 && !parentSlug && !data) ||
     (parentSlug && `${parentSlug}/${lastPartSlug}` !== pathSlug)
   ) {
     return {
