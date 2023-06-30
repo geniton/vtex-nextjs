@@ -68,6 +68,7 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
   const slug: any = params?.slug
   const pathSlug = slug.join('/')
+  const lastPartSlug = slug.at(-1)
   const { data } = await execute<
     ServerCollectionPageQueryQueryVariables,
     ServerCollectionPageQueryQuery
@@ -90,28 +91,18 @@ export const getStaticProps: GetStaticProps<
     },
   }
 
-  let pageResponse = await AudacityClient.getPage(`page/${pathSlug}`)
-
-  // start validating parent page
-  const parentSlug = pageResponse?.data?.parent?.slug?.['pt-BR']
-
-  if (parentSlug && `${parentSlug}/${pathSlug}` !== pathSlug) {
-    return {
-      notFound: true,
-    }
-  }
+  let pageResponse = await AudacityClient.getPage(`page/${lastPartSlug}`)
 
   if (pageResponse.data?.page_type === 'category') {
-    pageType = pageResponse.data.page_type
+    pageType = 'category'
   }
 
-  if (pageResponse.data?.message?.includes('Resource not found') && !data) {
-    pageResponse = await AudacityClient.getPage(`page/${slug[slug.length - 1]}`)
+  // start validating parent page
+  const parentSlug = pageResponse?.data?.parent?.['pt-BR']?.slug
 
-    if (pageResponse.data?.message?.includes('Resource not found')) {
-      return {
-        notFound: true,
-      }
+  if (parentSlug && `${parentSlug}/${lastPartSlug}` !== pathSlug) {
+    return {
+      notFound: true,
     }
   }
 
