@@ -33,14 +33,14 @@ const useSearchParams = () => {
 
   useEffect(() => {
     const url = new URL(asPath, 'http://localhost')
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    const parameters = Object.fromEntries(urlSearchParams.entries())
     const searchState = parseSearchState(url)
-    
-    for (let key in params) {
+
+    for (const key in parameters) {
       searchState.selectedFacets.push({
         key,
-        value: params[key]
+        value: parameters[key],
       })
     }
 
