@@ -18,9 +18,10 @@ interface Props {
    * testing-library, and jest).
    */
   testId?: string
+  style?: any
 }
 
-function Filter({ facets: allFacets, testId = 'store-filter' }: Props) {
+function Filter({ facets: allFacets, testId = 'store-filter', style }: Props) {
   const filter = useFilter(allFacets)
   const { resetInfiniteScroll, state, setState } = useSearch()
   const { filter: displayFilter } = useUI()
@@ -44,13 +45,14 @@ function Filter({ facets: allFacets, testId = 'store-filter' }: Props) {
             })
             resetInfiniteScroll(0)
           }}
+          style={style}
           onAccordionChange={(index) =>
             dispatch({ type: 'toggleExpanded', payload: index })
           }
         />
       </div>
 
-      {displayFilter && <FilterSlider {...filter} testId={testId} />}
+      {displayFilter && <FilterSlider {...filter} testId={testId} style={style} />}
     </>
   )
 }

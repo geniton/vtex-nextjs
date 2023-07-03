@@ -58,10 +58,12 @@ export const useBuyButton = (item: CartItem | null) => {
       }
 
       if (goToCheckout && !cart.isValidating && cart.id) {
-        window.location.href = `${checkoutUrl}?orderFormId=${cart.id}`
+        setTimeout(() => {
+          window.location.href = `${checkoutUrl}?orderFormId=${cart.id}`
+        }, 500)
       }
     },
-    [code, item, openCart, cart]
+    [code, item, openCart, cart?.isValidating, cart?.id]
   )
 
   return {

@@ -96,7 +96,7 @@ function Page({ pageData: { page, seo }, ...props }: Props) {
         (not the HTML tag) before rendering it here.
       */}
 
-      <div className="container">
+      <div className="aud-container">
         <Breadcrumb name={searchParams?.term || ''} />
       </div>
 

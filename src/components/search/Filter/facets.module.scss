@@ -83,6 +83,38 @@
         padding-left: var(--fs-facets-accordion-item-panel-padding-left-notebook);
       }
     }
+
+    [data-fs-accordion-item-button-icon] {
+      height: 18px;
+      position: relative;
+      width: 12px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 2px;
+        display: flex;
+        background-color: var(--aud-primary);
+        justify-content: center;
+        align-items: center;
+        transition: 300ms all ease;
+      }
+
+      &:after {
+        transform: rotate(90deg);
+      }
+    }
+
+    [data-fs-accordion-item-button-opened="true"] {
+      &:after {
+        opacity: 0;
+      }
+    }
   }
 
   [data-fs-facets-list] {
@@ -109,9 +141,24 @@
     align-items: center;
     width: var(--fs-facets-list-item-label-width);
     margin-left: var(--fs-facets-list-item-label-margin-left);
+    color: var(--aud-text-base);
   }
 
   [data-fs-facets-list-item-badge] {
     margin-left: var(--fs-facets-list-item-badge-margin-left);
+    [data-fs-badge-wrapper] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--aud-beige);
+      padding: 5px;
+      min-width: 22px;
+
+      @include media('>=notebook') {
+        background-color: white;
+        color: var(--aud-primary);
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+      }
+    }
   }
 }

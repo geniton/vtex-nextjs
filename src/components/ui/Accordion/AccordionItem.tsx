@@ -2,13 +2,10 @@ import type { AccordionItemProps } from '@faststore/ui'
 import {
   AccordionButton as UIAccordionButton,
   AccordionItem as UIAccordionItem,
-  AccordionPanel as UIAccordionPanel,
-  Icon as UIIcon,
+  AccordionPanel as UIAccordionPanel
 } from '@faststore/ui'
 import { forwardRef } from 'react'
 import type { ReactNode } from 'react'
-
-import Icon from 'src/components/ui/Icon'
 
 type Props = Omit<AccordionItemProps<'article' | 'div'>, 'ref'> & {
   /**
@@ -19,6 +16,7 @@ type Props = Omit<AccordionItemProps<'article' | 'div'>, 'ref'> & {
    * Label for Accordion button
    */
   buttonLabel?: ReactNode
+  style?: any
 }
 
 const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
@@ -29,6 +27,7 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
     buttonLabel = '',
     testId = 'store-accordion-item',
     as,
+    style,
     ...otherProps
   },
   ref
@@ -40,6 +39,10 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
       data-testid={`${testId}-item`}
       data-fs-accordion-item
       as={as}
+      style={{
+        color: style?.textColor,
+        borderColor: style?.borderColor
+      }}
       {...otherProps}
     >
       <UIAccordionButton
@@ -48,25 +51,10 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
         data-testid={`${testId}-button`}
       >
         {buttonLabel}
-        <UIIcon
+        <i
           data-testid={`${testId}-button-icon`}
           data-fs-accordion-item-button-icon
-          component={
-            <>
-              <Icon
-                data-icon={isExpanded ? 'expanded' : true}
-                name="MinusCircle"
-                width={24}
-                height={24}
-              />
-              <Icon
-                data-icon={isExpanded ? true : 'collapsed'}
-                name="PlusCircle"
-                width={24}
-                height={24}
-              />
-            </>
-          }
+          data-fs-accordion-item-button-opened={isExpanded}
         />
       </UIAccordionButton>
       <UIAccordionPanel

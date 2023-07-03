@@ -1,5 +1,5 @@
 import { sendAnalyticsEvent } from '@faststore/sdk'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useEffect, useMemo, useRef, useState } from 'react'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import cn from 'classnames'
 import { Components, Utils } from '@retailhub/audacity'
@@ -66,6 +66,7 @@ function ProductDetails({
       buyNowBtnText,
       addProductInformationBelowBuybox,
       showSimilarProducts,
+      similarProductsTitle,
       mobileVariations,
       deskVariations,
       galleryWithCarousel,
@@ -178,11 +179,11 @@ function ProductDetails({
   )
 
   function renderSimilarProducts() {
-    if (!similarProducts?.length) return <></>
+    if (!similarProducts?.length || !showSimilarProducts) return <></>
 
     return (
       <section className={styles.fsProductSimilars}>
-        <span>Produtos Similares</span>
+        <span>{similarProductsTitle}</span>
         <ul>
           {similarProducts.map(({ items, linkText }: any) => (
             <li key={`/${linkText}-${items[0].itemId}/p`}>
@@ -310,7 +311,9 @@ function ProductDetails({
   }, [sellerActive])
 
   useEffect(() => {
-    getsimilarProducts()
+    if (showSimilarProducts) {
+      getsimilarProducts()
+    }
   }, [])
 
   if (!sellerActive) return null
@@ -387,6 +390,7 @@ function ProductDetails({
               data-fs-product-details-section
               data-fs-product-details-section-full={sellers.length <= 1}
             >
+              {renderSimilarProducts()}
               {skuVariants && (
                 <Selectors
                   slugsMap={skuVariants.slugsMap}
@@ -395,7 +399,6 @@ function ProductDetails({
                   data-fs-product-details-selectors
                 />
               )}
-              {showSimilarProducts && renderSimilarProducts()}
               <section data-fs-product-details-values>
                 <div data-fs-product-details-prices>
                   {sellerActive.commertialOffer.ListPrice >
@@ -676,4 +679,4 @@ function AddToCartLoadingSkeleton() {
   )
 }
 
-export default ProductDetails
+export default memo(ProductDetails)

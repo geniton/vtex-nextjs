@@ -31,6 +31,7 @@ const Badge = ({
   onClose,
   big = false,
   actionable = false,
+  style,
   ...otherProps
 }: Props) => {
   return (
@@ -49,7 +50,10 @@ const Badge = ({
           iconPosition="left"
         />
       )}
-      <div data-fs-badge-wrapper>
+      <div data-fs-badge-wrapper style={{
+        backgroundColor: style?.backgroundColor,
+        color: style?.color
+      }}>
         <span>{children}</span>
       </div>
     </UIBadge>

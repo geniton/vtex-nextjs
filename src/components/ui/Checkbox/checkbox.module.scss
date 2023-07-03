@@ -12,7 +12,7 @@
   --fs-checkbox-border-width                 : var(--fs-border-width);
   --fs-checkbox-border-radius                : var(--fs-border-radius);
   --fs-checkbox-border-color                 : var(--fs-border-color);
-  --fs-checkbox-border-color-hover           : var(--fs-border-color-active);
+  --fs-checkbox-border-color-hover           : var(--aud-primary);
 
   --fs-checkbox-transition                   : border var(--fs-transition-timing) var(--fs-transition-function), background-color var(--fs-transition-timing) var(--fs-transition-function), box-shadow var(--fs-transition-timing) var(--fs-transition-function);
 
@@ -48,7 +48,7 @@
   width: var(--fs-checkbox-width);
   height: var(--fs-checkbox-height);
   cursor: pointer;
-  border: var(--fs-checkbox-border-width) solid var(--fs-checkbox-border-color);
+  border: var(--fs-checkbox-border-width) solid var(--aud-primary);
   border-radius: var(--fs-checkbox-border-radius);
   outline: none;
   transition: var(--fs-checkbox-transition);
@@ -76,7 +76,7 @@
   }
 
   &:checked {
-    background-color: var(--fs-checkbox-checked-bkg-color);
+    background-color: var(--aud-primary);
     border: none;
 
     &::before {

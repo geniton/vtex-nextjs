@@ -65,7 +65,7 @@ function ProductGallery({
           paddingTop: 0,
         }}
       >
-        <div className="container">
+        <div className="aud-container">
           <EmptyGallery
             emptyGallery={
               emptyGallery ||
@@ -102,7 +102,7 @@ function ProductGallery({
         <div data-fs-product-listing-content-grid className="layout__content">
           <div data-fs-product-listing-filters>
             <VtexComponents.FilterSkeleton loading={facets?.length === 0}>
-              <Filter facets={facets} />
+              <Filter facets={facets} style={controls.style.filterStyle}/>
             </VtexComponents.FilterSkeleton>
           </div>
 

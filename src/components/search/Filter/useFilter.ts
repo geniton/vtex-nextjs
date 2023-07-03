@@ -30,18 +30,19 @@ type Action =
 const reducer = (state: State, action: Action) => {
   const { expanded, selected } = state
   const { type, payload } = action
-
+  const newExpanded = new Set(expanded)
+  
   switch (type) {
-    case 'toggleExpanded': {
-      if (expanded.has(payload)) {
-        expanded.delete(payload)
+    case 'toggleExpanded': {  
+      if (newExpanded.has(payload)) {
+        newExpanded.delete(payload)
       } else {
-        expanded.add(payload)
+        newExpanded.add(payload)
       }
 
       return {
         ...state,
-        expanded: new Set(expanded),
+        expanded: new Set(newExpanded),
       }
     }
 

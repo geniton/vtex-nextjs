@@ -62,6 +62,9 @@ export default function Select({
         width={18}
         height={18}
         weight="bold"
+        style={{
+          color: 'var(--aud-text-base)'
+        }}
       />
     </div>
   )

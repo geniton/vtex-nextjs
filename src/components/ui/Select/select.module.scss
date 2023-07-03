@@ -9,7 +9,7 @@
   --fs-select-height                      : var(--fs-spacing-6);
   --fs-select-min-height                  : var(--fs-control-tap-size);
   --fs-select-padding                     : var(--fs-spacing-1) var(--fs-spacing-5) var(--fs-spacing-1) var(--fs-spacing-2);
-  --fs-select-text-color                  : var(--fs-color-link);
+  --fs-select-text-color                  : var(--aud-text-base);
   --fs-select-border-radius               : var(--fs-border-radius);
 
   --fs-select-bkg                         : transparent;
@@ -21,11 +21,11 @@
   --fs-select-transition-function         : var(--fs-transition-function);
 
   // Label
-  --fs-select-label-color                 : var(--fs-color-text-light);
+  --fs-select-label-color                 : var(--aud-text-base);
   --fs-select-label-margin-right          : var(--fs-spacing-1);
 
   // Icon
-  --fs-select-icon-color                  : var(--fs-color-link);
+  --fs-select-icon-color                  : var(--aud-text-base);
   --fs-select-icon-position-right         : var(--fs-spacing-2);
 
   // Disabled
@@ -38,7 +38,7 @@
 
   select {
     padding: var(--fs-select-padding);
-    color: var(--fs-select-text-color);
+    color: var(--aud-text-base);
     background: var(--fs-select-bkg);
     border: 0;
     border-radius: var(--fs-select-border-radius);
@@ -46,8 +46,6 @@
     transition: var(--fs-select-transition-property) var(--fs-select-transition-timing) var(--fs-select-transition-function);
     appearance: none;
     cursor: pointer;
-
-    @include focus-ring-visible;
 
     // &:focus { background-color: var(--fs-select-bkg-color-focus); }
 
@@ -67,7 +65,7 @@
 
   [data-fs-select-label] {
     margin-right: var(--fs-select-label-margin-right);
-    color: var(--fs-select-label-color);
+    color: var(--aud-text-base);
   }
 
   [data-fs-select-icon] {

@@ -21,6 +21,7 @@ interface Props {
    * testing-library, and jest).
    */
   testId?: string
+  style?: any
 }
 
 function FilterSlider({
@@ -29,6 +30,7 @@ function FilterSlider({
   dispatch,
   expanded,
   selected,
+  style
 }: Props & ReturnType<typeof useFilter>) {
   const { closeFilter } = useUI()
   const { fade, fadeOut } = useFadeEffect()
@@ -47,11 +49,15 @@ function FilterSlider({
     >
       <div data-fs-filter-slider-content>
         <header data-fs-filter-slider-header>
-          <h2 className="text__lead">Filtros</h2>
+          <h2 className="text__lead" style={{
+            color: style?.textColor
+          }}>Filtros</h2>
           <Button
             data-fs-filter-slider-header-icon
             aria-label="Fechar Filtros"
-            icon={<Icon name="X" width={32} height={32} />}
+            icon={<Icon name="X" width={32} height={32} style={{
+              color: 'var(--aud-primary)'
+            }}/>}
             onClick={() => {
               dispatch({
                 type: 'selectFacets',
@@ -74,6 +80,8 @@ function FilterSlider({
           onAccordionChange={(index) =>
             dispatch({ type: 'toggleExpanded', payload: index })
           }
+          isMobile
+          style={style}
         />
       </div>
       <footer data-fs-filter-slider-footer>

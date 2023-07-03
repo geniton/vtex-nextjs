@@ -38,6 +38,8 @@ interface FacetsProps {
    * This function is called when `Accordion` is expanded or collapsed.
    */
   onAccordionChange: (index: number) => void
+  style?: any
+  isMobile?: boolean
 }
 
 const formatRange = (min: number, max: number) =>
@@ -47,6 +49,8 @@ function Facets({
   testId,
   facets,
   indicesExpanded,
+  isMobile,
+  style,
   onFacetChange,
   onAccordionChange,
 }: FacetsProps) {
@@ -59,6 +63,10 @@ function Facets({
         expandedIndices={indicesExpanded}
         onChange={onAccordionChange}
         data-fs-facets-accordion
+        style={{
+          borderColor: style?.borderColor,
+          backgroundColor: !isMobile ? style?.bgColor : '',
+        }}
       >
         {facets.map((facet, index) => {
           const isExpanded = indicesExpanded.has(index)
@@ -73,6 +81,7 @@ function Facets({
               buttonLabel={label}
               data-type={type}
               data-fs-facets-accordion-item
+              style={style}
             >
               {type === 'StoreFacetBoolean' && isExpanded && (
                 <UIList data-fs-facets-list>
@@ -99,9 +108,18 @@ function Facets({
                           htmlFor={id}
                           className="text__title-mini-alt"
                           data-fs-facets-list-item-label
+                          style={{
+                            color: style?.textColor,
+                          }}
                         >
                           {item.label}{' '}
-                          <Badge data-fs-facets-list-item-badge>
+                          <Badge
+                            data-fs-facets-list-item-badge
+                            style={{
+                              backgroundColor: style?.quantityBgColor,
+                              color: style?.quantityColor,
+                            }}
+                          >
                             {item.quantity}
                           </Badge>
                         </UILabel>
