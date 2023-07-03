@@ -33,8 +33,18 @@ const useSearchParams = () => {
 
   useEffect(() => {
     const url = new URL(asPath, 'http://localhost')
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    const searchState = parseSearchState(url)
+    
+    for (let key in params) {
+      searchState.selectedFacets.push({
+        key,
+        value: params[key]
+      })
+    }
 
-    setParams(parseSearchState(url))
+    setParams(searchState)
   }, [asPath])
 
   return params
