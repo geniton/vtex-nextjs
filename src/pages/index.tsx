@@ -7,9 +7,7 @@ import { mark } from 'src/sdk/tests/mark'
 import storeConfig from 'store.config'
 import { RenderComponents } from 'src/utils'
 
-const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN,
-})
+const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
 
 function Page({ pageData: { page, seo } }: any) {
   const { title, description } = seo ?? {}

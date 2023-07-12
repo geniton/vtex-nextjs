@@ -1,4 +1,5 @@
 import { useSearch } from '@faststore/sdk'
+import { Style } from '@retailhub/audacity'
 
 import Select from 'src/components/ui/Select'
 
@@ -15,7 +16,11 @@ const OptionsMap = {
 
 const keys = Object.keys(OptionsMap) as Array<keyof typeof OptionsMap>
 
-function Sort() {
+interface ISort {
+  style: Style
+}
+
+function Sort({ style }: ISort) {
   const { state, setState } = useSearch()
 
   return (
@@ -35,6 +40,10 @@ function Sort() {
       }}
       value={state.sort}
       testId="search-sort"
+      style={{
+        backgroundColor: style?.bgColor,
+        color: style?.textColor
+      }}
     />
   )
 }

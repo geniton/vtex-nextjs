@@ -2646,17 +2646,17 @@
   resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.4.tgz#a04d63f4d1bf5540a41b01a921c9a7fddc3bd1ca"
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
-"@retailhub/audacity-client-api@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-client-api/-/audacity-client-api-0.0.6.tgz#afa9538467af4ca2bba4d788f1d6e2afde3ffe83"
-  integrity sha512-ZCZYfm//uhqbsoWHdiPEuYhuMuvk26jP82myGJUun6utjEp3RnscZcGp4aWSQ4VPeLPyVt3hQBNHZfAZn4Uo2g==
+"@retailhub/audacity-client-api@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-client-api/-/audacity-client-api-0.0.9.tgz#8bce83c1ca42a077abf78b28f4c22f9e1709df05"
+  integrity sha512-EZ/p2xFtMHJ7Duipee3kqbKVmRh+IByIEaz3HdSPJsGyqTeqnbS1o+6zOPKWAW8n+QtlI9QdC4Z/SYLMajKgkw==
   dependencies:
     axios "^1.4.0"
 
-"@retailhub/audacity-vtex@^0.0.166":
-  version "0.0.166"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.166.tgz#80c23b73fde5688e791e917eee7a9722de6c52ab"
-  integrity sha512-8eNLoy3GdVERddOZe+yLwZuEGb29IP53MwzlLD/jZk8ZVm9g2fCfWgmTTrMWFC0doBTFEnN/zHdgYdL/e3VGnw==
+"@retailhub/audacity-vtex@^0.0.168":
+  version "0.0.168"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.168.tgz#46469a437e777c772d448bb6fabebea932bbbc63"
+  integrity sha512-Ci6lrywnZQbGYqb9PfopEaHo94bqhtxYHelHIfg4lRa2RCYCZiSI0iT4D9xDdy5lDDKLDec25ZAZ0RT7R5zRvw==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
@@ -2667,10 +2667,10 @@
     react-use-scroll-position "^2.0.0"
     sweetalert2 "^11.7.3"
 
-"@retailhub/audacity@^0.0.149":
-  version "0.0.149"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.149.tgz#b53b36e5b174f75050a98087ef285cc9bbe50218"
-  integrity sha512-PBgK1X0uW7gpSiK52qimCiIcT4YIx0CY3oSF3tVM6FAchFoaIHMXPLoTTRauaN/y8miTPCKwQsuEZdeja+Mdpg==
+"@retailhub/audacity@^0.0.159":
+  version "0.0.159"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.159.tgz#a5b2d105f0c9fdd3cf75642d6fc8aa68e43a394d"
+  integrity sha512-qQH+sN4kXCg9NRvztCZFTbDRSoAxTmt7Qceix7drLzPpkeP+Y8uUhIUDJsUuVHp+HEzOUtljzOZf32RXJI8P+A==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"

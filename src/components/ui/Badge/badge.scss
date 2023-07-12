@@ -197,29 +197,8 @@
   }
 }
 
-[data-fs-discount-badge-variant="low"] {
-  color: var(--fs-badge-discount-low-text-color);
-
-  [data-fs-badge-wrapper] {
-    background-color: var(--fs-badge-discount-low-bkg-color);
-    border-color: var(--fs-badge-discount-low-border-color);
-
-    &::after {
-      background-color: var(--fs-badge-discount-low-bkg-color);
-    }
-  }
-}
-
-[data-fs-discount-badge-variant="medium"] {
-  color: var(--fs-badge-discount-medium-text-color);
-
-  [data-fs-badge-wrapper] {
-    background-color: var(--fs-badge-discount-medium-bkg-color);
-    border-color: var(--fs-badge-discount-medium-border-color);
-    &::after { background-color: var(--fs-badge-discount-medium-bkg-color); }
-  }
-}
-
+[data-fs-discount-badge-variant="low"],
+[data-fs-discount-badge-variant="medium"],
 [data-fs-discount-badge-variant="high"] {
   [data-fs-badge-wrapper] {
     color: white;

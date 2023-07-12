@@ -6,9 +6,7 @@ import AudacityClientApi from '@retailhub/audacity-client-api'
 
 import storeConfig from '../../store.config'
 
-const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN,
-})
+const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
 
 function Page() {
   useEffect(() => {

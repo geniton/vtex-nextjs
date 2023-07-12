@@ -9,9 +9,7 @@ import storeConfig from 'store.config'
 import { RenderComponents } from 'src/utils'
 import { useSession } from 'src/sdk/session'
 
-const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN,
-})
+const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
 
 interface Props {
   skuId: string
@@ -41,6 +39,7 @@ function Page({ product, skuId, pageData: { page, seo } }: Props) {
     <>
       <NextSeo
         title={title}
+        titleTemplate={title}
         description={description}
         canonical={canonical}
         openGraph={{
@@ -89,11 +88,15 @@ function Page({ product, skuId, pageData: { page, seo } }: Props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const slug = (params?.slug as string) ?? ''
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const slug = (query?.slug as string) ?? ''
   const arr = slug.split('-')
-  const skuId = String(arr.splice(arr.length - 1, 1)?.[0])
-  const newSlug = arr.join('-')
+  let skuId = query.idsku ?? arr.splice(arr.length - 1, 1)?.[0]
+  let newSlug = arr.join('-')
+
+  if (!skuId || !Number(skuId)) {
+    newSlug = slug
+  }
 
   const pageData = {
     header: null,
@@ -110,7 +113,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }
 
   try {
-    const [responsePageData, productData] = await Promise.all([
+    let [responsePageData, productData] = await Promise.all([
       AudacityClient.getAllPageData('page/product'),
       Services.getProduct({
         store: storeConfig.api.storeId,
@@ -119,6 +122,17 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         appToken: process.env.VTEX_APP_TOKEN || '',
       }),
     ])
+
+    if (!productData.data?.[0]) {
+      productData = await Services.getProduct({
+        store: storeConfig.api.storeId,
+        slug,
+        appKey: process.env.VTEX_APP_KEY || '',
+        appToken: process.env.VTEX_APP_TOKEN || '',
+      })
+
+      skuId = productData.data?.[0]?.items?.[0]?.itemId
+    }
 
     const PRODUCT = productData.data?.[0]
 
@@ -141,9 +155,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     pageData.themeConfigs = {
       colors: responsePageData.page.site?.colors ?? null,
       favicon: responsePageData.page.site?.seo?.['pt-BR']?.favicon ?? null,
+      scripts: responsePageData.page.site?.scripts ?? null,
     }
 
     pageData.product = PRODUCT
+
+    if (!skuId || !Number(skuId)) {
+      skuId = PRODUCT.items?.[0]?.itemId
+    }
 
     pageData.seo = {
       title: `${PRODUCT?.productTitle || PRODUCT?.productName} ${
@@ -163,7 +182,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
     props: {
       product: {
-        ...VtexUtils.Product.getVariant(pageData.product, skuId),
+        ...VtexUtils.Product.getVariant(pageData.product, skuId.toString()),
         description: pageData.product.description,
         productId: pageData.product.productId,
         productName: pageData.product.productName,

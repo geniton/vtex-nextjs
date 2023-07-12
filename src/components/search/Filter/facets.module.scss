@@ -150,15 +150,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--aud-beige);
       padding: 5px;
       min-width: 22px;
-
-      @include media('>=notebook') {
-        background-color: white;
-        color: var(--aud-primary);
-        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
-      }
+      background-color: white;
+      color: var(--aud-primary);
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     }
   }
 }

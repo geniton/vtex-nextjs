@@ -23,9 +23,7 @@ import {
 import storeConfig from 'store.config'
 import VARIABLES from 'config/variables.json'
 
-const AudacityClient = new AudacityClientApi({
-  token: process.env.AUDACITY_TOKEN,
-})
+const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
 
 const useSearchParams = () => {
   const [params, setParams] = useState<SearchState | null>(null)
@@ -35,13 +33,24 @@ const useSearchParams = () => {
     const url = new URL(asPath, 'http://localhost')
     const urlSearchParams = new URLSearchParams(window.location.search)
     const parameters = Object.fromEntries(urlSearchParams.entries())
-    const searchState = parseSearchState(url)
+    const searchState: any = parseSearchState(url)
+    const paramKeys = searchState?.selectedFacets?.length
+      ? searchState.selectedFacets.map(({ key }: { key: string }) => key)
+      : []
 
     for (const key in parameters) {
-      searchState.selectedFacets.push({
-        key,
-        value: parameters[key],
-      })
+      if (
+        key === 'productClusterIds' ||
+        key === 'c' ||
+        (key && key.includes('specificationFilter_'))
+      ) {
+        if (!paramKeys.includes(key)) {
+          searchState.selectedFacets.push({
+            key,
+            value: parameters[key],
+          })
+        }
+      }
     }
 
     setParams(searchState)

@@ -129,7 +129,7 @@ function ProductGallery({
               loading={facets?.length === 0}
               data-fs-product-listing-sort-skeleton
             >
-              <Sort />
+              <Sort style={controls.style.filterStyle} />
             </VtexComponents.Skeleton>
 
             <VtexComponents.Skeleton
@@ -154,7 +154,7 @@ function ProductGallery({
           </div>
 
           <div data-fs-product-listing-results>
-            <Components.GridView grid={gridNumber} onChangeGrid={updateGrid} />
+            <Components.GridView grid={gridNumber} onChangeGrid={(value: React.SetStateAction<number>) => updateGrid(value)} />
             {/* Add link to previous page. This helps on SEO */}
             {prev !== false && (
               <div data-fs-product-listing-pagination="top">

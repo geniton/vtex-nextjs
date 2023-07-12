@@ -11,8 +11,11 @@ import Layout from 'src/Layout'
 import AnalyticsHandler from 'src/sdk/analytics'
 import ErrorBoundary from 'src/sdk/error/ErrorBoundary'
 import UIProvider from 'src/sdk/ui/Provider'
+import { Components } from '@retailhub/audacity'
+import { NextjsComponents } from 'src/utils'
 
-function App({ Component, pageProps}: AppProps) {
+function App({ Component, pageProps }: AppProps) {
+  console.log('=>', pageProps.pageData?.themeConfigs?.scripts)
   return (
     <ErrorBoundary>
       <NextNProgress
@@ -20,6 +23,13 @@ function App({ Component, pageProps}: AppProps) {
         showOnShallow={false}
         options={{ showSpinner: false }}
       />
+
+      {pageProps.pageData?.themeConfigs?.scripts?.length ? (
+        <Components.Scripts
+          scripts={pageProps.pageData.themeConfigs.scripts}
+          NextjsComponents={NextjsComponents}
+        />
+      ) : null}
 
       <AnalyticsHandler />
 

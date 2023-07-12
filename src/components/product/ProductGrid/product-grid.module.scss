@@ -91,7 +91,8 @@
       height: 200px;
     }
     
-    div[class*='audv-relative audv-mt-auto audv-p-2.5'] {
+    div[class*='audv-relative audv-mt-auto audv-p-2.5'],
+    [class*='product-card__btn'] {
       grid-column: 13 span / 13;
       grid-column-start: 5;
 

@@ -149,15 +149,15 @@ function ProductDetails({
   )
 
   const buyDisabled = useMemo(
-    () => !sellerActive.commertialOffer.AvailableQuantity,
+    () => !sellerActive?.commertialOffer?.AvailableQuantity,
     [sellerActive]
   )
 
   const buyProps = useBuyButton({
     id: itemId,
-    price: sellerActive.commertialOffer.Price,
-    listPrice: sellerActive.commertialOffer.ListPrice,
-    seller: { identifier: sellerActive.sellerId },
+    price: sellerActive?.commertialOffer?.Price,
+    listPrice: sellerActive?.commertialOffer?.ListPrice,
+    seller: { identifier: sellerActive?.sellerId },
     quantity: addQuantity,
     itemOffered: {
       sku: itemId,
@@ -174,7 +174,7 @@ function ProductDetails({
   })
 
   const installmentPrices = useMemo(
-    () => VtexUtils.Product?.getInstallmentPrices(sellerActive.commertialOffer),
+    () => sellerActive?.commertialOffer ? VtexUtils.Product?.getInstallmentPrices(sellerActive?.commertialOffer) : [],
     [sellerActive]
   )
 
@@ -252,11 +252,11 @@ function ProductDetails({
           <h1> {title.length ? title.join('') : productName || variantName}</h1>
         }
         label={
-          <DiscountBadge
-            listPrice={sellerActive.commertialOffer.ListPrice}
-            spotPrice={sellerActive.commertialOffer.Price}
+          sellerActive?.commertialOffer?.ListPrice && sellerActive?.commertialOffer?.Price ? <DiscountBadge
+            listPrice={sellerActive?.commertialOffer?.ListPrice}
+            spotPrice={sellerActive?.commertialOffer?.Price}
             big
-          />
+          /> : null
         }
         refNumber={showProductReference ? gtin : ''}
       />
@@ -280,17 +280,17 @@ function ProductDetails({
       name: 'view_item',
       params: {
         currency: currency.code as CurrencyCode,
-        value: sellerActive.commertialOffer.Price,
+        value: sellerActive?.commertialOffer?.Price,
         items: [
           {
             item_id: productId,
             item_name: productName,
             item_brand: brand.name,
             item_variant: itemId,
-            price: sellerActive.commertialOffer.Price,
+            price: sellerActive?.commertialOffer?.Price,
             discount:
-              sellerActive.commertialOffer.ListPrice -
-              sellerActive.commertialOffer.Price,
+              sellerActive?.commertialOffer?.ListPrice -
+              sellerActive?.commertialOffer?.Price,
             currency: currency.code as CurrencyCode,
             item_variant_name: variantName,
             product_reference_id: gtin,
@@ -306,7 +306,7 @@ function ProductDetails({
 
   useEffect(() => {
     setInstallments(
-      VtexUtils.Product?.getProductInstallments(sellerActive.commertialOffer)
+      VtexUtils.Product?.getProductInstallments(sellerActive?.commertialOffer)
     )
   }, [sellerActive])
 
@@ -315,8 +315,6 @@ function ProductDetails({
       getsimilarProducts()
     }
   }, [])
-
-  if (!sellerActive) return null
 
   return (
     <Section
@@ -356,33 +354,38 @@ function ProductDetails({
             <header data-fs-product-details-title>{productTitle()}</header>
             {sellers.length >= 2 ? (
               <ul data-fs-product-details-seller-items>
-                {sellers.map((seller: any) => (
-                  <li data-fs-product-details-seller-item key={seller.sellerId}>
-                    <button
-                      data-fs-product-details-seller-btn
-                      data-fs-product-details-seller-btn-active={
-                        seller.sellerDefault
-                      }
-                      onClick={() => {
-                        setSellers(
-                          sellers.map((staleSeller: any) => ({
-                            ...staleSeller,
-                            sellerDefault:
-                              seller.sellerId === staleSeller.sellerId,
-                          }))
-                        )
-                      }}
+                {sellers.map((seller: any) =>
+                  seller.commertialOffer.Price ? (
+                    <li
+                      data-fs-product-details-seller-item
+                      key={seller.sellerId}
                     >
-                      {seller.sellerName}
-                      <Price
-                        value={seller.Price}
-                        formatter={useFormattedPrice}
-                        data-value={seller.Price}
-                        SRText="Original price:"
-                      />
-                    </button>
-                  </li>
-                ))}
+                      <button
+                        data-fs-product-details-seller-btn
+                        data-fs-product-details-seller-btn-active={
+                          seller.sellerDefault
+                        }
+                        onClick={() => {
+                          setSellers(
+                            sellers.map((staleSeller: any) => ({
+                              ...staleSeller,
+                              sellerDefault:
+                                seller.sellerId === staleSeller.sellerId,
+                            }))
+                          )
+                        }}
+                      >
+                        {seller.sellerName}
+                        <Price
+                          value={seller.Price}
+                          formatter={useFormattedPrice}
+                          data-value={seller.Price}
+                          SRText="Original price:"
+                        />
+                      </button>
+                    </li>
+                  ) : null
+                )}
               </ul>
             ) : null}
             <section
@@ -401,13 +404,13 @@ function ProductDetails({
               )}
               <section data-fs-product-details-values>
                 <div data-fs-product-details-prices>
-                  {sellerActive.commertialOffer.ListPrice >
-                    sellerActive.commertialOffer.Price && (
+                  {sellerActive?.commertialOffer?.ListPrice >
+                    sellerActive?.commertialOffer?.Price && (
                     <Price
-                      value={sellerActive.commertialOffer.ListPrice}
+                      value={sellerActive?.commertialOffer?.ListPrice}
                       formatter={useFormattedPrice}
                       testId="list-price"
-                      data-value={sellerActive.commertialOffer.ListPrice}
+                      data-value={sellerActive?.commertialOffer?.ListPrice}
                       variant="listing"
                       classes="text__legend"
                       SRText="Original price:"
@@ -420,10 +423,10 @@ function ProductDetails({
                     />
                   )}
                   <Price
-                    value={sellerActive.commertialOffer.Price}
+                    value={sellerActive?.commertialOffer?.Price}
                     formatter={useFormattedPrice}
                     testId="price"
-                    data-value={sellerActive.commertialOffer.Price}
+                    data-value={sellerActive?.commertialOffer?.Price}
                     variant="spot"
                     classes="text__lead"
                     SRText="Sale Price:"
@@ -500,7 +503,7 @@ function ProductDetails({
                 />
               ) : null}
 
-              {sellerActive.commertialOffer.AvailableQuantity ? (
+              {sellerActive?.commertialOffer?.AvailableQuantity ? (
                 <>
                   {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
                   non-composited animation violation due to the button transitioning its
@@ -579,7 +582,7 @@ function ProductDetails({
                     shippingItem={{
                       id: itemId,
                       quantity: addQuantity,
-                      seller: sellerActive.sellerId,
+                      seller: sellerActive?.sellerId,
                     }}
                   />
                 </>
