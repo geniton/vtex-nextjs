@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
     pageData.themeConfigs = {
       colors: page.site?.colors ?? null,
       favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
+      scripts: page.site?.scripts ?? null,
     }
   } catch ({ message }) {
     return {

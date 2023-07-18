@@ -136,6 +136,7 @@ export const getStaticProps: GetStaticProps<
   pageData.themeConfigs = {
     colors: pageResponse.data.site?.colors ?? null,
     favicon: pageResponse.data.site?.seo?.['pt-BR']?.favicon ?? null,
+    scripts: pageResponse.data.site?.scripts ?? null,
   }
 
   pageData.seo = Utils.Formats.formatSeo({

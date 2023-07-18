@@ -33,28 +33,6 @@ interface Props {
   controls: SingleProductControls
 }
 
-function renderSpecifications(data: any[]) {
-  return `
-  <table class="w-full" style="width:100%;">
-    ${data
-      .map(
-        (specificationItem: any, key: number) => `
-      <tr
-        key=${key}
-        style=${key % 2 ? 'background-color:#f1f2f3;' : ''}
-      >
-        <th class='text-left py-3 pl-4 font-normal'>
-          ${specificationItem.name}
-        </th>
-        <td class="text-right py-3 pr-4">${specificationItem.value}</td>
-      </tr>
-    `
-      )
-      .join('')}
-  </table>
-`
-}
-
 function ProductDetails({
   product,
   controls: {
@@ -66,6 +44,7 @@ function ProductDetails({
       buyNowBtnText,
       addProductInformationBelowBuybox,
       showSimilarProducts,
+      showPurchaseBar,
       similarProductsTitle,
       mobileVariations,
       deskVariations,
@@ -148,12 +127,12 @@ function ProductDetails({
     [sellers]
   )
 
-  const buyDisabled = useMemo(
+  const buyButtonDisabled = useMemo(
     () => !sellerActive?.commertialOffer?.AvailableQuantity,
     [sellerActive]
   )
 
-  const buyProps = useBuyButton({
+  const buyButtonProps = useBuyButton({
     id: itemId,
     price: sellerActive?.commertialOffer?.Price,
     listPrice: sellerActive?.commertialOffer?.ListPrice,
@@ -174,7 +153,10 @@ function ProductDetails({
   })
 
   const installmentPrices = useMemo(
-    () => sellerActive?.commertialOffer ? VtexUtils.Product?.getInstallmentPrices(sellerActive?.commertialOffer) : [],
+    () =>
+      sellerActive?.commertialOffer
+        ? VtexUtils.Product?.getInstallmentPrices(sellerActive?.commertialOffer)
+        : [],
     [sellerActive]
   )
 
@@ -252,11 +234,14 @@ function ProductDetails({
           <h1> {title.length ? title.join('') : productName || variantName}</h1>
         }
         label={
-          sellerActive?.commertialOffer?.ListPrice && sellerActive?.commertialOffer?.Price ? <DiscountBadge
-            listPrice={sellerActive?.commertialOffer?.ListPrice}
-            spotPrice={sellerActive?.commertialOffer?.Price}
-            big
-          /> : null
+          sellerActive?.commertialOffer?.ListPrice &&
+          sellerActive?.commertialOffer?.Price ? (
+            <DiscountBadge
+              listPrice={sellerActive?.commertialOffer?.ListPrice}
+              spotPrice={sellerActive?.commertialOffer?.Price}
+              big
+            />
+          ) : null
         }
         refNumber={showProductReference ? gtin : ''}
       />
@@ -266,7 +251,7 @@ function ProductDetails({
   async function getsimilarProducts() {
     try {
       const { data } = await fetch(
-        `/api/similar-products?id=${productId}`
+        `/api/vtex/similar-products?productId=${productId}`
       ).then((response) => response.json())
 
       setSimilarProducts(data)
@@ -317,310 +302,332 @@ function ProductDetails({
   }, [])
 
   return (
-    <Section
-      id="product-page"
-      className={`${styles.fsProductDetails} layout__content layout__section`}
-      product-id={productId}
-      sku-id={itemId}
-      style={{
-        margin: margins
-          ? `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`
-          : '',
-        padding: paddings
-          ? `${paddings.top}px ${paddings.right}px ${paddings.bottom}px ${paddings.left}px`
-          : '',
-      }}
-    >
-      <Components.Container
-        className={cn({
-          'mobile-only:p-0': mobileVariations?.full,
-          'md:p-0': deskVariations?.full,
-        })}
+    <>
+      <Section
+        id="product-page"
+        className={`${styles.fsProductDetails} layout__content layout__section`}
+        product-id={productId}
+        sku-id={itemId}
+        style={{
+          margin: margins
+            ? `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`
+            : '',
+          padding: paddings
+            ? `${paddings.top}px ${paddings.right}px ${paddings.bottom}px ${paddings.left}px`
+            : '',
+        }}
       >
-        <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
+        <Components.Container
+          className={cn({
+            'mobile-only:p-0': mobileVariations?.full,
+            'md:p-0': deskVariations?.full,
+          })}
+        >
+          <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
-        <section data-fs-product-details-body>
-          <ImageGallery
-            withCarousel={galleryWithCarousel}
-            imagesPerView={galleryImagesPerView}
-            thumbnailsPosition={galleryThumbnailsPosition}
-            withThumbnails={galleryWithThumbnails}
-            images={images}
-            skuId={itemId}
-            productUrl={`${storeConfig.storeUrl}${link}`}
-          />
+          <section data-fs-product-details-body>
+            <ImageGallery
+              withCarousel={galleryWithCarousel}
+              imagesPerView={galleryImagesPerView}
+              thumbnailsPosition={galleryThumbnailsPosition}
+              withThumbnails={galleryWithThumbnails}
+              images={images}
+              skuId={itemId}
+              productUrl={`${storeConfig.storeUrl}${link}`}
+            />
 
-          <section data-fs-product-details-info>
-            <header data-fs-product-details-title>{productTitle()}</header>
-            {sellers.length >= 2 ? (
-              <ul data-fs-product-details-seller-items>
-                {sellers.map((seller: any) =>
-                  seller.commertialOffer.Price ? (
-                    <li
-                      data-fs-product-details-seller-item
-                      key={seller.sellerId}
-                    >
-                      <button
-                        data-fs-product-details-seller-btn
-                        data-fs-product-details-seller-btn-active={
-                          seller.sellerDefault
-                        }
-                        onClick={() => {
-                          setSellers(
-                            sellers.map((staleSeller: any) => ({
-                              ...staleSeller,
-                              sellerDefault:
-                                seller.sellerId === staleSeller.sellerId,
-                            }))
-                          )
-                        }}
+            <section data-fs-product-details-info>
+              <header data-fs-product-details-title>{productTitle()}</header>
+              {sellers.length >= 2 ? (
+                <ul data-fs-product-details-seller-items>
+                  {sellers.map((seller: any) =>
+                    seller.commertialOffer.Price ? (
+                      <li
+                        data-fs-product-details-seller-item
+                        key={seller.sellerId}
                       >
-                        {seller.sellerName}
-                        <Price
-                          value={seller.Price}
-                          formatter={useFormattedPrice}
-                          data-value={seller.Price}
-                          SRText="Original price:"
-                        />
-                      </button>
-                    </li>
-                  ) : null
+                        <button
+                          data-fs-product-details-seller-btn
+                          data-fs-product-details-seller-btn-active={
+                            seller.sellerDefault
+                          }
+                          onClick={() => {
+                            setSellers(
+                              sellers.map((staleSeller: any) => ({
+                                ...staleSeller,
+                                sellerDefault:
+                                  seller.sellerId === staleSeller.sellerId,
+                              }))
+                            )
+                          }}
+                        >
+                          {seller.sellerName}
+                          <Price
+                            value={seller.Price}
+                            formatter={useFormattedPrice}
+                            data-value={seller.Price}
+                            SRText="Original price:"
+                          />
+                        </button>
+                      </li>
+                    ) : null
+                  )}
+                </ul>
+              ) : null}
+              <section
+                data-fs-product-details-settings
+                data-fs-product-details-section
+                data-fs-product-details-section-full={sellers.length <= 1}
+              >
+                {renderSimilarProducts()}
+                {skuVariants && (
+                  <Selectors
+                    slugsMap={skuVariants.slugsMap}
+                    availableVariations={skuVariants.availableVariations}
+                    activeVariations={skuVariants.activeVariations}
+                    data-fs-product-details-selectors
+                  />
                 )}
-              </ul>
-            ) : null}
-            <section
-              data-fs-product-details-settings
-              data-fs-product-details-section
-              data-fs-product-details-section-full={sellers.length <= 1}
-            >
-              {renderSimilarProducts()}
-              {skuVariants && (
-                <Selectors
-                  slugsMap={skuVariants.slugsMap}
-                  availableVariations={skuVariants.availableVariations}
-                  activeVariations={skuVariants.activeVariations}
-                  data-fs-product-details-selectors
-                />
-              )}
-              <section data-fs-product-details-values>
-                <div data-fs-product-details-prices>
-                  {sellerActive?.commertialOffer?.ListPrice >
-                    sellerActive?.commertialOffer?.Price && (
+                <section data-fs-product-details-values>
+                  <div data-fs-product-details-prices>
+                    {sellerActive?.commertialOffer?.ListPrice >
+                      sellerActive?.commertialOffer?.Price && (
+                      <Price
+                        value={sellerActive?.commertialOffer?.ListPrice}
+                        formatter={useFormattedPrice}
+                        testId="list-price"
+                        data-value={sellerActive?.commertialOffer?.ListPrice}
+                        variant="listing"
+                        classes="text__legend"
+                        SRText="Original price:"
+                        style={{
+                          fontSize: priceFromFontSize
+                            ? `${priceFromFontSize}px`
+                            : '',
+                          color: priceFromColor,
+                        }}
+                      />
+                    )}
                     <Price
-                      value={sellerActive?.commertialOffer?.ListPrice}
+                      value={sellerActive?.commertialOffer?.Price}
                       formatter={useFormattedPrice}
-                      testId="list-price"
-                      data-value={sellerActive?.commertialOffer?.ListPrice}
-                      variant="listing"
-                      classes="text__legend"
-                      SRText="Original price:"
+                      testId="price"
+                      data-value={sellerActive?.commertialOffer?.Price}
+                      variant="spot"
+                      classes="text__lead"
+                      SRText="Sale Price:"
                       style={{
-                        fontSize: priceFromFontSize
-                          ? `${priceFromFontSize}px`
+                        fontSize: pricePerFontSize
+                          ? `${pricePerFontSize}px`
                           : '',
-                        color: priceFromColor,
+                        color: pricePerColor,
                       }}
                     />
-                  )}
-                  <Price
-                    value={sellerActive?.commertialOffer?.Price}
-                    formatter={useFormattedPrice}
-                    testId="price"
-                    data-value={sellerActive?.commertialOffer?.Price}
-                    variant="spot"
-                    classes="text__lead"
-                    SRText="Sale Price:"
-                    style={{
-                      fontSize: pricePerFontSize ? `${pricePerFontSize}px` : '',
-                      color: pricePerColor,
-                    }}
-                  />
-                </div>
-                {/* <div className="prices">
+                  </div>
+                  {/* <div className="prices">
                   <p className="price__old text__legend">{formattedListPrice}</p>
                   <p className="price__new">{isValidating ? '' : formattedPrice}</p>
                 </div> */}
-              </section>
+                </section>
 
-              {installments?.NumberOfInstallments > 1 && (
-                <div data-fs-product-details-installments>
-                  <svg
-                    fill="#89532f"
-                    version="1.1"
-                    width={20}
-                    height={20}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    enableBackground="new 0 0 24 24"
-                  >
-                    <g>
-                      <g>
-                        <g>
-                          <path d="M23,20H1c-0.6,0-1-0.4-1-1V5c0-0.6,0.4-1,1-1h22c0.6,0,1,0.4,1,1v14C24,19.6,23.6,20,23,20z M2,18h20V6H2V18z" />
-                        </g>
-                      </g>
-                      <g>
-                        <g>
-                          <path d="M23,10H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,10,23,10z" />
-                        </g>
-                      </g>
-                      <g>
-                        <g>
-                          <path d="M23,12H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,12,23,12z" />
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                  <div data-fs-product-details-installments-content>
-                    <span>
-                      ou{' '}
-                      {`${Utils.Formats?.formatPrice(
-                        installments.TotalValuePlusInterestRate
-                      )}`}{' '}
-                      em até{' '}
-                      <strong>{`${installments.NumberOfInstallments}x`}</strong>{' '}
-                      de{' '}
-                      <strong>
-                        {Utils.Formats?.formatPrice(installments?.Value)}
-                      </strong>{' '}
-                      {installments.InterestRate === 0 && '(sem juros)'}
-                    </span>
-                    <button
-                      data-fs-product-details-methods-btn
-                      onClick={() => setInstallmentsModal(true)}
+                {installments?.NumberOfInstallments > 1 && (
+                  <div data-fs-product-details-installments>
+                    <svg
+                      fill="#89532f"
+                      version="1.1"
+                      width={20}
+                      height={20}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      enableBackground="new 0 0 24 24"
                     >
-                      Mais formas de pagamento
-                    </button>
+                      <g>
+                        <g>
+                          <g>
+                            <path d="M23,20H1c-0.6,0-1-0.4-1-1V5c0-0.6,0.4-1,1-1h22c0.6,0,1,0.4,1,1v14C24,19.6,23.6,20,23,20z M2,18h20V6H2V18z" />
+                          </g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M23,10H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,10,23,10z" />
+                          </g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M23,12H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,12,23,12z" />
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <div data-fs-product-details-installments-content>
+                      <span>
+                        ou{' '}
+                        {`${Utils.Formats?.formatPrice(
+                          installments.TotalValuePlusInterestRate
+                        )}`}{' '}
+                        em até{' '}
+                        <strong>{`${installments.NumberOfInstallments}x`}</strong>{' '}
+                        de{' '}
+                        <strong>
+                          {Utils.Formats?.formatPrice(installments?.Value)}
+                        </strong>{' '}
+                        {installments.InterestRate === 0 && '(sem juros)'}
+                      </span>
+                      <button
+                        data-fs-product-details-methods-btn
+                        onClick={() => setInstallmentsModal(true)}
+                      >
+                        Mais formas de pagamento
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {installmentPrices?.length ? (
-                <VtexComponents.InstallmentsModal
-                  isOpen={installmentsModal}
-                  installmentPrices={installmentPrices}
-                  onClose={() => setInstallmentsModal(false)}
-                />
-              ) : null}
+                {installmentPrices?.length ? (
+                  <VtexComponents.InstallmentsModal
+                    isOpen={installmentsModal}
+                    installmentPrices={installmentPrices}
+                    onClose={() => setInstallmentsModal(false)}
+                  />
+                ) : null}
 
-              {sellerActive?.commertialOffer?.AvailableQuantity ? (
-                <>
-                  {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
+                {sellerActive?.commertialOffer?.AvailableQuantity ? (
+                  <>
+                    {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
                   non-composited animation violation due to the button transitioning its
                   background color when changing from its initial disabled to active state.
                   See full explanation on commit https://git.io/JyXV5. */}
-                  <div data-fs-product-details-wrapper>
-                    <QuantitySelector
-                      min={1}
-                      max={10}
-                      onChange={setAddQuantity}
-                    />
-                    <div data-fs-product-details-buttons-wrapper>
-                      {isValidating ? (
-                        <AddToCartLoadingSkeleton />
-                      ) : (
-                        <>
-                          <ButtonBuy
-                            disabled={buyDisabled}
-                            style={{
-                              backgroundColor: buyButtonBgColor,
-                              color: buyButtonTextColor,
-                              borderWidth: buyButtonBorderWidth
-                                ? `${buyButtonBorderWidth}px`
-                                : '',
-                              borderColor: buyButtonBorderColor,
-                              borderRadius: buyButtonCornerRounding
-                                ? `${buyButtonCornerRounding.top}px ${buyButtonCornerRounding.right}px ${buyButtonCornerRounding.bottom}px ${buyButtonCornerRounding.left}px`
-                                : '',
-                            }}
-                            {...buyProps}
-                            onMouseEnter={() =>
-                              handleHoverButton('enter', 'buyButton')
-                            }
-                            onMouseLeave={() =>
-                              handleHoverButton('leave', 'buyButton')
-                            }
-                            ref={buyButtonReference}
-                          >
-                            Adicionar
-                          </ButtonBuy>
-                          {buyNowBtn && (
+                    <div data-fs-product-details-wrapper>
+                      <QuantitySelector
+                        min={1}
+                        max={10}
+                        initial={addQuantity}
+                        onChange={setAddQuantity}
+                      />
+                      <div data-fs-product-details-buttons-wrapper>
+                        {isValidating ? (
+                          <AddToCartLoadingSkeleton />
+                        ) : (
+                          <>
                             <ButtonBuy
-                              data-fs-button-variant="buy-now"
-                              disabled={buyDisabled}
-                              icon={false}
-                              goToCheckout
+                              disabled={buyButtonDisabled}
                               style={{
-                                backgroundColor: buyNowButtonBgColor,
-                                color: buyNowButtonTextColor,
-                                borderWidth: buyNowButtonBorderWidth
-                                  ? `${buyNowButtonBorderWidth}px`
+                                backgroundColor: buyButtonBgColor,
+                                color: buyButtonTextColor,
+                                borderWidth: buyButtonBorderWidth
+                                  ? `${buyButtonBorderWidth}px`
                                   : '',
-                                borderColor: buyNowButtonBorderColor,
-                                borderRadius: buyNowButtonCornerRounding
-                                  ? `${buyNowButtonCornerRounding.top}px ${buyNowButtonCornerRounding.right}px ${buyNowButtonCornerRounding.bottom}px ${buyNowButtonCornerRounding.left}px`
+                                borderColor: buyButtonBorderColor,
+                                borderRadius: buyButtonCornerRounding
+                                  ? `${buyButtonCornerRounding.top}px ${buyButtonCornerRounding.right}px ${buyButtonCornerRounding.bottom}px ${buyButtonCornerRounding.left}px`
                                   : '',
                               }}
+                              {...buyButtonProps}
                               onMouseEnter={() =>
-                                handleHoverButton('enter', 'buyNowButton')
+                                handleHoverButton('enter', 'buyButton')
                               }
                               onMouseLeave={() =>
-                                handleHoverButton('leave', 'buyNowButton')
+                                handleHoverButton('leave', 'buyButton')
                               }
-                              ref={buyNowButtonReference}
-                              {...buyProps}
+                              ref={buyButtonReference}
                             >
-                              {buyNowBtnText ?? 'Comprar agora'}
+                              Adicionar
                             </ButtonBuy>
-                          )}
-                        </>
-                      )}
+                            {buyNowBtn && (
+                              <ButtonBuy
+                                data-fs-button-variant="buy-now"
+                                disabled={buyButtonDisabled}
+                                icon={false}
+                                goToCheckout
+                                style={{
+                                  backgroundColor: buyNowButtonBgColor,
+                                  color: buyNowButtonTextColor,
+                                  borderWidth: buyNowButtonBorderWidth
+                                    ? `${buyNowButtonBorderWidth}px`
+                                    : '',
+                                  borderColor: buyNowButtonBorderColor,
+                                  borderRadius: buyNowButtonCornerRounding
+                                    ? `${buyNowButtonCornerRounding.top}px ${buyNowButtonCornerRounding.right}px ${buyNowButtonCornerRounding.bottom}px ${buyNowButtonCornerRounding.left}px`
+                                    : '',
+                                }}
+                                onMouseEnter={() =>
+                                  handleHoverButton('enter', 'buyNowButton')
+                                }
+                                onMouseLeave={() =>
+                                  handleHoverButton('leave', 'buyNowButton')
+                                }
+                                ref={buyNowButtonReference}
+                                {...buyButtonProps}
+                              >
+                                {buyNowBtnText ?? 'Comprar agora'}
+                              </ButtonBuy>
+                            )}
+                          </>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <ShippingSimulation
-                    data-fs-product-details-shipping
-                    shippingItem={{
-                      id: itemId,
-                      quantity: addQuantity,
-                      seller: sellerActive?.sellerId,
+                    <ShippingSimulation
+                      data-fs-product-details-shipping
+                      shippingItem={{
+                        id: itemId,
+                        quantity: addQuantity,
+                        seller: sellerActive?.sellerId,
+                      }}
+                    />
+                  </>
+                ) : (
+                  <OutOfStock
+                    onSubmit={(email) => {
+                      console.info(email)
                     }}
                   />
-                </>
-              ) : (
-                <OutOfStock
-                  onSubmit={(email) => {
-                    console.info(email)
-                  }}
-                />
-              )}
+                )}
 
-              {addProductInformationBelowBuybox && (
-                <>
-                  <Components.AccordionItem
-                    showIcon
-                    title="Detalhes do produto"
-                    content={description}
-                  />
-                  {additionalProperty?.length ? (
+                {addProductInformationBelowBuybox && (
+                  <>
                     <Components.AccordionItem
-                      title="Especificações Técnicas"
                       showIcon
-                      content={renderSpecifications(additionalProperty)}
+                      title="Detalhes do produto"
+                      content={description}
                     />
-                  ) : null}
-                </>
-              )}
+                    {additionalProperty?.length ? (
+                      <Components.AccordionItem
+                        title="Especificações Técnicas"
+                        showIcon
+                        isJsxContent
+                        content={
+                          <VtexComponents.ProductSpecificationsTable
+                            data={additionalProperty}
+                          />
+                        }
+                      />
+                    ) : null}
+                  </>
+                )}
+              </section>
             </section>
           </section>
-        </section>
-        {!addProductInformationBelowBuybox && (
-          <VtexComponents.SingleProductContent
-            description={description}
-            specifications={additionalProperty}
-          />
-        )}
-      </Components.Container>
-    </Section>
+
+          {!addProductInformationBelowBuybox && (
+            <VtexComponents.SingleProductContent
+              description={description}
+              specifications={additionalProperty}
+            />
+          )}
+        </Components.Container>
+      </Section>
+      {showPurchaseBar && (
+        <VtexComponents.PurchaseBar
+          productName={product.productName}
+          productImage={images?.[0] ?? {}}
+          productInstallments={installments}
+          sellerData={sellerActive}
+          quantity={addQuantity}
+          onSetQuantity={setAddQuantity}
+          buyButtonProperties={buyButtonProps}
+        />
+      )}
+    </>
   )
 }
 

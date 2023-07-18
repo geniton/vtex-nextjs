@@ -1,4 +1,6 @@
 import { List } from '@faststore/ui'
+import { VtexComponents } from '@retailhub/audacity-vtex'
+import { memo } from 'react'
 
 import Alert from 'src/components/ui/Alert'
 import { Badge } from 'src/components/ui/Badge'
@@ -9,6 +11,7 @@ import { useCart } from 'src/sdk/cart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import { useUI } from 'src/sdk/ui/Provider'
 import { useFadeEffect } from 'src/sdk/ui/useFadeEffect'
+import { VtexHooks } from 'src/utils'
 
 import CartItem from '../CartItem'
 import EmptyCart from '../EmptyCart'
@@ -52,6 +55,8 @@ function CartSidebar() {
           onClick={fadeOut}
         />
       </header>
+
+      <VtexComponents.FreeShippingBar VtexHooks={VtexHooks} />
       {/* <Alert icon={<Icon name="Truck" width={24} height={24} />}>
         Free shipping starts at $300
       </Alert> */}
@@ -111,4 +116,4 @@ function CartSidebar() {
   )
 }
 
-export default CartSidebar
+export default memo(CartSidebar)

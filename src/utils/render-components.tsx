@@ -13,12 +13,15 @@ import {
   NextjsHooks,
 } from 'src/utils'
 
-interface Props {
+interface IRenderComponents {
   components: any[]
   [key: string]: any
 }
 
-const RenderComponents = ({ components, ...otherProps }: Props): any => {
+const RenderComponents: any = ({
+  components,
+  ...otherProps
+}: IRenderComponents) => {
   const props = {
     storeConfig,
     variables,
@@ -37,7 +40,7 @@ const RenderComponents = ({ components, ...otherProps }: Props): any => {
     return null
   }
 
-  return components.map(({ component, componentData }: any, index: number) => {
+  return components.map(({ component, componentData }, index: number) => {
     if (component === 'CategoryProducts') {
       component = 'ProductGallery'
     }

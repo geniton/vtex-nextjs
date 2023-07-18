@@ -10,6 +10,11 @@ import { RenderComponents } from 'src/utils'
 import { useSession } from 'src/sdk/session'
 
 const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
+const Catalog = new Services.Vtex.Catalog({
+  store: storeConfig.api.storeId,
+  appKey: process.env.VTEX_APP_KEY,
+  appToken: process.env.VTEX_APP_TOKEN,
+})
 
 interface Props {
   skuId: string
@@ -115,21 +120,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   try {
     let [responsePageData, productData] = await Promise.all([
       AudacityClient.getAllPageData('page/product'),
-      Services.getProduct({
-        store: storeConfig.api.storeId,
-        slug: newSlug,
-        appKey: process.env.VTEX_APP_KEY || '',
-        appToken: process.env.VTEX_APP_TOKEN || '',
-      }),
+      Catalog.product(newSlug),
     ])
 
     if (!productData.data?.[0]) {
-      productData = await Services.getProduct({
-        store: storeConfig.api.storeId,
-        slug,
-        appKey: process.env.VTEX_APP_KEY || '',
-        appToken: process.env.VTEX_APP_TOKEN || '',
-      })
+      productData = await Catalog.product(slug)
 
       skuId = productData.data?.[0]?.items?.[0]?.itemId
     }
