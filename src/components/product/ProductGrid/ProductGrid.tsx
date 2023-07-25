@@ -51,7 +51,7 @@ function ProductGrid({
         data-fs-product-grid-columns={gridNumber}
         className={styles.fsProductGrid}
       >
-        {parsedProducts.map((product, idx: number) => (
+        {parsedProducts.map((product: any, idx: number) => (
           <li key={`${product.cacheId}`}>
             <VtexComponents.ProductCard
               controls={controls?.general?.cardControls}
