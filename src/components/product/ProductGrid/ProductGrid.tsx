@@ -1,4 +1,7 @@
-import { VtexComponents } from '@retailhub/audacity-vtex'
+import {
+  VtexComponents,
+  VtexUtils as AudacityVtexUtils,
+} from '@retailhub/audacity-vtex'
 import { memo } from 'react'
 
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
@@ -28,9 +31,14 @@ function ProductGrid({
   ...otherProps
 }: Props) {
   const parsedProducts = products.length
-    ? products.map(({ node }: any) =>
-        node?.data ? JSON.parse(node?.data) : null
-      )
+    ? products.map(({ node }: any) => {
+        const data = node?.data ? JSON.parse(node?.data) : null
+        const formattedData = AudacityVtexUtils.Formats.formatProduct(
+          data.isVariantOf
+        )
+
+        return formattedData
+      })
     : []
 
   return (
@@ -38,9 +46,13 @@ function ProductGrid({
       loading={parsedProducts.length === 0}
       gridNumber={gridNumber}
     >
-      <ul data-fs-product-grid data-fs-product-grid-columns={gridNumber} className={styles.fsProductGrid}>
+      <ul
+        data-fs-product-grid
+        data-fs-product-grid-columns={gridNumber}
+        className={styles.fsProductGrid}
+      >
         {parsedProducts.map((product, idx: number) => (
-          <li key={`${product.isVariantOf.cacheId}`}>
+          <li key={`${product.cacheId}`}>
             <VtexComponents.ProductCard
               controls={controls?.general?.cardControls}
               effects={controls?.effects?.cardEffects}

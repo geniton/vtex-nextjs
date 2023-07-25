@@ -1,6 +1,7 @@
 import { sendAnalyticsEvent } from '@faststore/sdk'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import type { CurrencyCode, SelectItemEvent } from '@faststore/sdk'
+import { VtexUtils } from '@retailhub/audacity-vtex'
 
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
@@ -15,10 +16,12 @@ export type ProductLinkOptions = {
 }
 
 function getSlug(product: any) {
-  if (!product?.isVariantOf?.linkText || !product?.isVariantOf?.bestSku?.itemId)
-    return null
+  const { linkText } = product
+  const itemId = product?.bestSku?.itemId
 
-  return `${product.isVariantOf.linkText}-${product.isVariantOf.bestSku.itemId}`
+  if (!linkText || !itemId) return null
+
+  return `${product.linkText}-${product.bestSku.itemId}`
 }
 
 export const useProductLink = ({
@@ -27,7 +30,15 @@ export const useProductLink = ({
   currentSku,
   selectedOffer,
 }: ProductLinkOptions) => {
-  const slug = currentSku?.slug || product.slug || getSlug(product)
+  const productData = useMemo(
+    () =>
+      typeof product?.data === 'string'
+        ? VtexUtils.Formats.formatProduct(JSON.parse(product.data).isVariantOf)
+        : product,
+    [product]
+  )
+
+  const slug = currentSku?.slug || productData.slug || getSlug(productData)
   const {
     currency: { code },
   } = useSession()
@@ -38,19 +49,28 @@ export const useProductLink = ({
       params: {
         items: [
           {
-            item_id: product.isVariantOf.productId,
-            item_name: product.isVariantOf.name,
-            item_brand: product.isVariantOf.brand,
-            item_variant: product.isVariantOf.bestSku?.itemId,
+            item_id: productData.productId,
+            item_name: productData.productName,
+            item_brand: productData.brand,
+            item_variant: currentSku
+              ? currentSku.itemId
+              : productData.bestSku?.itemId,
             index,
-            price: product.isVariantOf.bestSku?.bestSeller?.Price,
-            discount:
-              product.isVariantOf.bestSku?.bestSeller?.ListPrice -
-              product.isVariantOf.bestSku?.bestSeller?.Price,
+            price: currentSku
+              ? currentSku.bestSeller?.commertialOffer?.Price
+              : productData.bestSku?.bestSeller?.commertialOffer?.Price,
+            discount: currentSku
+              ? currentSku.bestSeller?.commertialOffer?.ListPrice -
+                currentSku.bestSeller?.commertialOffer?.Price
+              : productData.bestSku?.bestSeller?.commertialOffer?.ListPrice -
+                productData.bestSku?.bestSeller?.commertialOffer?.Price,
             currency: code as CurrencyCode,
-            item_variant_name: product.isVariantOf.bestSku?.name,
-            product_reference_id:
-              product.isVariantOf.bestSku?.referenceId[0]?.Value,
+            item_variant_name: currentSku
+              ? currentSku.name
+              : productData.bestSku.name,
+            product_reference_id: currentSku
+              ? currentSku.referenceId?.[0]?.Value
+              : productData.bestSku.referenceId?.[0]?.Value,
           },
         ],
       },
@@ -62,14 +82,16 @@ export const useProductLink = ({
         url: window.location.href,
         items: [
           {
-            item_id: product.isVariantOf.productId,
-            item_variant: product.isVariantOf.bestSku?.itemId,
+            item_id: productData.productId,
+            item_variant: currentSku
+              ? currentSku.itemId
+              : productData.bestSku?.itemId,
             index,
           },
         ],
       },
     })
-  }, [code, product, index, selectedOffer])
+  }, [code, productData, index, selectedOffer])
 
   return {
     href: `/${slug}/p`,
