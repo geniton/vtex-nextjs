@@ -16,6 +16,14 @@ const Catalog = new Services.Vtex.Catalog({
   appToken: process.env.VTEX_APP_TOKEN,
 })
 
+const redirect = (destination: string) => ({
+  redirect: {
+    destination,
+    permanent: true,
+  },
+  props: {},
+})
+
 interface Props {
   skuId: string
   product: any
@@ -96,7 +104,7 @@ function Page({ product, skuId, pageData: { page, seo } }: Props) {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = (query?.slug as string) ?? ''
   const arr = slug.split('-')
-  let skuId = query.idsku ?? arr.splice(arr.length - 1, 1)?.[0]
+  let skuId = arr.splice(arr.length - 1, 1)?.[0]
   let newSlug = arr.join('-')
 
   if (!skuId || !Number(skuId)) {
@@ -123,10 +131,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       Catalog.product(newSlug),
     ])
 
-    if (!productData.data?.[0]) {
-      productData = await Catalog.product(slug)
+    if (query.idsku) {
+      return redirect(
+        `/${productData.data?.[0] ? newSlug : slug}-${query.idsku}/p`
+      )
+    } else if (!productData.data?.[0] || !skuId || !Number(skuId)) {
+      const product = await Catalog.product(slug)
+      const itemId = product.data?.[0]?.items?.[0]?.itemId
 
-      skuId = productData.data?.[0]?.items?.[0]?.itemId
+      return redirect(`/${product.data?.[0] ? newSlug : slug}-${itemId}/p`)
     }
 
     const PRODUCT = productData.data?.[0]
@@ -164,7 +177,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         responsePageData.page.site.seo['pt-BR']?.separator
       } ${responsePageData.page.site.seo['pt-BR']?.title}`,
       description: PRODUCT?.metaTagDescription || PRODUCT?.description,
-      canonical: `${storeConfig.storeUrl}/${PRODUCT?.linkText}/p`,
+      canonical: `${storeConfig.storeUrl}/${PRODUCT?.linkText}-${skuId}/p`,
     }
   } catch ({ message }) {
     console.log(message)

@@ -169,7 +169,7 @@ function ProductDetails({
         <ul>
           {similarProducts.map(({ items, linkText }: any) => (
             <li key={`/${linkText}-${items[0].itemId}/p`}>
-              <Link href={`/${linkText}-${items[0].itemId}/p`}>
+              <Link data-fs-product-similars-item-active={items[0].itemId ===  itemId} href={`/${linkText}-${items[0].itemId}/p`}>
                 <Image
                   alt={items[0].nameComplete}
                   width={42}
@@ -516,11 +516,11 @@ function ProductDetails({
                                 color: buyButtonTextColor,
                                 borderWidth: buyButtonBorderWidth
                                   ? `${buyButtonBorderWidth}px`
-                                  : '',
+                                  : '0px',
                                 borderColor: buyButtonBorderColor,
                                 borderRadius: buyButtonCornerRounding
                                   ? `${buyButtonCornerRounding.top}px ${buyButtonCornerRounding.right}px ${buyButtonCornerRounding.bottom}px ${buyButtonCornerRounding.left}px`
-                                  : '',
+                                  : '2px',
                               }}
                               {...buyButtonProps}
                               onMouseEnter={() =>
@@ -544,11 +544,11 @@ function ProductDetails({
                                   color: buyNowButtonTextColor,
                                   borderWidth: buyNowButtonBorderWidth
                                     ? `${buyNowButtonBorderWidth}px`
-                                    : '',
+                                    : '0px',
                                   borderColor: buyNowButtonBorderColor,
                                   borderRadius: buyNowButtonCornerRounding
                                     ? `${buyNowButtonCornerRounding.top}px ${buyNowButtonCornerRounding.right}px ${buyNowButtonCornerRounding.bottom}px ${buyNowButtonCornerRounding.left}px`
-                                    : '',
+                                    : '2px',
                                 }}
                                 onMouseEnter={() =>
                                   handleHoverButton('enter', 'buyNowButton')
