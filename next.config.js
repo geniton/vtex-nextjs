@@ -5,21 +5,18 @@
  * */
 const nextConfig = {
   /* config options here */
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n: {
     locales: ['pt-BR'],
     defaultLocale: 'pt-BR',
   },
+  trailingSlash: true,
   images: {
-    minimumCacheTTL: 31536000,
-    domains: [
-      'dev.retailhub.digital',
-      'content.retailhub.digital',
-      'retailhub.vtexassets.com',
-      'retailhub.vteximg.com.br',
-      'picsum.photos',
-      'lkz4u1i0x8.execute-api.us-east-1.amazonaws.com',
-      'd18szw0srtwu3l.cloudfront.net',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
   webpack: (config, { isServer, dev }) => {
