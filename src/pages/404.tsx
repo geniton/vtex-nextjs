@@ -35,9 +35,9 @@ export const getStaticProps: GetStaticProps = async () => {
       component: 'NotFound404',
     },
   ]
-  pageData.header = header['pt-BR']?.data
-  pageData.footer = footer['pt-BR']?.data
-  pageData.menus = menus?.data
+  pageData.header = header['pt-BR']?.data ?? null
+  pageData.footer = footer['pt-BR']?.data ?? null
+  pageData.menus = menus?.data ?? null
   pageData.themeConfigs = {
     colors: page.site?.colors ?? null,
     favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
