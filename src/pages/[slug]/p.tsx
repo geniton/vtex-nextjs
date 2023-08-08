@@ -9,7 +9,11 @@ import storeConfig from 'store.config'
 import { RenderComponents } from 'src/utils'
 import { useSession } from 'src/sdk/session'
 
-const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
+const AudacityClient = new AudacityClientApi(
+  process.env.AUDACITY_TOKEN,
+  process.env.ENV
+)
+
 const Catalog = new Services.Vtex.Catalog({
   store: storeConfig.api.storeId,
   appKey: process.env.VTEX_APP_KEY,
@@ -126,7 +130,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   }
 
   try {
-    let [responsePageData, productData] = await Promise.all([
+    const [responsePageData, productData] = await Promise.all([
       AudacityClient.getAllPageData('page/product'),
       Catalog.product(newSlug),
     ])
@@ -135,7 +139,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       return redirect(
         `/${productData.data?.[0] ? newSlug : slug}-${query.idsku}/p`
       )
-    } else if (!productData.data?.[0] || !skuId || !Number(skuId)) {
+    }
+
+    if (!productData.data?.[0] || !skuId || !Number(skuId)) {
       const product = await Catalog.product(slug)
       const itemId = product.data?.[0]?.items?.[0]?.itemId
 

@@ -5,7 +5,10 @@ import AudacityClientApi from '@retailhub/audacity-client-api'
 import { mark } from 'src/sdk/tests/mark'
 import { RenderComponents } from 'src/utils'
 
-const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
+const AudacityClient = new AudacityClientApi(
+  process.env.AUDACITY_TOKEN,
+  process.env.ENV
+)
 
 function Page({ pageData: { page } }: any) {
   return (

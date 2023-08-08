@@ -23,7 +23,10 @@ import {
 import storeConfig from 'store.config'
 import VARIABLES from 'config/variables.json'
 
-const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
+const AudacityClient = new AudacityClientApi(
+  process.env.AUDACITY_TOKEN,
+  process.env.ENV
+)
 
 const useSearchParams = () => {
   const [params, setParams] = useState<SearchState | null>(null)

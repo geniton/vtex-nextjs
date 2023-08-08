@@ -2646,10 +2646,10 @@
   resolved "https://registry.npmjs.org/@repeaterjs/repeater/-/repeater-3.0.4.tgz"
   integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
 
-"@retailhub/audacity-client-api@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.npmjs.org/@retailhub/audacity-client-api/-/audacity-client-api-0.0.9.tgz"
-  integrity sha512-EZ/p2xFtMHJ7Duipee3kqbKVmRh+IByIEaz3HdSPJsGyqTeqnbS1o+6zOPKWAW8n+QtlI9QdC4Z/SYLMajKgkw==
+"@retailhub/audacity-client-api@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-client-api/-/audacity-client-api-0.0.13.tgz#b9a100057e0ee2d24915106247e787b0509bd7fd"
+  integrity sha512-nbvqpZJMAFLnlD+D4NfyGGDfQ+Q8QGo0nkp8bViIVt+x3AnSmprqCYBYduzHUAHgL0FjHAfs7NBFr5ScwrL1Kg==
   dependencies:
     axios "^1.4.0"
 

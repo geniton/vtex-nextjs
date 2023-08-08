@@ -13,7 +13,10 @@ import storeConfig from 'store.config'
 
 import { RenderDynamicPages } from '../utils'
 
-const AudacityClient = new AudacityClientApi(process.env.AUDACITY_TOKEN)
+const AudacityClient = new AudacityClientApi(
+  process.env.AUDACITY_TOKEN,
+  process.env.ENV
+)
 
 interface Props extends ServerCollectionPageQueryQuery {
   pageType: string
