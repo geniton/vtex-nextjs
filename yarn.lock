@@ -2653,10 +2653,10 @@
   dependencies:
     axios "^1.4.0"
 
-"@retailhub/audacity-vtex@^0.0.195":
-  version "0.0.195"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.195.tgz#2dbfb5c5efc4635b7173a6741a5ddf3083012f47"
-  integrity sha512-RuGTMvx/vkN4nEipqVUSpKL1lntNB0mExORTwqDxtuZUh6ryfebvrnlpZ/x8wgXOBk3dnsn/TZ09A8La8TttTg==
+"@retailhub/audacity-vtex@^0.0.200":
+  version "0.0.196"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.196.tgz#0ece00fac0a80a8f07d66bff941533f56f3f9866"
+  integrity sha512-RxN6MTQkBwLH0iSYHQZ/wNrrdv8II5FQWoS6kUriuLZFzmDnv8ka/VEUxE52/08ooURKr3spZjC1j239lU4UbQ==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
@@ -2667,10 +2667,10 @@
     react-use-scroll-position "^2.0.0"
     sweetalert2 "^11.7.3"
 
-"@retailhub/audacity@^0.0.166":
-  version "0.0.166"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.166.tgz#397fa01224b893399b3b9a1bbcb9604b2c88a7b2"
-  integrity sha512-PbV4CO30CzTKJ+pWNhJ3U/GZQo56Sn05xzAt8l33K9l0E18M2iOXOFxPwML74H+0UV+LW1dkuOACvjkOJBivFw==
+"@retailhub/audacity@^0.0.198":
+  version "0.0.171"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.171.tgz#450d9f3f337c9a0d6f804782a169d9844047b068"
+  integrity sha512-4cLjWzXEcissLo8VoHA5dGv2RL3OgWi3j/Li8aVYtwzNKzYCAgb/9SpBITwUKlbIDdiw5QVXJxzQn7QWS1ED/Q==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
