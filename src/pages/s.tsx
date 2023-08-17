@@ -45,6 +45,8 @@ const useSearchParams = () => {
       if (
         key === 'productClusterIds' ||
         key === 'c' ||
+        key === 'brand' ||
+        key === 'sellername' ||
         (key && key.includes('specificationFilter_'))
       ) {
         if (!paramKeys.includes(key)) {

@@ -145,7 +145,13 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       const product = await Catalog.product(slug)
       const itemId = product.data?.[0]?.items?.[0]?.itemId
 
-      return redirect(`/${product.data?.[0] ? newSlug : slug}-${itemId}/p`)
+      if (!product.data?.[0]) {
+        return {
+          notFound: true,
+        }
+      }
+
+      return redirect(`/${slug}-${itemId}/p`)
     }
 
     const PRODUCT = productData.data?.[0]
