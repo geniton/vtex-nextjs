@@ -114,7 +114,7 @@ const validateCart = async (cart: Cart): Promise<Cart | null> => {
             itemOffered: {
               sku: itemOffered.sku,
               image: itemOffered.image,
-              name: itemOffered.name,
+              name: itemOffered.name || '',
               additionalProperty: itemOffered.additionalProperty,
             },
           })
