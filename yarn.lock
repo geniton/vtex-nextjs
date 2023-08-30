@@ -2691,10 +2691,10 @@
   dependencies:
     axios "^1.4.0"
 
-"@retailhub/audacity-vtex@^0.0.221":
-  version "0.0.221"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.221.tgz#1074c3fe3b09aecf0754be1fc6da37426a1acaa5"
-  integrity sha512-1RPgfFV+PoralgX/CkSNwOZW+FN5Scp8w68jKR7RSbpksbnyxcbjq993mAexB7KyhHWgGh2tnETX6Vzl5A22Hw==
+"@retailhub/audacity-vtex@^0.0.222":
+  version "0.0.222"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.222.tgz#ec7ec6491a6595bfeb553cb1bbca6d8cc009f10b"
+  integrity sha512-iikcstK/BHgpxzXdKWhFEWkc8P1PSIWd7X4s6SrZT75qWrD9bgWzMN3/r/08mpiw1B/vFRGfKVPUZF2orY/s0A==
   dependencies:
     "@retailhub/audacity-client-api" "^0.0.15"
     axios "^0.27.2"
