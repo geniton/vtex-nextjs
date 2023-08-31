@@ -40,6 +40,7 @@ function ProductDetails({
       showProductName,
       showSkuName,
       showProductReference,
+      showProductConfirmation,
       buyNowBtn,
       buyNowBtnText,
       addProductInformationBelowBuybox,
@@ -65,6 +66,11 @@ function ProductDetails({
   const [sellers, setSellers] = useState<any>(product?.sellers)
   const [similarProducts, setSimilarProducts] = useState([])
   const [installments, setInstallments] = useState<any>()
+  const [confirmationModalData, setConfirmationModalData] = useState({
+    isOpen: false,
+    goToCheckout: false,
+    activeVariations: {},
+  })
 
   const {
     priceFromFontSize,
@@ -150,6 +156,12 @@ function ProductDetails({
       },
       additionalProperty,
     },
+    confirmationModal: {
+      activeVariations: skuVariants?.activeVariations ?? {},
+      confirmationModalData,
+      showProductConfirmation,
+      onConfirmationModalData: setConfirmationModalData,
+    },
   })
 
   const installmentPrices = useMemo(
@@ -169,7 +181,12 @@ function ProductDetails({
         <ul>
           {similarProducts.map(({ items, linkText }: any) => (
             <li key={`/${linkText}-${items[0].itemId}/p`}>
-              <Link data-fs-product-similars-item-active={items[0].itemId ===  itemId} href={`/${linkText}-${items[0].itemId}/p`}>
+              <Link
+                data-fs-product-similars-item-active={
+                  items[0].itemId === itemId
+                }
+                href={`/${linkText}-${items[0].itemId}/p`}
+              >
                 <Image
                   alt={items[0].nameComplete}
                   width={42}
@@ -490,6 +507,19 @@ function ProductDetails({
                     onClose={() => setInstallmentsModal(false)}
                   />
                 ) : null}
+
+                {showProductConfirmation && (
+                  <VtexComponents.ProductConfirmationModal
+                    data={confirmationModalData}
+                    onClose={() =>
+                      setConfirmationModalData({
+                        ...confirmationModalData,
+                        isOpen: false,
+                      })
+                    }
+                    buyButtonProps={buyButtonProps}
+                  />
+                )}
 
                 {sellerActive?.commertialOffer?.AvailableQuantity ? (
                   <>

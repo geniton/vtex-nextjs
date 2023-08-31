@@ -10,7 +10,7 @@ import storeConfig from 'store.config'
 import { useSession } from '../session'
 import { useUI } from '../ui/Provider'
 
-export const useBuyButton = (item: CartItem | null) => {
+export const useBuyButton = (item: CartItem | any) => {
   const { openCart } = useUI()
   const cart = useCart()
   const {
@@ -26,6 +26,30 @@ export const useBuyButton = (item: CartItem | null) => {
       if (!item) {
         return
       }
+
+      // start product confirmation modal
+      const {
+        confirmationModalData,
+        showProductConfirmation,
+        onConfirmationModalData,
+        activeVariations,
+      } = item?.confirmationModal ?? {}
+
+      if (
+        Object.keys(activeVariations)?.length &&
+        showProductConfirmation &&
+        !confirmationModalData?.isOpen &&
+        typeof onConfirmationModalData === 'function'
+      ) {
+        onConfirmationModalData({
+          isOpen: true,
+          goToCheckout,
+          activeVariations,
+        })
+
+        return
+      }
+      // end
 
       sendAnalyticsEvent<AddToCartEvent<AnalyticsItem>>({
         name: 'add_to_cart',
