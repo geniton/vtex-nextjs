@@ -7,18 +7,18 @@ import '../styles/global/components.scss'
 import NextNProgress from 'nextjs-progressbar'
 import type { AppProps } from 'next/app'
 import { Components } from '@retailhub/audacity'
+import type { IModal } from '@retailhub/audacity/dist/components/modals/modal/models'
 
 import Layout from 'src/Layout'
 import AnalyticsHandler from 'src/sdk/analytics'
 import ErrorBoundary from 'src/sdk/error/ErrorBoundary'
 import UIProvider from 'src/sdk/ui/Provider'
 import { NextjsComponents } from 'src/utils'
-import { IModal } from '@retailhub/audacity/dist/components/modals/modal/models'
-import { JSX } from 'react/jsx-runtime'
 
 function App({ Component, pageProps }: AppProps) {
   const { themeConfigs, modals } = pageProps?.pageData ?? {}
   const { scripts } = themeConfigs ?? {}
+
   return (
     <ErrorBoundary>
       <NextNProgress
@@ -43,6 +43,7 @@ function App({ Component, pageProps }: AppProps) {
                 {...props?.['pt-BR']?.data}
                 uuid={props.uuid}
                 type={props.type}
+                key={props.uuid}
               />
             )
           )
