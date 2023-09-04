@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     header: null,
     footer: null,
     menus: [],
-    modals: []
+    modals: [],
   }
 
   try {

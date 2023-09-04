@@ -43,7 +43,7 @@ function App({ Component, pageProps }: AppProps) {
                 {...props?.['pt-BR']?.data}
                 uuid={props.uuid}
                 type={props.type}
-                key={props.uuid}
+                key={`modal-${props.uuid}`}
               />
             )
           )

@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import type { SearchState } from '@faststore/sdk'
-import type { GetStaticProps } from 'next/types'
+import type { GetServerSideProps } from 'next/types'
 import AudacityClientApi from '@retailhub/audacity-client-api'
 import { Utils } from '@retailhub/audacity'
 
@@ -129,7 +129,7 @@ function Page({ pageData: { page, seo }, ...props }: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const pageData = {
     header: null,
     footer: null,
@@ -181,7 +181,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { pageData },
-    revalidate: 30,
   }
 }
 

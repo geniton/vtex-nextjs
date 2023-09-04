@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
     footer: null,
     menus: [],
     themeConfigs: {},
-    modals: []
+    modals: [],
   }
 
   const { header, footer, menus, page } = await AudacityClient.getAllPageData(

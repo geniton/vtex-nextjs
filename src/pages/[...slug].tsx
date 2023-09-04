@@ -1,5 +1,5 @@
 import { gql } from '@faststore/graphql-utils'
-import type { GetStaticPaths, GetStaticProps } from 'next/types'
+import type { GetServerSideProps } from 'next/types'
 import AudacityClientApi from '@retailhub/audacity-client-api'
 import { Utils } from '@retailhub/audacity'
 
@@ -63,7 +63,7 @@ interface PageProps {
   pageData: any
 }
 
-export const getStaticProps: GetStaticProps<
+export const getServerSideProps: GetServerSideProps<
   PageProps,
   { slug: string[] }
 > = async ({ params }) => {
@@ -150,14 +150,6 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: { collection: data?.collection ?? null, pageData, pageType },
-    revalidate: 30,
-  }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
   }
 }
 

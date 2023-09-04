@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
     footer: null,
     menus: [],
     themeConfigs: {},
-    modals: []
+    modals: [],
   }
 
   try {
