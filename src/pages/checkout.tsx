@@ -33,6 +33,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     header: null,
     footer: null,
     menus: [],
+    modals: []
   }
 
   try {
@@ -59,6 +60,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
       scripts: page.site?.scripts ?? null,
     }
+    pageData.modals = page.modals ?? []
   } catch ({ message }) {
     return {
       notFound: true,

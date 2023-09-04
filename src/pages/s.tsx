@@ -136,6 +136,7 @@ export const getStaticProps: GetStaticProps = async () => {
     page: null,
     menus: [],
     themeConfigs: {},
+    modals: [],
     seo: {
       title: '',
       description: '',
@@ -167,6 +168,7 @@ export const getStaticProps: GetStaticProps = async () => {
       favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
       scripts: page.site?.scripts ?? null,
     }
+    pageData.modals = page.modals ?? []
 
     pageData.seo = Utils.Formats.formatSeo({
       page,

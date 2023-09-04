@@ -1,7 +1,10 @@
 import { useSearch } from '@faststore/sdk'
-import { memo, useMemo } from 'react'
+import { memo } from 'react'
 
-import ProductGrid from 'src/components/product/ProductGrid'
+import {
+  VtexComponents,
+  VtexUtils as AudacityVtexUtils,
+} from '@retailhub/audacity-vtex'
 
 import { useProducts } from './usePageProducts'
 
@@ -12,6 +15,9 @@ interface Props {
   showSponsoredProducts?: boolean
   controls: any
   gridNumber: number
+  VtexUtils?: any
+  VtexHooks?: any
+  NextjsHooks?: any
 }
 
 function GalleryPage({
@@ -19,71 +25,49 @@ function GalleryPage({
   page,
   title,
   showSponsoredProducts = true,
-  ...props
+  gridNumber,
+  VtexUtils,
+  VtexHooks,
+  NextjsHooks,
+  ...otherProps
 }: Props) {
   const products = useProducts(page) ?? []
   const { itemsPerPage } = useSearch()
 
-  const productsSponsored = useMemo(
-    () => (showSponsoredProducts ? products.slice(0, 2) : undefined),
-    [products, showSponsoredProducts]
-  )
+  const parsedProducts = products.length
+    ? products.map(({ node }: any) => {
+        const data = node?.data ? JSON.parse(node?.data) : null
+        const formattedData = AudacityVtexUtils.Formats.formatProduct(
+          data.isVariantOf
+        )
 
-  const middleItemIndex = useMemo(
-    () => Math.ceil(itemsPerPage / 2),
-    [itemsPerPage]
-  )
-
-  const shouldDisplaySponsoredProducts = useMemo(
-    () => page === 0 && productsSponsored && productsSponsored.length > 1,
-    [page, productsSponsored]
-  )
+        return formattedData
+      })
+    : []
 
   return (
-    <>
-      {shouldDisplaySponsoredProducts ? (
-        <>
-          <ProductGrid
-            controls={controls}
-            products={products.slice(0, middleItemIndex)}
-            page={page}
-            pageSize={middleItemIndex}
-            {...props}
-          />
-          <div data-fs-product-listing-sponsored>
-            <h3>Sponsored</h3>
-            {/*
-              TODO: Refactor this bit of code
-
-              Sections should be self contained and should not import other sections.
-              We should remove/refactor this section from here
-            */}
-            <ProductGrid
-              controls={controls}
-              products={products}
-              page={page}
-              pageSize={itemsPerPage}
-              {...props}
+    <VtexComponents.ProductGallerySkeleton
+      loading={parsedProducts.length === 0}
+      gridNumber={gridNumber}
+    >
+      {parsedProducts.map((product: any, idx: number) =>
+        product?.cacheId ? (
+          <li key={`${product.cacheId}`}>
+            <VtexComponents.ProductCard
+              controls={controls?.general?.cardControls}
+              effects={controls?.effects?.cardEffects}
+              style={controls?.style?.cardStyle}
+              product={product}
+              index={itemsPerPage * page + idx + 1}
+              VtexUtils={VtexUtils}
+              VtexHooks={VtexHooks}
+              NextjsHooks={NextjsHooks}
+              {...otherProps}
             />
-          </div>
-          <ProductGrid
-            controls={controls}
-            products={products.slice(middleItemIndex, itemsPerPage)}
-            page={page}
-            pageSize={middleItemIndex}
-            {...props}
-          />
-        </>
-      ) : (
-        <ProductGrid
-          controls={controls}
-          products={products}
-          page={page}
-          pageSize={itemsPerPage}
-          {...props}
-        />
+          </li>
+        ) : null
       )}
-    </>
+    </VtexComponents.ProductGallerySkeleton>
   )
 }
 

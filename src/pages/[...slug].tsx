@@ -86,6 +86,7 @@ export const getStaticProps: GetStaticProps<
     page: null as any,
     menus: null,
     themeConfigs: {},
+    modals: [],
     seo: {
       title: storeConfig.seo.title,
       description: storeConfig.seo.description,
@@ -141,11 +142,11 @@ export const getStaticProps: GetStaticProps<
     favicon: pageResponse.data.site?.seo?.['pt-BR']?.favicon ?? null,
     scripts: pageResponse.data.site?.scripts ?? null,
   }
-
   pageData.seo = Utils.Formats.formatSeo({
     collection: data?.collection,
     page: pageResponse.data,
   })
+  pageData.modals = pageResponse.data.modals ?? []
 
   return {
     props: { collection: data?.collection ?? null, pageData, pageType },

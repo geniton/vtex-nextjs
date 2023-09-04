@@ -1,6 +1,6 @@
 import { useSearch } from '@faststore/sdk'
 import { NextSeo } from 'next-seo'
-import { lazy, memo, Suspense, useState } from 'react'
+import { lazy, memo, Suspense, useEffect, useMemo, useState } from 'react'
 import type { MouseEvent } from 'react'
 import cn from 'classnames'
 import { VtexComponents } from '@retailhub/audacity-vtex'
@@ -40,11 +40,21 @@ function ProductGallery({
 }: Props) {
   const [gridNumber, setGridNumber] = useState<number>(2)
   const { openFilter } = useUI()
-  const { pages, addNextPage, addPrevPage } = useSearch()
+  const { pages, addNextPage, addPrevPage, resetInfiniteScroll } = useSearch()
   const { emptyGallery } = content ?? {}
 
   const { data } = useGalleryQuery()
-  const facets = useDelayedFacets(data)
+  const facetsList = useDelayedFacets(data)
+  // FEATURE
+  // remove facet with label productClusterNames
+  const facets = useMemo(() => {
+    if (!facetsList || !facetsList?.length) {
+      return facetsList
+    }
+
+    return facetsList.filter((facet) => facet.label !== 'productClusterNames')
+  }, [facetsList])
+
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = useDelayedPagination(totalCount)
 
@@ -54,6 +64,10 @@ function ProductGallery({
 
   useProductsPrefetch(prev ? prev.cursor : null)
   useProductsPrefetch(next ? next.cursor : null)
+
+  useEffect(() => {
+    resetInfiniteScroll(0)
+  }, [])
 
   if (data && totalCount === 0) {
     return (
@@ -102,7 +116,7 @@ function ProductGallery({
         <div data-fs-product-listing-content-grid className="layout__content">
           <div data-fs-product-listing-filters>
             <VtexComponents.FilterSkeleton loading={facets?.length === 0}>
-              <Filter facets={facets} style={controls.style.filterStyle}/>
+              <Filter facets={facets} style={controls.style.filterStyle} />
             </VtexComponents.FilterSkeleton>
           </div>
 
@@ -154,7 +168,12 @@ function ProductGallery({
           </div>
 
           <div data-fs-product-listing-results>
-            <Components.GridView grid={gridNumber} onChangeGrid={(value: React.SetStateAction<number>) => updateGrid(value)} />
+            <Components.GridView
+              grid={gridNumber}
+              onChangeGrid={(value: React.SetStateAction<number>) =>
+                updateGrid(value)
+              }
+            />
             {/* Add link to previous page. This helps on SEO */}
             {prev !== false && (
               <div data-fs-product-listing-pagination="top">
@@ -188,17 +207,22 @@ function ProductGallery({
             {/* Render ALL products */}
             {data ? (
               <Suspense fallback={GalleryPageSkeleton}>
-                {pages.map((page) => (
-                  <GalleryPage
-                    controls={controls}
-                    key={`gallery-page-${page}`}
-                    showSponsoredProducts={false}
-                    page={page}
-                    title={title}
-                    gridNumber={gridNumber}
-                    {...props}
-                  />
-                ))}
+                <ul
+                  data-fs-product-grid
+                  data-fs-product-grid-columns={gridNumber}
+                >
+                  {pages.map((page) => (
+                    <GalleryPage
+                      controls={controls}
+                      key={`gallery-page-${page}`}
+                      showSponsoredProducts={false}
+                      page={page}
+                      title={title}
+                      gridNumber={gridNumber}
+                      {...props}
+                    />
+                  ))}
+                </ul>
               </Suspense>
             ) : (
               GalleryPageSkeleton

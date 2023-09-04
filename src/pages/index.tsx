@@ -50,6 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
     footer: null,
     menus: [],
     themeConfigs: {},
+    modals: [],
     seo: {
       title: '',
       description: '',
@@ -85,6 +86,8 @@ export const getStaticProps: GetStaticProps = async () => {
     pageData.seo = Utils.Formats.formatSeo({
       page,
     })
+
+    pageData.modals = page.modals ?? []
   } catch ({ message }) {
     return {
       notFound: true,

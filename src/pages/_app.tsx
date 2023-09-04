@@ -13,8 +13,12 @@ import AnalyticsHandler from 'src/sdk/analytics'
 import ErrorBoundary from 'src/sdk/error/ErrorBoundary'
 import UIProvider from 'src/sdk/ui/Provider'
 import { NextjsComponents } from 'src/utils'
+import { IModal } from '@retailhub/audacity/dist/components/modals/modal/models'
+import { JSX } from 'react/jsx-runtime'
 
 function App({ Component, pageProps }: AppProps) {
+  const { themeConfigs, modals } = pageProps?.pageData ?? {}
+  const { scripts } = themeConfigs ?? {}
   return (
     <ErrorBoundary>
       <NextNProgress
@@ -23,12 +27,26 @@ function App({ Component, pageProps }: AppProps) {
         options={{ showSpinner: false }}
       />
 
-      {pageProps.pageData?.themeConfigs?.scripts?.length ? (
+      {scripts?.length ? (
         <Components.Scripts
-          scripts={pageProps.pageData.themeConfigs.scripts}
+          scripts={scripts}
           NextjsComponents={NextjsComponents}
         />
       ) : null}
+
+      {modals?.length
+        ? modals.map(
+            (props: {
+              [key: string]: any & { data: JSX.IntrinsicAttributes & IModal }
+            }) => (
+              <Components.Modal
+                {...props?.['pt-BR']?.data}
+                uuid={props.uuid}
+                type={props.type}
+              />
+            )
+          )
+        : null}
 
       <AnalyticsHandler />
 

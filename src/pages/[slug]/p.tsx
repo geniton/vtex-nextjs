@@ -122,6 +122,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     menus: [],
     themeConfigs: {},
     product: {} as any,
+    modals: [],
     seo: {
       title: '',
       description: '',
@@ -191,6 +192,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       description: PRODUCT?.metaTagDescription || PRODUCT?.description,
       canonical: `${storeConfig.storeUrl}/${PRODUCT?.linkText}-${skuId}/p`,
     }
+
+    pageData.modals = responsePageData.page.modals
   } catch ({ message }) {
     console.log(message)
 

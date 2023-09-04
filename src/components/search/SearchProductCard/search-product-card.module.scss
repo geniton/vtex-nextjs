@@ -27,6 +27,10 @@
     margin-right: var(--fs-search-product-card-image-margin-right);
     overflow: hidden;
     border-radius: var(--fs-search-product-card-image-border-radius);
+
+    img {
+      object-fit: contain;
+    }
   }
 
   [data-fs-search-product-card-content] {

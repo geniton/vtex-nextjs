@@ -26,6 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
     footer: null,
     menus: [],
     themeConfigs: {},
+    modals: []
   }
 
   const { header, footer, menus, page } = await AudacityClient.getAllPageData(
@@ -46,6 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
     favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
     scripts: page.site?.scripts ?? null,
   }
+  pageData.modals = page.modals ?? []
 
   return {
     props: { pageData, pageType: 'page-not-found' },

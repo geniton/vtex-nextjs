@@ -31,6 +31,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const pageData = {
     header: null,
     footer: null,
+    modals: [],
     menus: [],
     themeConfigs: {},
   }
@@ -48,6 +49,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
       scripts: page.site?.scripts ?? null,
     }
+    pageData.modals = page.modals ?? []
 
     if (
       page?.message?.includes('Resource not found') ||
