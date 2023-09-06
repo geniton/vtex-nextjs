@@ -2,7 +2,6 @@ import { forwardRef, useMemo } from 'react'
 import type { Ref, ElementType, AnchorHTMLAttributes } from 'react'
 import NextLink from 'next/link'
 import type { LinkProps as FrameworkLinkProps } from 'next/link'
-import { Link as UILink } from '@faststore/ui'
 import type { LinkProps as UILinkProps } from '@faststore/ui'
 
 import styles from './link.module.scss'
@@ -29,23 +28,23 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link<
 
   if (isInternalLink) {
     return (
-      <NextLink passHref href={href}>
-        <UILink
-          ref={ref}
-          data-fs-link
-          data-fs-link-variant={variant}
-          data-fs-link-inverse={inverse}
-          className={styles.fsLink}
-          {...otherProps}
-        >
-          {children}
-        </UILink>
+      <NextLink
+        passHref
+        href={href}
+        ref={ref}
+        data-fs-link
+        data-fs-link-variant={variant}
+        data-fs-link-inverse={inverse}
+        className={styles.fsLink}
+        {...otherProps}
+      >
+        {children}
       </NextLink>
     )
   }
 
   return (
-    <UILink
+    <NextLink
       ref={ref}
       href={href}
       data-fs-link
@@ -55,7 +54,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link<
       {...otherProps}
     >
       {children}
-    </UILink>
+    </NextLink>
   )
 })
 

@@ -1,5 +1,6 @@
 import { Price as UIPrice } from '@faststore/ui'
-import { CSSProperties, memo, useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
+import { memo, useEffect, useState } from 'react'
 import type { PriceProps } from '@faststore/ui'
 
 import SROnly from '../SROnly'
@@ -19,7 +20,7 @@ type Props = PriceProps & {
 
 function Price({ classes = '', SRText, style, ...props }: Props) {
   const [priceStyle, setPriceStyle] = useState({})
-  
+
   useEffect(() => {
     setPriceStyle(style ?? {})
   }, [style])

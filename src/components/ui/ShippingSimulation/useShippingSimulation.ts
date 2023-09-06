@@ -1,5 +1,6 @@
 import type { ChangeEvent } from 'react'
 import { useCallback, useEffect, useReducer } from 'react'
+import { VtexUtils } from '@retailhub/audacity-vtex'
 
 import type {
   IShippingItem,
@@ -143,6 +144,16 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
 
       const [location, options] = getShippingInformation(shipping)
 
+      const optionsFormattedForPT = options?.length
+        ? options.map((option: any) => ({
+            ...option,
+            price: option?.price === 0 ? 'R$ 0,00' : option?.price,
+            localizedEstimates: VtexUtils?.Shipping?.getLocalizedEstimates(
+              option?.shippingEstimate
+            ),
+          }))
+        : []
+
       dispatch({
         type: 'update',
         payload: {
@@ -153,7 +164,7 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
           },
           shippingSimulation: {
             location,
-            options,
+            options: optionsFormattedForPT,
           },
         },
       })
@@ -174,6 +185,16 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
 
       const [location, options] = getShippingInformation(shipping)
 
+      const optionsFormattedForPT = options?.length
+        ? options.map((option: any) => ({
+            ...option,
+            price: option?.price === 0 ? 'R$ 0,00' : option?.price,
+            localizedEstimates: VtexUtils?.Shipping?.getLocalizedEstimates(
+              option?.shippingEstimate
+            ),
+          }))
+        : []
+
       dispatch({
         type: 'update',
         payload: {
@@ -183,7 +204,7 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
           },
           shippingSimulation: {
             location,
-            options,
+            options: optionsFormattedForPT,
           },
         },
       })
