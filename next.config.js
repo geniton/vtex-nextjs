@@ -6,6 +6,7 @@
 const nextConfig = {
   /* config options here */
   reactStrictMode: false,
+  compress: true,
   i18n: {
     locales: ['pt-BR'],
     defaultLocale: 'pt-BR',
