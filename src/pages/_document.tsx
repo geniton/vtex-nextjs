@@ -21,10 +21,6 @@ function Document({ __NEXT_DATA__ }: DocumentProps) {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
-        <link
-          href="https://chat.baianao.com.br:443/webchat/widget_baianao/module.css"
-          rel="stylesheet"
-        />
       </Head>
       <body className={storeConfig.theme}>
         <Main />
