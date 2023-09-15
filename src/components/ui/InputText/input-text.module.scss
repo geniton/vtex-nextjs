@@ -54,6 +54,11 @@
   display: flex;
   flex-flow: column;
 
+  input:disabled + button {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
   input,
   label {
     transition: var(--fs-input-transition-property) var(--fs-input-transition-timing) var(--fs-input-transition-function);

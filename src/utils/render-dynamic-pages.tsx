@@ -25,8 +25,6 @@ const RenderDynamicPages: React.FC<Props & any> = ({
     ...VARIABLES,
   }
 
-  const { storeUrl } = storeConfig
-
   const RenderComponents = () => <Components {...pageProps} />
 
   const Seo = () => (
@@ -34,7 +32,7 @@ const RenderDynamicPages: React.FC<Props & any> = ({
       title={seo.title}
       description={seo.description}
       titleTemplate={seo.title}
-      canonical={storeUrl}
+      canonical={seo.canonical}
       openGraph={{
         type: 'website',
         title: seo.title,

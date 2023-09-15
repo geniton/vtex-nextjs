@@ -26,7 +26,7 @@ function ShippingSimulation({
   shippingItem,
   ...otherProps
 }: ShippingSimulationProps) {
-  const { dispatch, input, shippingSimulation, handleSubmit, handleOnInput } =
+  const { dispatch, input, shippingSimulation, handleSubmit, handleOnInput, isValidating } =
     useShippingSimulation(shippingItem)
 
   const {
@@ -63,9 +63,11 @@ function ShippingSimulation({
           placeholder="00000-000"
           value={shippingPostalCode}
           onInput={handleOnInput}
+          onKeyUp={(e: any) => e.keyCode === 13 && handleSubmit()}
           onSubmit={handleSubmit}
           onClear={() => dispatch({ type: 'clear' })}
           displayClearButton={displayClearButton}
+          disabled={isValidating}
         />
 
         {hasShippingOptions && (

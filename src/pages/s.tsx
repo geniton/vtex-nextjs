@@ -99,6 +99,7 @@ function Page({ pageData: { page, seo }, ...props }: Props) {
         title={title}
         description={description}
         titleTemplate={title}
+        canonical={`${storeConfig.storeUrl}/s`}
         openGraph={{
           type: 'website',
           title,

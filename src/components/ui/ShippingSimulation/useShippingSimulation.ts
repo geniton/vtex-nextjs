@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react'
-import { useCallback, useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useReducer, useState } from 'react'
 import { VtexUtils } from '@retailhub/audacity-vtex'
 
 import type {
@@ -121,6 +121,7 @@ function getShippingInformation(
 
 export const useShippingSimulation = (shippingItem: IShippingItem) => {
   const { postalCode: sessionPostalCode, country } = useSession()
+  const [isValidating, setIsValidating] = useState(false)
   const [{ input, shippingSimulation }, dispatch] = useReducer(
     reducer,
     null,
@@ -147,7 +148,7 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
       const optionsFormattedForPT = options?.length
         ? options.map((option: any) => ({
             ...option,
-            price: option?.price === 0 ? 'R$ 0,00' : option?.price,
+            price: option?.price === 0 ? 'Grátis' : option?.price,
             localizedEstimates: VtexUtils?.Shipping?.getLocalizedEstimates(
               option?.shippingEstimate
             ),
@@ -176,6 +177,7 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
   }, [sessionPostalCode])
 
   const handleSubmit = useCallback(async () => {
+    setIsValidating(true)
     try {
       const shipping = await getShippingSimulation({
         country,
@@ -188,7 +190,7 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
       const optionsFormattedForPT = options?.length
         ? options.map((option: any) => ({
             ...option,
-            price: option?.price === 0 ? 'R$ 0,00' : option?.price,
+            price: option?.price === 0 ? 'Grátis' : option?.price,
             localizedEstimates: VtexUtils?.Shipping?.getLocalizedEstimates(
               option?.shippingEstimate
             ),
@@ -216,6 +218,8 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
           errorMessage: 'Você digitou um CEP inválido',
         },
       })
+    } finally {
+      setIsValidating(false)
     }
   }, [shippingPostalCode])
 
@@ -244,5 +248,6 @@ export const useShippingSimulation = (shippingItem: IShippingItem) => {
     dispatch,
     handleSubmit,
     handleOnInput,
+    isValidating
   }
 }

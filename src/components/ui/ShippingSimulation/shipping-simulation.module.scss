@@ -38,10 +38,13 @@
   // --------------------------------------------------------
 
   font-size: var(--fs-shipping-simulation-text-size);
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  align-items: center;
-  grid-gap: var(--fs-spacing-3);
+  
+  @include media(">=desktop") {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    align-items: center;
+    grid-gap: var(--fs-spacing-3);
+  }
 
   label,input {
     font-size: 14px;
@@ -82,15 +85,22 @@ text-align: center;
     font-size: var(--fs-shipping-simulation-subtitle-size);
     font-weight: var(--fs-shipping-simulation-subtitle-weight);
     line-height: var(--fs-shipping-simulation-subtitle-line-height);
+    margin-bottom: 3px;
   }
 
   [data-fs-shipping-simulation-location] {
+    font-size: 12px;
     padding-bottom: var(--fs-shipping-simulation-location-padding-bottom);
+
+    @include media(">=desktop") {
+      font-size: 14px;
+    }
   }
 
   [data-fs-shipping-simulation-table] {
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid var(--aud-primary);
   }
 
   [data-fs-shipping-simulation-table-row] {
@@ -103,7 +113,11 @@ text-align: center;
 
   [data-fs-shipping-simulation-table-cell] {
     padding: var(--fs-shipping-simulation-table-cell-padding);
-    font-size: var(--fs-shipping-simulation-table-cell-text-size);
+    font-size: 12px;
+    
+    @include media(">=desktop") {
+      font-size: 14px;
+    }
 
     &:first-child {
       border-top-left-radius: var(--fs-shipping-simulation-table-cell-border-radius);

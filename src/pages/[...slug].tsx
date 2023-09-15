@@ -90,6 +90,7 @@ export const getServerSideProps: GetServerSideProps<
     seo: {
       title: storeConfig.seo.title,
       description: storeConfig.seo.description,
+      canonical: storeConfig.storeUrl,
     },
   }
 
@@ -142,10 +143,13 @@ export const getServerSideProps: GetServerSideProps<
     favicon: pageResponse.data.site?.seo?.['pt-BR']?.favicon ?? null,
     scripts: pageResponse.data.site?.scripts ?? null,
   }
-  pageData.seo = Utils.Formats.formatSeo({
-    collection: data?.collection,
-    page: pageResponse.data,
-  })
+  pageData.seo = {
+    ...Utils.Formats.formatSeo({
+      collection: data?.collection,
+      page: pageResponse.data,
+    }),
+    canonical: `${storeConfig.storeUrl}/${pathSlug}`,
+  }
   pageData.modals = pageResponse.data.modals ?? []
 
   return {
