@@ -1,8 +1,8 @@
 import { memo } from 'react'
 
-import UIBreadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 
+import UIBreadcrumb from 'src/components/ui/Breadcrumb'
 import Section from '../Section'
 
 interface BreadcrumbWrapperProps

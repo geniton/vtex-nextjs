@@ -13,6 +13,18 @@
   height: 100%;
   padding-top: 0;
 
+  [data-fs-breadcrumb] {
+    @include media('>=notebook') {
+      margin-bottom: 20px;
+    }
+
+    li {
+      a,span {
+        font-size: 14px;
+      }
+    }
+  }
+
   [data-fs-product-grid] {
     display: grid;
     grid-template-columns: repeat(12, 1fr);

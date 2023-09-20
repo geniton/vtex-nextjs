@@ -20,6 +20,7 @@ import { useDelayedFacets } from './useDelayedFacets'
 import { useDelayedPagination } from './useDelayedPagination'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useProductsPrefetch } from './usePageProducts'
+import Breadcrumb from 'src/components/ui/Breadcrumb'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <VtexComponents.ProductGallerySkeleton loading />
@@ -29,6 +30,7 @@ interface Props {
   searchTerm?: string
   controls: any
   content: any
+  collection: any
 }
 
 function ProductGallery({
@@ -38,6 +40,7 @@ function ProductGallery({
   content,
   ...props
 }: Props) {
+  const { collection } = props ?? {}
   const [gridNumber, setGridNumber] = useState<number>(2)
   const { openFilter } = useUI()
   const { pages, addNextPage, addPrevPage, resetInfiniteScroll } = useSearch()
@@ -103,6 +106,7 @@ function ProductGallery({
           'lg:p-0': controls?.general?.deskVariations?.full,
         })}
       >
+        {collection?.breadcrumbList?.itemListElement?.length ? <Breadcrumb breadcrumbList={collection?.breadcrumbList?.itemListElement} /> : null}
         {searchTerm && (
           <header
             data-fs-product-listing-search-term

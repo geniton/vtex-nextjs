@@ -14,6 +14,7 @@ import AnalyticsHandler from 'src/sdk/analytics'
 import ErrorBoundary from 'src/sdk/error/ErrorBoundary'
 import UIProvider from 'src/sdk/ui/Provider'
 import { NextjsComponents } from 'src/utils'
+import Head from 'next/head'
 
 function App({ Component, pageProps }: AppProps) {
   const { themeConfigs, modals } = pageProps?.pageData ?? {}
@@ -26,6 +27,10 @@ function App({ Component, pageProps }: AppProps) {
         showOnShallow={false}
         options={{ showSpinner: false }}
       />
+
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
 
       {scripts?.length ? (
         <Components.Scripts

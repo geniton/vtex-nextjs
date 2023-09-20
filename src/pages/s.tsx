@@ -121,9 +121,9 @@ function Page({ pageData: { page, seo }, ...props }: Props) {
         (not the HTML tag) before rendering it here.
       */}
 
-      <div className="aud-container">
-        <Breadcrumb name={searchParams?.term || ''} />
-      </div>
+      {searchParams?.term && <div className="aud-container">
+        <Breadcrumb name={searchParams?.term} />
+      </div>}
 
       <RenderComponents components={page} {...pageProps} />
     </SearchProvider>

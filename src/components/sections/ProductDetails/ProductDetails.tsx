@@ -340,7 +340,7 @@ function ProductDetails({
             'md:p-0': deskVariations?.full,
           })}
         >
-          <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
+          <Breadcrumb breadcrumbList={breadcrumbs?.itemListElement} />
 
           <section data-fs-product-details-body>
             <ImageGallery
