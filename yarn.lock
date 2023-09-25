@@ -2753,10 +2753,10 @@
   dependencies:
     axios "^1.4.0"
 
-"@retailhub/audacity-vtex@^0.0.243":
-  version "0.0.243"
-  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.243.tgz#20ae32bcea7d375dfdc64f501dfbd8c14585afa1"
-  integrity sha512-ac1yuvKZsTdOK3HifjjmiOLH3FIUTZb/G/eTdmbva+whBhsesVYYQhLvP7xJZ7RJnQ/LnuFw0d94OVVJO+Hkng==
+"@retailhub/audacity-vtex@^0.0.244":
+  version "0.0.244"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity-vtex/-/audacity-vtex-0.0.244.tgz#2e02d0fcd5cb4a3ac17f21dc1ec61aba5fad371d"
+  integrity sha512-hGemU02Ig2F71L+SO3pxwdvfVuTbPq34ir3z6ezUupvZfqMK6mPkMZ9cR2+ELmE8yJM0em6TtXUMq/rjXKxI1g==
   dependencies:
     "@retailhub/audacity-client-api" "^0.0.15"
     axios "^0.27.2"
@@ -2769,10 +2769,10 @@
     sweetalert2 "^11.7.3"
     swr "^2.2.2"
 
-"@retailhub/audacity@^0.0.219":
-  version "0.0.219"
-  resolved "https://registry.npmjs.org/@retailhub/audacity/-/audacity-0.0.219.tgz"
-  integrity sha512-FXpNocJ4gJTCGysPT3FhmmblvDPlPZOutAysgVIlTjdg3hllkHaKS2/PMQi6b6ajwl4Oi9f3PXXwE34x+gSQUA==
+"@retailhub/audacity@^0.0.223":
+  version "0.0.223"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.223.tgz#7ee900b34c5f574abdaefd9251dd6fdcb0db0cbe"
+  integrity sha512-oBYhU/wJgya1eTeVZ9pJXYbWynSfxWtUNMUVqeTn+B2aDdoOyxcL8/qr4PWuEDa1hkmv12boDdvd6QHFqXnvRA==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
