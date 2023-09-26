@@ -38,7 +38,7 @@
     "@faststore/sdk": "^1.12.37",
     "@faststore/ui": "^1.12.23",
     "@retailhub/audacity": "^0.0.223",
-    "@retailhub/audacity-vtex": "^0.0.244",
+    "@retailhub/audacity-vtex": "^0.0.245",
     "@retailhub/audacity-client-api": "^0.0.16",
     "@splidejs/react-splide": "^0.7.12",
     "@uiw/react-codemirror": "^4.21.13",
