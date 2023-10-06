@@ -2783,14 +2783,15 @@
     sweetalert2 "^11.7.3"
     swr "^2.2.2"
 
-"@retailhub/audacity@^0.0.223":
-  version "0.0.223"
-  resolved "https://registry.npmjs.org/@retailhub/audacity/-/audacity-0.0.223.tgz"
-  integrity sha512-oBYhU/wJgya1eTeVZ9pJXYbWynSfxWtUNMUVqeTn+B2aDdoOyxcL8/qr4PWuEDa1hkmv12boDdvd6QHFqXnvRA==
+"@retailhub/audacity@^0.0.226":
+  version "0.0.226"
+  resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.226.tgz#56133d31ac03a878f5a2b1a1336c00b709d85afa"
+  integrity sha512-7bLt/BwRWnuS75E9s5NlmsnpRcnxFPFUvQoRd0eB6nL2KiEzprRXJ5qRy41d10SfMfwjcFK/sFKAMDg/QdQLwA==
   dependencies:
     axios "^0.27.2"
     classnames "^2.3.1"
     date-fns "^2.29.1"
+    react-glider "^4.0.2"
     react-input-mask "^2.0.4"
     react-share "^4.4.1"
     react-slick "^0.29.0"
@@ -9628,6 +9629,11 @@ github-slugger@^1.0.0:
   resolved "https://registry.npmjs.org/github-slugger/-/github-slugger-1.5.0.tgz"
   integrity sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==
 
+glider-js@^1.7.7:
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/glider-js/-/glider-js-1.7.8.tgz#b9a50bf86d23ec42b58539a8d80400efd710c92a"
+  integrity sha512-env4+yfoNYaeHJmEBGygjcZDpZ5LRUjGhCB6Ag+XNQfvuLVD5PhCYQShBVCAd5On7XfknM57O+V2Fwfcsii3Dw==
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-3.1.0.tgz"
@@ -14610,6 +14616,13 @@ react-fast-compare@^3.1.1:
   version "3.2.2"
   resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.2.tgz"
   integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
+
+react-glider@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-glider/-/react-glider-4.0.2.tgz#444e9637cb066efd4a88ecd4b20494881467ce58"
+  integrity sha512-nZnkV4x8mSzfhGgrTkMrlL/g07T6hR0bLHg0q1iRumuORwfX+kqxCYoRy4/WXTRhlmurhcFKTaH007Vz2HjeHA==
+  dependencies:
+    glider-js "^1.7.7"
 
 react-helmet@^6.1.0:
   version "6.1.0"
