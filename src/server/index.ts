@@ -40,6 +40,7 @@ const apiOptions: APIOptions = {
   hideUnavailableItems: storeConfig.api.hideUnavailableItems,
   channel: storeConfig.session.channel,
   locale: storeConfig.session.locale,
+  incrementAddress: false,
   flags: {
     enableOrderFormSync: true,
   },
