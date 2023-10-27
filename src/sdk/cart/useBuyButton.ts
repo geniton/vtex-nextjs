@@ -17,6 +17,8 @@ export const useBuyButton = (item: CartItem | any) => {
     currency: { code },
   } = useSession()
 
+  const { confirmationModal, ...otherPropsItem } = item ?? {}
+
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>, goToCheckout: boolean) => {
       const { checkoutUrl } = storeConfig
@@ -33,7 +35,7 @@ export const useBuyButton = (item: CartItem | any) => {
         showProductConfirmation,
         onConfirmationModalData,
         activeVariations,
-      } = item?.confirmationModal ?? {}
+      } = confirmationModal ?? {}
 
       if (
         Object.keys(activeVariations)?.length &&
@@ -75,7 +77,7 @@ export const useBuyButton = (item: CartItem | any) => {
         },
       })
 
-      cartStore.addItem(item)
+      cartStore.addItem(otherPropsItem)
 
       if (!goToCheckout) {
         openCart()
