@@ -23,12 +23,13 @@ interface Props extends ServerCollectionPageQueryQuery {
   pageData: any
 }
 
-function Page({ pageData: { page, seo }, collection, ...props }: Props) {
+function Page({ pageData: { page, seo, tags }, collection, ...props }: Props) {
   return (
     <RenderDynamicPages
       seo={seo}
       components={page}
       collection={collection}
+      tags={tags}
       {...props}
     />
   )
@@ -87,6 +88,7 @@ export const getServerSideProps: GetServerSideProps<
     menus: null,
     themeConfigs: {},
     modals: [],
+    tags: [],
     seo: {
       title: storeConfig.seo.title,
       description: storeConfig.seo.description,
@@ -143,6 +145,7 @@ export const getServerSideProps: GetServerSideProps<
     favicon: pageResponse.data.site?.seo?.['pt-BR']?.favicon ?? null,
     scripts: pageResponse.data.site?.scripts ?? null,
   }
+  pageData.tags = pageResponse.data.site?.tags ?? []
   pageData.seo = {
     ...Utils.Formats.formatSeo({
       collection: data?.collection,

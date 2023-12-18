@@ -68,7 +68,7 @@ type Props = {
   pageData: any
 }
 
-function Page({ pageData: { page, seo }, ...props }: Props) {
+function Page({ pageData: { page, seo, tags }, ...props }: Props) {
   const searchParams = useSearchParams()
   const applySearchState = useApplySearchState()
   const { title, description } = seo
@@ -121,11 +121,13 @@ function Page({ pageData: { page, seo }, ...props }: Props) {
         (not the HTML tag) before rendering it here.
       */}
 
-      {searchParams?.term && <div className="aud-container">
-        <Breadcrumb name={searchParams?.term} />
-      </div>}
+      {searchParams?.term && (
+        <div className="aud-container">
+          <Breadcrumb name={searchParams?.term} />
+        </div>
+      )}
 
-      <RenderComponents components={page} {...pageProps} />
+      <RenderComponents components={page} tags={tags} {...pageProps} />
     </SearchProvider>
   )
 }
@@ -138,6 +140,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     menus: [],
     themeConfigs: {},
     modals: [],
+    tags: [],
     seo: {
       title: '',
       description: '',
@@ -170,6 +173,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       scripts: page.site?.scripts ?? null,
     }
     pageData.modals = page.modals ?? []
+    pageData.tags = page.site?.tags ?? []
 
     pageData.seo = Utils.Formats.formatSeo({
       page,

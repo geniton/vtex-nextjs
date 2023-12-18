@@ -34,6 +34,7 @@ interface Props {
   seo: any
   pageData: {
     page: any
+    tags: any[]
     seo: {
       title: string
       description: string
@@ -42,7 +43,7 @@ interface Props {
   }
 }
 
-function Page({ product, skuId, pageData: { page, seo } }: Props) {
+function Page({ product, skuId, pageData: { page, seo, tags } }: Props) {
   const { currency } = useSession()
   const { title, description, canonical } = seo
   const seller = VtexUtils.Product.getSellerLowPrice(product?.sellers)
@@ -100,7 +101,12 @@ function Page({ product, skuId, pageData: { page, seo } }: Props) {
         }}
       />
 
-      <RenderComponents product={product} skuId={skuId} components={page} />
+      <RenderComponents
+        product={product}
+        skuId={skuId}
+        components={page}
+        tags={tags}
+      />
     </>
   )
 }
@@ -120,6 +126,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     footer: null,
     page: null,
     menus: [],
+    tags: [],
     themeConfigs: {},
     product: {} as any,
     modals: [],
@@ -178,6 +185,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       favicon: responsePageData.page.site?.seo?.['pt-BR']?.favicon ?? null,
       scripts: responsePageData.page.site?.scripts ?? null,
     }
+    pageData.tags = responsePageData.page.site?.tags ?? []
 
     pageData.product = PRODUCT
 

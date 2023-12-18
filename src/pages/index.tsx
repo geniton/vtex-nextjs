@@ -12,7 +12,7 @@ const AudacityClient = new AudacityClientApi(
   process.env.ENV
 )
 
-function Page({ pageData: { page, seo } }: any) {
+function Page({ pageData: { page, seo, tags } }: any) {
   const { title, description } = seo ?? {}
 
   return (
@@ -38,7 +38,7 @@ function Page({ pageData: { page, seo } }: any) {
           },
         ]}
       />
-      <RenderComponents components={page} />
+      <RenderComponents components={page} tags={tags} />
     </>
   )
 }
@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps = async () => {
     menus: [],
     themeConfigs: {},
     modals: [],
+    tags: [],
     seo: {
       title: '',
       description: '',
@@ -82,7 +83,7 @@ export const getStaticProps: GetStaticProps = async () => {
       favicon: page.site?.seo?.['pt-BR']?.favicon ?? null,
       scripts: page.site?.scripts ?? null,
     }
-
+    pageData.tags = page.site?.tags ?? []
     pageData.seo = Utils.Formats.formatSeo({
       page,
     })
