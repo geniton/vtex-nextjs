@@ -2781,7 +2781,7 @@
     sweetalert2 "^11.7.3"
     swr "^2.2.2"
 
-"@retailhub/audacity@^0.0.290":
+"@retailhub/audacity@^0.0.249":
   version "0.0.249"
   resolved "https://registry.yarnpkg.com/@retailhub/audacity/-/audacity-0.0.249.tgz#5434f62c06f7680a1268abbdbee80d2d265775eb"
   integrity sha512-ccEwSDAuoP3kuGfZWTIWdWIqaHv8KglwxvDyL3w1rdechCktlXUC1f5Vst6rFaUiyzmaxGOEEZV1Kr+IwTz59w==
