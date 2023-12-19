@@ -29,12 +29,14 @@ import Section from '../Section'
 
 interface Props {
   product: any
+  tags: any[]
   skuId: string
   controls: SingleProductControls
 }
 
 function ProductDetails({
   product,
+  tags,
   controls: {
     general: {
       showProductName,
@@ -53,6 +55,7 @@ function ProductDetails({
       galleryWithThumbnails,
       galleryImagesPerView,
       galleryThumbnailsPosition,
+      showTags,
     },
     effects,
     style,
@@ -71,6 +74,10 @@ function ProductDetails({
     goToCheckout: false,
     activeVariations: {},
   })
+
+  console.log('product', product)
+
+  console.log('tags', tags)
 
   const {
     priceFromFontSize,
@@ -119,9 +126,23 @@ function ProductDetails({
     description,
     productName,
     productId,
+    productClusters,
   } = product
 
   const { margins, paddings } = style ?? {}
+
+  const collectionIds = useMemo(() => {
+    const collections = []
+
+    for (let collection in productClusters) {
+      collections.push({
+        id: collection,
+        name: productClusters[collection]
+      })
+    }
+
+    return collections
+  }, [productClusters])
 
   const sellerActive = useMemo(
     () =>
@@ -354,6 +375,13 @@ function ProductDetails({
             />
 
             <section data-fs-product-details-info>
+              {showTags && (
+                <VtexComponents.CustomTagRenderer
+                  tags={tags}
+                  className="audv-mb-[5px]"
+                  productClusters={collectionIds}
+                />
+              )}
               <header data-fs-product-details-title>{productTitle()}</header>
               {sellers.length >= 2 ? (
                 <ul data-fs-product-details-seller-items>

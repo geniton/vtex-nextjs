@@ -31,6 +31,7 @@ interface Props {
   controls: any
   content: any
   collection: any
+  tags: any[]
 }
 
 function ProductGallery({
@@ -38,6 +39,7 @@ function ProductGallery({
   searchTerm,
   controls,
   content,
+  tags,
   ...props
 }: Props) {
   const { collection } = props ?? {}
@@ -223,6 +225,7 @@ function ProductGallery({
                       page={page}
                       title={title}
                       gridNumber={gridNumber}
+                      tags={tags}
                       {...props}
                     />
                   ))}

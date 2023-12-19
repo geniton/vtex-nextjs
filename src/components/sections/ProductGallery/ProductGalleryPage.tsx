@@ -18,6 +18,7 @@ interface Props {
   VtexUtils?: any
   VtexHooks?: any
   NextjsHooks?: any
+  tags: any[]
 }
 
 function GalleryPage({

@@ -122,6 +122,14 @@
     flex-direction: column;
     row-gap: 0;
 
+    [class*="custom-tag-renderer"] {
+      grid-column: 2 span / span 2;
+
+      img {
+        max-height: 75px;
+      }
+    }
+
     @include media('>=tablet') {
       position: sticky;
       top: 40px;
